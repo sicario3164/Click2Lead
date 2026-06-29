@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nos Réalisations — Portfolio Click2Lead | Projets Web & Landing Pages</title>
+<meta name="description" content="Découvrez les projets réalisés par Click2Lead — landing pages haute performance, identité visuelle, développement web. VyraShop, Click2Lead et plus encore."/>
+<link rel="canonical" href="https://click2lead.fr/realisations"/>
+<meta property="og:title" content="Portfolio Click2Lead — Nos Réalisations"/>
+<meta property="og:description" content="Des projets réels. Des pages qui convertissent. Découvrez notre portfolio."/>
+<meta property="og:type" content="website"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#6C5CE7"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#09071c;
+  --text:#0f0e1a;--text-mid:#525970;--text-light:#9ba5b8;
+  --p:#7c5af0;--s:#2980FF;--rose:#E91E8C;--cyan:#22d3ee;--green:#34d399;
+  --gp:linear-gradient(135deg,#7c5af0,#2980FF);
+  --gv:linear-gradient(135deg,#7c5af0,#E91E8C);
+  --bord:rgba(0,0,0,.08);--bord-m:rgba(0,0,0,.12);--bord-p:rgba(124,90,240,.25);
+  --sh-sm:0 4px 20px rgba(0,0,0,.5);
+  --sh-md:0 8px 36px rgba(0,0,0,.1),0 2px 10px rgba(0,0,0,.05);
+  --sh-lg:0 24px 70px rgba(0,0,0,.12),0 8px 28px rgba(0,0,0,.06);
+  --sh-xl:0 40px 110px rgba(0,0,0,.14),0 16px 48px rgba(0,0,0,.08);
+  --sh-p:0 8px 32px rgba(124,90,240,.28);
+  --r:12px;--rl:16px;--rxl:22px;--r2xl:30px;--rpill:9999px;
+}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(ellipse 900px 600px at 15% 0%,rgba(124,90,240,.05),transparent 60%),var(--bg);
+  color:var(--text);font-family:'DM Sans',-apple-system,sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased
+}
+a{text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.df{font-family:'Poppins',sans-serif}
+.gt{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.eyebrow{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--p);margin-bottom:12px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.08);transition:box-shadow .3s}
+nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.nav-in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.logo-mark{width:32px;height:32px;flex-shrink:0}
+.logo-tx{font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-.4px}
+.logo-tx .lc{color:var(--text)}.logo-tx .l2{color:var(--s)}.logo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-lks{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center}
+.nav-lks a{color:var(--text-mid);font-size:.84rem;font-weight:500;padding:7px 13px;border-radius:var(--r);transition:all .18s;white-space:nowrap}
+.nav-lks a:hover,.nav-lks a.active{color:var(--text);background:rgba(0,0,0,.05)}
+.nav-r{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:var(--rpill);font-family:inherit;font-weight:700;cursor:pointer;transition:all .22s;text-decoration:none;white-space:nowrap;line-height:1}
+.bp{background:var(--gp);color:#fff;padding:14px 28px;font-size:.92rem;box-shadow:var(--sh-p)}
+.bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(108,92,231,.46)}
+
+/* HERO */
+.port-hero{padding:80px 0 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--bord)}
+.port-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(108,92,231,.05) 1.5px,transparent 1.5px);background-size:30px 30px}
+.ph-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.ph-o1{width:600px;height:450px;top:-150px;left:-80px;background:radial-gradient(circle,rgba(108,92,231,.14),transparent 65%)}
+.ph-o2{width:450px;height:380px;top:-60px;right:-60px;background:radial-gradient(circle,rgba(41,128,255,.1),transparent 65%)}
+.port-hero-in{position:relative;z-index:1;text-align:center;max-width:680px;margin:0 auto;padding:0 24px}
+.ph-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,92,231,.07);border:1px solid rgba(108,92,231,.18);color:var(--p);font-size:.68rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;padding:7px 16px;border-radius:var(--rpill);margin-bottom:26px}
+.ph-dot{width:7px;height:7px;border-radius:50%;background:var(--p);animation:dp 1.6s ease-in-out infinite;flex-shrink:0}
+@keyframes dp{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.7);opacity:.5}}
+.ph-h1{font-family:'Poppins',sans-serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:900;line-height:1.08;letter-spacing:-1px;color:var(--text);margin-bottom:18px}
+.ph-sub{font-size:1.02rem;color:var(--text-mid);line-height:1.74;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* FILTER */
+.filter-bar{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:32px 0 48px}
+.filter-btn{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.1);color:var(--text-mid);padding:8px 20px;border-radius:var(--rpill);font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .18s}
+.filter-btn.active,.filter-btn:hover{background:var(--p);border-color:var(--p);color:#fff}
+
+/* GRID */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding-bottom:80px}
+.proj-card{position:relative;border-radius:var(--r2xl);overflow:hidden;min-height:380px;cursor:pointer;transition:all .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.proj-card:hover{transform:translateY(-6px);box-shadow:var(--sh-xl)}
+.pc-bg{position:absolute;inset:0}
+.pc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.3) 50%,transparent 100%);transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.pc-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:4px 12px;border-radius:var(--rpill);margin-bottom:10px}
+.pc-name{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-.3px}
+.pc-desc{font-size:.84rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:16px;max-width:380px}
+.pc-chips{display:flex;gap:6px;flex-wrap:wrap}
+.pc-chip{font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:var(--rpill);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
+.pc-arrow{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:.9rem;transition:all .22s;backdrop-filter:blur(6px)}
+.proj-card:hover .pc-arrow{background:rgba(124,90,240,.6);border-color:rgba(124,90,240,.8);color:#fff}
+.pc-badge{position:absolute;top:20px;left:20px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.15);border-radius:var(--rpill);padding:4px 12px;font-size:.6rem;font-weight:700;color:rgba(255,255,255,.8);backdrop-filter:blur(8px);letter-spacing:.3px}
+
+/* VYRA bg */
+.pc-vyra .pc-bg{background:linear-gradient(135deg,#060412 0%,#0d0b1f 40%,#130828 100%)}
+.pc-vyra .pc-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(124,58,237,.22),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(34,211,238,.14),transparent 55%)}
+.pc-vyra-name{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);z-index:1;text-align:center}
+.pc-vyra-t{font-family:'Poppins',sans-serif;font-size:2.4rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(120deg,#c4b5fd,#8b5cf6,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pc-vyra-s{font-size:.68rem;color:rgba(196,181,253,.5);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+
+/* C2L bg */
+.pc-c2l .pc-bg{background:linear-gradient(145deg,#07051a,#110a2d,#170c3a)}
+.pc-c2l .pc-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 35%,rgba(124,90,240,.22),transparent 58%),radial-gradient(ellipse at 78% 78%,rgba(41,128,255,.14),transparent 58%)}
+.pc-c2l-name{position:absolute;top:50%;left:50%;transform:translate(-50%,-62%);z-index:1;text-align:center}
+.pc-c2l-t{font-family:'Poppins',sans-serif;font-size:2.2rem;font-weight:900;letter-spacing:-.5px}
+.pc-c2l-t .lc{color:rgba(255,255,255,.9)}.pc-c2l-t .l2{color:#60A5FA}
+.pc-c2l-t .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pc-c2l-s{font-size:.66rem;color:rgba(196,181,253,.5);letter-spacing:1.8px;text-transform:uppercase;margin-top:4px}
+
+/* CTA */
+.port-cta{background:var(--bg-soft);border-top:1px solid var(--bord);padding:72px 0;text-align:center}
+.port-cta h2{font-family:'Poppins',sans-serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:800;color:var(--text);letter-spacing:-.5px;margin-bottom:12px}
+.port-cta p{color:var(--text-mid);font-size:.95rem;margin-bottom:28px;line-height:1.72}
+
+/* FOOTER */
+footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padding:48px 0 28px}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.ft-brand{font-size:1.15rem;font-weight:800;letter-spacing:-.4px;margin-bottom:10px}
+.ft-brand .fc{color:#fff}.ft-brand .f2{color:var(--s)}.ft-brand .fl{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ft-tag{font-size:.79rem;color:rgba(255,255,255,.32);line-height:1.65;max-width:240px}
+.ft-col-t{font-size:.63rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:14px}
+.ft-lks{list-style:none}
+.ft-lks li{margin-bottom:9px}
+.ft-lks a{font-size:.79rem;color:rgba(255,255,255,.36);transition:color .15s}
+.ft-lks a:hover{color:rgba(255,255,255,.82)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ft-copy{font-size:.74rem;color:rgba(255,255,255,.25)}
+.ft-legal{display:flex;gap:18px;flex-wrap:wrap}
+.ft-legal a{font-size:.7rem;color:rgba(255,255,255,.25);transition:color .15s}
+.ft-legal a:hover{color:rgba(255,255,255,.65)}
+
+/* COMING SOON CARD */
+.pc-soon{opacity:.45;cursor:default}
+.pc-soon:hover{transform:none;box-shadow:none}
+.pc-soon .pc-bg{background:linear-gradient(135deg,#0d0b1f,#1a1a2e)}
+.soon-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px}
+.soon-label{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:5px 16px;border-radius:var(--rpill)}
+
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.ft-top{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:768px){
+  .proj-grid{grid-template-columns:1fr}
+  .nav-lks{display:none}
+  .ft-top{grid-template-columns:1fr;gap:22px}
+}
+@media(max-width:960px){.nav-lks{display:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-mark" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6C5CE7"/><stop offset="1" stop-color="#2980FF"/></linearGradient></defs>
+        <path d="M16 3A13 13 0 1 0 16 29" stroke="url(#lg)" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M13 11 L13 23 L16.5 19.5 L18.2 24 L20.5 23 L18.8 18.5 L23 18.5 Z" fill="url(#lg)"/>
+        <circle cx="27" cy="5" r="1.8" fill="#2980FF"/><circle cx="30" cy="9" r="1.2" fill="#6C5CE7"/><circle cx="28.5" cy="3" r="1" fill="#2980FF"/>
+      </svg>
+      <span class="logo-tx"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></span>
+    </a>
+    <ul class="nav-lks">
+      <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
+      <li><a href="index.html#methode">Méthode</a></li>
+      <li><a href="index.html#offres">Services</a></li>
+      <li><a href="realisations.html" class="active">Réalisations</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-r">
+      <a href="index.html#contact" class="btn bp">Nous contacter</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="port-hero">
+  <div class="ph-orb ph-o1"></div>
+  <div class="ph-orb ph-o2"></div>
+  <div class="port-hero-in">
+    <div class="ph-badge"><span class="ph-dot"></span>Projets réels · Résultats concrets</div>
+    <h1 class="ph-h1">Ce que nous sommes<br/><span class="gt">capables de créer.</span></h1>
+    <p class="ph-sub">Des projets réels, construits avec la même méthode, la même rigueur et le même niveau d'exigence que nous appliquerons pour vous.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="wrap">
+  <div class="filter-bar" role="tablist" aria-label="Filtrer les projets">
+    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Tous les projets</button>
+    <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Développement web</button>
+    <button class="filter-btn" data-filter="brand" role="tab" aria-selected="false">Branding</button>
+    <button class="filter-btn" data-filter="elearning" role="tab" aria-selected="false">E-learning</button>
+  </div>
+
+  <!-- PROJECT GRID (rendered by JS from data) -->
+  <div class="proj-grid" id="projGrid" role="list">
+    <!-- Rendered dynamically -->
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<section class="port-cta">
+  <div class="wrap">
+    <h2>Votre projet sera ici.</h2>
+    <p>Chaque collaboration commence par un appel de 30 minutes. Parlez-nous de votre projet.</p>
+    <a href="index.html#contact" class="btn bp" style="padding:16px 34px;font-size:1rem">🗓️ Réserver mon appel gratuit</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand"><span style="color:#fff">Click</span><span style="color:var(--s)">2</span><span style="background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Lead</span></div>
+        <p class="ft-tag">L'agence qui transforme votre trafic en clients. Click → Lead → Client → Croissance.</p>
+      </div>
+      <div>
+        <div class="ft-col-t">Services</div>
+        <ul class="ft-lks">
+          <li><a href="index.html#offres">Landing Pages</a></li>
+          <li><a href="index.html#offres">Maintenance</a></li>
+          <li><a href="index.html#contact">Devis gratuit</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-col-t">Navigation</div>
+        <ul class="ft-lks">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#methode">Méthode</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-col-t">Contact</div>
+        <ul class="ft-lks">
+          <li><a href="mailto:hello@click2lead.fr">hello@click2lead.fr</a></li>
+          <li><a href="index.html#contact">Appel découverte</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span class="ft-copy">© 2024–2025 Click2Lead. Tous droits réservés.</span>
+      <div class="ft-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgv.html">CGV</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── PROJECT DATA ──────────────────────────────
+   Architecture data-driven : ajouter un projet
+   = ajouter un objet dans ce tableau.
+   Aucun projet n'est codé en dur dans le HTML.
+─────────────────────────────────────────────── */
+const PROJECTS = [
+  {
+    id: 'vyrashop',
+    name: 'VyraShop Academy',
+    slug: 'projet-vyrashop.html',
+    tags: ['web', 'elearning'],
+    badge: 'Projet propriétaire · vyrashop.com',
+    type: 'E-learning · TikTok Shop · Formation',
+    desc: 'Plateforme de formation spécialisée dans la monétisation TikTok — branding, développement, UX et SEO.',
+    chips: ['Branding', 'Développement', 'UX Design', 'SEO', 'Responsive'],
+    theme: 'vyra',
+    status: 'live',
+  },
+  {
+    id: 'click2lead',
+    name: 'Click2Lead',
+    slug: 'projet-click2lead.html',
+    tags: ['web', 'brand'],
+    badge: 'Projet interne · 2024',
+    type: 'Identité · Branding · Développement web',
+    desc: 'Création complète de l\'identité de marque, direction artistique et développement du site Click2Lead.',
+    chips: ['Branding', 'Direction artistique', 'Développement', 'SEO', 'CRO'],
+    theme: 'c2l',
+    status: 'live',
+  },
+  {
+    id: 'soon1',
+    name: 'Bientôt disponible',
+    slug: null,
+    tags: ['web'],
+    badge: 'En cours',
+    type: '',
+    desc: '',
+    chips: [],
+    theme: 'soon',
+    status: 'soon',
+  },
+  {
+    id: 'soon2',
+    name: 'Bientôt disponible',
+    slug: null,
+    tags: ['brand'],
+    badge: 'En cours',
+    type: '',
+    desc: '',
+    chips: [],
+    theme: 'soon',
+    status: 'soon',
+  },
+];
+
+/* ─── RENDER ─────────────────────────────────── */
+function renderProjects(filter = 'all') {
+  const grid = document.getElementById('projGrid');
+  const filtered = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.tags.includes(filter));
+  
+  grid.innerHTML = filtered.map(p => {
+    if (p.status === 'soon') {
+      return `
+        <article class="proj-card pc-soon" role="listitem" aria-label="Projet à venir">
+          <div class="pc-bg"></div>
+          <div class="soon-inner">
+            <div class="soon-label">Projet à venir</div>
+          </div>
+        </article>`;
+    }
+
+    if (p.theme === 'vyra') {
+      return `
+        <article class="proj-card pc-vyra rv" role="listitem" onclick="location.href='${p.slug}'" style="cursor:pointer" aria-label="${p.name}">
+          <div class="pc-bg"><div></div></div>
+          <div class="pc-vyra-name">
+            <div class="pc-vyra-t">VyraShop</div>
+            <div class="pc-vyra-s">Academy · TikTok Monetization</div>
+          </div>
+          <div class="pc-badge">${p.badge}</div>
+          <div class="pc-arrow" aria-hidden="true">→</div>
+          <div class="pc-ov">
+            <span class="pc-tag">${p.type}</span>
+            <div class="pc-name">${p.name}</div>
+            <p class="pc-desc">${p.desc}</p>
+            <div class="pc-chips">${p.chips.map(c => `<span class="pc-chip">${c}</span>`).join('')}</div>
+          </div>
+        </article>`;
+    }
+
+    if (p.theme === 'c2l') {
+      return `
+        <article class="proj-card pc-c2l rv" role="listitem" onclick="location.href='${p.slug}'" style="cursor:pointer" aria-label="${p.name}">
+          <div class="pc-bg"><div></div></div>
+          <div class="pc-c2l-name">
+            <div class="pc-c2l-t"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></div>
+            <div class="pc-c2l-s">Identité & Développement</div>
+          </div>
+          <div class="pc-badge">${p.badge}</div>
+          <div class="pc-arrow" aria-hidden="true">→</div>
+          <div class="pc-ov">
+            <span class="pc-tag">${p.type}</span>
+            <div class="pc-name">${p.name}</div>
+            <p class="pc-desc">${p.desc}</p>
+            <div class="pc-chips">${p.chips.map(c => `<span class="pc-chip">${c}</span>`).join('')}</div>
+          </div>
+        </article>`;
+    }
+
+    return '';
+  }).join('');
+
+  // Re-trigger scroll reveal
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    setTimeout(() => el.classList.add('on'), i * 80);
+  });
+}
+
+/* ─── FILTER ─────────────────────────────────── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    renderProjects(btn.dataset.filter);
+  });
+});
+
+/* ─── INIT ───────────────────────────────────── */
+renderProjects('all');
+
+/* ─── NAV SHADOW ─────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('sc', window.scrollY > 20);
+});
+
+/* ─── KEYBOARD ACCESSIBILITY ─────────────────── */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.target.classList.contains('proj-card')) {
+    const onclick = e.target.getAttribute('onclick');
+    if (onclick) eval(onclick);
+  }
+});
+</script>
+</body>
+</html>

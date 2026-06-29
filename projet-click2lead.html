@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Click2Lead — Projet Interne | Branding, Identité & Développement Web</title>
+<meta name="description" content="Découvrez comment Click2Lead a construit sa propre identité de marque — direction artistique, concept Click→Lead→Client→Croissance, développement et SEO."/>
+<link rel="canonical" href="https://click2lead.fr/projet-click2lead"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#6C5CE7"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#09071c;
+  --text:#0f0e1a;--text-mid:#525970;--text-light:#9ba5b8;
+  --p:#7c5af0;--s:#2980FF;--rose:#E91E8C;--green:#34d399;
+  --gp:linear-gradient(135deg,#7c5af0,#2980FF);
+  --bord:rgba(139,92,246,.09);--bord-m:rgba(139,92,246,.18);
+  --sh-md:0 8px 36px rgba(0,0,0,.1),0 2px 10px rgba(0,0,0,.05);
+  --sh-lg:0 24px 70px rgba(0,0,0,.12),0 8px 28px rgba(0,0,0,.06);
+  --sh-p:0 8px 32px rgba(124,90,240,.28);
+  --r:12px;--rl:16px;--rxl:22px;--r2xl:30px;--rpill:9999px;
+}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse 900px 600px at 15% 0%,rgba(124,90,240,.05),transparent 60%),radial-gradient(ellipse 600px 500px at 90% 8%,rgba(34,211,238,.03),transparent 55%),var(--bg);color:var(--text);font-family:"DM Sans",-apple-system,sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--p);margin-bottom:12px}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.08);transition:box-shadow .3s}
+nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.nav-in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.logo-mark{width:32px;height:32px;flex-shrink:0}
+.logo-tx{font-family:"Poppins",sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-.4px}
+.logo-tx .lc{color:var(--text)}.logo-tx .l2{color:var(--s)}.logo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-lks{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center}
+.nav-lks a{color:var(--text-mid);font-size:.84rem;font-weight:500;padding:7px 13px;border-radius:var(--r);transition:all .18s}
+.nav-lks a:hover{color:var(--text);background:rgba(0,0,0,.05)}
+.nav-r{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:var(--rpill);font-family:inherit;font-weight:700;cursor:pointer;transition:all .22s;white-space:nowrap;line-height:1}
+.bp{background:var(--gp);color:#fff;padding:13px 26px;font-size:.9rem;box-shadow:var(--sh-p)}
+.bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(108,92,231,.46)}
+@media(max-width:960px){.nav-lks{display:none}}
+.proj-hero{position:relative;overflow:hidden;padding:80px 0 72px}
+.proj-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(108,92,231,.06) 1.5px,transparent 1.5px);background-size:30px 30px}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.ho1{width:650px;height:500px;top:-180px;left:-80px;background:radial-gradient(circle,rgba(108,92,231,.14),transparent 65%)}
+.ho2{width:500px;height:400px;top:-80px;right:-60px;background:radial-gradient(circle,rgba(41,128,255,.1),transparent 65%)}
+.proj-hero-in{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto;padding:0 24px}
+.back-link{display:inline-flex;align-items:center;gap:7px;color:var(--text-mid);font-size:.82rem;font-weight:500;margin-bottom:28px;transition:color .18s}
+.back-link:hover{color:var(--text)}
+.proj-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,92,231,.07);border:1px solid rgba(108,92,231,.2);color:var(--p);font-size:.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:var(--rpill);margin-bottom:26px}
+.proj-h1{font-family:"Poppins",sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.06;letter-spacing:-1.2px;margin-bottom:18px;color:var(--text)}
+.proj-h1 span{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.proj-sub{font-size:1rem;color:var(--text-mid);line-height:1.74;margin-bottom:32px;max-width:540px;margin-left:auto;margin-right:auto}
+.proj-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.proj-chip{font-size:.68rem;font-weight:700;padding:5px 14px;border-radius:var(--rpill);background:rgba(124,90,240,.08);border:1px solid rgba(124,90,240,.2);color:#A78BFA;letter-spacing:.3px}
+.sec{padding:80px 0}
+.sec-alt{background:var(--bg-soft)}
+.sec-title{font-family:"Poppins",sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.4px;color:var(--text);margin-bottom:14px;line-height:1.15}
+.sec-sub{font-size:.95rem;color:var(--text-mid);line-height:1.75;max-width:580px}
+.concept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px;background:rgba(0,0,0,.07);border-radius:var(--r2xl);overflow:hidden}
+.concept-step{background:var(--bg);padding:36px 24px;text-align:center;transition:background .25s}
+.concept-step:hover{background:var(--bg-soft)}
+.cs-num{font-size:.58rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:14px}
+.cs-icon{font-size:2rem;margin-bottom:14px;display:block}
+.cs-word{font-family:"Poppins",sans-serif;font-size:1.1rem;font-weight:900;margin-bottom:8px}
+.concept-step:nth-child(1) .cs-word{color:var(--p)}
+.concept-step:nth-child(2) .cs-word{color:var(--s)}
+.concept-step:nth-child(3) .cs-word{color:#E91E8C}
+.concept-step:nth-child(4) .cs-word{color:var(--green)}
+.cs-desc{font-size:.8rem;color:var(--text-mid);line-height:1.6}
+@media(max-width:768px){.concept-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.concept-grid{grid-template-columns:1fr}}
+.identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.id-card{background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 2px 12px rgba(0,0,0,.06);border-radius:var(--rxl);padding:26px;transition:all .28s}
+.id-card:hover{border-color:rgba(124,90,240,.2);transform:translateY(-3px);box-shadow:var(--sh-md)}
+.id-card-t{font-family:"Poppins",sans-serif;font-size:.98rem;font-weight:800;color:var(--text);margin-bottom:14px;letter-spacing:-.2px}
+.palette-row{display:flex;gap:7px;flex-wrap:wrap}
+.pal-swatch{height:34px;border-radius:8px;flex:1;min-width:44px}
+.pal-label{font-size:.59rem;font-weight:700;color:var(--text-light);margin-top:7px;text-align:center;letter-spacing:.4px}
+.logo-demo{padding:18px;background:var(--bg-dark);border-radius:var(--rl);display:flex;align-items:center;gap:10px;margin-top:4px;border:1px solid var(--bord)}
+.logo-demo-tx{font-family:"Poppins",sans-serif;font-size:1.2rem;font-weight:900;letter-spacing:-.4px}
+.logo-demo-tx .lc{color:var(--text)}.logo-demo-tx .l2{color:var(--s)}.logo-demo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media(max-width:768px){.identity-grid{grid-template-columns:1fr}}
+.tech-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:36px}
+.tech-badge{font-size:.78rem;font-weight:700;padding:8px 18px;border-radius:var(--rpill);background:rgba(255,255,255,.05);border:1px solid var(--bord-m);color:var(--text-mid);transition:all .18s}
+.tech-badge:hover{border-color:rgba(124,90,240,.3);color:#A78BFA;background:rgba(124,90,240,.06)}
+.deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.deliv-item{display:flex;align-items:flex-start;gap:13px;padding:18px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 2px 12px rgba(0,0,0,.06);border-radius:var(--rl);transition:all .22s}
+.deliv-item:hover{border-color:rgba(124,90,240,.2);background:rgba(124,90,240,.04)}
+.deliv-check{width:26px;height:26px;border-radius:7px;background:rgba(124,90,240,.12);border:1px solid rgba(124,90,240,.22);display:flex;align-items:center;justify-content:center;color:var(--p);font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:2px}
+.deliv-body{font-size:.84rem;color:var(--text-mid);line-height:1.62}
+.deliv-body strong{color:var(--text);display:block;margin-bottom:3px;font-size:.88rem}
+@media(max-width:768px){.deliv-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.deliv-grid{grid-template-columns:1fr}}
+.proj-cta{background:var(--bg-dark);text-align:center;position:relative;overflow:hidden;padding:80px 0}
+.cg{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.cg1{width:600px;height:380px;top:-100px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(108,92,231,.24),transparent 65%)}
+.proj-cta-in{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:0 24px}
+.proj-cta-h{font-family:"Poppins",sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.6px;color:#fff;margin-bottom:14px;line-height:1.12}
+.proj-cta-h span{background:linear-gradient(135deg,#A78BFA,#60A5FA,#00C9FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.proj-cta-sub{font-size:.95rem;color:rgba(255,255,255,.45);margin-bottom:30px;line-height:1.7}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padding:40px 0 24px}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ft-copy{font-size:.74rem;color:rgba(255,255,255,.25)}
+.ft-brand-s{font-family:"Poppins",sans-serif;font-size:.95rem;font-weight:800}
+.ft-brand-s .lc{color:rgba(255,255,255,.7)}.ft-brand-s .l2{color:var(--s)}.ft-brand-s .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ft-legal{display:flex;gap:18px;flex-wrap:wrap}
+.ft-legal a{font-size:.7rem;color:rgba(255,255,255,.25);transition:color .15s}
+.ft-legal a:hover{color:rgba(255,255,255,.65)}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-mark" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6C5CE7"/><stop offset="1" stop-color="#2980FF"/></linearGradient></defs>
+        <path d="M16 3A13 13 0 1 0 16 29" stroke="url(#lg)" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M13 11 L13 23 L16.5 19.5 L18.2 24 L20.5 23 L18.8 18.5 L23 18.5 Z" fill="url(#lg)"/>
+        <circle cx="27" cy="5" r="1.8" fill="#2980FF"/><circle cx="30" cy="9" r="1.2" fill="#6C5CE7"/>
+      </svg>
+      <span class="logo-tx"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></span>
+    </a>
+    <ul class="nav-lks">
+      <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
+      <li><a href="index.html#methode">Methode</a></li>
+      <li><a href="index.html#offres">Services</a></li>
+      <li><a href="realisations.html">Realisations</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-r"><a href="index.html#contact" class="btn bp">Nous contacter</a></div>
+  </div>
+</nav>
+
+<section class="proj-hero">
+  <div class="hero-orb ho1"></div><div class="hero-orb ho2"></div>
+  <div class="proj-hero-in">
+    <a href="realisations.html" class="back-link">← Retour aux réalisations</a>
+    <div class="proj-badge">Projet interne · 2024</div>
+    <h1 class="proj-h1"><span>Click2Lead</span> — Notre propre identité.</h1>
+    <p class="proj-sub">Ce site est lui-même un projet Click2Lead — un cas d'école de ce que nous faisons pour nos clients, appliqué à notre propre marque. Concept, identité, design et développement de A à Z.</p>
+    <div class="proj-chips">
+      <span class="proj-chip">Branding</span>
+      <span class="proj-chip">Direction artistique</span>
+      <span class="proj-chip">Développement web</span>
+      <span class="proj-chip">SEO</span>
+      <span class="proj-chip">CRO</span>
+      <span class="proj-chip">Copywriting</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="rv" style="max-width:680px">
+      <span class="eyebrow">Présentation</span>
+      <h2 class="sec-title">Créer une marque de conversion, pas juste une agence web.</h2>
+      <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px">Click2Lead n'est pas une agence qui "fait des sites". C'est une marque construite autour d'un concept fondateur précis : transformer chaque clic en client réel. Ce positionnement fort exigeait une identité à la hauteur.</p>
+      <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px">Le défi : se différencier dans un secteur saturé, avec une promesse simple et mémorable. La réponse : le concept <strong style="color:var(--text)">Click → Lead → Client → Croissance</strong>, épine dorsale visuelle et éditoriale de toute la communication.</p>
+      <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8">Chaque décision de design — palette, typographies, animations, copywriting — est au service de ce positionnement. Le site est lui-même la preuve que Click2Lead sait convertir.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Le concept fondateur</span>
+      <h2 class="sec-title">Click → Lead → Client → Croissance.</h2>
+      <p class="sec-sub">Un positionnement en 4 mots qui résume exactement ce que nous faisons — le fil conducteur de toute l'identité Click2Lead.</p>
+    </div>
+    <div class="concept-grid rv">
+      <div class="concept-step"><div class="cs-num">01</div><span class="cs-icon">🖱️</span><div class="cs-word">Click</div><p class="cs-desc">Un visiteur arrive. Chaque clic est une opportunité commerciale réelle.</p></div>
+      <div class="concept-step"><div class="cs-num">02</div><span class="cs-icon">🎯</span><div class="cs-word">Lead</div><p class="cs-desc">La page engage et capte. Le visiteur devient un prospect qualifié.</p></div>
+      <div class="concept-step"><div class="cs-num">03</div><span class="cs-icon">🤝</span><div class="cs-word">Client</div><p class="cs-desc">Le prospect prend un RDV, signe, achète. Il devient client réel.</p></div>
+      <div class="concept-step"><div class="cs-num">04</div><span class="cs-icon">📈</span><div class="cs-word">Croissance</div><p class="cs-desc">La page optimisée génère de la croissance durable 24h/24, 7j/7.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Identité visuelle</span>
+      <h2 class="sec-title">Une identité pensée pour inspirer confiance et ambition.</h2>
+      <p class="sec-sub">Chaque élément visuel incarne le positionnement premium et la spécialisation conversion de Click2Lead.</p>
+    </div>
+    <div class="identity-grid rv">
+      <div class="id-card">
+        <div class="id-card-t">Le logo</div>
+        <div class="logo-demo">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6C5CE7"/><stop offset="1" stop-color="#2980FF"/></linearGradient></defs><path d="M16 3A13 13 0 1 0 16 29" stroke="url(#lg2)" stroke-width="2.8" stroke-linecap="round"/><path d="M13 11 L13 23 L16.5 19.5 L18.2 24 L20.5 23 L18.8 18.5 L23 18.5 Z" fill="url(#lg2)"/><circle cx="27" cy="5" r="1.8" fill="#2980FF"/></svg>
+          <div class="logo-demo-tx"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></div>
+        </div>
+        <p style="font-size:.79rem;color:var(--text-mid);margin-top:11px;line-height:1.62">Un curseur intégré dans un arc de cercle symbolisant le parcours complet — du clic à la croissance. Simple, mémorable et directement lié au positionnement.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-card-t">Palette de couleurs</div>
+        <div class="palette-row">
+          <div><div class="pal-swatch" style="background:#7c5af0"></div><div class="pal-label">#7c5af0</div></div>
+          <div><div class="pal-swatch" style="background:#2980FF"></div><div class="pal-label">#2980FF</div></div>
+          <div><div class="pal-swatch" style="background:#E91E8C"></div><div class="pal-label">#E91E8C</div></div>
+          <div><div class="pal-swatch" style="background:#34d399"></div><div class="pal-label">#34d399</div></div>
+          <div><div class="pal-swatch" style="background:#09071c"></div><div class="pal-label">#09071c</div></div>
+        </div>
+        <p style="font-size:.79rem;color:var(--text-mid);margin-top:11px;line-height:1.62">Le violet primaire évoque la créativité et la technologie. Le bleu apporte confiance. Le dégradé violet→bleu symbolise la transformation — du clic au client.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-card-t">Typographies</div>
+        <div style="margin-top:8px"><div style="font-family:Poppins,sans-serif;font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Poppins 900</div><div style="font-size:.8rem;color:var(--text-mid);margin-top:5px">Titres, accroches — la voix puissante de la marque.</div><div style="margin-top:13px;font-size:.98rem;color:var(--text);font-weight:500">DM Sans 500</div><div style="font-size:.8rem;color:var(--text-mid);margin-top:4px">Corps de texte — lisibilité maximale pour la conversion.</div></div>
+      </div>
+      <div class="id-card">
+        <div class="id-card-t">Direction artistique</div>
+        <p style="font-size:.81rem;color:var(--text-mid);line-height:1.68;margin-bottom:12px">Fond sombre profond (#09071c) avec orbes gradient en arrière-plan — une esthétique premium, moderne et différenciante dans le secteur des agences web françaises.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:7px">
+          <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(124,90,240,.1);border:1px solid rgba(124,90,240,.2);color:#A78BFA">Dark premium</span>
+          <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(41,128,255,.1);border:1px solid rgba(41,128,255,.2);color:#60A5FA">Gradient accents</span>
+          <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:#34d399">Glass morphism</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Ce qui a été livré</span>
+      <h2 class="sec-title">Un projet complet, de A à Z.</h2>
+      <p class="sec-sub">De la réflexion stratégique initiale jusqu'au déploiement — chaque composante serve le positionnement conversion.</p>
+    </div>
+    <div class="deliv-grid">
+      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Stratégie de positionnement</strong>Définition du concept Click→Lead→Client→Croissance comme colonne vertébrale de marque.</div></div>
+      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Identité visuelle complète</strong>Logo, palette, typographies et charte graphique cohérente sur l'ensemble des supports.</div></div>
+      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Copywriting orienté conversion</strong>Chaque texte écrit avec les principes AIDA, PAS et StoryBrand — du titre au CTA.</div></div>
+      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Design premium dark-theme</strong>Interface mobile-first, animations soignées, micro-interactions et transitions fluides.</div></div>
+      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Développement optimisé</strong>HTML/CSS/JS vanilla, performance Lighthouse 90+, code propre et maintenable.</div></div>
+      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>SEO technique complet</strong>Title, description, Schema.org, Open Graph, structure Hn et Core Web Vitals.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Technologies</span>
+      <h2 class="sec-title">Stack technique du projet.</h2>
+      <p class="sec-sub">Des technologies choisies pour la performance, la maintenabilité et une propriété totale du code.</p>
+    </div>
+    <div class="tech-row rv">
+      <span class="tech-badge">HTML5 Sémantique</span>
+      <span class="tech-badge">CSS Custom Properties</span>
+      <span class="tech-badge">JavaScript Vanilla ES6+</span>
+      <span class="tech-badge">Poppins + DM Sans</span>
+      <span class="tech-badge">Schema.org JSON-LD</span>
+      <span class="tech-badge">Open Graph Protocol</span>
+      <span class="tech-badge">IntersectionObserver API</span>
+      <span class="tech-badge">CSS Grid & Flexbox</span>
+      <span class="tech-badge">CSS Keyframe Animations</span>
+      <span class="tech-badge">Mobile-first responsive</span>
+      <span class="tech-badge">Lazy Loading natif</span>
+    </div>
+  </div>
+</section>
+
+<section class="proj-cta">
+  <div class="cg cg1"></div>
+  <div class="proj-cta-in rv">
+    <div style="font-size:.67rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:18px">Construisons votre marque ensemble</div>
+    <h2 class="proj-cta-h">Votre site peut être <span>aussi mémorable.</span></h2>
+    <p class="proj-cta-sub">La même rigueur, le même niveau d'exigence, appliqués à votre projet. Commençons par un appel de 30 minutes.</p>
+    <div class="cta-btns">
+      <a href="index.html#contact" class="btn bp" style="padding:16px 32px;font-size:1rem">🗓️ Réserver mon appel gratuit</a>
+      <a href="realisations.html" class="btn" style="background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);padding:15px 28px;font-size:.95rem;border-radius:9999px">← Voir tous les projets</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-bot">
+      <span class="ft-brand-s"><span style="color:rgba(255,255,255,.75)">Click</span><span style="color:var(--s)">2</span><span style="background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Lead</span></span>
+      <span class="ft-copy">© 2024–2025 Click2Lead. Tous droits réservés.</span>
+      <div class="ft-legal"><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a><a href="politique-confidentialite.html">Confidentialité</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener("scroll", () => { document.getElementById("nav").classList.toggle("sc", window.scrollY > 20); });
+const noMotion = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+if (!noMotion && "IntersectionObserver" in window) {
+  const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add("on"); obs.unobserve(x.target); } }); }, { threshold: .1 });
+  document.querySelectorAll(".rv").forEach(el => obs.observe(el));
+} else { document.querySelectorAll(".rv").forEach(el => el.classList.add("on")); }
+</script>
+</body>
+</html>
