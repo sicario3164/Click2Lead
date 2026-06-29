@@ -716,10 +716,10 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .bn-c2l{background:linear-gradient(135deg,#f7f6ff,#ede9fe);border:1.5px solid rgba(124,90,240,.18)!important;position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(124,90,240,.08)}
 .bn-c2l::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(124,90,240,.1),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(41,128,255,.06),transparent 55%);pointer-events:none}
 .bn-c2l-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;padding:24px}
-.bn-c2l-logo{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
+.bn-c2l-logo{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.5px;margin-bottom:8px;line-height:1}
 .bn-c2l-logo .lc{color:var(--text)}.bn-c2l-logo .l2{color:var(--s)}
 .bn-c2l-logo .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.bn-c2l-sub{font-size:.63rem;color:var(--text-light);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:14px}
+.bn-c2l-sub{font-size:.62rem;color:var(--text-light);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:0}
 .bn-c2l-chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
 .bn-c2l-chip{font-size:.57rem;font-weight:700;padding:3px 10px;border-radius:var(--rpill);background:rgba(124,90,240,.07);border:1px solid rgba(124,90,240,.15);color:var(--p);letter-spacing:.3px}
 
@@ -738,6 +738,47 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .pr-card{cursor:default}
 .ben-card{cursor:default}
 .res-sec .sec-sub{max-width:520px}
+
+/*──────────────────────────────────────────────
+  MODAL CONTACT
+──────────────────────────────────────────────*/
+.modal-bg{position:fixed;inset:0;background:rgba(15,14,26,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.4,0,.2,1)}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal-box{background:#fff;border-radius:var(--r2xl);padding:42px 36px 36px;max-width:360px;width:90%;text-align:center;transform:translateY(18px) scale(.97);transition:transform .28s cubic-bezier(.4,0,.2,1);position:relative;box-shadow:0 32px 80px rgba(0,0,0,.18),0 4px 16px rgba(0,0,0,.08)}
+.modal-bg.open .modal-box{transform:translateY(0) scale(1)}
+.modal-close-btn{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.06);border:none;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:background .15s;color:var(--text-mid)}
+.modal-close-btn:hover{background:rgba(0,0,0,.12)}
+.modal-icon-wrap{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,rgba(124,90,240,.1),rgba(41,128,255,.08));border:1px solid rgba(124,90,240,.15);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 16px}
+.modal-title{font-family:'Poppins',sans-serif;font-size:1.18rem;font-weight:800;color:var(--text);margin-bottom:6px;letter-spacing:-.3px}
+.modal-sub{font-size:.84rem;color:var(--text-mid);line-height:1.65;margin-bottom:24px}
+.modal-phone-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gp);color:#fff;padding:15px 28px;border-radius:var(--rpill);font-family:inherit;font-weight:800;font-size:1.08rem;text-decoration:none;letter-spacing:.5px;box-shadow:var(--sh-p);transition:all .22s}
+.modal-phone-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(124,90,240,.4);color:#fff}
+.modal-hours{font-size:.72rem;color:var(--text-light);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:5px}
+.modal-sep{height:1px;background:rgba(0,0,0,.07);margin:20px 0}
+.modal-email{font-size:.82rem;color:var(--text-mid)}
+.modal-email a{color:var(--p);font-weight:600;text-decoration:none}
+.modal-email a:hover{text-decoration:underline}
+
+/*──────────────────────────────────────────────
+  ENGAGEMENT CARDS — COULEURS
+──────────────────────────────────────────────*/
+.res-card{position:relative;overflow:hidden;min-width:0}
+.res-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:var(--rxl) var(--rxl) 0 0}
+.rc-purple::before{background:var(--gp)}
+.rc-blue::before{background:linear-gradient(90deg,#2980FF,#22d3ee)}
+.rc-green::before{background:linear-gradient(90deg,#10b981,#34d399)}
+.rc-rose::before{background:linear-gradient(90deg,#E91E8C,#f472b6)}
+.rc-icon{font-size:1.5rem;margin-bottom:12px;display:block}
+.rc-purple:hover{background:rgba(124,90,240,.04)!important;border-color:rgba(124,90,240,.15)!important}
+.rc-blue:hover{background:rgba(41,128,255,.04)!important;border-color:rgba(41,128,255,.15)!important}
+.rc-green:hover{background:rgba(52,211,153,.04)!important;border-color:rgba(52,211,153,.15)!important}
+.rc-rose:hover{background:rgba(233,30,140,.04)!important;border-color:rgba(233,30,140,.15)!important}
+.rc-purple .res-num{background:var(--gp)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
+.rc-blue .res-num{background:linear-gradient(135deg,#2980FF,#22d3ee)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
+.rc-green .res-num{background:linear-gradient(135deg,#059669,#34d399)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
+.rc-rose .res-num{background:linear-gradient(135deg,#E91E8C,#f472b6)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
+@media(max-width:900px){.res-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.res-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -756,7 +797,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <a href="#offres" onclick="closeMob()">Services</a>
   <a href="realisations.html" onclick="closeMob()">Réalisations</a>
   <a href="#faq" onclick="closeMob()">FAQ</a>
-  <div class="mob-cta-wrap"><a href="#contact" class="btn bp bp-lg" onclick="closeMob()">Lancer mon projet →</a></div>
+  <div class="mob-cta-wrap"><button class="btn bp bp-lg" onclick="closeMob();openContactModal()">Lancer mon projet →</button></div>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━
@@ -781,7 +822,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-r">
-      <a href="#contact" class="btn bp" aria-label="Nous contacter">Nous contacter</a>
+      <button onclick="openContactModal()" class="btn bp" aria-label="Nous contacter">Nous contacter</button>
       <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobMenu">
         <span></span><span></span><span></span>
       </button>
@@ -806,7 +847,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       </h1>
       <p class="h-sub">Chaque jour, des euros investis en publicité s'évaporent sur des pages qui ne convertissent pas. Click2Lead transforme votre trafic en prospects qualifiés, en rendez-vous réservés, en clients réels — à chaque étape du parcours.</p>
       <div class="h-ctas">
-        <a href="#contact" class="btn bp bp-lg bhero">Lancer mon projet →</a>
+        <button onclick="openContactModal()" class="btn bp bp-lg bhero">Lancer mon projet →</button>
         <a href="#offres" class="bg-btn bg-btn-lg">Voir nos services</a>
       </div>
       <div class="h-trust">
@@ -1264,12 +1305,6 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
         <div class="bn-c2l-inner">
           <div class="bn-c2l-logo"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></div>
           <div class="bn-c2l-sub">Projet interne · Identité & Développement</div>
-          <div class="bn-c2l-chips">
-            <span class="bn-c2l-chip">Branding</span>
-            <span class="bn-c2l-chip">Direction artistique</span>
-            <span class="bn-c2l-chip">Développement</span>
-            <span class="bn-c2l-chip">SEO</span>
-          </div>
         </div>
         <div class="bn-lbl" style="position:relative;z-index:3;background:rgba(124,90,240,.1);color:var(--p);border-color:rgba(124,90,240,.2)">Projet interne · 2024</div>
         <div class="bn-ov" style="z-index:3"><div>
@@ -1297,19 +1332,23 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <p class="sec-sub" style="margin:0 auto">Ce que vous obtenez avec chaque projet Click2Lead — sans exception ni mauvaise surprise.</p>
     </div>
     <div class="res-grid">
-      <div class="res-card rv">
+      <div class="res-card rv rc-purple">
+        <span class="rc-icon">⚡</span>
         <div class="res-num">10j</div>
         <div class="res-lbl">Délai de livraison<br/>garanti (offre Essentielle)</div>
       </div>
-      <div class="res-card rv">
+      <div class="res-card rv rc-blue">
+        <span class="rc-icon">🎯</span>
         <div class="res-num">90+</div>
         <div class="res-lbl">Score Lighthouse<br/>garanti à la livraison</div>
       </div>
-      <div class="res-card rv">
+      <div class="res-card rv rc-green">
+        <span class="rc-icon">🔐</span>
         <div class="res-num">100%</div>
         <div class="res-lbl">Propriétaire de votre code<br/>Fichiers sources remis</div>
       </div>
-      <div class="res-card rv">
+      <div class="res-card rv rc-rose">
+        <span class="rc-icon">💬</span>
         <div class="res-num">24h</div>
         <div class="res-lbl">Délai de réponse<br/>garanti en jours ouvrés</div>
       </div>
@@ -1355,7 +1394,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <h2 class="cta-title">Votre prochain client est <span class="a">à une page de vous.</span></h2>
       <p class="cta-sub">30 minutes d'appel pour analyser votre trafic, identifier les points de friction et définir ensemble la page qui transformera vos visiteurs en clients. Zéro engagement, 100% utile.</p>
       <div class="cta-btns">
-        <a href="https://cal.com" class="btn bp bp-lg bhero">🗓️ Réserver mon appel gratuit</a>
+        <button onclick="openContactModal()" class="btn bp bp-lg bhero">Nous contacter →</button>
         <a href="#offres" class="bd">Voir nos offres →</a>
       </div>
       <div class="cta-reassure">
@@ -1420,6 +1459,20 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   </div>
 </footer>
 
+<!-- MODAL CONTACT -->
+<div class="modal-bg" id="contactModal" role="dialog" aria-modal="true" aria-label="Nous contacter">
+  <div class="modal-box">
+    <button class="modal-close-btn" onclick="closeContactModal()" aria-label="Fermer">✕</button>
+    <div class="modal-icon-wrap">📞</div>
+    <div class="modal-title">Nous contacter</div>
+    <p class="modal-sub">Appelez-nous directement — nous répondons sous 24h ouvrées.</p>
+    <a href="tel:0745764655" class="modal-phone-btn">07 45 76 46 55</a>
+    <p class="modal-hours">🕘 Lundi – Vendredi · 9h – 18h</p>
+    <div class="modal-sep"></div>
+    <p class="modal-email">Ou par email : <a href="mailto:hello@click2lead.fr">hello@click2lead.fr</a></p>
+  </div>
+</div>
+
 <!-- COOKIE NOTICE -->
 <div id="cookieNotice" class="cookie" role="region" aria-label="Cookies" style="display:none">
   <p style="margin:0 0 10px;line-height:1.55">🍪 Ce site n'utilise que des cookies techniques strictement nécessaires à son fonctionnement (aucun cookie publicitaire ni de tracking). <a href="politique-confidentialite.html" style="color:var(--p);text-decoration:underline;text-decoration-thickness:1px">En savoir plus</a></p>
@@ -1453,7 +1506,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 
 <!-- MOBILE STICKY CTA -->
 <div class="mob-sticky" id="mobStickyBar" aria-label="Lancer mon projet" role="complementary">
-  <a href="#contact" class="btn bp">🎯 Démarrer mon projet →</a>
+  <button onclick="openContactModal()" class="btn bp" style="width:100%;justify-content:center;font-size:.95rem;padding:14px">Nous contacter →</button>
 </div>
 
 <script>
@@ -1626,6 +1679,23 @@ try{
     },1200);
   }
 }catch(e){}
+
+/* ── Contact Modal ── */
+function openContactModal(){
+  document.getElementById('contactModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeContactModal(){
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('contactModal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('contactModal'))closeContactModal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&document.getElementById('contactModal').classList.contains('open'))
+    closeContactModal();
+});
 </script>
 </body>
 </html>
