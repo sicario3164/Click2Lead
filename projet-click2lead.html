@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/>
+<link rel="icon" href="logo.png" type="image/png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Click2Lead — Projet Interne | Branding, Identité & Développement Web</title>
 <meta name="description" content="Découvrez comment Click2Lead a construit sa propre identité de marque — direction artistique, concept Click→Lead→Client→Croissance, développement et SEO."/>
@@ -24,7 +25,7 @@
   --sh-p:0 8px 32px rgba(124,90,240,.28);
   --r:12px;--rl:16px;--rxl:22px;--r2xl:30px;--rpill:9999px;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:radial-gradient(ellipse 900px 600px at 15% 0%,rgba(124,90,240,.05),transparent 60%),radial-gradient(ellipse 600px 500px at 90% 8%,rgba(34,211,238,.03),transparent 55%),var(--bg);color:var(--text);font-family:"DM Sans",-apple-system,sans-serif;font-size:17px;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{text-decoration:none}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
@@ -46,6 +47,18 @@ nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
 .bp{background:var(--gp);color:#fff;padding:13px 26px;font-size:.9rem;box-shadow:var(--sh-p)}
 .bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(108,92,231,.46)}
 @media(max-width:960px){.nav-lks{display:none}}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;transition:background .2s;margin-left:6px}
+.nav-burger:hover{background:var(--bg-soft)}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mob-menu.open{opacity:1;pointer-events:all}
+.mob-menu a{font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text);padding:12px 28px;border-radius:var(--rl);transition:all .18s;text-align:center;text-decoration:none}
+.mob-menu a:hover{background:var(--bg-soft);color:var(--p)}
+.mob-cta-wrap{margin-top:20px}
+@media(max-width:960px){.nav-burger{display:flex}}
 .proj-hero{position:relative;overflow:hidden;padding:80px 0 72px}
 .proj-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(108,92,231,.06) 1.5px,transparent 1.5px);background-size:30px 30px}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
@@ -68,7 +81,12 @@ nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
 .concept-step{background:var(--bg);padding:36px 24px;text-align:center;transition:background .25s}
 .concept-step:hover{background:var(--bg-soft)}
 .cs-num{font-size:.58rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:14px}
-.cs-icon{font-size:2rem;margin-bottom:14px;display:block}
+.cs-icon{width:38px;height:38px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.cs-icon svg{width:32px;height:32px;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.concept-step:nth-child(1) .cs-icon svg{stroke:var(--p)}
+.concept-step:nth-child(2) .cs-icon svg{stroke:var(--s)}
+.concept-step:nth-child(3) .cs-icon svg{stroke:#E91E8C}
+.concept-step:nth-child(4) .cs-icon svg{stroke:var(--green)}
 .cs-word{font-family:"Poppins",sans-serif;font-size:1.1rem;font-weight:900;margin-bottom:8px}
 .concept-step:nth-child(1) .cs-word{color:var(--p)}
 .concept-step:nth-child(2) .cs-word{color:var(--s)}
@@ -84,9 +102,9 @@ nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
 .palette-row{display:flex;gap:7px;flex-wrap:wrap}
 .pal-swatch{height:34px;border-radius:8px;flex:1;min-width:44px}
 .pal-label{font-size:.59rem;font-weight:700;color:var(--text-light);margin-top:7px;text-align:center;letter-spacing:.4px}
-.logo-demo{padding:18px;background:var(--bg-dark);border-radius:var(--rl);display:flex;align-items:center;gap:10px;margin-top:4px;border:1px solid var(--bord)}
+.logo-demo{padding:18px;background:var(--bg-soft);border-radius:var(--rl);display:flex;align-items:center;gap:10px;margin-top:4px;border:1px solid var(--bord)}
 .logo-demo-tx{font-family:"Poppins",sans-serif;font-size:1.2rem;font-weight:900;letter-spacing:-.4px}
-.logo-demo-tx .lc{color:#fff}.logo-demo-tx .l2{color:var(--s)}.logo-demo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-demo-tx .lc{color:var(--text)}.logo-demo-tx .l2{color:var(--s)}.logo-demo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @media(max-width:768px){.identity-grid{grid-template-columns:1fr}}
 .tech-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:36px}
 .tech-badge{font-size:.78rem;font-weight:700;padding:8px 18px;border-radius:var(--rpill);background:rgba(255,255,255,.05);border:1px solid var(--bord-m);color:var(--text-mid);transition:all .18s}
@@ -118,25 +136,34 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 </style>
 </head>
 <body>
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu principal" aria-modal="true" inert>
+  <a href="index.html#pourquoi" onclick="closeMob()">Pourquoi nous</a>
+  <a href="index.html#methode" onclick="closeMob()">Méthode</a>
+  <a href="index.html#offres" onclick="closeMob()">Services</a>
+  <a href="realisations.html" onclick="closeMob()">Réalisations</a>
+  <a href="index.html#faq" onclick="closeMob()">FAQ</a>
+  <div class="mob-cta-wrap"><a href="index.html#contact" class="btn bp bp-lg" onclick="closeMob()">Nous contacter →</a></div>
+</div>
+
 <nav id="nav">
   <div class="nav-in">
     <a href="index.html" class="nav-logo">
-      <svg class="logo-mark" width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6C5CE7"/><stop offset="1" stop-color="#2980FF"/></linearGradient></defs>
-        <path d="M16 3A13 13 0 1 0 16 29" stroke="url(#lg)" stroke-width="2.8" stroke-linecap="round"/>
-        <path d="M13 11 L13 23 L16.5 19.5 L18.2 24 L20.5 23 L18.8 18.5 L23 18.5 Z" fill="url(#lg)"/>
-        <circle cx="27" cy="5" r="1.8" fill="#2980FF"/><circle cx="30" cy="9" r="1.2" fill="#6C5CE7"/>
-      </svg>
+      <img class="logo-mark" src="logo.png" width="32" height="32" alt="" loading="eager"/>
       <span class="logo-tx"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></span>
     </a>
     <ul class="nav-lks">
       <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
-      <li><a href="index.html#methode">Methode</a></li>
+      <li><a href="index.html#methode">Méthode</a></li>
       <li><a href="index.html#offres">Services</a></li>
-      <li><a href="realisations.html">Realisations</a></li>
+      <li><a href="realisations.html">Réalisations</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
     </ul>
-    <div class="nav-r"><a href="index.html#contact" class="btn bp">Nous contacter</a></div>
+    <div class="nav-r">
+      <a href="index.html#contact" class="btn bp">Nous contacter</a>
+      <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -178,10 +205,10 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <p class="sec-sub">Un positionnement en 4 mots qui résume exactement ce que nous faisons — le fil conducteur de toute l'identité Click2Lead.</p>
     </div>
     <div class="concept-grid rv">
-      <div class="concept-step"><div class="cs-num">01</div><span class="cs-icon">🖱️</span><div class="cs-word">Click</div><p class="cs-desc">Un visiteur arrive. Chaque clic est une opportunité commerciale réelle.</p></div>
-      <div class="concept-step"><div class="cs-num">02</div><span class="cs-icon">🎯</span><div class="cs-word">Lead</div><p class="cs-desc">La page engage et capte. Le visiteur devient un prospect qualifié.</p></div>
-      <div class="concept-step"><div class="cs-num">03</div><span class="cs-icon">🤝</span><div class="cs-word">Client</div><p class="cs-desc">Le prospect prend un RDV, signe, achète. Il devient client réel.</p></div>
-      <div class="concept-step"><div class="cs-num">04</div><span class="cs-icon">📈</span><div class="cs-word">Croissance</div><p class="cs-desc">La page optimisée génère de la croissance durable 24h/24, 7j/7.</p></div>
+      <div class="concept-step"><div class="cs-num">01</div><span class="cs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L11 19z"/></svg></span><div class="cs-word">Click</div><p class="cs-desc">Un visiteur arrive. Chaque clic est une opportunité commerciale réelle.</p></div>
+      <div class="concept-step"><div class="cs-num">02</div><span class="cs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="10.5"/></svg></span><div class="cs-word">Lead</div><p class="cs-desc">La page engage et capte. Le visiteur devient un prospect qualifié.</p></div>
+      <div class="concept-step"><div class="cs-num">03</div><span class="cs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span><div class="cs-word">Client</div><p class="cs-desc">Le prospect prend un RDV, signe, achète. Il devient client réel.</p></div>
+      <div class="concept-step"><div class="cs-num">04</div><span class="cs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><div class="cs-word">Croissance</div><p class="cs-desc">La page optimisée génère de la croissance durable 24h/24, 7j/7.</p></div>
     </div>
   </div>
 </section>
@@ -197,7 +224,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <div class="id-card">
         <div class="id-card-t">Le logo</div>
         <div class="logo-demo">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6C5CE7"/><stop offset="1" stop-color="#2980FF"/></linearGradient></defs><path d="M16 3A13 13 0 1 0 16 29" stroke="url(#lg2)" stroke-width="2.8" stroke-linecap="round"/><path d="M13 11 L13 23 L16.5 19.5 L18.2 24 L20.5 23 L18.8 18.5 L23 18.5 Z" fill="url(#lg2)"/><circle cx="27" cy="5" r="1.8" fill="#2980FF"/></svg>
+          <img src="logo.png" width="32" height="32" alt="" loading="lazy"/>
           <div class="logo-demo-tx"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></div>
         </div>
         <p style="font-size:.79rem;color:var(--text-mid);margin-top:11px;line-height:1.62">Un curseur intégré dans un arc de cercle symbolisant le parcours complet — du clic à la croissance. Simple, mémorable et directement lié au positionnement.</p>
@@ -219,9 +246,9 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       </div>
       <div class="id-card">
         <div class="id-card-t">Direction artistique</div>
-        <p style="font-size:.81rem;color:var(--text-mid);line-height:1.68;margin-bottom:12px">Fond sombre profond (#09071c) avec orbes gradient en arrière-plan — une esthétique premium, moderne et différenciante dans le secteur des agences web françaises.</p>
+        <p style="font-size:.81rem;color:var(--text-mid);line-height:1.68;margin-bottom:12px">Un fond clair et aéré, structuré par un dégradé violet → bleu signature et des respirations lavande entre les sections. Le contraste profond (#09071c) n'intervient qu'aux moments clés — pied de page, appel à l'action final — pour ponctuer le parcours sans jamais l'alourdir.</p>
         <div style="display:flex;flex-wrap:wrap;gap:7px">
-          <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(124,90,240,.1);border:1px solid rgba(124,90,240,.2);color:#A78BFA">Dark premium</span>
+          <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(124,90,240,.1);border:1px solid rgba(124,90,240,.2);color:#A78BFA">Clarté premium</span>
           <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(41,128,255,.1);border:1px solid rgba(41,128,255,.2);color:#60A5FA">Gradient accents</span>
           <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:#34d399">Glass morphism</span>
         </div>
@@ -241,7 +268,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Stratégie de positionnement</strong>Définition du concept Click→Lead→Client→Croissance comme colonne vertébrale de marque.</div></div>
       <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Identité visuelle complète</strong>Logo, palette, typographies et charte graphique cohérente sur l'ensemble des supports.</div></div>
       <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Copywriting orienté conversion</strong>Chaque texte écrit avec les principes AIDA, PAS et StoryBrand — du titre au CTA.</div></div>
-      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Design premium dark-theme</strong>Interface mobile-first, animations soignées, micro-interactions et transitions fluides.</div></div>
+      <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Design premium épuré</strong>Interface mobile-first, animations soignées, micro-interactions et transitions fluides.</div></div>
       <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>Développement optimisé</strong>HTML/CSS/JS vanilla, performance Lighthouse 90+, code propre et maintenable.</div></div>
       <div class="deliv-item rv"><div class="deliv-check">✓</div><div class="deliv-body"><strong>SEO technique complet</strong>Title, description, Schema.org, Open Graph, structure Hn et Core Web Vitals.</div></div>
     </div>
@@ -278,7 +305,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
     <h2 class="proj-cta-h">Votre site peut être <span>aussi mémorable.</span></h2>
     <p class="proj-cta-sub">La même rigueur, le même niveau d'exigence, appliqués à votre projet. Commençons par un appel de 30 minutes.</p>
     <div class="cta-btns">
-      <a href="tel:0745764655" class="btn bp" style="padding:16px 32px;font-size:1rem">📞 07 45 76 46 55</a>
+      <a href="tel:0745764655" class="btn bp" style="padding:16px 32px;font-size:1rem"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.8 2z"/></svg> 07 45 76 46 55</a>
       <a href="realisations.html" class="btn" style="background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);padding:15px 28px;font-size:.95rem;border-radius:9999px">← Voir tous les projets</a>
     </div>
   </div>
@@ -288,13 +315,37 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <div class="wrap">
     <div class="ft-bot">
       <span class="ft-brand-s"><span style="color:rgba(255,255,255,.75)">Click</span><span style="color:var(--s)">2</span><span style="background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Lead</span></span>
-      <span class="ft-copy">© 2024–2025 Click2Lead. Tous droits réservés.</span>
+      <span class="ft-copy">© 2024–<span id="ftYear">2025</span> Click2Lead. Tous droits réservés.</span>
       <div class="ft-legal"><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a><a href="politique-confidentialite.html">Confidentialité</a></div>
     </div>
   </div>
 </footer>
 
 <script>
+const ftYearEl=document.getElementById('ftYear');if(ftYearEl){const y=new Date().getFullYear();if(y>2025)ftYearEl.textContent=y;}
+
+/* ── Mobile burger ── */
+const burger=document.getElementById('navBurger');
+const mob=document.getElementById('mobMenu');
+function closeMob(){
+  if(!burger||!mob)return;
+  burger.classList.remove('open');
+  mob.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+  mob.inert=true;
+  document.body.style.overflow='';
+}
+if(burger&&mob){
+  burger.addEventListener('click',()=>{
+    const isOpen=mob.classList.toggle('open');
+    burger.classList.toggle('open',isOpen);
+    burger.setAttribute('aria-expanded',String(isOpen));
+    mob.inert=!isOpen;
+    document.body.style.overflow=isOpen?'hidden':'';
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
+}
+
 window.addEventListener("scroll", () => { document.getElementById("nav").classList.toggle("sc", window.scrollY > 20); });
 const noMotion = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
 if (!noMotion && "IntersectionObserver" in window) {

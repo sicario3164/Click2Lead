@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/>
+<link rel="icon" href="logo.png" type="image/png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Nos Réalisations — Portfolio Click2Lead | Projets Web & Landing Pages</title>
 <meta name="description" content="Découvrez les projets réalisés par Click2Lead — landing pages haute performance, identité visuelle, développement web. VyraShop, Click2Lead et plus encore."/>
@@ -30,7 +31,7 @@
   --sh-p:0 8px 32px rgba(124,90,240,.28);
   --r:12px;--rl:16px;--rxl:22px;--r2xl:30px;--rpill:9999px;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   background:radial-gradient(ellipse 900px 600px at 15% 0%,rgba(124,90,240,.05),transparent 60%),var(--bg);
   color:var(--text);font-family:'DM Sans',-apple-system,sans-serif;font-size:17px;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased
@@ -93,9 +94,13 @@ nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
 /* VYRA bg */
 .pc-vyra .pc-bg{background:linear-gradient(135deg,#060412 0%,#0d0b1f 40%,#130828 100%)}
 .pc-vyra .pc-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(124,58,237,.22),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(34,211,238,.14),transparent 55%)}
-.pc-vyra-shot{position:absolute;top:0;left:0;right:0;bottom:42%;overflow:hidden}
-.pc-vyra-shot img{width:100%;height:100%;object-fit:cover;object-position:top}
-.pc-vyra-shot::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,4,18,1) 0%,rgba(6,4,18,.1) 88%,transparent 100%)}
+.pc-vyra-frame{position:absolute;top:54px;right:36px;left:36px;bottom:42%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;backdrop-filter:blur(2px)}
+.pc-vyra-frame-top{display:flex;align-items:center;gap:5px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.pc-vyra-frame-d{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)}
+.pc-vyra-frame-body{padding:16px 18px}
+.pc-vyra-frame-hl{height:7px;border-radius:3px;background:linear-gradient(90deg,#a78bfa,#22d3ee);width:50%;margin-bottom:9px;opacity:.9}
+.pc-vyra-frame-ln{height:4px;border-radius:2px;background:rgba(255,255,255,.12);margin-bottom:6px}
+.pc-vyra-frame-ln:nth-child(3){width:78%}.pc-vyra-frame-ln:nth-child(4){width:58%}
 
 /* C2L bg */
 .pc-c2l .pc-bg{background:linear-gradient(145deg,#07051a,#110a2d,#170c3a)}
@@ -149,20 +154,36 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   .ft-top{grid-template-columns:1fr;gap:22px}
 }
 @media(max-width:960px){.nav-lks{display:none}}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;transition:background .2s;margin-left:6px}
+.nav-burger:hover{background:var(--bg-soft)}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{position:fixed;inset:0;background:#fff;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mob-menu.open{opacity:1;pointer-events:all}
+.mob-menu a{font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text);padding:12px 28px;border-radius:var(--rl);transition:all .18s;text-align:center;text-decoration:none}
+.mob-menu a:hover{background:var(--bg-soft);color:var(--p)}
+.mob-cta-wrap{margin-top:20px}
+@media(max-width:960px){.nav-burger{display:flex}}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu principal" aria-modal="true" inert>
+  <a href="index.html#pourquoi" onclick="closeMob()">Pourquoi nous</a>
+  <a href="index.html#methode" onclick="closeMob()">Méthode</a>
+  <a href="index.html#offres" onclick="closeMob()">Services</a>
+  <a href="realisations.html" onclick="closeMob()">Réalisations</a>
+  <a href="index.html#faq" onclick="closeMob()">FAQ</a>
+  <div class="mob-cta-wrap"><a href="index.html#contact" class="btn bp bp-lg" onclick="closeMob()">Nous contacter →</a></div>
+</div>
+
 <nav id="nav">
   <div class="nav-in">
     <a href="index.html" class="nav-logo">
-      <svg class="logo-mark" width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6C5CE7"/><stop offset="1" stop-color="#2980FF"/></linearGradient></defs>
-        <path d="M16 3A13 13 0 1 0 16 29" stroke="url(#lg)" stroke-width="2.8" stroke-linecap="round"/>
-        <path d="M13 11 L13 23 L16.5 19.5 L18.2 24 L20.5 23 L18.8 18.5 L23 18.5 Z" fill="url(#lg)"/>
-        <circle cx="27" cy="5" r="1.8" fill="#2980FF"/><circle cx="30" cy="9" r="1.2" fill="#6C5CE7"/><circle cx="28.5" cy="3" r="1" fill="#2980FF"/>
-      </svg>
+      <img class="logo-mark" src="logo.png" width="32" height="32" alt="" loading="eager"/>
       <span class="logo-tx"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></span>
     </a>
     <ul class="nav-lks">
@@ -174,6 +195,9 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
     </ul>
     <div class="nav-r">
       <a href="index.html#contact" class="btn bp">Nous contacter</a>
+      <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
@@ -209,7 +233,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <div class="wrap">
     <h2>Votre projet sera ici.</h2>
     <p>Chaque collaboration commence par un appel de 30 minutes. Parlez-nous de votre projet.</p>
-    <a href="tel:0745764655" class="btn bp" style="padding:16px 32px;font-size:1rem">📞 07 45 76 46 55</a>
+    <a href="tel:0745764655" class="btn bp" style="padding:16px 32px;font-size:1rem"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.8 2z"/></svg> 07 45 76 46 55</a>
   </div>
 </section>
 
@@ -246,7 +270,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       </div>
     </div>
     <div class="ft-bot">
-      <span class="ft-copy">© 2024–2025 Click2Lead. Tous droits réservés.</span>
+      <span class="ft-copy">© 2024–<span id="ftYear">2025</span> Click2Lead. Tous droits réservés.</span>
       <div class="ft-legal">
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="cgv.html">CGV</a>
@@ -257,6 +281,30 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 </footer>
 
 <script>
+const ftYearEl=document.getElementById('ftYear');if(ftYearEl){const y=new Date().getFullYear();if(y>2025)ftYearEl.textContent=y;}
+
+/* ── Mobile burger ── */
+const burger=document.getElementById('navBurger');
+const mob=document.getElementById('mobMenu');
+function closeMob(){
+  if(!burger||!mob)return;
+  burger.classList.remove('open');
+  mob.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+  mob.inert=true;
+  document.body.style.overflow='';
+}
+if(burger&&mob){
+  burger.addEventListener('click',()=>{
+    const isOpen=mob.classList.toggle('open');
+    burger.classList.toggle('open',isOpen);
+    burger.setAttribute('aria-expanded',String(isOpen));
+    mob.inert=!isOpen;
+    document.body.style.overflow=isOpen?'hidden':'';
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
+}
+
 /* ─── PROJECT DATA ──────────────────────────────
    Architecture data-driven : ajouter un projet
    = ajouter un objet dans ce tableau.
@@ -333,7 +381,15 @@ function renderProjects(filter = 'all') {
       return `
         <article class="proj-card pc-vyra rv" role="listitem" onclick="location.href='${p.slug}'" style="cursor:pointer" aria-label="${p.name}">
           <div class="pc-bg"><div></div></div>
-          <div class="pc-vyra-shot"><img src="screens/vyra-1.jpg" alt="" loading="lazy"/></div>
+          <div class="pc-vyra-frame" aria-hidden="true">
+            <div class="pc-vyra-frame-top"><span class="pc-vyra-frame-d"></span><span class="pc-vyra-frame-d"></span><span class="pc-vyra-frame-d"></span></div>
+            <div class="pc-vyra-frame-body">
+              <div class="pc-vyra-frame-hl"></div>
+              <div class="pc-vyra-frame-ln" style="width:70%"></div>
+              <div class="pc-vyra-frame-ln"></div>
+              <div class="pc-vyra-frame-ln"></div>
+            </div>
+          </div>
           <div class="pc-badge">${p.badge}</div>
           <div class="pc-arrow" aria-hidden="true">→</div>
           <div class="pc-ov">
