@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Click2Lead — Projet Interne | Branding, Identité & Développement Web</title>
 <meta name="description" content="Découvrez comment Click2Lead a construit sa propre identité de marque — direction artistique, concept Click→Lead→Client→Croissance, développement et SEO."/>
-<link rel="canonical" href="https://click2lead.fr/projet-click2lead"/>
+<link rel="canonical" href="https://click2lead.org/projet-click2lead"/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#6C5CE7"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -86,7 +86,7 @@ nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
 .pal-label{font-size:.59rem;font-weight:700;color:var(--text-light);margin-top:7px;text-align:center;letter-spacing:.4px}
 .logo-demo{padding:18px;background:var(--bg-dark);border-radius:var(--rl);display:flex;align-items:center;gap:10px;margin-top:4px;border:1px solid var(--bord)}
 .logo-demo-tx{font-family:"Poppins",sans-serif;font-size:1.2rem;font-weight:900;letter-spacing:-.4px}
-.logo-demo-tx .lc{color:var(--text)}.logo-demo-tx .l2{color:var(--s)}.logo-demo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-demo-tx .lc{color:#fff}.logo-demo-tx .l2{color:var(--s)}.logo-demo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @media(max-width:768px){.identity-grid{grid-template-columns:1fr}}
 .tech-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:36px}
 .tech-badge{font-size:.78rem;font-weight:700;padding:8px 18px;border-radius:var(--rpill);background:rgba(255,255,255,.05);border:1px solid var(--bord-m);color:var(--text-mid);transition:all .18s}
@@ -165,7 +165,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <h2 class="sec-title">Créer une marque de conversion, pas juste une agence web.</h2>
       <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px">Click2Lead n'est pas une agence qui "fait des sites". C'est une marque construite autour d'un concept fondateur précis : transformer chaque clic en client réel. Ce positionnement fort exigeait une identité à la hauteur.</p>
       <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px">Le défi : se différencier dans un secteur saturé, avec une promesse simple et mémorable. La réponse : le concept <strong style="color:var(--text)">Click → Lead → Client → Croissance</strong>, épine dorsale visuelle et éditoriale de toute la communication.</p>
-      <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8">Chaque décision de design — palette, typographies, animations, copywriting — est au service de ce positionnement. Le site est lui-même la preuve que Click2Lead sait convertir.</p>
+      <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8">Chaque décision de design — palette, typographies, animations, copywriting — est au service de ce positionnement. Ce site applique à notre propre marque la même méthode que nous proposons à nos clients.</p>
     </div>
   </div>
 </section>
@@ -300,6 +300,7 @@ const noMotion = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
 if (!noMotion && "IntersectionObserver" in window) {
   const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add("on"); obs.unobserve(x.target); } }); }, { threshold: .1 });
   document.querySelectorAll(".rv").forEach(el => obs.observe(el));
+  setTimeout(() => document.querySelectorAll(".rv").forEach(el => el.classList.add("on")), 2400);
 } else { document.querySelectorAll(".rv").forEach(el => el.classList.add("on")); }
 </script>
 </body>

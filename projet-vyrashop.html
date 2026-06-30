@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>VyraShop Academy — Projet Click2Lead | Formation TikTok & E-learning</title>
 <meta name="description" content="Découvrez le projet VyraShop Academy — plateforme de formation spécialisée dans la monétisation TikTok. Branding, développement, UX et SEO réalisés par Click2Lead."/>
-<link rel="canonical" href="https://click2lead.fr/projet-vyrashop"/>
+<link rel="canonical" href="https://click2lead.org/projet-vyrashop"/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#6C5CE7"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -373,6 +373,7 @@ if (!noMotion && 'IntersectionObserver' in window) {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: .1 });
   document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+  setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('on')), 2400);
 } else {
   document.querySelectorAll('.rv').forEach(el => el.classList.add('on'));
 }

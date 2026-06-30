@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Nos Réalisations — Portfolio Click2Lead | Projets Web & Landing Pages</title>
 <meta name="description" content="Découvrez les projets réalisés par Click2Lead — landing pages haute performance, identité visuelle, développement web. VyraShop, Click2Lead et plus encore."/>
-<link rel="canonical" href="https://click2lead.fr/realisations"/>
+<link rel="canonical" href="https://click2lead.org/realisations"/>
 <meta property="og:title" content="Portfolio Click2Lead — Nos Réalisations"/>
 <meta property="og:description" content="Des projets réels. Des pages qui convertissent. Découvrez notre portfolio."/>
 <meta property="og:type" content="website"/>
@@ -93,18 +93,20 @@ nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
 /* VYRA bg */
 .pc-vyra .pc-bg{background:linear-gradient(135deg,#060412 0%,#0d0b1f 40%,#130828 100%)}
 .pc-vyra .pc-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(124,58,237,.22),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(34,211,238,.14),transparent 55%)}
-.pc-vyra-name{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);z-index:1;text-align:center}
-.pc-vyra-t{font-family:'Poppins',sans-serif;font-size:2.4rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(120deg,#c4b5fd,#8b5cf6,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.pc-vyra-s{font-size:.68rem;color:rgba(196,181,253,.5);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.pc-vyra-shot{position:absolute;top:0;left:0;right:0;bottom:42%;overflow:hidden}
+.pc-vyra-shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pc-vyra-shot::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,4,18,1) 0%,rgba(6,4,18,.1) 88%,transparent 100%)}
 
 /* C2L bg */
 .pc-c2l .pc-bg{background:linear-gradient(145deg,#07051a,#110a2d,#170c3a)}
 .pc-c2l .pc-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 35%,rgba(124,90,240,.22),transparent 58%),radial-gradient(ellipse at 78% 78%,rgba(41,128,255,.14),transparent 58%)}
-.pc-c2l-name{position:absolute;top:50%;left:50%;transform:translate(-50%,-62%);z-index:1;text-align:center}
-.pc-c2l-t{font-family:'Poppins',sans-serif;font-size:2.2rem;font-weight:900;letter-spacing:-.5px}
-.pc-c2l-t .lc{color:rgba(255,255,255,.9)}.pc-c2l-t .l2{color:#60A5FA}
-.pc-c2l-t .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.pc-c2l-s{font-size:.66rem;color:rgba(196,181,253,.5);letter-spacing:1.8px;text-transform:uppercase;margin-top:4px}
+.pc-c2l-frame{position:absolute;top:54px;right:36px;left:36px;bottom:42%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;backdrop-filter:blur(2px)}
+.pc-c2l-frame-top{display:flex;align-items:center;gap:5px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.pc-c2l-frame-d{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)}
+.pc-c2l-frame-body{padding:16px 18px}
+.pc-c2l-frame-hl{height:7px;border-radius:3px;background:var(--gp);width:46%;margin-bottom:9px;opacity:.9}
+.pc-c2l-frame-ln{height:4px;border-radius:2px;background:rgba(255,255,255,.12);margin-bottom:6px}
+.pc-c2l-frame-ln:nth-child(3){width:78%}.pc-c2l-frame-ln:nth-child(4){width:58%}
 
 /* CTA */
 .port-cta{background:var(--bg-soft);border-top:1px solid var(--bord);padding:72px 0;text-align:center}
@@ -238,7 +240,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <div>
         <div class="ft-col-t">Contact</div>
         <ul class="ft-lks">
-          <li><a href="mailto:hello@click2lead.fr">hello@click2lead.fr</a></li>
+          <li><a href="mailto:contact@click2lead.org">contact@click2lead.org</a></li>
           <li><a href="index.html#contact">Appel découverte</a></li>
         </ul>
       </div>
@@ -331,10 +333,7 @@ function renderProjects(filter = 'all') {
       return `
         <article class="proj-card pc-vyra rv" role="listitem" onclick="location.href='${p.slug}'" style="cursor:pointer" aria-label="${p.name}">
           <div class="pc-bg"><div></div></div>
-          <div class="pc-vyra-name">
-            <div class="pc-vyra-t">VyraShop</div>
-            <div class="pc-vyra-s">Academy · TikTok Monetization</div>
-          </div>
+          <div class="pc-vyra-shot"><img src="screens/vyra-1.jpg" alt="" loading="lazy"/></div>
           <div class="pc-badge">${p.badge}</div>
           <div class="pc-arrow" aria-hidden="true">→</div>
           <div class="pc-ov">
@@ -350,9 +349,14 @@ function renderProjects(filter = 'all') {
       return `
         <article class="proj-card pc-c2l rv" role="listitem" onclick="location.href='${p.slug}'" style="cursor:pointer" aria-label="${p.name}">
           <div class="pc-bg"><div></div></div>
-          <div class="pc-c2l-name">
-            <div class="pc-c2l-t"><span class="lc">Click</span><span class="l2">2</span><span class="ll">Lead</span></div>
-            <div class="pc-c2l-s">Identité & Développement</div>
+          <div class="pc-c2l-frame" aria-hidden="true">
+            <div class="pc-c2l-frame-top"><span class="pc-c2l-frame-d"></span><span class="pc-c2l-frame-d"></span><span class="pc-c2l-frame-d"></span></div>
+            <div class="pc-c2l-frame-body">
+              <div class="pc-c2l-frame-hl"></div>
+              <div class="pc-c2l-frame-ln" style="width:70%"></div>
+              <div class="pc-c2l-frame-ln"></div>
+              <div class="pc-c2l-frame-ln"></div>
+            </div>
           </div>
           <div class="pc-badge">${p.badge}</div>
           <div class="pc-arrow" aria-hidden="true">→</div>
@@ -398,8 +402,7 @@ window.addEventListener('scroll', () => {
 /* ─── KEYBOARD ACCESSIBILITY ─────────────────── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && e.target.classList.contains('proj-card')) {
-    const onclick = e.target.getAttribute('onclick');
-    if (onclick) eval(onclick);
+    e.target.click();
   }
 });
 </script>
