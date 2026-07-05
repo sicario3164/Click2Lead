@@ -123,6 +123,71 @@ a:hover{text-decoration:underline}
 <script>
 const noMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+/* ── Magnetic back-link ── */
+if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const magneticEls=document.querySelectorAll('.back');
+  const MAG_RADIUS=70,MAG_STRENGTH=.4;
+  const magState=new Map();
+  magneticEls.forEach(el=>magState.set(el,{x:0,y:0,tx:0,ty:0}));
+  let magRAF=null;
+  document.addEventListener('mousemove',e=>{
+    if(magRAF)return;
+    magRAF=requestAnimationFrame(()=>{
+      magRAF=null;
+      magneticEls.forEach(el=>{
+        const r=el.getBoundingClientRect();
+        const cx=r.left+r.width/2,cy=r.top+r.height/2;
+        const dx=e.clientX-cx,dy=e.clientY-cy;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        const s=magState.get(el);
+        if(dist<Math.max(r.width,r.height)/2+MAG_RADIUS){
+          s.tx=dx*MAG_STRENGTH*.4;s.ty=dy*MAG_STRENGTH*.4;
+        }else{
+          s.tx=0;s.ty=0;
+        }
+      });
+    });
+  });
+  const magLoop=()=>{
+    magneticEls.forEach(el=>{
+      const s=magState.get(el);
+      s.x+=(s.tx-s.x)*.2;s.y+=(s.ty-s.y)*.2;
+      el.style.transform=`translate(${s.x.toFixed(2)}px,${s.y.toFixed(2)}px)`;
+    });
+    requestAnimationFrame(magLoop);
+  };
+  magLoop();
+}
+
+/* ── Title decode/scramble reveal (page H1 only) ── */
+if(!noMotion){
+  const SCRAMBLE_CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*+=-/\<>';
+  const scrambleTextNode=(node)=>{
+    const original=node.textContent;
+    const len=original.length;
+    if(!len || !original.trim())return;
+    const duration=700;
+    const start=performance.now();
+    const step=(t)=>{
+      const progress=Math.min(1,(t-start)/duration);
+      let out='';
+      for(let i=0;i<len;i++){
+        const ch=original[i];
+        if(ch===' '){out+=' ';continue;}
+        if(progress>=i/len){out+=ch;}
+        else{out+=SCRAMBLE_CHARS[Math.floor(Math.random()*SCRAMBLE_CHARS.length)];}
+      }
+      node.textContent=out;
+      if(progress<1)requestAnimationFrame(step);
+      else node.textContent=original;
+    };
+    requestAnimationFrame(step);
+  };
+  const h1=document.querySelector('h1');
+  if(h1)h1.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE)scrambleTextNode(n);});
+}
+
+
 /* ── Intro loader ── */
 const introEl=document.getElementById('introLoader');
 if(introEl){
