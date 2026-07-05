@@ -104,6 +104,15 @@ a{text-decoration:none}
 /* Card tilt-in — cards rotate down into place from a 3D angle instead of a flat fade */
 .rv3d{opacity:0;transform:perspective(900px) rotateX(-22deg) translateY(26px);filter:blur(4px);transform-origin:50% 100%;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}
 .rv3d.on{opacity:1;transform:perspective(900px) rotateX(0) translateY(0);filter:blur(0)}
+/* Section-level 3D entrances — each section on the page cycles through a distinct 3D arrival so the scroll never repeats the same motion twice in a row */
+.e3d-swingL{opacity:0;transform:perspective(1000px) rotateY(-35deg) translateX(-40px);filter:blur(4px);transform-origin:0% 50%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-swingL.on{opacity:1;transform:perspective(1000px) rotateY(0) translateX(0);filter:blur(0)}
+.e3d-unfold{opacity:0;transform:perspective(1000px) rotateX(55deg) translateY(-24px);filter:blur(4px);transform-origin:50% 0%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-unfold.on{opacity:1;transform:perspective(1000px) rotateX(0) translateY(0);filter:blur(0)}
+.e3d-depth{opacity:0;transform:perspective(1000px) translateZ(-220px) scale(.82) rotateX(8deg);filter:blur(9px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.16,1,.3,1)}
+.e3d-depth.on{opacity:1;transform:perspective(1000px) translateZ(0) scale(1) rotateX(0);filter:blur(0)}
+.e3d-tiltR{opacity:0;transform:perspective(1000px) rotateY(30deg) rotateZ(3deg) translateX(50px);filter:blur(4px);transform-origin:100% 50%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-tiltR.on{opacity:1;transform:perspective(1000px) rotateY(0) rotateZ(0) translateX(0);filter:blur(0)}
 /* Scroll progress bar */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#6C5CE7,#e8703a,#f2a93c);z-index:1001;pointer-events:none}
 /* Custom cursor — dot + trailing ring, inverts via blend-mode so it reads on any background */
@@ -1172,7 +1181,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section class="journey-sec" aria-label="Notre concept">
   <div class="wrap">
-    <div class="tc rv">
+    <div class="tc rv3d">
       <span class="eyebrow">Notre concept fondateur</span>
       <h2 class="sec-title">Click. Lead. Client. <span class="gt">Croissance.</span></h2>
       <p class="sec-sub">Chaque clic est une opportunité commerciale réelle. Nous construisons les pages qui transforment cette opportunité en revenus — sans exception, sans gaspillage.</p>
@@ -1181,7 +1190,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <div class="journey-track" id="journeyTrack">
     <div class="journey-sticky">
       <div class="wrap">
-        <div class="journey-flow rv" id="journeyFlow">
+        <div class="journey-flow rv3d" id="journeyFlow">
           <div class="j-step">
             <div class="j-badge">01</div>
             <div class="j-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L11 19z"/></svg></div>
@@ -1223,7 +1232,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <div class="wrap">
     <div class="prob-grid">
       <!-- Left: the problem -->
-      <div class="rvl">
+      <div class="e3d-swingL">
         <span class="eyebrow">La réalité du marché</span>
         <h2 class="sec-title">La plupart des sites<br/>web ne vendent pas.</h2>
         <p class="sec-sub" style="margin-top:14px">Votre site reçoit du trafic, mais les visiteurs repartent sans agir. Ce n'est pas un problème de budget publicitaire — c'est un problème de landing page.</p>
@@ -1235,7 +1244,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
         </ul>
       </div>
       <!-- Right: the solution card -->
-      <div class="rvr">
+      <div class="e3d-swingL">
         <div class="sol-card">
           <div class="sol-card-badge">✓ La solution Click2Lead</div>
           <h3>Une landing page pensée pour convertir, pas juste pour exister.</h3>
@@ -1257,7 +1266,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="benefices" class="sec sec-alt">
   <div class="wrap">
-    <div class="tc rv">
+    <div class="tc e3d-unfold">
       <span class="eyebrow">Ce que vous gagnez</span>
       <h2 class="sec-title">Des résultats concrets,<br/>pas de belles promesses.</h2>
       <p class="sec-sub">Une landing page performante, c'est un vendeur disponible 24h/24, 7j/7 — sans salaire, sans congés, sans failles.</p>
@@ -1292,7 +1301,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="pourquoi" class="sec">
   <div class="wrap">
-    <div class="tc rv">
+    <div class="tc e3d-depth">
       <span class="eyebrow">Pourquoi nous choisir</span>
       <h2 class="sec-title">La qualité comme<br/>seul standard.</h2>
       <p class="sec-sub">Nous ne faisons pas de compromis sur l'essentiel. Chaque décision est prise dans un seul objectif : vous livrer une page qui performe.</p>
@@ -1347,7 +1356,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="methode" class="sec sec-alt">
   <div class="wrap">
-    <div class="tc rv">
+    <div class="tc e3d-tiltR">
       <span class="eyebrow">Notre méthode</span>
       <h2 class="sec-title">De l'idée au lancement<br/>en 10 jours ouvrés.</h2>
       <p class="sec-sub">Un processus éprouvé, conçu pour livrer vite et livrer bien — avec vous à chaque étape de validation.</p>
@@ -1398,7 +1407,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="offres" class="sec">
   <div class="wrap">
-    <div class="pr-hdr rv">
+    <div class="pr-hdr rv3d">
       <span class="eyebrow">Nos offres</span>
       <h2 class="sec-title">Des tarifs transparents,<br class="brk-d"/> zéro mauvaise surprise</h2>
       <p class="sec-sub" style="margin:0 auto">Choisissez le package qui correspond à vos ambitions et à votre budget. Pas de frais cachés.</p>
@@ -1478,7 +1487,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="mt-intro rv">
+    <div class="mt-intro e3d-swingL">
       <span class="eyebrow">Maintenance</span>
       <h2 class="sec-title">Votre landing page<br/>toujours au sommet</h2>
       <p class="sec-sub">On gère tout : hébergement, mises à jour, sécurité et optimisation continue. Vous vous concentrez sur votre business.</p>
@@ -1529,12 +1538,12 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="realisations" class="sec">
   <div class="wrap">
-    <div class="tc rv">
+    <div class="tc e3d-unfold">
       <span class="eyebrow">Nos réalisations</span>
       <h2 class="sec-title">Ce que nous sommes<br/>capables de créer.</h2>
       <p class="sec-sub">Des projets réels, construits avec la même méthode que nous appliquerons pour vous.</p>
     </div>
-    <div class="bento2 rv">
+    <div class="bento2 e3d-unfold">
       <!-- VyraShop -->
       <div class="bn-card bn-vyra" onclick="openVyra()" role="button" tabindex="0" aria-label="Voir VyraShop — Formation TikTok">
         <div class="bn-vyra-orb" style="width:380px;height:280px;top:-80px;left:20%;background:radial-gradient(circle,rgba(124,58,237,.28),transparent 65%);z-index:0"></div>
@@ -1580,7 +1589,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
         </div></div>
       </a>
     </div>
-    <div class="port-cta-row rv">
+    <div class="port-cta-row e3d-unfold">
       <a href="realisations.html">Voir toutes nos réalisations →</a>
     </div>
   </div>
@@ -1593,7 +1602,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <div class="res-orb ro1"></div>
   <div class="res-orb ro2"></div>
   <div class="wrap">
-    <div class="tc rv">
+    <div class="tc e3d-depth">
       <span class="eyebrow">Nos engagements</span>
       <h2 class="sec-title">Des garanties concrètes,<br/>pas de belles promesses.</h2>
       <p class="sec-sub" style="margin:0 auto">Ce que vous obtenez avec chaque projet Click2Lead — sans exception ni mauvaise surprise.</p>
@@ -1628,7 +1637,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="faq" class="sec">
   <div class="wrap">
-    <div class="tc rv">
+    <div class="tc e3d-tiltR">
       <span class="eyebrow">FAQ</span>
       <h2 class="sec-title">Questions fréquentes</h2>
       <p class="sec-sub">Tout ce que vous devez savoir avant de lancer votre projet. Transparence totale.</p>
@@ -1656,7 +1665,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <section id="contact" class="sec cta-sec">
   <div class="cg cg1"></div><div class="cg cg2"></div><div class="cg cg3"></div>
   <div class="wrap">
-    <div class="cta-in rv">
+    <div class="cta-in rv3d">
       <div class="cta-badge"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg> Un projet ? Parlons-en.</div>
       <h2 class="cta-title">Votre prochain client est <span class="a">à une page de vous.</span></h2>
       <p class="cta-sub">30 minutes d'appel pour analyser votre trafic, identifier les points de friction et définir ensemble la page qui transformera vos visiteurs en clients. Zéro engagement, 100% utile.</p>
@@ -1923,7 +1932,7 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd');
   const MAG_RADIUS=70,MAG_STRENGTH=.4;
   const magState=new Map();
-  magneticEls.forEach(el=>magState.set(el,{x:0,y:0,tx:0,ty:0}));
+  magneticEls.forEach(el=>{magState.set(el,{x:0,y:0,tx:0,ty:0});el.style.transitionProperty='color,background-color,border-color,box-shadow';});
   let magRAF=null;
   document.addEventListener('mousemove',e=>{
     if(magRAF)return;
@@ -2236,7 +2245,7 @@ if(statNumEls.length && !noMotion && 'IntersectionObserver' in window){
 }
 
 /* ── Scroll reveal ── */
-const rvEls=document.querySelectorAll('.rv,.rvl,.rvr,.rv3d,.sec-title');
+const rvEls=document.querySelectorAll('.rv,.rvl,.rvr,.rv3d,.sec-title,.e3d-swingL,.e3d-unfold,.e3d-depth,.e3d-tiltR');
 if(!noMotion){
   const cnts=new Map();
   rvEls.forEach(el=>{

@@ -77,6 +77,16 @@ a{text-decoration:none}
 /* Card tilt-in — cards rotate down into place from a 3D angle instead of a flat fade */
 .rv3d{opacity:0;transform:perspective(900px) rotateX(-22deg) translateY(26px);filter:blur(4px);transform-origin:50% 100%;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}
 .rv3d.on{opacity:1;transform:perspective(900px) rotateX(0) translateY(0);filter:blur(0)}
+/* Section-level 3D entrances — each section on the page cycles through a distinct 3D arrival so the scroll never repeats the same motion twice in a row */
+.e3d-swingL{opacity:0;transform:perspective(1000px) rotateY(-35deg) translateX(-40px);filter:blur(4px);transform-origin:0% 50%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-swingL.on{opacity:1;transform:perspective(1000px) rotateY(0) translateX(0);filter:blur(0)}
+.e3d-unfold{opacity:0;transform:perspective(1000px) rotateX(55deg) translateY(-24px);filter:blur(4px);transform-origin:50% 0%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-unfold.on{opacity:1;transform:perspective(1000px) rotateX(0) translateY(0);filter:blur(0)}
+.e3d-depth{opacity:0;transform:perspective(1000px) translateZ(-220px) scale(.82) rotateX(8deg);filter:blur(9px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.16,1,.3,1)}
+.e3d-depth.on{opacity:1;transform:perspective(1000px) translateZ(0) scale(1) rotateX(0);filter:blur(0)}
+.e3d-tiltR{opacity:0;transform:perspective(1000px) rotateY(30deg) rotateZ(3deg) translateX(50px);filter:blur(4px);transform-origin:100% 50%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-tiltR.on{opacity:1;transform:perspective(1000px) rotateY(0) rotateZ(0) translateX(0);filter:blur(0)}
+
 
 
 /* NAV */
@@ -268,14 +278,14 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <section class="sec">
   <div class="wrap">
     <div class="pres-grid">
-      <div class="pres-txt rv">
+      <div class="pres-txt rv3d">
         <span class="eyebrow">Présentation du projet</span>
         <h2 class="sec-title">Une formation pensée pour générer des revenus en ligne.</h2>
         <p>VyraShop Academy est une plateforme de formation dédiée à la monétisation via TikTok Shop. L'objectif du projet : créer une identité forte et une page de vente optimisée pour convertir des visiteurs curieux en apprenants actifs.</p>
         <p>La plateforme positionne ses formateurs comme des experts reconnus dans l'économie des créateurs, avec un design premium qui inspire confiance et crédibilité dès le premier regard.</p>
         <p>Ce projet illustre notre capacité à prendre en charge l'intégralité du parcours — du concept à la mise en ligne — avec une approche orientée résultats à chaque étape.</p>
       </div>
-      <div class="pres-img rv">
+      <div class="pres-img rv3d">
         <img src="screens/vyra-1.jpg" alt="VyraShop Academy — Page d'accueil" loading="lazy"/>
       </div>
     </div>
@@ -285,7 +295,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <!-- OBJECTIVES -->
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-swingL">
       <span class="eyebrow" style="color:#f2a93c">Objectifs du projet</span>
       <h2 class="sec-title">Trois enjeux, une seule solution.</h2>
       <p class="sec-sub">Chaque décision de design et de développement a été guidée par des objectifs précis et mesurables.</p>
@@ -313,7 +323,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <!-- FEATURES -->
 <section class="sec">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-unfold">
       <span class="eyebrow">Fonctionnalités</span>
       <h2 class="sec-title">Ce qui a été réalisé.</h2>
       <p class="sec-sub">Un projet livré de A à Z, avec une attention particulière à chaque détail qui influence la conversion.</p>
@@ -358,12 +368,12 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <!-- TECHNOLOGIES -->
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-depth">
       <span class="eyebrow" style="color:#8b5cf6">Technologies utilisées</span>
       <h2 class="sec-title">Des outils au service des résultats.</h2>
       <p class="sec-sub">Nous choisissons les technologies en fonction des objectifs du projet — performance, maintenabilité et évolutivité.</p>
     </div>
-    <div class="tech-row rv">
+    <div class="tech-row e3d-depth">
       <span class="tech-badge">HTML5 Sémantique</span>
       <span class="tech-badge">CSS3 Custom Properties</span>
       <span class="tech-badge">JavaScript Vanilla</span>
@@ -381,7 +391,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <!-- GALLERY -->
 <section class="sec">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-tiltR">
       <span class="eyebrow">Galerie</span>
       <h2 class="sec-title">Aperçu du projet.</h2>
       <p class="sec-sub">Captures d'écran du projet livré — design, contenu et expérience utilisateur tels qu'ils ont été déployés.</p>
@@ -410,7 +420,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <!-- CTA -->
 <section class="sec proj-cta">
   <div class="cg cg1"></div>
-  <div class="proj-cta-in rv">
+  <div class="proj-cta-in rv3d">
     <div style="font-size:.67rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px">Vous aussi, lançons votre projet</div>
     <h2 class="proj-cta-h">Votre projet mérite <span>ce niveau d'exigence.</span></h2>
     <p class="proj-cta-sub">30 minutes d'appel pour analyser votre situation et définir ensemble la meilleure approche. Sans engagement.</p>
@@ -564,7 +574,7 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');
   const MAG_RADIUS=70,MAG_STRENGTH=.4;
   const magState=new Map();
-  magneticEls.forEach(el=>magState.set(el,{x:0,y:0,tx:0,ty:0}));
+  magneticEls.forEach(el=>{magState.set(el,{x:0,y:0,tx:0,ty:0});el.style.transitionProperty='color,background-color,border-color,box-shadow';});
   let magRAF=null;
   document.addEventListener('mousemove',e=>{
     if(magRAF)return;
@@ -636,10 +646,10 @@ if (!noMotion && 'IntersectionObserver' in window) {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: 0, rootMargin: '0px 0px 150px 0px' });
-  document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => obs.observe(el));
-  setTimeout(() => document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => el.classList.add('on')), 700);
+  document.querySelectorAll('.rv,.rv3d,.sec-title,.e3d-swingL,.e3d-unfold,.e3d-depth,.e3d-tiltR').forEach(el => obs.observe(el));
+  setTimeout(() => document.querySelectorAll('.rv,.rv3d,.sec-title,.e3d-swingL,.e3d-unfold,.e3d-depth,.e3d-tiltR').forEach(el => el.classList.add('on')), 700);
 } else {
-  document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => el.classList.add('on'));
+  document.querySelectorAll('.rv,.rv3d,.sec-title,.e3d-swingL,.e3d-unfold,.e3d-depth,.e3d-tiltR').forEach(el => el.classList.add('on'));
 }
 </script>
 </body>

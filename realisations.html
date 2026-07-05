@@ -448,7 +448,7 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');
   const MAG_RADIUS=70,MAG_STRENGTH=.4;
   const magState=new Map();
-  magneticEls.forEach(el=>magState.set(el,{x:0,y:0,tx:0,ty:0}));
+  magneticEls.forEach(el=>{magState.set(el,{x:0,y:0,tx:0,ty:0});el.style.transitionProperty='color,background-color,border-color,box-shadow';});
   let magRAF=null;
   document.addEventListener('mousemove',e=>{
     if(magRAF)return;

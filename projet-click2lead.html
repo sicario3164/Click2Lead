@@ -74,6 +74,16 @@ a{text-decoration:none}
 /* Card tilt-in — cards rotate down into place from a 3D angle instead of a flat fade */
 .rv3d{opacity:0;transform:perspective(900px) rotateX(-22deg) translateY(26px);filter:blur(4px);transform-origin:50% 100%;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}
 .rv3d.on{opacity:1;transform:perspective(900px) rotateX(0) translateY(0);filter:blur(0)}
+/* Section-level 3D entrances — each section on the page cycles through a distinct 3D arrival so the scroll never repeats the same motion twice in a row */
+.e3d-swingL{opacity:0;transform:perspective(1000px) rotateY(-35deg) translateX(-40px);filter:blur(4px);transform-origin:0% 50%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-swingL.on{opacity:1;transform:perspective(1000px) rotateY(0) translateX(0);filter:blur(0)}
+.e3d-unfold{opacity:0;transform:perspective(1000px) rotateX(55deg) translateY(-24px);filter:blur(4px);transform-origin:50% 0%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-unfold.on{opacity:1;transform:perspective(1000px) rotateX(0) translateY(0);filter:blur(0)}
+.e3d-depth{opacity:0;transform:perspective(1000px) translateZ(-220px) scale(.82) rotateX(8deg);filter:blur(9px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.16,1,.3,1)}
+.e3d-depth.on{opacity:1;transform:perspective(1000px) translateZ(0) scale(1) rotateX(0);filter:blur(0)}
+.e3d-tiltR{opacity:0;transform:perspective(1000px) rotateY(30deg) rotateZ(3deg) translateX(50px);filter:blur(4px);transform-origin:100% 50%;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.e3d-tiltR.on{opacity:1;transform:perspective(1000px) rotateY(0) rotateZ(0) translateX(0);filter:blur(0)}
+
 
 nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.6);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 1px 0 rgba(15,14,26,.04);transition:box-shadow .3s,background .3s}
 nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 4px 24px rgba(15,14,26,.1)}
@@ -241,7 +251,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 
 <section class="sec">
   <div class="wrap">
-    <div class="rv" style="max-width:680px">
+    <div class="rv3d" style="max-width:680px">
       <span class="eyebrow">Présentation</span>
       <h2 class="sec-title">Créer une marque de conversion, pas juste une agence web.</h2>
       <p style="font-size:.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px">Click2Lead n'est pas une agence qui "fait des sites". C'est une marque construite autour d'un concept fondateur précis : transformer chaque clic en client réel. Ce positionnement fort exigeait une identité à la hauteur.</p>
@@ -253,12 +263,12 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-swingL">
       <span class="eyebrow">Le concept fondateur</span>
       <h2 class="sec-title">Click → Lead → Client → Croissance.</h2>
       <p class="sec-sub">Un positionnement en 4 mots qui résume exactement ce que nous faisons — le fil conducteur de toute l'identité Click2Lead.</p>
     </div>
-    <div class="concept-grid rv">
+    <div class="concept-grid e3d-swingL">
       <div class="concept-step"><div class="cs-num">01</div><span class="cs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L11 19z"/></svg></span><div class="cs-word">Click</div><p class="cs-desc">Un visiteur arrive. Chaque clic est une opportunité commerciale réelle.</p></div>
       <div class="concept-step"><div class="cs-num">02</div><span class="cs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="10.5"/></svg></span><div class="cs-word">Lead</div><p class="cs-desc">La page engage et capte. Le visiteur devient un prospect qualifié.</p></div>
       <div class="concept-step"><div class="cs-num">03</div><span class="cs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span><div class="cs-word">Client</div><p class="cs-desc">Le prospect prend un RDV, signe, achète. Il devient client réel.</p></div>
@@ -269,12 +279,12 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 
 <section class="sec">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-unfold">
       <span class="eyebrow">Identité visuelle</span>
       <h2 class="sec-title">Une identité pensée pour inspirer confiance et ambition.</h2>
       <p class="sec-sub">Chaque élément visuel incarne le positionnement premium et la spécialisation conversion de Click2Lead.</p>
     </div>
-    <div class="identity-grid rv">
+    <div class="identity-grid e3d-unfold">
       <div class="id-card">
         <div class="id-card-t">Le logo</div>
         <div class="logo-demo">
@@ -313,7 +323,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-depth">
       <span class="eyebrow">Ce qui a été livré</span>
       <h2 class="sec-title">Un projet complet, de A à Z.</h2>
       <p class="sec-sub">De la réflexion stratégique initiale jusqu'au déploiement — chaque composante serve le positionnement conversion.</p>
@@ -331,12 +341,12 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 
 <section class="sec">
   <div class="wrap">
-    <div class="rv">
+    <div class="e3d-tiltR">
       <span class="eyebrow">Technologies</span>
       <h2 class="sec-title">Stack technique du projet.</h2>
       <p class="sec-sub">Des technologies choisies pour la performance, la maintenabilité et une propriété totale du code.</p>
     </div>
-    <div class="tech-row rv">
+    <div class="tech-row e3d-tiltR">
       <span class="tech-badge">HTML5 Sémantique</span>
       <span class="tech-badge">CSS Custom Properties</span>
       <span class="tech-badge">JavaScript Vanilla ES6+</span>
@@ -354,7 +364,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 
 <section class="proj-cta">
   <div class="cg cg1"></div>
-  <div class="proj-cta-in rv">
+  <div class="proj-cta-in rv3d">
     <div style="font-size:.67rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:18px">Construisons votre marque ensemble</div>
     <h2 class="proj-cta-h">Votre site peut être <span>aussi mémorable.</span></h2>
     <p class="proj-cta-sub">La même rigueur, le même niveau d'exigence, appliqués à votre projet. Commençons par un appel de 30 minutes.</p>
@@ -500,7 +510,7 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');
   const MAG_RADIUS=70,MAG_STRENGTH=.4;
   const magState=new Map();
-  magneticEls.forEach(el=>magState.set(el,{x:0,y:0,tx:0,ty:0}));
+  magneticEls.forEach(el=>{magState.set(el,{x:0,y:0,tx:0,ty:0});el.style.transitionProperty='color,background-color,border-color,box-shadow';});
   let magRAF=null;
   document.addEventListener('mousemove',e=>{
     if(magRAF)return;
@@ -571,9 +581,9 @@ if(scrollProgEl){
 
 if (!noMotion && "IntersectionObserver" in window) {
   const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add("on"); obs.unobserve(x.target); } }); }, { threshold: 0, rootMargin: '0px 0px 150px 0px' });
-  document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => obs.observe(el));
-  setTimeout(() => document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => el.classList.add('on')), 700);
-} else { document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => el.classList.add('on')); }
+  document.querySelectorAll('.rv,.rv3d,.sec-title,.e3d-swingL,.e3d-unfold,.e3d-depth,.e3d-tiltR').forEach(el => obs.observe(el));
+  setTimeout(() => document.querySelectorAll('.rv,.rv3d,.sec-title,.e3d-swingL,.e3d-unfold,.e3d-depth,.e3d-tiltR').forEach(el => el.classList.add('on')), 700);
+} else { document.querySelectorAll('.rv,.rv3d,.sec-title,.e3d-swingL,.e3d-unfold,.e3d-depth,.e3d-tiltR').forEach(el => el.classList.add('on')); }
 </script>
 </body>
 </html>
