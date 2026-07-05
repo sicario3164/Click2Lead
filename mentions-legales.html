@@ -7,17 +7,38 @@
 <title>Mentions légales — Click2Lead</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:hidden}
-body{font-family:'Inter',system-ui,sans-serif;line-height:1.75;color:#1f1b2e;background:#fff;font-size:16px;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;scrollbar-color:#8b6ff2 #f7f6ff;scrollbar-width:thin}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:#f7f6ff}
+::-webkit-scrollbar-thumb{background:linear-gradient(135deg,#7c5af0,#e8703a);border-radius:99px;border:3px solid #f7f6ff}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(135deg,#7c5af0,#E91E8C)}
+.grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#6C5CE7,#e8703a,#f2a93c);z-index:1001;pointer-events:none}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);mix-blend-mode:difference}
+.cursor-dot{width:8px;height:8px;background:#fff;opacity:0;transition:opacity .2s}
+.cursor-ring{width:36px;height:36px;border:1.5px solid #fff;opacity:0;transition:width .25s cubic-bezier(.4,0,.2,1),height .25s cubic-bezier(.4,0,.2,1),opacity .25s}
+.cursor-ring.hover{width:64px;height:64px}
+body.custom-cursor,body.custom-cursor *{cursor:none}
+.intro-loader{position:fixed;inset:0;z-index:99999;background:#09071c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:1;visibility:visible;transition:opacity .5s ease,visibility 0s linear 0s}
+.intro-logo{opacity:0;transform:scale(.7);border-radius:10px;animation:introLogoIn .6s .1s cubic-bezier(.16,1,.3,1) forwards}
+.intro-word{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.3px;color:#fff;opacity:0;animation:introWordIn .5s .35s ease forwards}
+.intro-word span{background:linear-gradient(135deg,#7c5af0,#e8703a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@keyframes introLogoIn{to{opacity:1;transform:scale(1)}}
+@keyframes introWordIn{to{opacity:1}}
+.intro-loader.hide{opacity:0;pointer-events:none}
+.intro-loader.skip{transition:none;animation:none;opacity:0;visibility:hidden;pointer-events:none}
+.intro-loader.skip .intro-logo,.intro-loader.skip .intro-word{animation:none}
+
+body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.75;color:#1f1b2e;background:#fff;font-size:16px;overflow-x:hidden}
 .wrap{max-width:760px;margin:0 auto;padding:48px 24px 96px}
 .back{display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;color:#6C5CE7;text-decoration:none;font-weight:700;font-size:.85rem;padding:9px 18px;border-radius:9999px;border:1.5px solid rgba(108,92,231,.25);transition:all .22s}
 .back:hover{background:rgba(108,92,231,.06);border-color:rgba(108,92,231,.45)}
-h1{font-size:1.9rem;font-weight:900;margin-bottom:6px;color:#100d23;letter-spacing:-.02em}
+h1{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;font-weight:700;margin-bottom:6px;color:#100d23;letter-spacing:-.02em}
 .updated{color:#6b6478;font-size:.85rem;margin-bottom:36px}
-h2{font-size:1.1rem;font-weight:800;margin:40px 0 12px;color:#100d23;letter-spacing:-.01em}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin:40px 0 12px;color:#100d23;letter-spacing:-.01em}
 p{margin-bottom:14px;font-size:.95rem;color:#3d3655;line-height:1.75}
 .box{background:#f5f4fb;border:1px solid #ddd9f7;border-radius:12px;padding:18px 22px;margin:16px 0;font-size:.9rem;color:#3d3655;line-height:1.75}
 ul{margin:10px 0 10px 24px;padding:0}
@@ -31,6 +52,15 @@ a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="intro-loader" id="introLoader" aria-hidden="true">
+  <img src="logo.png" width="52" height="52" alt="" class="intro-logo"/>
+  <div class="intro-word">Click<span>2</span>Lead</div>
+</div>
+
 <div class="wrap">
   <a class="back" href="index.html">← Retour à Click2Lead</a>
   <h1>Mentions légales</h1>
@@ -90,5 +120,58 @@ a:hover{text-decoration:underline}
   <p>Click2Lead s'efforce d'assurer l'exactitude des informations diffusées sur ce site, sans pouvoir garantir qu'elles soient exemptes de toute erreur ou omission. Click2Lead ne pourra être tenu responsable des dommages directs ou indirects résultant de l'accès au site, de l'impossibilité d'y accéder, ou de l'utilisation des informations qui y sont publiées.</p>
   <p>Les liens hypertextes présents sur le site peuvent renvoyer vers des sites tiers. Click2Lead n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
 </div>
+<script>
+const noMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ── Intro loader ── */
+const introEl=document.getElementById('introLoader');
+if(introEl){
+  if(sessionStorage.getItem('c2l_intro_seen')){
+    introEl.classList.add('skip');
+  }else{
+    try{sessionStorage.setItem('c2l_intro_seen','1');}catch(e){}
+    setTimeout(()=>introEl.classList.add('hide'),900);
+    setTimeout(()=>introEl.remove(),1450);
+  }
+}
+
+/* ── Custom cursor ── */
+if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !noMotion){
+  document.body.classList.add('custom-cursor');
+  const cDot=document.getElementById('cursorDot');
+  const cRing=document.getElementById('cursorRing');
+  let cmx=innerWidth/2,cmy=innerHeight/2,crx=cmx,cry=cmy,cStarted=false;
+  document.addEventListener('mousemove',e=>{
+    cmx=e.clientX;cmy=e.clientY;
+    cDot.style.left=cmx+'px';cDot.style.top=cmy+'px';
+    cDot.style.opacity='1';cRing.style.opacity='1';
+    if(!cStarted){crx=cmx;cry=cmy;cStarted=true;}
+  });
+  const cursorLoop=()=>{
+    crx+=(cmx-crx)*.18;cry+=(cmy-cry)*.18;
+    cRing.style.left=crx+'px';cRing.style.top=cry+'px';
+    requestAnimationFrame(cursorLoop);
+  };
+  cursorLoop();
+  const CURSOR_HOVERABLES='a,button,.btn,[role="button"],input,textarea,select';
+  document.addEventListener('mouseover',e=>{if(e.target.closest(CURSOR_HOVERABLES))cRing.classList.add('hover');});
+  document.addEventListener('mouseout',e=>{if(e.target.closest(CURSOR_HOVERABLES))cRing.classList.remove('hover');});
+  document.documentElement.addEventListener('mouseleave',()=>{cDot.style.opacity='0';cRing.style.opacity='0';});
+}
+
+/* ── Scroll progress bar ── */
+const scrollProgEl=document.getElementById('scrollProgress');
+if(scrollProgEl){
+  let progRAF=null;
+  const updateProg=()=>{
+    const d=document.documentElement;
+    const max=(d.scrollHeight||document.body.scrollHeight)-d.clientHeight;
+    scrollProgEl.style.width=(max>0?(d.scrollTop||document.body.scrollTop)/max*100:0)+'%';
+    progRAF=null;
+  };
+  window.addEventListener('scroll',()=>{if(!progRAF)progRAF=requestAnimationFrame(updateProg);},{passive:true});
+  updateProg();
+}
+</script>
 </body>
 </html>
