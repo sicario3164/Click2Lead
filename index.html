@@ -1840,6 +1840,37 @@ if(bmChartEl){
   else setTimeout(()=>bmChartEl.classList.add('grown'),500);
 }
 
+/* ── 3D tilt-on-hover for cards — mouse-tracked, real-time, with a moving glare ── */
+if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const tiltEls=document.querySelectorAll('.why-card,.meth-card,.pr-card,.mt-card,.ben-card,.res-card,.bn-card');
+  tiltEls.forEach(el=>{
+    if(getComputedStyle(el).position==='static')el.style.position='relative';
+    const glare=document.createElement('div');
+    glare.className='tilt-glare';
+    glare.setAttribute('aria-hidden','true');
+    glare.style.cssText='position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 55%);z-index:5';
+    el.appendChild(glare);
+    let tiltRAF=null;
+    el.addEventListener('mousemove',e=>{
+      if(tiltRAF)return;
+      tiltRAF=requestAnimationFrame(()=>{
+        tiltRAF=null;
+        const r=el.getBoundingClientRect();
+        const px=(e.clientX-r.left)/r.width-.5;
+        const py=(e.clientY-r.top)/r.height-.5;
+        el.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-py*9).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) scale(1.015)`;
+        el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+        el.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+        glare.style.opacity='1';
+      });
+    });
+    el.addEventListener('mouseleave',()=>{
+      el.style.transform='';
+      glare.style.opacity='0';
+    });
+  });
+}
+
 /* ── Magnetic buttons — CTAs pull gently toward the cursor when nearby ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd');

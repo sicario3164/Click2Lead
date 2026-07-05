@@ -334,6 +334,62 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <script>
 const noMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+/* ── Intro loader — shown once per browser session, skipped on repeat page views ── */
+const introEl=document.getElementById('introLoader');
+if(introEl){
+  if(sessionStorage.getItem('c2l_intro_seen')){
+    introEl.classList.add('skip');
+  }else{
+    try{sessionStorage.setItem('c2l_intro_seen','1');}catch(e){}
+    setTimeout(()=>introEl.classList.add('hide'),900);
+    setTimeout(()=>introEl.remove(),1450);
+  }
+}
+
+
+/* ── 3D tilt-on-hover for portfolio cards (event-delegated: cards are re-rendered on filter change) ── */
+if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const TILT_SEL='.proj-card';
+  const glareMap=new WeakMap();
+  let tiltRAF=null,activeTiltEl=null;
+  const resetTilt=()=>{
+    if(activeTiltEl){
+      activeTiltEl.style.transform='';
+      const g=glareMap.get(activeTiltEl);
+      if(g)g.style.opacity='0';
+      activeTiltEl=null;
+    }
+  };
+  document.addEventListener('mousemove',e=>{
+    const card=e.target.closest(TILT_SEL);
+    if(!card){resetTilt();return;}
+    if(getComputedStyle(card).position==='static')card.style.position='relative';
+    let glare=glareMap.get(card);
+    if(!glare){
+      glare=document.createElement('div');
+      glare.className='tilt-glare';
+      glare.setAttribute('aria-hidden','true');
+      glare.style.cssText='position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 55%);z-index:5';
+      card.appendChild(glare);
+      glareMap.set(card,glare);
+    }
+    activeTiltEl=card;
+    if(tiltRAF)return;
+    tiltRAF=requestAnimationFrame(()=>{
+      tiltRAF=null;
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5;
+      const py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-py*9).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) scale(1.015)`;
+      card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+      glare.style.opacity='1';
+    });
+  });
+  document.addEventListener('mouseleave',resetTilt,true);
+}
+
+
 /* ── Magnetic buttons ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');

@@ -125,6 +125,19 @@ a:hover{text-decoration:underline}
 <script>
 const noMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+/* ── Intro loader — shown once per browser session, skipped on repeat page views ── */
+const introEl=document.getElementById('introLoader');
+if(introEl){
+  if(sessionStorage.getItem('c2l_intro_seen')){
+    introEl.classList.add('skip');
+  }else{
+    try{sessionStorage.setItem('c2l_intro_seen','1');}catch(e){}
+    setTimeout(()=>introEl.classList.add('hide'),900);
+    setTimeout(()=>introEl.remove(),1450);
+  }
+}
+
+
 /* ── Magnetic back-link ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.back');
