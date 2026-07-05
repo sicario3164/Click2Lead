@@ -83,6 +83,8 @@ a{text-decoration:none}
 .gt{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .eyebrow{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--p);margin-bottom:12px}
 .sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.5px;color:var(--text);margin-bottom:16px;text-wrap:balance}
+.sec-title{opacity:0;transform:translateX(-44px);filter:blur(4px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.sec-title.on{opacity:1;transform:translateX(0);filter:blur(0)}
 @media(max-width:640px){.brk-d{display:none}}
 .sec-sub{font-size:1.06rem;color:var(--text-mid);line-height:1.75;max-width:520px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
@@ -1838,51 +1840,6 @@ if(bmChartEl){
   else setTimeout(()=>bmChartEl.classList.add('grown'),500);
 }
 
-/* ── Title decode/scramble reveal — section titles resolve from noise into text ── */
-if(!noMotion && 'IntersectionObserver' in window){
-  const SCRAMBLE_CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*+=-/\\<>';
-  const scrambledNodes=new WeakSet();
-  const scrambleTextNode=(node)=>{
-    if(scrambledNodes.has(node))return;
-    scrambledNodes.add(node);
-    const original=node.textContent;
-    const len=original.length;
-    if(!len || !original.trim())return;
-    const duration=700;
-    const start=performance.now();
-    const step=(t)=>{
-      const progress=Math.min(1,(t-start)/duration);
-      let out='';
-      for(let i=0;i<len;i++){
-        const ch=original[i];
-        if(ch===' '){out+=' ';continue;}
-        if(progress>=i/len){out+=ch;}
-        else{out+=SCRAMBLE_CHARS[Math.floor(Math.random()*SCRAMBLE_CHARS.length)];}
-      }
-      node.textContent=out;
-      if(progress<1)requestAnimationFrame(step);
-      else node.textContent=original;
-    };
-    requestAnimationFrame(step);
-  };
-  const getTextNodes=(el)=>{
-    const out=[];
-    el.childNodes.forEach(n=>{
-      if(n.nodeType===Node.TEXT_NODE)out.push(n);
-      else if(n.nodeType===Node.ELEMENT_NODE)out.push(...getTextNodes(n));
-    });
-    return out;
-  };
-  const titleObs=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting)return;
-      titleObs.unobserve(entry.target);
-      getTextNodes(entry.target).forEach(scrambleTextNode);
-    });
-  },{threshold:.4});
-  document.querySelectorAll('.sec-title').forEach(el=>titleObs.observe(el));
-}
-
 /* ── Magnetic buttons — CTAs pull gently toward the cursor when nearby ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd');
@@ -2201,7 +2158,7 @@ if(statNumEls.length && !noMotion && 'IntersectionObserver' in window){
 }
 
 /* ── Scroll reveal ── */
-const rvEls=document.querySelectorAll('.rv,.rvl,.rvr,.rv3d');
+const rvEls=document.querySelectorAll('.rv,.rvl,.rvr,.rv3d,.sec-title');
 if(!noMotion){
   const cnts=new Map();
   rvEls.forEach(el=>{
