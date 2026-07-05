@@ -158,8 +158,9 @@ body.custom-cursor,body.custom-cursor *{cursor:none}
 /*──────────────────────────────────────────────
   NAV
 ──────────────────────────────────────────────*/
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.08);transition:box-shadow .3s}
-nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
+/* Liquid glass — richer than flat blur: saturation boost + a bright top-edge highlight to catch light like real glass */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.6);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 1px 0 rgba(15,14,26,.04);transition:box-shadow .3s,background .3s}
+nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 4px 24px rgba(15,14,26,.1)}
 .nav-in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
 .logo-mark{width:32px;height:32px;flex-shrink:0}
@@ -267,7 +268,7 @@ nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.1)}
 @media(max-width:640px){.bm-phone{display:none}}
 
 /* Floating cards */
-.fc{position:absolute;background:#fff;border-radius:var(--rl);box-shadow:var(--sh-md),0 0 0 1px rgba(0,0,0,.04)}
+.fc{position:absolute;background:rgba(255,255,255,.68);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border:1px solid rgba(255,255,255,.65);border-radius:var(--rl);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),var(--sh-md),0 0 0 1px rgba(0,0,0,.04)}
 .fc-conv{bottom:-6px;right:-46px;z-index:10;padding:11px 15px;display:flex;align-items:center;gap:10px;animation:fca 4.5s ease-in-out infinite}
 @keyframes fca{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
 .fcv-ico{width:30px;height:30px;border-radius:9px;background:rgba(124,90,240,.1);border:1px solid rgba(124,90,240,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -815,6 +816,19 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .integ-dot{width:5px;height:5px;border-radius:50%;background:var(--p);opacity:.6;flex-shrink:0}
 
 /*──────────────────────────────────────────────
+  MARQUEE — oversized kinetic type, an unmissable statement between sections
+──────────────────────────────────────────────*/
+.marquee-band{overflow:hidden;padding:34px 0;background:var(--bg-dark);border-bottom:1px solid var(--bord)}
+.marquee-track{display:flex;align-items:center;gap:44px;width:max-content;animation:marqueeScroll 28s linear infinite}
+.marquee-band:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2.4rem,7vw,5.2rem);letter-spacing:-.02em;white-space:nowrap;line-height:1}
+.marquee-track .mq-fill{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.marquee-track .mq-outline{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55)}
+.marquee-track .mq-dot{font-size:1.4rem;color:rgba(255,255,255,.25);-webkit-text-stroke:0}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/*──────────────────────────────────────────────
   JOURNEY / CONCEPT
 ──────────────────────────────────────────────*/
 .journey-sec{padding:80px 0;background:var(--bg);position:relative;border-bottom:1px solid var(--bord)}
@@ -915,7 +929,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 ──────────────────────────────────────────────*/
 .modal-bg{position:fixed;inset:0;background:rgba(15,14,26,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.4,0,.2,1)}
 .modal-bg.open{opacity:1;pointer-events:all}
-.modal-box{background:#fff;border-radius:var(--r2xl);padding:42px 36px 36px;max-width:360px;width:90%;text-align:center;transform:translateY(18px) scale(.97);transition:transform .28s cubic-bezier(.4,0,.2,1);position:relative;box-shadow:0 32px 80px rgba(0,0,0,.18),0 4px 16px rgba(0,0,0,.08)}
+.modal-box{background:rgba(255,255,255,.72);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.6);border-radius:var(--r2xl);padding:42px 36px 36px;max-width:360px;width:90%;text-align:center;transform:translateY(18px) scale(.97);transition:transform .28s cubic-bezier(.4,0,.2,1);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 32px 80px rgba(0,0,0,.18),0 4px 16px rgba(0,0,0,.08)}
 .modal-bg.open .modal-box{transform:translateY(0) scale(1)}
 .modal-close-btn{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.06);border:none;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:background .15s;color:var(--text-mid)}
 .modal-close-btn:hover{background:rgba(0,0,0,.12)}
@@ -1132,6 +1146,22 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <span class="integ-it"><span class="integ-dot"></span>Zapier</span>
       <span class="integ-it"><span class="integ-dot"></span>Mailchimp</span>
     </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━
+     MARQUEE — oversized kinetic statement
+━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="marquee-band" aria-label="Click2Lead — Conversion, Croissance, Résultats">
+  <div class="marquee-track" aria-hidden="true">
+    <span class="mq-fill">Conversion</span><span class="mq-dot">✦</span>
+    <span class="mq-outline">Croissance</span><span class="mq-dot">✦</span>
+    <span class="mq-fill">Résultats</span><span class="mq-dot">✦</span>
+    <span class="mq-outline">Click2Lead</span><span class="mq-dot">✦</span>
+    <span class="mq-fill">Conversion</span><span class="mq-dot">✦</span>
+    <span class="mq-outline">Croissance</span><span class="mq-dot">✦</span>
+    <span class="mq-fill">Résultats</span><span class="mq-dot">✦</span>
+    <span class="mq-outline">Click2Lead</span><span class="mq-dot">✦</span>
   </div>
 </div>
 
