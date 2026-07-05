@@ -390,6 +390,59 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
 }
 
 
+
+/* ── 3D tilt-on-touch for portfolio cards (event-delegated: cards are re-rendered on filter change) ── */
+if(!noMotion && window.matchMedia('(pointer:coarse)').matches){
+  const TOUCH_TILT_SEL='.proj-card';
+  const touchGlareMap=new WeakMap();
+  let touchActiveTiltEl=null;
+  const resetTouchTilt=()=>{
+    if(touchActiveTiltEl){
+      touchActiveTiltEl.style.transform='';
+      const g=touchGlareMap.get(touchActiveTiltEl);
+      if(g)g.style.opacity='0';
+      touchActiveTiltEl=null;
+    }
+  };
+  const handleTouch=(x,y,target)=>{
+    const card=target.closest(TOUCH_TILT_SEL);
+    if(!card){resetTouchTilt();return;}
+    if(getComputedStyle(card).position==='static')card.style.position='relative';
+    let glare=touchGlareMap.get(card);
+    if(!glare){
+      glare=document.createElement('div');
+      glare.className='tilt-glare';
+      glare.setAttribute('aria-hidden','true');
+      glare.style.cssText='position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 55%);z-index:5';
+      card.appendChild(glare);
+      touchGlareMap.set(card,glare);
+    }
+    touchActiveTiltEl=card;
+    const r=card.getBoundingClientRect();
+    const px=(x-r.left)/r.width-.5;
+    const py=(y-r.top)/r.height-.5;
+    card.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-py*9).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) scale(1.015)`;
+    card.style.setProperty('--mx',((x-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my',((y-r.top)/r.height*100)+'%');
+    glare.style.opacity='1';
+  };
+  document.addEventListener('touchstart',e=>{const t=e.touches[0];handleTouch(t.clientX,t.clientY,e.target);},{passive:true});
+  document.addEventListener('touchmove',e=>{const t=e.touches[0];handleTouch(t.clientX,t.clientY,e.target);},{passive:true});
+  document.addEventListener('touchend',resetTouchTilt);
+  document.addEventListener('touchcancel',resetTouchTilt);
+}
+
+/* ── Button press feedback (touch) — subtle contraction + spring back on tap ── */
+if(!noMotion && window.matchMedia('(pointer:coarse)').matches){
+  const pressEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');
+  pressEls.forEach(el=>{
+    el.addEventListener('touchstart',()=>{el.style.transition='transform .15s cubic-bezier(.4,0,.2,1)';el.style.transform='scale(.94)';},{passive:true});
+    const release=()=>{el.style.transform='';};
+    el.addEventListener('touchend',release);
+    el.addEventListener('touchcancel',release);
+  });
+}
+
 /* ── Magnetic buttons ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');

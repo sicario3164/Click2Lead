@@ -512,6 +512,53 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
 }
 
 
+
+/* ── 3D tilt-on-touch for cards — touch-tracked equivalent of the hover tilt, for mobile/tablet ── */
+if(!noMotion && window.matchMedia('(pointer:coarse)').matches){
+  const touchTiltEls=document.querySelectorAll('.obj-card');
+  touchTiltEls.forEach(el=>{
+    if(getComputedStyle(el).position==='static')el.style.position='relative';
+    let glare=el.querySelector('.tilt-glare');
+    if(!glare){
+      glare=document.createElement('div');
+      glare.className='tilt-glare';
+      glare.setAttribute('aria-hidden','true');
+      glare.style.cssText='position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 55%);z-index:5';
+      el.appendChild(glare);
+    }
+    let touchRAF=null;
+    const applyTilt=(x,y)=>{
+      if(touchRAF)return;
+      touchRAF=requestAnimationFrame(()=>{
+        touchRAF=null;
+        const r=el.getBoundingClientRect();
+        const px=(x-r.left)/r.width-.5;
+        const py=(y-r.top)/r.height-.5;
+        el.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-py*9).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) scale(1.015)`;
+        el.style.setProperty('--mx',((x-r.left)/r.width*100)+'%');
+        el.style.setProperty('--my',((y-r.top)/r.height*100)+'%');
+        glare.style.opacity='1';
+      });
+    };
+    const resetTilt=()=>{el.style.transform='';glare.style.opacity='0';};
+    el.addEventListener('touchstart',e=>{const t=e.touches[0];applyTilt(t.clientX,t.clientY);},{passive:true});
+    el.addEventListener('touchmove',e=>{const t=e.touches[0];applyTilt(t.clientX,t.clientY);},{passive:true});
+    el.addEventListener('touchend',resetTilt);
+    el.addEventListener('touchcancel',resetTilt);
+  });
+}
+
+/* ── Button press feedback (touch) — subtle contraction + spring back on tap ── */
+if(!noMotion && window.matchMedia('(pointer:coarse)').matches){
+  const pressEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');
+  pressEls.forEach(el=>{
+    el.addEventListener('touchstart',()=>{el.style.transition='transform .15s cubic-bezier(.4,0,.2,1)';el.style.transform='scale(.94)';},{passive:true});
+    const release=()=>{el.style.transform='';};
+    el.addEventListener('touchend',release);
+    el.addEventListener('touchcancel',release);
+  });
+}
+
 /* ── Magnetic buttons ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.bp,.bg-btn,.bd,.back');
@@ -588,9 +635,9 @@ if(scrollProgEl){
 if (!noMotion && 'IntersectionObserver' in window) {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
-  }, { threshold: .1 });
+  }, { threshold: 0, rootMargin: '0px 0px 150px 0px' });
   document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => obs.observe(el));
-  setTimeout(() => document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => el.classList.add('on')), 2400);
+  setTimeout(() => document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => el.classList.add('on')), 700);
 } else {
   document.querySelectorAll('.rv,.rv3d,.sec-title').forEach(el => el.classList.add('on'));
 }

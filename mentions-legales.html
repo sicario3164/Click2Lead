@@ -138,6 +138,18 @@ if(introEl){
 }
 
 
+
+/* ── Button press feedback (touch) — subtle contraction + spring back on tap ── */
+if(!noMotion && window.matchMedia('(pointer:coarse)').matches){
+  const pressEls=document.querySelectorAll('.back');
+  pressEls.forEach(el=>{
+    el.addEventListener('touchstart',()=>{el.style.transition='transform .15s cubic-bezier(.4,0,.2,1)';el.style.transform='scale(.94)';},{passive:true});
+    const release=()=>{el.style.transform='';};
+    el.addEventListener('touchend',release);
+    el.addEventListener('touchcancel',release);
+  });
+}
+
 /* ── Magnetic back-link ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const magneticEls=document.querySelectorAll('.back');
