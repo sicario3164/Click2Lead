@@ -73,6 +73,11 @@ a:hover{text-decoration:underline}
 .consent-btns button{font-family:inherit;font-weight:700;font-size:.78rem;border-radius:9999px;padding:9px 18px;cursor:pointer}
 .cb-no{background:none;border:1px solid rgba(0,0,0,.15);color:#525970}
 .cb-yes{background:#d6ff3f;border:2px solid #7c5af0;color:#101322}
+
+/* CTA — the hero's animated violet→lime sweep, applied to action buttons */
+.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
+@keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{animation:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Mentions légales — Click2Lead","description":"Mentions légales du site click2lead.fr : éditeur, hébergement, propriété intellectuelle.","url":"https://click2lead.fr/mentions-legales","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"Click2Lead","url":"https://click2lead.fr"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://click2lead.fr/"},{"@type":"ListItem","position":2,"name":"Mentions légales","item":"https://click2lead.fr/mentions-legales"}]}]}

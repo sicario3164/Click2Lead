@@ -1072,6 +1072,11 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .rc-purple .res-num,.rc-blue .res-num,.rc-green .res-num,.rc-rose .res-num{color:var(--p)!important}
 @media(max-width:900px){.res-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.res-grid{grid-template-columns:1fr}}
+
+/* CTA — the hero's animated violet→lime sweep, applied to action buttons */
+.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
+@keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{animation:none}}
 </style>
 </head>
 <body>
@@ -1892,7 +1897,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <p style="margin:0 0 12px;line-height:1.6">Nous aimerions mesurer l'audience du site (<strong>Google Analytics</strong>, données anonymisées) pour l'améliorer. Vous pouvez refuser sans conséquence. <a href="politique-confidentialite.html" style="color:var(--p);text-decoration:underline;text-decoration-thickness:1px">En savoir plus</a></p>
   <div class="cookie-btns">
     <button type="button" onclick="c2lConsent('no')" style="background:none;border:1px solid rgba(0,0,0,.15);color:var(--text-mid);padding:8px 18px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Continuer sans accepter</button>
-    <button type="button" onclick="c2lConsent('yes')" style="background:var(--s);color:#101322;border:2px solid #7c5af0;padding:8px 20px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Accepter</button>
+    <button type="button" onclick="c2lConsent('yes')" style="background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite;color:#101322;border:2px solid #7c5af0;padding:8px 20px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Accepter</button>
   </div>
 </div>
 
