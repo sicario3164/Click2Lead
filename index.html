@@ -279,6 +279,9 @@ nav.sc .nav-burger span{background:var(--text)}
 .h-vis-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:460px;height:360px;background:radial-gradient(ellipse,rgba(108,92,231,.14) 0%,rgba(232,112,58,.09) 45%,transparent 70%);border-radius:50%;filter:blur(26px);pointer-events:none}
 .bm{position:relative;z-index:2;background:#fff;border-radius:var(--r2xl);box-shadow:var(--sh-xl),0 0 0 1px rgba(108,92,231,.08);overflow:hidden;animation:bmf 6s ease-in-out infinite}
 @keyframes bmf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* Touch devices: the float animation makes the rounded edges shimmer on mobile GPUs — hold still there */
+@media(pointer:coarse){.bm{animation:none}}
+.bm,.bm-live-img{backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(0)}
 .bm-top{display:flex;align-items:center;gap:10px;padding:11px 16px;background:var(--bg-soft);border-bottom:1px solid var(--bord)}
 .bm-ds{display:flex;gap:6px}
 .bm-d{width:10px;height:10px;border-radius:50%}
@@ -755,7 +758,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .audit-points{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:30px}
 .audit-pt{font-size:.85rem;font-weight:600;color:var(--text-mid)}
 .audit-note{font-size:.76rem;color:var(--text-light);margin-top:16px}
-@media(max-width:640px){.audit-card{padding:40px 24px}.audit-points{flex-direction:column;gap:10px;align-items:center}}
+@media(max-width:640px){.audit-card{padding:40px 24px}.audit-points{flex-direction:column;gap:10px;align-items:center}.audit-card .bp,.founders-card .bp{white-space:normal;width:100%;justify-content:center;text-align:center;line-height:1.35;padding:15px 18px}}
 /* Contact form — glass card inside the dark CTA section */
 .cta-form-wrap{margin:52px auto 0;max-width:560px;text-align:left}
 .cta-form-t{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;text-align:center;margin-bottom:4px}
