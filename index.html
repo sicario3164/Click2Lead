@@ -1860,6 +1860,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="cgv.html">CGV</a>
         <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="#" onclick="c2lManageConsent();return false">Gérer mes cookies</a>
       </div>
     </div>
   </div>
@@ -1880,10 +1881,11 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 </div>
 
 <!-- COOKIE NOTICE -->
-<div id="cookieNotice" class="cookie" role="region" aria-label="Cookies" style="display:none">
-  <p style="margin:0 0 10px;line-height:1.55;display:flex;gap:10px;align-items:flex-start"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--p)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Ce site n'utilise que des cookies techniques strictement nécessaires à son fonctionnement (aucun cookie publicitaire ni de tracking). <a href="politique-confidentialite.html" style="color:var(--p);text-decoration:underline;text-decoration-thickness:1px">En savoir plus</a></span></p>
+<div id="consentBox" class="cookie" role="region" aria-label="Consentement cookies" style="display:none">
+  <p style="margin:0 0 12px;line-height:1.6">Nous aimerions mesurer l'audience du site (<strong>Google Analytics</strong>, données anonymisées) pour l'améliorer. Vous pouvez refuser sans conséquence. <a href="politique-confidentialite.html" style="color:var(--p);text-decoration:underline;text-decoration-thickness:1px">En savoir plus</a></p>
   <div class="cookie-btns">
-    <button onclick="closeCookie()" style="background:var(--gp);color:#fff;border:none;padding:8px 20px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">J'ai compris</button>
+    <button type="button" onclick="c2lConsent('no')" style="background:none;border:1px solid rgba(0,0,0,.15);color:var(--text-mid);padding:8px 18px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Continuer sans accepter</button>
+    <button type="button" onclick="c2lConsent('yes')" style="background:var(--s);color:#fff;border:none;padding:8px 20px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Accepter</button>
   </div>
 </div>
 
@@ -2351,6 +2353,7 @@ if(!noMotion){
 
 /* ── Lead magnet: preselect the free-audit option before scrolling to the form ── */
 function presetAudit(){
+  gtag('event','audit_cta_click');
   const sel=document.getElementById('cfType');
   if(sel)sel.value='Audit gratuit de ma page actuelle';
   const url=document.getElementById('cfUrl');
@@ -2358,6 +2361,7 @@ function presetAudit(){
 }
 
 function presetFounders(){
+  gtag('event','founders_cta_click');
   const sel=document.getElementById('cfType');
   if(sel)sel.value='Offre fondateurs (-30%)';
 }
@@ -2407,20 +2411,36 @@ if(sticky){
   },{passive:true});
 }
 
-/* ── Cookie ── */
-/* ── Cookie notice (technical only — no consent needed) ── */
-function closeCookie(){
-  document.getElementById('cookieNotice').style.display='none';
-  try{localStorage.setItem('c2l_cookie','seen');}catch(e){}
+/* ── Consentement & mesure d'audience ── */
+/* ── Mesure d'audience GA4 — chargée uniquement après consentement explicite (CNIL) ── */
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+function c2lLoadGA(){
+  if(window.__gaLoaded)return;window.__gaLoaded=true;
+  const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-8GBLX7FMND';document.head.appendChild(s);
+  gtag('js',new Date());
+  gtag('config','G-8GBLX7FMND',{anonymize_ip:true});
+}
+function c2lConsent(v){
+  try{localStorage.setItem('c2l_consent',v);}catch(e){}
+  const n=document.getElementById('consentBox');if(n)n.style.display='none';
+  if(v==='yes')c2lLoadGA();
+}
+function c2lManageConsent(){
+  try{localStorage.removeItem('c2l_consent');}catch(e){}
+  const n=document.getElementById('consentBox');if(n)n.style.display='block';
 }
 try{
-  if(!localStorage.getItem('c2l_cookie')){
-    setTimeout(()=>{
-      const n=document.getElementById('cookieNotice');
-      if(n)n.style.display='block';
-    },1200);
+  if(localStorage.getItem('c2l_consent')==='yes'){c2lLoadGA();}
+  else if(!localStorage.getItem('c2l_consent')){
+    setTimeout(()=>{const n=document.getElementById('consentBox');if(n)n.style.display='block';},1000);
   }
 }catch(e){}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="tel:"]');if(a)gtag('event','phone_click');});
+
+/* ── Événements de conversion ── */
+const cfEl=document.getElementById('contactForm');
+if(cfEl)cfEl.addEventListener('submit',()=>{gtag('event','generate_lead',{form_type:(document.getElementById('cfType')||{}).value||''});});
 
 /* ── Contact Modal ── */
 function openContactModal(){

@@ -64,6 +64,15 @@ a:hover{text-decoration:underline}
 .info-grid dt{font-weight:600;color:#4a35c4;font-size:.88rem;white-space:nowrap}
 .info-grid dd{color:#3d3655;font-size:.9rem}
 .divider{border:none;border-top:1px solid #ddd9f7;margin:40px 0}
+
+/* Consent banner — audience measurement opt-in */
+.consent{position:fixed;left:16px;bottom:16px;right:16px;max-width:460px;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:18px;padding:18px 20px;font-size:.85rem;color:#525970;box-shadow:0 24px 70px rgba(0,0,0,.18);z-index:600;display:none}
+.consent p{margin:0 0 12px;line-height:1.6}
+.consent a{color:#7c5af0;text-decoration:underline}
+.consent-btns{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.consent-btns button{font-family:inherit;font-weight:700;font-size:.78rem;border-radius:9999px;padding:9px 18px;cursor:pointer}
+.cb-no{background:none;border:1px solid rgba(0,0,0,.15);color:#525970}
+.cb-yes{background:#e8703a;border:none;color:#fff}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Mentions légales — Click2Lead","description":"Mentions légales du site click2lead.fr : éditeur, hébergement, propriété intellectuelle.","url":"https://click2lead.fr/mentions-legales","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"Click2Lead","url":"https://click2lead.fr"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://click2lead.fr/"},{"@type":"ListItem","position":2,"name":"Mentions légales","item":"https://click2lead.fr/mentions-legales"}]}]}
@@ -136,8 +145,43 @@ a:hover{text-decoration:underline}
   <p>Click2Lead s'efforce d'assurer l'exactitude des informations diffusées sur ce site, sans pouvoir garantir qu'elles soient exemptes de toute erreur ou omission. Click2Lead ne pourra être tenu responsable des dommages directs ou indirects résultant de l'accès au site, de l'impossibilité d'y accéder, ou de l'utilisation des informations qui y sont publiées.</p>
   <p>Les liens hypertextes présents sur le site peuvent renvoyer vers des sites tiers. Click2Lead n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
 </div>
+<div id="consentBox" class="consent" role="region" aria-label="Consentement cookies" style="display:none">
+  <p>Nous aimerions mesurer l'audience du site (Google Analytics, données anonymisées) pour l'améliorer. <a href="politique-confidentialite.html">En savoir plus</a></p>
+  <div class="consent-btns">
+    <button type="button" class="cb-no" onclick="c2lConsent('no')">Continuer sans accepter</button>
+    <button type="button" class="cb-yes" onclick="c2lConsent('yes')">Accepter</button>
+  </div>
+</div>
+
 <script>
 const noMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ── Mesure d'audience GA4 — chargée uniquement après consentement explicite (CNIL) ── */
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+function c2lLoadGA(){
+  if(window.__gaLoaded)return;window.__gaLoaded=true;
+  const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-8GBLX7FMND';document.head.appendChild(s);
+  gtag('js',new Date());
+  gtag('config','G-8GBLX7FMND',{anonymize_ip:true});
+}
+function c2lConsent(v){
+  try{localStorage.setItem('c2l_consent',v);}catch(e){}
+  const n=document.getElementById('consentBox');if(n)n.style.display='none';
+  if(v==='yes')c2lLoadGA();
+}
+function c2lManageConsent(){
+  try{localStorage.removeItem('c2l_consent');}catch(e){}
+  const n=document.getElementById('consentBox');if(n)n.style.display='block';
+}
+try{
+  if(localStorage.getItem('c2l_consent')==='yes'){c2lLoadGA();}
+  else if(!localStorage.getItem('c2l_consent')){
+    setTimeout(()=>{const n=document.getElementById('consentBox');if(n)n.style.display='block';},1000);
+  }
+}catch(e){}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="tel:"]');if(a)gtag('event','phone_click');});
+
 
 /* ── Intro loader — shown once per browser session, skipped on repeat page views ── */
 const introEl=document.getElementById('introLoader');
