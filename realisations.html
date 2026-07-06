@@ -7,9 +7,17 @@
 <title>Nos Réalisations — Portfolio Click2Lead | Projets Web & Landing Pages</title>
 <meta name="description" content="Découvrez les projets réalisés par Click2Lead — landing pages haute performance, identité visuelle, développement web. VyraShop, Click2Lead et plus encore."/>
 <link rel="canonical" href="https://click2lead.fr/realisations"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://click2lead.fr/realisations"/>
 <meta property="og:title" content="Portfolio Click2Lead — Nos Réalisations"/>
 <meta property="og:description" content="Des projets réels. Des pages qui convertissent. Découvrez notre portfolio."/>
-<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://click2lead.fr/og-image.jpg"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta property="og:site_name" content="Click2Lead"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Portfolio Click2Lead — Nos Réalisations"/>
+<meta name="twitter:description" content="Des projets réels. Des pages qui convertissent. Découvrez notre portfolio."/>
+<meta name="twitter:image" content="https://click2lead.fr/og-image.jpg"/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#6C5CE7"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,6 +25,9 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* Keyboard focus — visible ring consistent with the brand for all interactive elements */
+:focus-visible{outline:3px solid #7c5af0;outline-offset:3px;border-radius:4px}
+
 :root{
   --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#09071c;
   --text:#0f0e1a;--text-mid:#525970;--text-light:#9ba5b8;
@@ -174,11 +185,16 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .ft-legal a:hover{color:rgba(255,255,255,.65)}
 
 /* COMING SOON CARD */
-.pc-soon{opacity:.45;cursor:default}
-.pc-soon:hover{transform:none;box-shadow:none}
-.pc-soon .pc-bg{background:linear-gradient(135deg,#0d0b1f,#1a1a2e)}
-.soon-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px}
-.soon-label{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:5px 16px;border-radius:var(--rpill)}
+/* CTA card — the "your project here" slot that turns the open grid slot into an invitation */
+.pc-cta .pc-bg{background:linear-gradient(135deg,rgba(124,90,240,.1),rgba(232,112,58,.08));border:1.5px dashed rgba(124,90,240,.35)}
+.pc-cta{cursor:pointer}
+.cta-card-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center;padding:32px}
+.cta-card-plus{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(124,90,240,.15),rgba(232,112,58,.12));border:1.5px solid rgba(124,90,240,.3);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#7c5af0;font-weight:300;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.pc-cta:hover .cta-card-plus{transform:scale(1.12) rotate(90deg)}
+.cta-card-t{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--text);letter-spacing:-.4px}
+.cta-card-s{font-size:.87rem;color:var(--text-mid);line-height:1.65;max-width:300px}
+.cta-card-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7c5af0,#e8703a);color:#fff;padding:12px 24px;border-radius:var(--rpill);font-weight:700;font-size:.88rem;box-shadow:0 8px 32px rgba(124,90,240,.28);transition:transform .22s,box-shadow .22s}
+.pc-cta:hover .cta-card-btn{transform:translateY(-2px);box-shadow:0 14px 40px rgba(124,90,240,.4)}
 
 /* SCROLL REVEAL */
 .rv{opacity:0;transform:translateY(30px) scale(.96);filter:blur(5px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}
@@ -209,6 +225,9 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .mob-cta-wrap{margin-top:20px}
 @media(max-width:960px){.nav-burger{display:flex}.nav-r .btn.bp{display:none}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Réalisations Click2Lead","description":"Portfolio des projets web, branding et e-learning réalisés par Click2Lead.","url":"https://click2lead.fr/realisations","isPartOf":{"@type":"WebSite","name":"Click2Lead","url":"https://click2lead.fr"},"hasPart":[{"@type":"CreativeWork","name":"VyraShop Academy","url":"https://click2lead.fr/projet-vyrashop"},{"@type":"CreativeWork","name":"Click2Lead","url":"https://click2lead.fr/projet-click2lead"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://click2lead.fr/"},{"@type":"ListItem","position":2,"name":"Réalisations","item":"https://click2lead.fr/realisations"}]}]}
+</script>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -227,6 +246,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <a href="index.html#methode" onclick="closeMob()">Méthode</a>
   <a href="index.html#offres" onclick="closeMob()">Services</a>
   <a href="realisations.html" onclick="closeMob()">Réalisations</a>
+  <a href="ressources.html" onclick="closeMob()">Ressources</a>
   <a href="index.html#faq" onclick="closeMob()">FAQ</a>
   <div class="mob-cta-wrap"><a href="index.html#contact" class="btn bp bp-lg" onclick="closeMob()">Nous contacter →</a></div>
 </div>
@@ -242,6 +262,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <li><a href="index.html#methode">Méthode</a></li>
       <li><a href="index.html#offres">Services</a></li>
       <li><a href="realisations.html" class="active">Réalisations</a></li>
+      <li><a href="ressources.html">Ressources</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
     </ul>
     <div class="nav-r">
@@ -572,28 +593,16 @@ const PROJECTS = [
     status: 'live',
   },
   {
-    id: 'soon1',
-    name: 'Bientôt disponible',
+    id: 'cta',
+    name: 'Votre projet ici',
     slug: null,
-    tags: ['web'],
-    badge: 'En cours',
+    tags: ['web', 'brand', 'elearning'],
+    badge: '',
     type: '',
     desc: '',
     chips: [],
-    theme: 'soon',
-    status: 'soon',
-  },
-  {
-    id: 'soon2',
-    name: 'Bientôt disponible',
-    slug: null,
-    tags: ['brand'],
-    badge: 'En cours',
-    type: '',
-    desc: '',
-    chips: [],
-    theme: 'soon',
-    status: 'soon',
+    theme: 'cta',
+    status: 'cta',
   },
 ];
 
@@ -603,12 +612,15 @@ function renderProjects(filter = 'all') {
   const filtered = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.tags.includes(filter));
   
   grid.innerHTML = filtered.map(p => {
-    if (p.status === 'soon') {
+    if (p.status === 'cta') {
       return `
-        <article class="proj-card pc-soon" role="listitem" aria-label="Projet à venir">
+        <article class="proj-card pc-cta rv" role="listitem" onclick="location.href='index.html#contact'" aria-label="Démarrer votre projet avec Click2Lead">
           <div class="pc-bg"></div>
-          <div class="soon-inner">
-            <div class="soon-label">Projet à venir</div>
+          <div class="cta-card-inner">
+            <div class="cta-card-plus" aria-hidden="true">+</div>
+            <div class="cta-card-t">Votre projet ici.</div>
+            <p class="cta-card-s">La prochaine réalisation de cette page peut être la vôtre. Tout commence par un appel de 30 minutes.</p>
+            <span class="cta-card-btn">Démarrer mon projet →</span>
           </div>
         </article>`;
     }

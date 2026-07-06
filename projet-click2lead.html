@@ -8,12 +8,26 @@
 <meta name="description" content="Découvrez comment Click2Lead a construit sa propre identité de marque — direction artistique, concept Click→Lead→Client→Croissance, développement et SEO."/>
 <link rel="canonical" href="https://click2lead.fr/projet-click2lead"/>
 <meta name="robots" content="index, follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://click2lead.fr/projet-click2lead"/>
+<meta property="og:title" content="Projet Click2Lead — Branding, Identité & Développement Web"/>
+<meta property="og:description" content="Comment Click2Lead a construit sa propre identité de marque — direction artistique, développement et SEO."/>
+<meta property="og:image" content="https://click2lead.fr/screens/c2l-1.jpg"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta property="og:site_name" content="Click2Lead"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Projet Click2Lead — Branding, Identité & Développement Web"/>
+<meta name="twitter:description" content="Comment Click2Lead a construit sa propre identité de marque — direction artistique, développement et SEO."/>
+<meta name="twitter:image" content="https://click2lead.fr/screens/c2l-1.jpg"/>
 <meta name="theme-color" content="#6C5CE7"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* Keyboard focus — visible ring consistent with the brand for all interactive elements */
+:focus-visible{outline:3px solid #7c5af0;outline-offset:3px;border-radius:4px}
+
 :root{
   --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#09071c;
   --text:#0f0e1a;--text-mid:#525970;--text-light:#9ba5b8;
@@ -164,6 +178,14 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .tech-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:36px}
 .tech-badge{font-size:.78rem;font-weight:700;padding:8px 18px;border-radius:var(--rpill);background:rgba(255,255,255,.05);border:1px solid var(--bord-m);color:var(--text-mid);transition:all .18s}
 .tech-badge:hover{border-color:rgba(124,90,240,.3);color:#A78BFA;background:rgba(124,90,240,.06)}
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
+.gal-item{border-radius:var(--rxl);overflow:hidden;position:relative;cursor:pointer;border:1px solid rgba(0,0,0,.08);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.gal-item:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);border-color:rgba(124,58,237,.28)}
+.gal-item img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.gal-item:hover img{transform:scale(1.04)}
+.gal-lbl{position:absolute;bottom:12px;left:12px;background:rgba(6,4,18,.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:var(--rpill);padding:4px 12px;font-size:.62rem;font-weight:700;color:rgba(255,255,255,.8)}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr}}
 .deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
 .deliv-item{display:flex;align-items:flex-start;gap:13px;padding:18px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 2px 12px rgba(0,0,0,.06);border-radius:var(--rl);transition:all .22s}
 .deliv-item:hover{border-color:rgba(124,90,240,.2);background:rgba(124,90,240,.04)}
@@ -189,6 +211,9 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .ft-legal a{font-size:.7rem;color:rgba(255,255,255,.25);transition:color .15s}
 .ft-legal a:hover{color:rgba(255,255,255,.65)}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Click2Lead — Identité de marque et site web","description":"Création complète de l'identité de marque, direction artistique et développement du site Click2Lead.","url":"https://click2lead.fr/projet-click2lead","image":"https://click2lead.fr/screens/c2l-1.jpg","creator":{"@type":"Organization","name":"Click2Lead","url":"https://click2lead.fr"},"genre":["Branding","Web Design","SEO"],"inLanguage":"fr"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://click2lead.fr/"},{"@type":"ListItem","position":2,"name":"Projet Click2Lead","item":"https://click2lead.fr/projet-click2lead"}]}]}
+</script>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -205,6 +230,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <a href="index.html#methode" onclick="closeMob()">Méthode</a>
   <a href="index.html#offres" onclick="closeMob()">Services</a>
   <a href="realisations.html" onclick="closeMob()">Réalisations</a>
+  <a href="ressources.html" onclick="closeMob()">Ressources</a>
   <a href="index.html#faq" onclick="closeMob()">FAQ</a>
   <div class="mob-cta-wrap"><a href="index.html#contact" class="btn bp bp-lg" onclick="closeMob()">Nous contacter →</a></div>
 </div>
@@ -220,6 +246,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <li><a href="index.html#methode">Méthode</a></li>
       <li><a href="index.html#offres">Services</a></li>
       <li><a href="realisations.html">Réalisations</a></li>
+      <li><a href="ressources.html">Ressources</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
     </ul>
     <div class="nav-r">
@@ -358,6 +385,35 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <span class="tech-badge">CSS Keyframe Animations</span>
       <span class="tech-badge">Mobile-first responsive</span>
       <span class="tech-badge">Lazy Loading natif</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="e3d-depth">
+      <span class="eyebrow">Galerie</span>
+      <h2 class="sec-title">Aperçu du projet.</h2>
+      <p class="sec-sub">Captures d'écran du site en production — le résultat exact que voient nos visiteurs.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gal-item rv">
+        <img src="screens/c2l-1.jpg" alt="Click2Lead — Section héro avec accroche et mockup produit" loading="lazy"/>
+        <div class="gal-lbl">Hero — Accueil</div>
+      </div>
+      <div class="gal-item rv">
+        <img src="screens/c2l-2.jpg" alt="Click2Lead — Méthode de travail en 4 étapes" loading="lazy"/>
+        <div class="gal-lbl">Méthode</div>
+      </div>
+      <div class="gal-item rv">
+        <img src="screens/c2l-3.jpg" alt="Click2Lead — Offres et tarifs transparents" loading="lazy"/>
+        <div class="gal-lbl">Offres & tarifs</div>
+      </div>
+      <div class="gal-item rv">
+        <img src="screens/c2l-4.jpg" alt="Click2Lead — Appel à l'action final et formulaire de contact" loading="lazy"/>
+        <div class="gal-lbl">Conversion finale</div>
+      </div>
     </div>
   </div>
 </section>

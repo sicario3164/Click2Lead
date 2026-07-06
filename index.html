@@ -32,6 +32,9 @@
   TOKENS
 ──────────────────────────────────────────────*/
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* Keyboard focus — visible ring consistent with the brand for all interactive elements */
+:focus-visible{outline:3px solid #7c5af0;outline-offset:3px;border-radius:4px}
+
 :root{
   --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#09071c;
   --text:#0f0e1a;--text-mid:#525970;--text-light:#9ba5b8;
@@ -679,6 +682,39 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .cta-reassure{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:24px}
 .cta-re-i{font-size:.76rem;color:rgba(255,255,255,.36);display:flex;align-items:center;gap:6px}
 .cta-re-i::before{content:'\2713';color:rgba(255,255,255,.36)}
+/* Lead magnet — free 48h audit card */
+.audit-sec{padding-top:0}
+.audit-card{position:relative;background:linear-gradient(135deg,rgba(124,90,240,.07),rgba(232,112,58,.06));border:1.5px solid rgba(124,90,240,.18);border-radius:var(--r2xl);padding:56px 48px;text-align:center;overflow:hidden}
+.audit-card::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(124,90,240,.14),transparent 70%);pointer-events:none}
+.audit-card::after{content:'';position:absolute;bottom:-70px;left:-50px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(232,112,58,.12),transparent 70%);pointer-events:none}
+.audit-badge{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--p);background:rgba(124,90,240,.09);border:1px solid rgba(124,90,240,.2);border-radius:var(--rpill);padding:7px 16px;margin-bottom:20px}
+.audit-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;line-height:1.15;letter-spacing:-.5px;margin-bottom:16px;max-width:640px;margin-left:auto;margin-right:auto}
+.audit-sub{font-size:.98rem;color:var(--text-mid);line-height:1.75;max-width:600px;margin:0 auto 26px}
+.audit-points{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:30px}
+.audit-pt{font-size:.85rem;font-weight:600;color:var(--text-mid)}
+.audit-note{font-size:.76rem;color:var(--text-light);margin-top:16px}
+@media(max-width:640px){.audit-card{padding:40px 24px}.audit-points{flex-direction:column;gap:10px;align-items:center}}
+/* Contact form — glass card inside the dark CTA section */
+.cta-form-wrap{margin:52px auto 0;max-width:560px;text-align:left}
+.cta-form-t{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;text-align:center;margin-bottom:4px}
+.cta-form-s{font-size:.82rem;color:rgba(255,255,255,.5);text-align:center;margin-bottom:22px}
+.cta-form{background:rgba(255,255,255,.06);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.12);border-radius:var(--rxl);padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 24px 60px rgba(0,0,0,.3)}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.cf-row{grid-template-columns:1fr}}
+.cf-field{display:flex;flex-direction:column;gap:6px}
+.cf-field label{font-size:.74rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.cf-field input,.cf-field select,.cf-field textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:12px 14px;font-family:inherit;font-size:.92rem;color:#fff;transition:border-color .2s,background .2s;width:100%}
+.cf-field input::placeholder,.cf-field textarea::placeholder{color:rgba(255,255,255,.3)}
+.cf-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.5)' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+.cf-field select option{background:#17142e;color:#fff}
+.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{outline:none;border-color:rgba(139,109,245,.65);background:rgba(255,255,255,.1)}
+.cf-field textarea{resize:vertical;min-height:92px}
+.cf-submit{background:var(--gp);color:#fff;border:none;border-radius:var(--rpill);padding:15px 28px;font-family:inherit;font-weight:800;font-size:.98rem;cursor:pointer;box-shadow:var(--sh-p);transition:transform .22s,box-shadow .22s;margin-top:2px}
+.cf-submit:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(124,90,240,.45)}
+.cf-note{font-size:.72rem;color:rgba(255,255,255,.35);text-align:center;line-height:1.6}
+.cf-note a{color:rgba(255,255,255,.55);text-decoration:underline}
+.cta-form-or{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.3);font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;margin:34px auto 0;max-width:560px}
+.cta-form-or::before,.cta-form-or::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.12)}
 
 /*──────────────────────────────────────────────
   MOBILE STICKY CTA
@@ -1005,6 +1041,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <a href="#methode" onclick="closeMob()">Méthode</a>
   <a href="#offres" onclick="closeMob()">Services</a>
   <a href="realisations.html" onclick="closeMob()">Réalisations</a>
+  <a href="ressources.html" onclick="closeMob()">Ressources</a>
   <a href="#faq" onclick="closeMob()">FAQ</a>
   <div class="mob-cta-wrap"><button class="btn bp bp-lg" onclick="closeMob();openContactModal()">Lancer mon projet →</button></div>
 </div>
@@ -1023,6 +1060,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <li><a href="#methode">Méthode</a></li>
       <li><a href="#offres">Services</a></li>
       <li><a href="realisations.html">Réalisations</a></li>
+      <li><a href="ressources.html">Ressources</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-r">
@@ -1633,6 +1671,26 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━
+     LEAD MAGNET — audit gratuit 48h
+━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec audit-sec" aria-label="Audit gratuit">
+  <div class="wrap">
+    <div class="audit-card rv3d">
+      <div class="audit-badge">🎁 Offert — sans engagement</div>
+      <h2 class="audit-title">Pas encore prêt ? Recevez un <span class="gt">audit gratuit</span> de votre page actuelle.</h2>
+      <p class="audit-sub">Envoyez-nous l'adresse de votre site : sous 48h, vous recevez une analyse concrète et actionnable — points de friction, messages flous, opportunités de conversion manquées. Que vous travailliez avec nous ensuite ou non, l'audit reste à vous.</p>
+      <div class="audit-points">
+        <div class="audit-pt">✓ Analyse du message & du parcours</div>
+        <div class="audit-pt">✓ Points de friction identifiés</div>
+        <div class="audit-pt">✓ Recommandations actionnables</div>
+      </div>
+      <a href="#contact" class="btn bp bp-lg" onclick="presetAudit()">Demander mon audit gratuit →</a>
+      <p class="audit-note">Livré par email sous 48h ouvrées. Zéro spam, zéro relance agressive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━
      FAQ
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="faq" class="sec">
@@ -1669,8 +1727,51 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       <div class="cta-badge"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg> Un projet ? Parlons-en.</div>
       <h2 class="cta-title">Votre prochain client est <span class="a">à une page de vous.</span></h2>
       <p class="cta-sub">30 minutes d'appel pour analyser votre trafic, identifier les points de friction et définir ensemble la page qui transformera vos visiteurs en clients. Zéro engagement, 100% utile.</p>
-      <div class="cta-btns">
-        <button onclick="openContactModal()" class="btn bp bp-lg bhero">Nous contacter →</button>
+
+      <!-- Contact form — primary conversion path (async-friendly, no phone call required) -->
+      <div class="cta-form-wrap">
+        <div class="cta-form-t">Dites-nous en plus sur votre projet</div>
+        <div class="cta-form-s">Réponse garantie sous 24h ouvrées — directement dans votre boîte mail.</div>
+        <form class="cta-form" action="https://formsubmit.co/contact@click2lead.fr" method="POST" id="contactForm">
+          <input type="hidden" name="_subject" value="Nouveau message depuis click2lead.fr"/>
+          <input type="hidden" name="_template" value="table"/>
+          <input type="hidden" name="_next" value="https://click2lead.fr/merci.html"/>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cfName">Votre nom</label>
+              <input type="text" id="cfName" name="nom" placeholder="Marie Dupont" required autocomplete="name"/>
+            </div>
+            <div class="cf-field">
+              <label for="cfEmail">Votre email</label>
+              <input type="email" id="cfEmail" name="email" placeholder="marie@entreprise.fr" required autocomplete="email"/>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="cfType">Votre demande</label>
+            <select id="cfType" name="demande" required>
+              <option value="Créer ma landing page">Créer ma landing page</option>
+              <option value="Audit gratuit de ma page actuelle">Audit gratuit de ma page actuelle (48h)</option>
+              <option value="Maintenance / évolution">Maintenance ou évolution d'une page existante</option>
+              <option value="Autre question">Autre question</option>
+            </select>
+          </div>
+          <div class="cf-field" id="cfUrlField">
+            <label for="cfUrl">Votre site actuel <span style="text-transform:none;font-weight:500;opacity:.7">(optionnel)</span></label>
+            <input type="url" id="cfUrl" name="site_actuel" placeholder="https://votre-site.fr" autocomplete="url"/>
+          </div>
+          <div class="cf-field">
+            <label for="cfMsg">Votre message</label>
+            <textarea id="cfMsg" name="message" placeholder="Parlez-nous de votre activité, votre objectif, votre délai…" required></textarea>
+          </div>
+          <button type="submit" class="cf-submit">Envoyer ma demande →</button>
+          <p class="cf-note">Vos données ne servent qu'à vous répondre — jamais partagées, jamais de spam. <a href="politique-confidentialite.html">Politique de confidentialité</a></p>
+        </form>
+      </div>
+
+      <div class="cta-form-or">ou</div>
+      <div class="cta-btns" style="margin-top:26px">
+        <button onclick="openContactModal()" class="btn bp bp-lg bhero">Appelez-nous directement →</button>
         <a href="#offres" class="bd">Voir nos offres →</a>
       </div>
       <div class="cta-reassure">
@@ -1710,6 +1811,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
         <div class="ft-col-t">Ressources</div>
         <ul class="ft-lks">
           <li><a href="realisations.html">Portfolio</a></li>
+          <li><a href="ressources.html">Guides &amp; conseils</a></li>
           <li><a href="#methode">Notre méthode</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#pourquoi">Pourquoi nous</a></li>
@@ -1725,7 +1827,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
       </div>
     </div>
     <div class="ft-bot">
-      <span class="ft-copy">© 2024–<span id="ftYear">2025</span> Click2Lead. Tous droits réservés.</span>
+      <span class="ft-copy">© 2024–<span id="ftYear">2025</span> Click2Lead — Jérémy Cases, EI · Bayonne, France · SIRET 927 873 018 00018</span>
       <div class="ft-legal">
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="cgv.html">CGV</a>
@@ -2265,6 +2367,14 @@ if(!noMotion){
   setTimeout(()=>rvEls.forEach(el=>el.classList.add('on')),700);
 } else {
   rvEls.forEach(el=>el.classList.add('on'));
+}
+
+/* ── Lead magnet: preselect the free-audit option before scrolling to the form ── */
+function presetAudit(){
+  const sel=document.getElementById('cfType');
+  if(sel)sel.value='Audit gratuit de ma page actuelle';
+  const url=document.getElementById('cfUrl');
+  if(url)setTimeout(()=>url.focus({preventScroll:true}),800);
 }
 
 /* ── FAQ accordion ── */
