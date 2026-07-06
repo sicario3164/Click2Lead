@@ -31,12 +31,12 @@
 
 
 :root{
-  --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#09071c;
+  --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#0d0a1f;
   --text:#0f0e1a;--text-mid:#525970;--text-light:#9ba5b8;
-  --p:#7c5af0;--s:#e8703a;--rose:#E91E8C;--cyan:#f2a93c;--green:#34d399;
-  --vyra-p:#8b5cf6;--vyra-c:#f2a93c;
-  --gp:linear-gradient(135deg,#7c5af0,#e8703a);
-  --gv:linear-gradient(120deg,#c4b5fd,#8b5cf6,#f2a93c);
+  --p:#7c5af0;--s:#d6ff3f;--rose:#E91E8C;--cyan:#d6ff3f;--green:#34d399;
+  --vyra-p:#8b5cf6;--vyra-c:#d6ff3f;
+  --gp:linear-gradient(135deg,#7c5af0,#d6ff3f);
+  --gv:linear-gradient(120deg,#c4b5fd,#8b5cf6,#d6ff3f);
   --bord:rgba(139,92,246,.09);--bord-m:rgba(139,92,246,.18);
   --sh-md:0 8px 36px rgba(0,0,0,.1),0 2px 10px rgba(0,0,0,.05);
   --sh-lg:0 24px 70px rgba(0,0,0,.12),0 8px 28px rgba(0,0,0,.06);
@@ -51,7 +51,7 @@ html{scroll-behavior:smooth;overflow-x:hidden;scrollbar-color:#8b6ff2 var(--bg-s
 ::-webkit-scrollbar-thumb:hover{background:var(--gv,var(--gp))}
 .grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#7c5af0,#a78bfa);z-index:1001;pointer-events:none}
-.intro-loader{position:fixed;inset:0;z-index:99999;background:var(--bg-dark,#09071c);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:1;visibility:visible;transition:opacity .5s ease,visibility 0s linear 0s}
+.intro-loader{position:fixed;inset:0;z-index:99999;background:var(--bg-dark,#0d0a1f);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:1;visibility:visible;transition:opacity .5s ease,visibility 0s linear 0s}
 .intro-logo{opacity:0;transform:scale(.7);border-radius:10px;animation:introLogoIn .6s .1s cubic-bezier(.16,1,.3,1) forwards}
 .intro-word{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.3px;color:#fff;opacity:0;animation:introWordIn .5s .35s ease forwards}
 .intro-word span{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -66,7 +66,7 @@ body{
     radial-gradient(circle,rgba(124,90,240,.075),transparent 60%),
     radial-gradient(circle,rgba(242,169,60,.05),transparent 55%),
     radial-gradient(circle,rgba(233,30,140,.04),transparent 60%),
-    radial-gradient(circle,rgba(232,112,58,.05),transparent 60%);
+    radial-gradient(circle,rgba(214,255,63,.05),transparent 60%);
   background-repeat:no-repeat;
   background-size:900px 700px,650px 550px,550px 500px,500px 450px;
   background-position:15% 0%,90% 8%,80% 92%,10% 85%;
@@ -113,8 +113,8 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .nav-lks a:hover{color:var(--text);background:rgba(0,0,0,.05)}
 .nav-r{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
 .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:var(--rpill);font-family:inherit;font-weight:700;cursor:pointer;transition:all .22s;white-space:nowrap;line-height:1}
-.bp{background:var(--s);color:#fff;padding:13px 26px;font-size:.9rem;box-shadow:var(--sh-p)}
-.bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(232,112,58,.42)}
+.bp{background:var(--s);color:#101322;padding:13px 26px;font-size:.9rem;box-shadow:var(--sh-p)}
+.bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(214,255,63,.42)}
 .bg-btn{background:transparent;border:1.5px solid var(--bord-m);color:var(--text-mid);padding:11px 22px;font-size:.88rem;border-radius:var(--rpill)}
 .bg-btn:hover{border-color:var(--p);color:var(--p);background:rgba(124,90,240,.05)}
 @media(max-width:960px){.nav-lks{display:none}}
@@ -139,7 +139,7 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .back-link{display:inline-flex;align-items:center;gap:7px;color:var(--text-mid);font-size:.82rem;font-weight:500;margin-bottom:28px;transition:color .18s}
 .back-link:hover{color:var(--text)}
 .proj-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.2);color:var(--p);font-size:.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:var(--rpill);margin-bottom:26px}
-.proj-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-1px;margin-bottom:18px;background:linear-gradient(120deg,#6d28d9,#7c5af0,#c65330);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.proj-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-1px;margin-bottom:18px;background:linear-gradient(120deg,#6d28d9,#7c5af0,#a5c92f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .proj-sub{font-size:1rem;color:var(--text-mid);line-height:1.74;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
 .proj-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
 .proj-chip{font-size:.68rem;font-weight:700;padding:5px 14px;border-radius:var(--rpill);background:rgba(124,90,240,.08);border:1px solid rgba(124,90,240,.2);color:var(--p);letter-spacing:.3px}
@@ -173,7 +173,7 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .obj-ico svg{width:26px;height:26px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .obj-card:nth-child(1) .obj-ico svg{stroke:var(--p)}
 .obj-card:nth-child(2) .obj-ico svg{stroke:var(--s)}
-.obj-card:nth-child(3) .obj-ico svg{stroke:#f2a93c}
+.obj-card:nth-child(3) .obj-ico svg{stroke:#d6ff3f}
 .obj-title{font-family:'Space Grotesk',sans-serif;font-size:.98rem;font-weight:700;color:var(--text);margin-bottom:8px}
 .obj-body{font-size:.93rem;color:var(--text-mid);line-height:1.7}
 @media(max-width:768px){.obj-grid{grid-template-columns:1fr 1fr}}
@@ -208,7 +208,7 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .cg1{width:600px;height:380px;top:-100px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(108,92,231,.24),transparent 65%)}
 .proj-cta-in{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:0 24px}
 .proj-cta-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px;line-height:1.12}
-.proj-cta-h span{background:linear-gradient(135deg,#A78BFA,#f6a15c,#ffb648);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.proj-cta-h span{background:linear-gradient(135deg,#A78BFA,#d6ff3f,#d6ff3f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .proj-cta-sub{font-size:.95rem;color:rgba(255,255,255,.45);margin-bottom:30px;line-height:1.7}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
@@ -223,15 +223,15 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .ft-legal a:hover{color:rgba(255,255,255,.65)}
 
 /* ── Dark hero, matching the home page ── */
-.proj-hero{background:#09071c}
-.proj-h1{background:linear-gradient(120deg,#c4b5fd,#a78bfa,#f6a15c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.proj-hero{background:#0d0a1f}
+.proj-h1{background:linear-gradient(120deg,#c4b5fd,#a78bfa,#d6ff3f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .proj-sub{color:rgba(255,255,255,.62)}
 .proj-hero .eyebrow{color:#c4b5fd}
 .proj-hero .back{color:#c4b5fd;border-color:rgba(255,255,255,.2)}
 .proj-hero .back:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.4)}
 
 /* Nav over the night hero — transparent dark at the top, flips to glass-light (.sc) after the hero */
-nav{background:#09071c;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid transparent;box-shadow:none}
+nav{background:#0d0a1f;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid transparent;box-shadow:none}
 nav .nav-lks a{color:rgba(255,255,255,.72)}
 nav .nav-lks a:hover,nav .nav-lks a.active{color:#fff;background:rgba(255,255,255,.08)}
 nav .logo-tx .lc{color:#fff}
@@ -241,6 +241,8 @@ nav.sc .nav-lks a{color:var(--text-mid)}
 nav.sc .nav-lks a:hover,nav.sc .nav-lks a.active{color:var(--text);background:rgba(0,0,0,.05)}
 nav.sc .logo-tx .lc{color:var(--text)}
 nav.sc .nav-burger span{background:var(--text)}
+nav.sc .logo-tx .l2{color:#7f9c0a}
+
 
 
 /* Consent banner — audience measurement opt-in */
@@ -250,7 +252,7 @@ nav.sc .nav-burger span{background:var(--text)}
 .consent-btns{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
 .consent-btns button{font-family:inherit;font-weight:700;font-size:.78rem;border-radius:9999px;padding:9px 18px;cursor:pointer}
 .cb-no{background:none;border:1px solid rgba(0,0,0,.15);color:#525970}
-.cb-yes{background:#e8703a;border:none;color:#fff}
+.cb-yes{background:#d6ff3f;border:none;color:#101322}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"VyraShop Academy — Plateforme e-learning","description":"Plateforme de formation spécialisée dans la monétisation TikTok. Branding, développement, UX et SEO réalisés par Click2Lead.","url":"https://click2lead.fr/projet-vyrashop","image":"https://click2lead.fr/screens/vyra-1.jpg","creator":{"@type":"Organization","name":"Click2Lead","url":"https://click2lead.fr"},"genre":["E-learning","Web Design","Branding"],"inLanguage":"fr"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://click2lead.fr/"},{"@type":"ListItem","position":2,"name":"Projet VyraShop","item":"https://click2lead.fr/projet-vyrashop"}]}]}
@@ -340,7 +342,7 @@ nav.sc .nav-burger span{background:var(--text)}
 <section class="sec sec-alt">
   <div class="wrap">
     <div class="e3d-swingL">
-      <span class="eyebrow" style="color:#f2a93c">Objectifs du projet</span>
+      <span class="eyebrow" style="color:#d6ff3f">Objectifs du projet</span>
       <h2 class="sec-title">Trois enjeux, une seule solution.</h2>
       <p class="sec-sub">Chaque décision de design et de développement a été guidée par des objectifs précis et mesurables.</p>
     </div>
