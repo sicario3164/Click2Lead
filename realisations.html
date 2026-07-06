@@ -197,8 +197,8 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .rv{opacity:0;transform:translateY(30px) scale(.96);filter:blur(5px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
 /* Card tilt-in — cards rotate down into place from a 3D angle instead of a flat fade */
-.rv3d{opacity:0;transform:perspective(900px) rotateX(-8deg) translateY(18px);filter:blur(3px);transform-origin:50% 100%;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}
-.rv3d.on{opacity:1;transform:perspective(900px) rotateX(0) translateY(0);filter:blur(0)}
+.rv3d{opacity:0;transform:translateY(18px);filter:blur(3px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}
+.rv3d.on{opacity:1;transform:translateY(0);filter:blur(0)}
 
 
 /* RESPONSIVE */
@@ -437,90 +437,9 @@ if(introEl){
 }
 
 
-/* ── 3D tilt-on-hover for portfolio cards (event-delegated: cards are re-rendered on filter change) ── */
-if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-  const TILT_SEL='.proj-card';
-  const glareMap=new WeakMap();
-  let tiltRAF=null,activeTiltEl=null;
-  const resetTilt=()=>{
-    if(activeTiltEl){
-      activeTiltEl.style.transform='';
-      const g=glareMap.get(activeTiltEl);
-      if(g)g.style.opacity='0';
-      activeTiltEl=null;
-    }
-  };
-  document.addEventListener('mousemove',e=>{
-    const card=e.target.closest(TILT_SEL);
-    if(!card){resetTilt();return;}
-    if(getComputedStyle(card).position==='static')card.style.position='relative';
-    let glare=glareMap.get(card);
-    if(!glare){
-      glare=document.createElement('div');
-      glare.className='tilt-glare';
-      glare.setAttribute('aria-hidden','true');
-      glare.style.cssText='position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 55%);z-index:5';
-      card.appendChild(glare);
-      glareMap.set(card,glare);
-    }
-    activeTiltEl=card;
-    if(tiltRAF)return;
-    tiltRAF=requestAnimationFrame(()=>{
-      tiltRAF=null;
-      const r=card.getBoundingClientRect();
-      const px=(e.clientX-r.left)/r.width-.5;
-      const py=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-py*9).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) scale(1.015)`;
-      card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
-      card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
-      glare.style.opacity='1';
-    });
-  });
-  document.addEventListener('mouseleave',resetTilt,true);
-}
 
 
 
-/* ── 3D tilt-on-touch for portfolio cards (event-delegated: cards are re-rendered on filter change) ── */
-if(!noMotion && window.matchMedia('(pointer:coarse)').matches){
-  const TOUCH_TILT_SEL='.proj-card';
-  const touchGlareMap=new WeakMap();
-  let touchActiveTiltEl=null;
-  const resetTouchTilt=()=>{
-    if(touchActiveTiltEl){
-      touchActiveTiltEl.style.transform='';
-      const g=touchGlareMap.get(touchActiveTiltEl);
-      if(g)g.style.opacity='0';
-      touchActiveTiltEl=null;
-    }
-  };
-  const handleTouch=(x,y,target)=>{
-    const card=target.closest(TOUCH_TILT_SEL);
-    if(!card){resetTouchTilt();return;}
-    if(getComputedStyle(card).position==='static')card.style.position='relative';
-    let glare=touchGlareMap.get(card);
-    if(!glare){
-      glare=document.createElement('div');
-      glare.className='tilt-glare';
-      glare.setAttribute('aria-hidden','true');
-      glare.style.cssText='position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 55%);z-index:5';
-      card.appendChild(glare);
-      touchGlareMap.set(card,glare);
-    }
-    touchActiveTiltEl=card;
-    const r=card.getBoundingClientRect();
-    const px=(x-r.left)/r.width-.5;
-    const py=(y-r.top)/r.height-.5;
-    card.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-py*9).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) scale(1.015)`;
-    card.style.setProperty('--mx',((x-r.left)/r.width*100)+'%');
-    card.style.setProperty('--my',((y-r.top)/r.height*100)+'%');
-    glare.style.opacity='1';
-  };
-  document.addEventListener('touchstart',e=>{const t=e.touches[0];handleTouch(t.clientX,t.clientY,e.target);},{passive:true});
-  document.addEventListener('touchmove',e=>{const t=e.touches[0];handleTouch(t.clientX,t.clientY,e.target);},{passive:true});
-  document.addEventListener('touchend',resetTouchTilt);
-  document.addEventListener('touchcancel',resetTouchTilt);
-}
 
 /* ── Button press feedback (touch) — subtle contraction + spring back on tap ── */
 if(!noMotion && window.matchMedia('(pointer:coarse)').matches){
