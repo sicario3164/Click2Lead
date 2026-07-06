@@ -47,11 +47,6 @@ html{scroll-behavior:smooth;overflow-x:hidden;scrollbar-color:#8b6ff2 var(--bg-s
 ::-webkit-scrollbar-thumb{background:#8b6ff2;border-radius:99px;border:3px solid var(--bg-soft)}
 .grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#7c5af0,#a78bfa);z-index:1001;pointer-events:none}
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);mix-blend-mode:difference}
-.cursor-dot{width:8px;height:8px;background:#fff;opacity:0;transition:opacity .2s}
-.cursor-ring{width:36px;height:36px;border:1.5px solid #fff;opacity:0;transition:width .25s cubic-bezier(.4,0,.2,1),height .25s cubic-bezier(.4,0,.2,1),opacity .25s}
-.cursor-ring.hover{width:64px;height:64px}
-body.custom-cursor,body.custom-cursor *{cursor:none}
 .intro-loader{position:fixed;inset:0;z-index:99999;background:var(--bg-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:1;visibility:visible;transition:opacity .5s ease}
 .intro-logo{opacity:0;transform:scale(.7);border-radius:10px;animation:introLogoIn .6s .1s cubic-bezier(.16,1,.3,1) forwards}
 .intro-word{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.3px;color:#fff;opacity:0;animation:introWordIn .5s .35s ease forwards}
@@ -143,13 +138,30 @@ footer{background:var(--bg-dark);padding:36px 0;margin-top:0}
 .hub-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;color:var(--text)}
 .hub-card p{font-size:.88rem;color:var(--text-mid);line-height:1.7;flex:1}
 .hub-read{font-size:.84rem;font-weight:700;color:var(--p)}
+
+/* ── Dark hero, matching the home page ── */
+.art-hero{background:#09071c;border-bottom:none}
+.art-hero h1{color:#fff}
+.art-hero .eyebrow{color:#c4b5fd}
+.art-meta{color:rgba(255,255,255,.5)}
+
+/* Nav over the night hero — transparent dark at the top, flips to glass-light (.sc) after the hero */
+nav{background:rgba(11,8,30,.42);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:none}
+nav .nav-lks a{color:rgba(255,255,255,.72)}
+nav .nav-lks a:hover,nav .nav-lks a.active{color:#fff;background:rgba(255,255,255,.08)}
+nav .logo-tx .lc{color:#fff}
+nav .nav-burger span{background:#fff}
+nav.sc{background:rgba(255,255,255,.78);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 4px 24px rgba(15,14,26,.1)}
+nav.sc .nav-lks a{color:var(--text-mid)}
+nav.sc .nav-lks a:hover,nav.sc .nav-lks a.active{color:var(--text);background:rgba(0,0,0,.05)}
+nav.sc .logo-tx .lc{color:var(--text)}
+nav.sc .nav-burger span{background:var(--text)}
+
 </style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 <div class="intro-loader" id="introLoader" aria-hidden="true">
   <img src="logo.png" width="52" height="52" alt="" class="intro-logo"/>
   <div class="intro-word">Click<span>2</span>Lead</div>
@@ -280,8 +292,9 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const MAG_RADIUS=70,MAG_STRENGTH=.4;
   const magState=new Map();
   magneticEls.forEach(el=>{magState.set(el,{x:0,y:0,tx:0,ty:0});el.style.transitionProperty='color,background-color,border-color,box-shadow';});
-  let magRAF=null;
+  let magRAF=null;let magActive=false;
   document.addEventListener('mousemove',e=>{
+    if(!magActive){magActive=true;requestAnimationFrame(magLoop);}
     if(magRAF)return;
     magRAF=requestAnimationFrame(()=>{
       magRAF=null;
@@ -298,38 +311,26 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
     });
   });
   const magLoop=()=>{
+    let magMoving=false;
     magneticEls.forEach(el=>{
       const s=magState.get(el);
       s.x+=(s.tx-s.x)*.2;s.y+=(s.ty-s.y)*.2;
+      if(Math.abs(s.x)>.03||Math.abs(s.y)>.03||Math.abs(s.tx)>.03||Math.abs(s.ty)>.03)magMoving=true;
       el.style.transform=`translate(${s.x.toFixed(2)}px,${s.y.toFixed(2)}px)`;
     });
-    requestAnimationFrame(magLoop);
+    if(magMoving)requestAnimationFrame(magLoop);else magActive=false;
   };
   magLoop();
 }
 
-/* ── Custom cursor ── */
-if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !noMotion){
-  document.body.classList.add('custom-cursor');
-  const cDot=document.getElementById('cursorDot');
-  const cRing=document.getElementById('cursorRing');
-  let cmx=innerWidth/2,cmy=innerHeight/2,crx=cmx,cry=cmy,cStarted=false;
-  document.addEventListener('mousemove',e=>{
-    cmx=e.clientX;cmy=e.clientY;
-    cDot.style.left=cmx+'px';cDot.style.top=cmy+'px';
-    cDot.style.opacity='1';cRing.style.opacity='1';
-    if(!cStarted){crx=cmx;cry=cmy;cStarted=true;}
-  });
-  const cursorLoop=()=>{
-    crx+=(cmx-crx)*.18;cry+=(cmy-cry)*.18;
-    cRing.style.left=crx+'px';cRing.style.top=cry+'px';
-    requestAnimationFrame(cursorLoop);
-  };
-  cursorLoop();
-  const CURSOR_HOVERABLES='a,button,.btn,[role="button"]';
-  document.addEventListener('mouseover',e=>{if(e.target.closest(CURSOR_HOVERABLES))cRing.classList.add('hover');});
-  document.addEventListener('mouseout',e=>{if(e.target.closest(CURSOR_HOVERABLES))cRing.classList.remove('hover');});
-  document.documentElement.addEventListener('mouseleave',()=>{cDot.style.opacity='0';cRing.style.opacity='0';});
+
+
+/* ── Nav state on scroll ── */
+const navEl=document.querySelector('nav');
+if(navEl){
+  const navSwitch=()=>navEl.classList.toggle('sc',window.scrollY>((document.querySelector('.art-hero')||{}).offsetHeight||300)-76);
+  window.addEventListener('scroll',navSwitch,{passive:true});
+  navSwitch();
 }
 
 /* ── Scroll progress bar ── */

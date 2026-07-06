@@ -120,12 +120,6 @@ a{text-decoration:none}
 .e3d-tiltR.on{opacity:1;transform:perspective(1000px) rotateY(0) rotateZ(0) translateX(0);filter:blur(0)}
 /* Scroll progress bar */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#7c5af0,#a78bfa);z-index:1001;pointer-events:none}
-/* Custom cursor — dot + trailing ring, inverts via blend-mode so it reads on any background */
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);mix-blend-mode:difference}
-.cursor-dot{width:8px;height:8px;background:#fff;opacity:0;transition:opacity .2s}
-.cursor-ring{width:36px;height:36px;border:1.5px solid #fff;opacity:0;transition:width .25s cubic-bezier(.4,0,.2,1),height .25s cubic-bezier(.4,0,.2,1),opacity .25s}
-.cursor-ring.hover{width:64px;height:64px}
-body.custom-cursor,body.custom-cursor *{cursor:none}
 /* Intro loader — brief branded reveal on first visit of the session only */
 .intro-loader{position:fixed;inset:0;z-index:99999;background:var(--bg-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:1;visibility:visible;transition:opacity .5s ease,visibility 0s linear 0s}
 .intro-logo{opacity:0;transform:scale(.7);border-radius:10px;animation:introLogoIn .6s .1s cubic-bezier(.16,1,.3,1) forwards}
@@ -166,10 +160,6 @@ body.custom-cursor,body.custom-cursor *{cursor:none}
 /*──────────────────────────────────────────────
   TOPBAR
 ──────────────────────────────────────────────*/
-.topbar{background:linear-gradient(90deg,#17102f,#3b0764,#5b3bd6);padding:7px 20px;text-align:center;font-size:.72rem;font-weight:600;letter-spacing:.1px;border-bottom:1px solid rgba(255,255,255,.07);overflow:hidden}
-.topbar-tx{display:inline-block;color:rgba(255,255,255,.92);transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .5s cubic-bezier(.4,0,.2,1)}
-.topbar-tx.to{transform:translateX(36px);opacity:0}
-.topbar-tx.ti{transform:translateX(-36px);opacity:0}
 
 /*──────────────────────────────────────────────
   NAV
@@ -223,12 +213,22 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .h-ck{color:#a78bfa;font-weight:800}
 
 /* Cursor-tracked spotlight — soft light that follows the pointer across the hero */
-.h-spotlight{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(460px circle at var(--mx,50%) var(--my,20%),rgba(124,90,240,.16),transparent 70%)}
-.hero-sec:hover .h-spotlight{opacity:1}
-@media(prefers-reduced-motion:reduce),(pointer:coarse){.h-spotlight{display:none}}
 /* Particle constellation — a quiet network of light behind the hero copy */
 #heroParticles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 @media(prefers-reduced-motion:reduce){#heroParticles{display:none}}
+/* Nav over the night hero — transparent dark at the top, flips to the glass-light
+   treatment (.sc) once the visitor scrolls past the hero */
+nav{background:rgba(11,8,30,.42);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:none}
+nav .nav-lks a{color:rgba(255,255,255,.72)}
+nav .nav-lks a:hover{color:#fff;background:rgba(255,255,255,.08)}
+nav .logo-tx .lc{color:#fff}
+nav .nav-burger span{background:#fff}
+nav.sc{background:rgba(255,255,255,.78);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 4px 24px rgba(15,14,26,.1)}
+nav.sc .nav-lks a{color:var(--text-mid)}
+nav.sc .nav-lks a:hover{color:var(--text);background:rgba(0,0,0,.05)}
+nav.sc .logo-tx .lc{color:var(--text)}
+nav.sc .nav-burger span{background:var(--text)}
+
 
 /*──────────────────────────────────────────────
   DARK CINEMATIC HERO — the site opens on the brand's night palette;
@@ -250,7 +250,6 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 @media(prefers-reduced-motion:reduce){.h1 .l2{animation:none}}
 .h-sub{color:rgba(255,255,255,.62)}
 .h-trust-i{color:rgba(255,255,255,.55)}
-.h-spotlight{background:radial-gradient(460px circle at var(--mx,50%) var(--my,20%),rgba(167,139,250,.13),transparent 70%)}
 .hero-sec .bg-btn{border-color:rgba(255,255,255,.24);color:rgba(255,255,255,.82)}
 .hero-sec .bg-btn:hover{border-color:rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.07)}
 /* mockup switched to the night theme so it belongs to the scene */
@@ -264,6 +263,14 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .bm-ring::before{background:#131029}
 .bm-bar{background:rgba(167,139,250,.22)}
 .h-vis-glow{background:radial-gradient(ellipse,rgba(124,90,240,.34) 0%,rgba(232,112,58,.2) 45%,transparent 70%);filter:blur(34px)}
+/* Real-work slideshow inside the browser frame — actual VyraShop screens crossfading */
+.bm-body.bm-live{position:relative;padding:0;aspect-ratio:16/10.4;overflow:hidden;cursor:pointer}
+.bm-live-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;animation:bmSlide 16s infinite}
+.bli-1{animation-delay:0s}.bli-2{animation-delay:4s}.bli-3{animation-delay:8s}.bli-4{animation-delay:12s}
+@keyframes bmSlide{0%{opacity:0}4%{opacity:1}25%{opacity:1}31%{opacity:0}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.bm-live-img{animation:none}.bli-1{opacity:1}}
+.bm-live-lbl{position:absolute;left:12px;bottom:12px;z-index:5;background:rgba(6,4,18,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85);font-size:.62rem;font-weight:700;padding:5px 12px;border-radius:var(--rpill);letter-spacing:.3px}
+
 
 
 /* Browser illustration */
@@ -721,6 +728,22 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .cta-reassure{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:24px}
 .cta-re-i{font-size:.76rem;color:rgba(255,255,255,.36);display:flex;align-items:center;gap:6px}
 .cta-re-i::before{content:'\2713';color:rgba(255,255,255,.36)}
+
+/* Founders offer — night card echoing the hero, three slots as a visual promise */
+.founders-sec{padding-top:0;padding-bottom:0}
+.founders-card{position:relative;background:#09071c;border-radius:var(--r2xl);padding:64px 48px;text-align:center;overflow:hidden}
+.founders-card::before{content:'';position:absolute;top:-90px;left:-70px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(124,90,240,.35),transparent 70%);filter:blur(30px);pointer-events:none}
+.founders-card::after{content:'';position:absolute;bottom:-100px;right:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(232,112,58,.25),transparent 70%);filter:blur(30px);pointer-events:none}
+.founders-tag{display:inline-block;position:relative;z-index:1;font-size:.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#c4b5fd;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--rpill);padding:7px 16px;margin-bottom:22px}
+.founders-title{position:relative;z-index:1;font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;color:#fff;line-height:1.12;letter-spacing:-.8px;margin-bottom:16px}
+.founders-sub{position:relative;z-index:1;font-size:.98rem;color:rgba(255,255,255,.62);line-height:1.8;max-width:620px;margin:0 auto 28px}
+.founders-sub strong{color:#fff}
+.founders-slots{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:30px}
+.fs-slot{width:40px;height:40px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.35);color:rgba(255,255,255,.75);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+.fs-lbl{font-size:.8rem;color:rgba(255,255,255,.45);margin-left:6px}
+.founders-card .bp{position:relative;z-index:1}
+.founders-note{position:relative;z-index:1;font-size:.74rem;color:rgba(255,255,255,.38);margin-top:16px}
+@media(max-width:640px){.founders-card{padding:44px 24px}}
 /* Lead magnet — free 48h audit card */
 .audit-sec{padding-top:0}
 .audit-card{position:relative;background:linear-gradient(135deg,rgba(124,90,240,.07),rgba(232,112,58,.06));border:1.5px solid rgba(124,90,240,.18);border-radius:var(--r2xl);padding:56px 48px;text-align:center;overflow:hidden}
@@ -1047,8 +1070,6 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <body>
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 <div class="intro-loader" id="introLoader" aria-hidden="true">
   <img src="logo.png" width="52" height="52" alt="" class="intro-logo"/>
   <div class="intro-word">Click<span>2</span>Lead</div>
@@ -1057,9 +1078,6 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 <!-- ━━━━━━━━━━━━━━━━━━━━━━
      TOPBAR
 ━━━━━━━━━━━━━━━━━━━━━━ -->
-<div class="topbar" role="banner">
-  <span class="topbar-tx" id="topMsg">Appel découverte gratuit — 30 min pour analyser votre projet, sans engagement</span>
-</div>
 
 <!-- Mobile menu overlay -->
 <div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu principal" aria-modal="true" inert>
@@ -1123,7 +1141,6 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
     <circle cx="690" cy="704" r="2.5" fill="#f2a93c" opacity=".28"/>
   </svg>
   <canvas id="heroParticles" aria-hidden="true"></canvas>
-  <div class="h-spotlight" aria-hidden="true"></div>
   <div class="hero-in">
     <!-- Left -->
     <div class="rvl">
@@ -1151,54 +1168,16 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
         <div class="bm">
           <div class="bm-top">
             <div class="bm-ds"><span class="bm-d dr"></span><span class="bm-d dy"></span><span class="bm-d dg"></span></div>
-            <div class="bm-url">click2lead.fr</div>
+            <div class="bm-url">vyrashop.com</div>
           </div>
-          <div class="bm-body">
-            <div class="bm-nav">
-              <div class="bm-nav-l"><span class="bm-dot-logo" aria-hidden="true"></span><span class="bm-logo-m">Click2Lead</span></div>
-              <span class="bm-nbtn">Nous contacter</span>
-            </div>
-            <div class="bm-hero-a">
-              <span class="bm-eyebrow">Conversion</span>
-              <div class="bm-hl"></div>
-              <div class="bm-hl bm-hl2"></div>
-              <div class="bm-shot" aria-hidden="true"><span class="bm-shot-rating">⚡ Lighthouse 90+</span></div>
-              <div class="bm-row"><div class="bm-cp"></div><div class="bm-cg"></div></div>
-            </div>
-            <div class="bm-feat-row">
-              <div class="bm-chart" id="bmChart" aria-hidden="true">
-                <div class="bm-bar" style="--h:42%"></div>
-                <div class="bm-bar" style="--h:58%"></div>
-                <div class="bm-bar" style="--h:50%"></div>
-                <div class="bm-bar" style="--h:74%"></div>
-                <div class="bm-bar" style="--h:66%"></div>
-                <div class="bm-bar last" style="--h:100%"></div>
-              </div>
-              <div class="bm-ring" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
-            </div>
+          <div class="bm-body bm-live" role="link" tabindex="0" aria-label="Voir le projet VyraShop Academy" onclick="location.href='projet-vyrashop.html'" onkeydown="if(event.key==='Enter')location.href='projet-vyrashop.html'">
+            <img src="screens/vyra-1.jpg" alt="" class="bm-live-img bli-1" loading="eager" fetchpriority="high"/>
+            <img src="screens/vyra-2.jpg" alt="" class="bm-live-img bli-2" loading="lazy"/>
+            <img src="screens/vyra-3.jpg" alt="" class="bm-live-img bli-3" loading="lazy"/>
+            <img src="screens/vyra-4.jpg" alt="" class="bm-live-img bli-4" loading="lazy"/>
+            <span class="bm-live-lbl">Projet réel · VyraShop Academy →</span>
           </div>
         </div>
-        <!-- Secondary mobile mockup — layered depth + reinforces "mobile-first" -->
-        <div class="bm-phone" aria-hidden="true">
-          <div class="bm-phone-screen">
-            <div class="bm-phone-notch"></div>
-            <div class="bm-phone-hl"></div>
-            <div class="bm-phone-ln" style="width:88%"></div>
-            <div class="bm-phone-ln" style="width:62%"></div>
-            <div class="bm-phone-btn"></div>
-          </div>
-        </div>
-        <!-- Feature badges -->
-        <div class="fc fc-conv">
-          <span class="fcv-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg></span>
-          <div><div class="fcv-val">Axé conversion</div><div class="fcv-lbl">Design orienté résultats</div></div>
-        </div>
-        <div class="fc fc-leads">
-          <div class="fcl-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
-          <div><div class="fcl-val">Mobile First</div><div class="fcl-lbl">100% responsive</div></div>
-        </div>
-        <!-- Floating SEO badge -->
-        <div class="fc fc-seo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>SSL & Sécurité</div>
       </div>
     </div>
   </div>
@@ -1696,6 +1675,28 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   </div>
 </section>
 
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━
+     OFFRE FONDATEURS — 3 places, honnête et limitée
+━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec founders-sec" aria-label="Offre fondateurs">
+  <div class="wrap">
+    <div class="founders-card rv3d">
+      <div class="founders-tag">Offre de lancement — 3 places</div>
+      <h2 class="founders-title">Nous lançons l'agence.<br/>Vous en profitez.</h2>
+      <p class="founders-sub">Les <strong>3 premiers clients</strong> bénéficient de <strong>−30&nbsp;%</strong> sur l'offre Business ou Ultra. En échange&nbsp;: un témoignage public et l'autorisation de publier les résultats de votre page. Quand les 3 places sont prises, cette offre disparaît définitivement.</p>
+      <div class="founders-slots" aria-label="3 places disponibles">
+        <span class="fs-slot" aria-hidden="true">1</span>
+        <span class="fs-slot" aria-hidden="true">2</span>
+        <span class="fs-slot" aria-hidden="true">3</span>
+        <span class="fs-lbl">places restantes</span>
+      </div>
+      <a href="#contact" class="btn bp bp-lg" onclick="presetFounders()">Réserver ma place →</a>
+      <p class="founders-note">Mêmes livrables, même exigence, mêmes garanties — seul le prix change.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ━━━━━━━━━━━━━━━━━━━━━━
      LEAD MAGNET — audit gratuit 48h
 ━━━━━━━━━━━━━━━━━━━━━━ -->
@@ -1778,6 +1779,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
             <select id="cfType" name="demande" required>
               <option value="Créer ma landing page">Créer ma landing page</option>
               <option value="Audit gratuit de ma page actuelle">Audit gratuit de ma page actuelle (48h)</option>
+              <option value="Offre fondateurs (-30%)">Offre fondateurs (−30% contre témoignage)</option>
               <option value="Maintenance / évolution">Maintenance ou évolution d'une page existante</option>
               <option value="Autre question">Autre question</option>
             </select>
@@ -1971,11 +1973,6 @@ if(introEl){
 }
 
 /* ── Hero mockup chart grow-in ── */
-const bmChartEl=document.getElementById('bmChart');
-if(bmChartEl){
-  if(noMotion)bmChartEl.classList.add('grown');
-  else setTimeout(()=>bmChartEl.classList.add('grown'),500);
-}
 
 /* ── 3D tilt-on-hover for cards — mouse-tracked, real-time, with a moving glare ── */
 if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
@@ -2061,8 +2058,9 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const MAG_RADIUS=70,MAG_STRENGTH=.4;
   const magState=new Map();
   magneticEls.forEach(el=>{magState.set(el,{x:0,y:0,tx:0,ty:0});el.style.transitionProperty='color,background-color,border-color,box-shadow';});
-  let magRAF=null;
+  let magRAF=null;let magActive=false;
   document.addEventListener('mousemove',e=>{
+    if(!magActive){magActive=true;requestAnimationFrame(magLoop);}
     if(magRAF)return;
     magRAF=requestAnimationFrame(()=>{
       magRAF=null;
@@ -2081,12 +2079,14 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
     });
   });
   const magLoop=()=>{
+    let magMoving=false;
     magneticEls.forEach(el=>{
       const s=magState.get(el);
       s.x+=(s.tx-s.x)*.2;s.y+=(s.ty-s.y)*.2;
+      if(Math.abs(s.x)>.03||Math.abs(s.y)>.03||Math.abs(s.tx)>.03||Math.abs(s.ty)>.03)magMoving=true;
       el.style.transform=`translate(${s.x.toFixed(2)}px,${s.y.toFixed(2)}px)`;
     });
-    requestAnimationFrame(magLoop);
+    if(magMoving)requestAnimationFrame(magLoop);else magActive=false;
   };
   magLoop();
 }
@@ -2182,8 +2182,6 @@ if(heroSecEl && heroVisEl && !noMotion && window.matchMedia('(pointer:fine)').ma
     if(heroRAF)return;
     heroRAF=requestAnimationFrame(()=>{
       const sr=heroSecEl.getBoundingClientRect();
-      heroSecEl.style.setProperty('--mx',((e.clientX-sr.left)/sr.width*100)+'%');
-      heroSecEl.style.setProperty('--my',((e.clientY-sr.top)/sr.height*100)+'%');
       const vr=heroVisEl.getBoundingClientRect();
       const px=Math.min(.5,Math.max(-.5,(e.clientX-vr.left)/vr.width-.5));
       const py=Math.min(.5,Math.max(-.5,(e.clientY-vr.top)/vr.height-.5));
@@ -2194,27 +2192,6 @@ if(heroSecEl && heroVisEl && !noMotion && window.matchMedia('(pointer:fine)').ma
   heroSecEl.addEventListener('mouseleave',()=>{heroVisEl.style.transform='';});
 }
 
-/* ── Topbar rotation ── */
-const topMsgs=[
-  'Appel découverte gratuit — 30 min pour transformer votre trafic en clients, sans engagement',
-  'Livraison en 10 jours ouvrés — Du brief validé à la page en ligne, en 10 jours chrono',
-  'Paiement sécurisé en 2 fois — 50 % à la commande, 50 % à la livraison',
-  '100 % propriétaire — Tous vos fichiers sources vous sont remis à la livraison'
-];
-let topIdx=0;
-const topEl=document.getElementById('topMsg');
-if(topEl && !noMotion){
-  setInterval(()=>{
-    topEl.classList.add('to');
-    setTimeout(()=>{
-      topIdx=(topIdx+1)%topMsgs.length;
-      topEl.textContent=topMsgs[topIdx];
-      topEl.classList.remove('to');
-      topEl.classList.add('ti');
-      setTimeout(()=>topEl.classList.remove('ti'),50);
-    },500);
-  },4500);
-}
 
 /* ── Mobile burger ── */
 const burger=document.getElementById('navBurger');
@@ -2247,7 +2224,7 @@ if(ftYearEl){
 
 /* ── Nav shadow on scroll ── */
 window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('sc',window.scrollY>20);
+  document.getElementById('nav').classList.toggle('sc',window.scrollY>((document.querySelector('.hero-sec')||{}).offsetHeight||620)-76);
 });
 
 /* ── Journey scrollytelling (desktop: pinned steps light up as you scroll) ──
@@ -2312,29 +2289,6 @@ if(vyraCardEl && vyraShotImgs.length && !noMotion){
   });
 }
 
-/* ── Custom cursor (fine pointer + hover-capable + motion allowed only) ── */
-if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !noMotion){
-  document.body.classList.add('custom-cursor');
-  const cDot=document.getElementById('cursorDot');
-  const cRing=document.getElementById('cursorRing');
-  let cmx=innerWidth/2,cmy=innerHeight/2,crx=cmx,cry=cmy,cStarted=false;
-  document.addEventListener('mousemove',e=>{
-    cmx=e.clientX;cmy=e.clientY;
-    cDot.style.left=cmx+'px';cDot.style.top=cmy+'px';
-    cDot.style.opacity='1';cRing.style.opacity='1';
-    if(!cStarted){crx=cmx;cry=cmy;cStarted=true;}
-  });
-  const cursorLoop=()=>{
-    crx+=(cmx-crx)*.18;cry+=(cmy-cry)*.18;
-    cRing.style.left=crx+'px';cRing.style.top=cry+'px';
-    requestAnimationFrame(cursorLoop);
-  };
-  cursorLoop();
-  const CURSOR_HOVERABLES='a,button,.btn,[role="button"],input,textarea,select,.bn-card,.pr-card,.why-card';
-  document.addEventListener('mouseover',e=>{if(e.target.closest(CURSOR_HOVERABLES))cRing.classList.add('hover');});
-  document.addEventListener('mouseout',e=>{if(e.target.closest(CURSOR_HOVERABLES))cRing.classList.remove('hover');});
-  document.documentElement.addEventListener('mouseleave',()=>{cDot.style.opacity='0';cRing.style.opacity='0';});
-}
 
 /* ── Scroll progress bar ── */
 const scrollProgEl=document.getElementById('scrollProgress');
@@ -2401,6 +2355,11 @@ function presetAudit(){
   if(sel)sel.value='Audit gratuit de ma page actuelle';
   const url=document.getElementById('cfUrl');
   if(url)setTimeout(()=>url.focus({preventScroll:true}),800);
+}
+
+function presetFounders(){
+  const sel=document.getElementById('cfType');
+  if(sel)sel.value='Offre fondateurs (-30%)';
 }
 
 /* ── FAQ accordion ── */
