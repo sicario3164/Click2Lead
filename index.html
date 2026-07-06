@@ -136,7 +136,7 @@ a{text-decoration:none}
   BUTTONS
 ──────────────────────────────────────────────*/
 .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:var(--rpill);font-family:inherit;font-weight:700;cursor:pointer;transition:all .22s cubic-bezier(.4,0,.2,1);text-decoration:none;white-space:nowrap;line-height:1}
-.bp{background:var(--s);color:#101322;padding:14px 28px;font-size:.92rem;box-shadow:0 8px 28px rgba(214,255,63,.32)}
+.bp{background:var(--s);color:#101322;border:2px solid #7c5af0;padding:14px 28px;font-size:.92rem;box-shadow:0 8px 28px rgba(214,255,63,.32)}
 .bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(214,255,63,.42)}
 .bp-lg{padding:17px 36px;font-size:1.01rem;font-weight:800}
 .bg-btn{background:transparent;border:2px solid var(--bord-m);color:var(--text-mid);padding:13px 24px;font-size:.9rem;border-radius:var(--rpill)}
@@ -467,7 +467,7 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
 .pf .pr-chk{background:rgba(108,92,231,.09);color:var(--p);border:1px solid rgba(108,92,231,.18)}
 .pr-card:nth-child(3) .pr-chk{background:rgba(124,90,240,.09);color:#7c5af0;border:1px solid rgba(124,90,240,.18)}
 .pr-btn{display:block;text-align:center;padding:14px;border-radius:var(--rpill);font-family:inherit;font-weight:700;font-size:.9rem;cursor:pointer;border:none;text-decoration:none;transition:all .22s cubic-bezier(.4,0,.2,1)}
-.pr-btn-p{background:var(--s);color:#101322;box-shadow:0 8px 28px rgba(214,255,63,.32)}
+.pr-btn-p{background:var(--s);color:#101322;border:2px solid #7c5af0;box-shadow:0 8px 28px rgba(214,255,63,.32)}
 .pr-btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(108,92,231,.46)}
 .pr-btn-g{background:transparent;border:1.5px solid var(--bord-m);color:var(--text-mid)}
 .pr-btn-g:hover{border-color:var(--p);color:var(--p);background:rgba(108,92,231,.04)}
@@ -776,7 +776,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .cf-field select option{background:#17142e;color:#fff}
 .cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{outline:none;border-color:rgba(139,109,245,.65);background:rgba(255,255,255,.1)}
 .cf-field textarea{resize:vertical;min-height:92px}
-.cf-submit{background:var(--s);color:#101322;border:none;border-radius:var(--rpill);padding:15px 28px;font-family:inherit;font-weight:800;font-size:.98rem;cursor:pointer;box-shadow:var(--sh-p);transition:transform .22s,box-shadow .22s;margin-top:2px}
+.cf-submit{background:var(--s);color:#101322;border:2px solid #7c5af0;border-radius:var(--rpill);padding:15px 28px;font-family:inherit;font-weight:800;font-size:.98rem;cursor:pointer;box-shadow:var(--sh-p);transition:transform .22s,box-shadow .22s;margin-top:2px}
 .cf-submit:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(214,255,63,.42)}
 .cf-note{font-size:.72rem;color:rgba(255,255,255,.35);text-align:center;line-height:1.6}
 .cf-note a{color:rgba(255,255,255,.55);text-decoration:underline}
@@ -1051,7 +1051,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .modal-icon-wrap{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,rgba(124,90,240,.1),rgba(214,255,63,.08));border:1px solid rgba(124,90,240,.15);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 16px}
 .modal-title{font-family:'Space Grotesk',sans-serif;font-size:1.18rem;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-.3px}
 .modal-sub{font-size:.84rem;color:var(--text-mid);line-height:1.65;margin-bottom:24px}
-.modal-phone-btn{display:inline-flex;align-items:center;gap:10px;background:var(--s);color:#101322;padding:15px 28px;border-radius:var(--rpill);font-family:inherit;font-weight:800;font-size:1.08rem;text-decoration:none;letter-spacing:.5px;box-shadow:var(--sh-p);transition:all .22s}
+.modal-phone-btn{display:inline-flex;align-items:center;gap:10px;background:var(--s);color:#101322;border:2px solid #7c5af0;padding:15px 28px;border-radius:var(--rpill);font-family:inherit;font-weight:800;font-size:1.08rem;text-decoration:none;letter-spacing:.5px;box-shadow:var(--sh-p);transition:all .22s}
 .modal-phone-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(214,255,63,.42);color:#fff}
 .modal-hours{font-size:.72rem;color:var(--text-light);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:5px}
 .modal-sep{height:1px;background:rgba(0,0,0,.07);margin:20px 0}
@@ -1892,7 +1892,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <p style="margin:0 0 12px;line-height:1.6">Nous aimerions mesurer l'audience du site (<strong>Google Analytics</strong>, données anonymisées) pour l'améliorer. Vous pouvez refuser sans conséquence. <a href="politique-confidentialite.html" style="color:var(--p);text-decoration:underline;text-decoration-thickness:1px">En savoir plus</a></p>
   <div class="cookie-btns">
     <button type="button" onclick="c2lConsent('no')" style="background:none;border:1px solid rgba(0,0,0,.15);color:var(--text-mid);padding:8px 18px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Continuer sans accepter</button>
-    <button type="button" onclick="c2lConsent('yes')" style="background:var(--s);color:#101322;border:none;padding:8px 20px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Accepter</button>
+    <button type="button" onclick="c2lConsent('yes')" style="background:var(--s);color:#101322;border:2px solid #7c5af0;padding:8px 20px;border-radius:var(--rpill);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit">Accepter</button>
   </div>
 </div>
 
