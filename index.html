@@ -749,6 +749,30 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .founders-card .bp{position:relative;z-index:1}
 .founders-note{position:relative;z-index:1;font-size:.74rem;color:rgba(255,255,255,.38);margin-top:16px}
 @media(max-width:640px){.founders-card{padding:44px 24px}}
+
+/*──────────────────────────────────────────────
+  COMPARATIF — nous vs les alternatives, section nuit
+──────────────────────────────────────────────*/
+.vs-sec{background:var(--bg-dark);position:relative;overflow:hidden}
+.vs-sec::before{content:'';position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(124,90,240,.25),transparent 70%);filter:blur(40px);pointer-events:none}
+.vs-sec .eyebrow{color:#c4b5fd}
+.vs-sec .sec-title{color:#fff}
+.vs-sec .sec-sub{color:rgba(255,255,255,.6)}
+.vs-scroll{overflow-x:auto;margin-top:48px;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.vs-table{width:100%;min-width:720px;border-collapse:separate;border-spacing:0;font-size:.88rem}
+.vs-table th{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.85);padding:16px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,.12)}
+.vs-table th:first-child{text-align:left;color:rgba(255,255,255,.5);font-weight:500}
+.vs-table td{padding:13px 14px;text-align:center;color:rgba(255,255,255,.55);border-bottom:1px solid rgba(255,255,255,.06);line-height:1.5}
+.vs-table td:first-child{text-align:left;color:rgba(255,255,255,.78);font-weight:500}
+.vs-yes{color:#d6ff3f;font-weight:800}
+.vs-no{color:rgba(255,255,255,.28)}
+.vs-mid{color:rgba(255,255,255,.45);font-size:.8rem}
+.vs-table .vs-hl{background:rgba(124,90,240,.14);border-left:1.5px solid rgba(214,255,63,.5);border-right:1.5px solid rgba(214,255,63,.5)}
+.vs-table th.vs-hl{background:rgba(124,90,240,.22);border-top:1.5px solid rgba(214,255,63,.5);border-radius:14px 14px 0 0;color:#fff}
+.vs-table tr:last-child td.vs-hl{border-bottom:1.5px solid rgba(214,255,63,.5);border-radius:0 0 14px 14px}
+.vs-tag{display:inline-block;font-size:.58rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:linear-gradient(90deg,#a78bfa,#d6ff3f);color:#101322;padding:3px 10px;border-radius:var(--rpill);margin-top:5px}
+.vs-note{text-align:center;font-size:.76rem;color:rgba(255,255,255,.35);margin-top:22px}
+
 /* Lead magnet — free 48h audit card */
 .audit-sec{padding-top:0}
 .audit-card{position:relative;background:linear-gradient(135deg,rgba(124,90,240,.07),rgba(214,255,63,.06));border:1.5px solid rgba(124,90,240,.18);border-radius:var(--r2xl);padding:56px 48px;text-align:center;overflow:hidden}
@@ -1534,6 +1558,43 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━
+     COMPARATIF — pourquoi nous plutôt que les alternatives
+━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec vs-sec" aria-label="Comparatif des solutions">
+  <div class="wrap">
+    <div class="tc e3d-unfold">
+      <span class="eyebrow">Comparez avant de choisir</span>
+      <h2 class="sec-title">Toutes les solutions ne se valent pas.</h2>
+      <p class="sec-sub">Builder en ligne, freelance, grosse agence ou Click2Lead : voici honnêtement ce que chaque option inclut vraiment.</p>
+    </div>
+    <div class="vs-scroll rv">
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Builder DIY<br/><span style="font-weight:500;color:rgba(255,255,255,.4);font-size:.72rem">Wix, Framer…</span></th>
+            <th>Freelance</th>
+            <th>Agence classique</th>
+            <th class="vs-hl">Click2Lead<br/><span class="vs-tag">Notre approche</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Stratégie de conversion dédiée</td><td><span class="vs-no">✗</span></td><td><span class="vs-mid">Rarement</span></td><td><span class="vs-yes">✓</span></td><td class="vs-hl"><span class="vs-yes">✓</span></td></tr>
+          <tr><td>Copywriting professionnel inclus</td><td><span class="vs-no">✗</span></td><td><span class="vs-mid">En option</span></td><td><span class="vs-mid">En option</span></td><td class="vs-hl"><span class="vs-yes">✓</span></td></tr>
+          <tr><td>Design 100&nbsp;% sur mesure</td><td><span class="vs-no">✗ Templates</span></td><td><span class="vs-mid">Variable</span></td><td><span class="vs-yes">✓</span></td><td class="vs-hl"><span class="vs-yes">✓</span></td></tr>
+          <tr><td>Code source remis, zéro abonnement forcé</td><td><span class="vs-no">✗ Verrouillé</span></td><td><span class="vs-yes">✓</span></td><td><span class="vs-mid">Variable</span></td><td class="vs-hl"><span class="vs-yes">✓</span></td></tr>
+          <tr><td>Performance garantie (Lighthouse 90+)</td><td><span class="vs-no">✗</span></td><td><span class="vs-mid">Variable</span></td><td><span class="vs-mid">Variable</span></td><td class="vs-hl"><span class="vs-yes">✓ Contractuel</span></td></tr>
+          <tr><td>Délai de livraison garanti</td><td><span class="vs-mid">—</span></td><td><span class="vs-mid">Variable</span></td><td><span class="vs-no">Semaines</span></td><td class="vs-hl"><span class="vs-yes">✓ 10 jours</span></td></tr>
+          <tr><td>Prix d'entrée</td><td><span class="vs-mid">0–50&nbsp;€/mois à vie</span></td><td><span class="vs-mid">300–800&nbsp;€</span></td><td><span class="vs-mid">3&nbsp;000&nbsp;€ et plus</span></td><td class="vs-hl"><span class="vs-yes">590&nbsp;€ une fois</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="vs-note">Comparatif établi sur les pratiques courantes du marché français — détails complets dans notre <a href="prix-landing-page.html" style="color:#c4b5fd;text-decoration:underline">guide des prix</a>.</p>
   </div>
 </section>
 
