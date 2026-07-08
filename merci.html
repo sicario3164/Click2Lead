@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <link rel="icon" href="logo.png" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Merci — Click2Lead</title>
 <meta name="robots" content="noindex, nofollow"/>
@@ -67,9 +68,14 @@ a:hover{text-decoration:underline}
 .bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
 @keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 @media(prefers-reduced-motion:reduce){.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{animation:none}}
+
+/* Skip link — keyboard users jump straight to the content */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d6ff3f;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
+.skip-link:focus{left:0}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu</a>
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <div class="intro-loader" id="introLoader" aria-hidden="true">
@@ -77,7 +83,7 @@ a:hover{text-decoration:underline}
   <div class="intro-word">Click<span>2</span>Lead</div>
 </div>
 
-<div class="wrap" style="text-align:center;padding-top:96px">
+<div class="wrap" style="text-align:center;padding-top:96px" id="main">
   <div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,rgba(124,90,240,.12),rgba(214,255,63,.1));border:1.5px solid rgba(124,90,240,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;font-size:2rem" aria-hidden="true">✓</div>
   <h1 style="font-size:2.2rem;margin-bottom:14px">Message bien reçu !</h1>
   <p style="max-width:440px;margin:0 auto 10px">Merci de nous avoir écrit. Nous lisons chaque message personnellement et nous vous répondons <strong>sous 24h ouvrées</strong>, directement par email.</p>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" href="logo.png" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Page introuvable — Click2Lead</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:focus-visible{outline:3px solid #7c5af0;outline-offset:3px;border-radius:4px}
+::selection{background:#7c5af0;color:#fff}
+body{min-height:100vh;background:#0d0a1f;color:#fff;font-family:'DM Sans',-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:hidden;position:relative}
+.orb{position:absolute;border-radius:50%;filter:blur(50px);pointer-events:none}
+.o1{width:520px;height:520px;top:-160px;left:-120px;background:radial-gradient(circle,rgba(124,90,240,.35),transparent 70%)}
+.o2{width:560px;height:560px;bottom:-180px;right:-100px;background:radial-gradient(circle,rgba(214,255,63,.16),transparent 70%)}
+.grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1.5px,transparent 1.5px);background-size:30px 30px;pointer-events:none}
+.box{position:relative;max-width:560px}
+.box img{width:88px;height:88px;margin-bottom:26px;border-radius:22px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(4rem,14vw,7.5rem);font-weight:700;line-height:1;letter-spacing:-4px;background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shift 7s ease-in-out infinite;margin-bottom:14px}
+@keyframes shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){h1{animation:none}}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:12px}
+p{color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:32px;font-size:.98rem}
+.btn{display:inline-block;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:#101322;background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:shift 7s ease-in-out infinite;border:2px solid #7c5af0;padding:16px 34px;border-radius:9999px;text-decoration:none;transition:transform .22s,box-shadow .22s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(214,255,63,.35)}
+.alt{display:block;margin-top:18px;font-size:.85rem;color:rgba(255,255,255,.5)}
+.alt a{color:#c4b5fd;text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="orb o1" aria-hidden="true"></div>
+<div class="orb o2" aria-hidden="true"></div>
+<div class="grid" aria-hidden="true"></div>
+<div class="box">
+  <img src="apple-touch-icon.png" alt="" width="88" height="88"/>
+  <h1>404</h1>
+  <h2>Cette page a pris la fuite.</h2>
+  <p>L'adresse que vous cherchez n'existe pas ou a été déplacée. Pas de panique — tout ce qui compte est à un clic.</p>
+  <a class="btn" href="index.html">Retour à l'accueil →</a>
+  <span class="alt">Ou explorez <a href="realisations.html">nos réalisations</a> · <a href="ressources.html">nos guides</a></span>
+</div>
+</body>
+</html>

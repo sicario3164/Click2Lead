@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <link rel="icon" href="logo.png" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Landing Page ou Site Vitrine : Lequel Choisir ? — Click2Lead</title>
 <meta name="description" content="Landing page ou site vitrine ? Différences, cas d'usage, tableau de décision et erreurs courantes pour choisir le bon outil selon votre activité."/>
@@ -173,9 +174,14 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
 .bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
 @keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 @media(prefers-reduced-motion:reduce){.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{animation:none}}
+
+/* Skip link — keyboard users jump straight to the content */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d6ff3f;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
+.skip-link:focus{left:0}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu</a>
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <div class="intro-loader" id="introLoader" aria-hidden="true">
@@ -202,7 +208,7 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
 </nav>
 
 
-<header class="art-hero">
+<header class="art-hero" id="main">
   <div class="wrap">
     <span class="eyebrow">Guide · Stratégie</span>
     <h1>Landing page ou site vitrine : lequel choisir pour votre activité ?</h1>

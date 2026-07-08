@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <link rel="icon" href="logo.png" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Politique de confidentialité — Click2Lead</title>
 <meta name="description" content="Politique de confidentialité de Click2Lead : données collectées, usage, droits RGPD."/>
@@ -84,12 +85,17 @@ tr:nth-child(even) td{background:#f8f6ff}
 .bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
 @keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 @media(prefers-reduced-motion:reduce){.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{animation:none}}
+
+/* Skip link — keyboard users jump straight to the content */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d6ff3f;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
+.skip-link:focus{left:0}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Politique de confidentialité — Click2Lead","description":"Politique de confidentialité de Click2Lead : données collectées, usage, droits RGPD.","url":"https://click2lead.fr/politique-confidentialite","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"Click2Lead","url":"https://click2lead.fr"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://click2lead.fr/"},{"@type":"ListItem","position":2,"name":"Politique de confidentialité","item":"https://click2lead.fr/politique-confidentialite"}]}]}
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu</a>
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <div class="intro-loader" id="introLoader" aria-hidden="true">
@@ -97,7 +103,7 @@ tr:nth-child(even) td{background:#f8f6ff}
   <div class="intro-word">Click<span>2</span>Lead</div>
 </div>
 
-<div class="wrap">
+<div class="wrap" id="main">
   <a class="back" href="index.html">← Retour à Click2Lead</a>
   <h1>Politique de confidentialité</h1>
   <p class="updated">Dernière mise à jour : 7 juillet 2026</p>
