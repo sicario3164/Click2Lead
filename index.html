@@ -2108,18 +2108,20 @@ if(!noMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   magLoop();
 }
 
-/* ── Hero particle constellation (canvas, paused off-screen for perf) ── */
+/* ── Hero particle constellation — depth, twinkle and lime-lit connections around the pointer (paused off-screen) ── */
 const heroCanvas=document.getElementById('heroParticles');
 if(heroCanvas && !noMotion){
   const ctx=heroCanvas.getContext('2d');
   const heroSecForCanvas=document.querySelector('.hero-sec');
+  const isCoarse=window.matchMedia('(pointer:coarse)').matches;
   let pW=0,pH=0,dpr=Math.min(window.devicePixelRatio||1,2);
   let particles=[];
   let mouseX=-9999,mouseY=-9999;
-  let pRunning=false,pRAF=null;
-  const DENSITY=9000; // px² per particle
-  const MAX_DIST=130;
-  const MOUSE_DIST=170;
+  let pRunning=false,pRAF=null,pT=0;
+  const DENSITY=isCoarse?9000:6200;
+  const MAX_COUNT=isCoarse?55:90;
+  const MAX_DIST=125;
+  const MOUSE_DIST=200;
 
   const resizeCanvas=()=>{
     const r=heroSecForCanvas.getBoundingClientRect();
@@ -2127,46 +2129,77 @@ if(heroCanvas && !noMotion){
     heroCanvas.width=pW*dpr;heroCanvas.height=pH*dpr;
     heroCanvas.style.width=pW+'px';heroCanvas.style.height=pH+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
-    const count=Math.min(70,Math.round((pW*pH)/DENSITY));
-    particles=Array.from({length:count},()=>({
-      x:Math.random()*pW,y:Math.random()*pH,
-      vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,
-      r:Math.random()*1.6+1
-    }));
+    const count=Math.min(MAX_COUNT,Math.round((pW*pH)/DENSITY));
+    particles=Array.from({length:count},()=>{
+      const z=.35+Math.random()*.65; // depth layer: far (small, slow) → near (bright, fast)
+      return{
+        x:Math.random()*pW,y:Math.random()*pH,
+        vx:(Math.random()-.5)*.32*z,vy:(Math.random()-.5)*.32*z,
+        r:(Math.random()*1.5+.9)*z*1.4,z,
+        tw:Math.random()*Math.PI*2 // twinkle phase
+      };
+    });
   };
 
   const step=()=>{
+    pT+=.016;
     ctx.clearRect(0,0,pW,pH);
+    // parallax: the whole field shifts subtly against the pointer, more for near layers
+    const cx=pW/2,cy=pH/2;
+    const hasMouse=mouseX>-9000;
+    const pxOff=hasMouse?(mouseX-cx)*.012:0;
+    const pyOff=hasMouse?(mouseY-cy)*.012:0;
     for(const p of particles){
       p.x+=p.vx;p.y+=p.vy;
       if(p.x<0||p.x>pW)p.vx*=-1;
       if(p.y<0||p.y>pH)p.vy*=-1;
-      const dxm=p.x-mouseX,dym=p.y-mouseY;
-      const dm=Math.sqrt(dxm*dxm+dym*dym);
-      if(dm<70){const f=(70-dm)/70*.6;p.x+=dxm/dm*f;p.y+=dym/dm*f;}
+      p.dx=p.x+pxOff*p.z*4;
+      p.dy=p.y+pyOff*p.z*4;
+      const dxm=p.dx-mouseX,dym=p.dy-mouseY;
+      p.dm=Math.sqrt(dxm*dxm+dym*dym);
+      if(p.dm<70){const f=(70-p.dm)/70*.5;p.x+=dxm/p.dm*f;p.y+=dym/p.dm*f;}
     }
     for(let i=0;i<particles.length;i++){
+      const a=particles[i];
       for(let j=i+1;j<particles.length;j++){
-        const a=particles[i],b=particles[j];
-        const dx=a.x-b.x,dy=a.y-b.y;
+        const b=particles[j];
+        const dx=a.dx-b.dx,dy=a.dy-b.dy;
         const d=Math.sqrt(dx*dx+dy*dy);
         if(d<MAX_DIST){
-          ctx.strokeStyle=`rgba(167,139,250,${(1-d/MAX_DIST)*.38})`;
-          ctx.lineWidth=1;
-          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+          const base=(1-d/MAX_DIST)*.2*Math.min(a.z,b.z)*1.6;
+          // connections light up lime when both ends are near the pointer
+          const near=Math.max(0,1-Math.max(a.dm,b.dm)/MOUSE_DIST);
+          if(near>0){
+            ctx.strokeStyle=`rgba(214,255,63,${base+near*.4})`;
+          }else{
+            ctx.strokeStyle=`rgba(167,139,250,${base})`;
+          }
+          ctx.lineWidth=near>0?1.2:1;
+          ctx.beginPath();ctx.moveTo(a.dx,a.dy);ctx.lineTo(b.dx,b.dy);ctx.stroke();
         }
       }
-      const dxm=particles[i].x-mouseX,dym=particles[i].y-mouseY;
-      const dm=Math.sqrt(dxm*dxm+dym*dym);
-      if(dm<MOUSE_DIST){
-        ctx.strokeStyle=`rgba(214,255,63,${(1-dm/MOUSE_DIST)*.55})`;
+      if(a.dm<MOUSE_DIST){
+        ctx.strokeStyle=`rgba(214,255,63,${(1-a.dm/MOUSE_DIST)*.45})`;
         ctx.lineWidth=1;
-        ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(mouseX,mouseY);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(a.dx,a.dy);ctx.lineTo(mouseX,mouseY);ctx.stroke();
       }
     }
     for(const p of particles){
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(167,139,250,.65)';ctx.fill();
+      const tw=.72+Math.sin(pT*1.6+p.tw)*.28; // gentle twinkle
+      const lit=p.dm<MOUSE_DIST?(1-p.dm/MOUSE_DIST):0;
+      ctx.beginPath();ctx.arc(p.dx,p.dy,p.r+(lit*.8),0,Math.PI*2);
+      ctx.fillStyle=lit>0
+        ?`rgba(${Math.round(167+lit*47)},${Math.round(139+lit*116)},${Math.round(250-lit*187)},${(.45+lit*.5)*tw})`
+        :`rgba(167,139,250,${.55*p.z*tw+.12})`;
+      ctx.fill();
+    }
+    // soft glow where the pointer lives
+    if(hasMouse){
+      const g=ctx.createRadialGradient(mouseX,mouseY,0,mouseX,mouseY,90);
+      g.addColorStop(0,'rgba(214,255,63,.07)');
+      g.addColorStop(1,'rgba(214,255,63,0)');
+      ctx.fillStyle=g;
+      ctx.beginPath();ctx.arc(mouseX,mouseY,90,0,Math.PI*2);ctx.fill();
     }
     if(pRunning)pRAF=requestAnimationFrame(step);
   };
