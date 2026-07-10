@@ -2517,6 +2517,17 @@ if(canvas){
   let phi=0,width=0,globe=null,rState=0,interacting=null,movement=0;
   const onResize=()=>{width=canvas.offsetWidth;};
   window.addEventListener('resize',onResize,{passive:true});onResize();
+  const connections=[
+    {from:[43.4832,-1.5586],to:[40.7128,-74.006]},   // Bayonne → New York
+    {from:[43.4832,-1.5586],to:[35.6762,139.6503]},  // Bayonne → Tokyo
+    {from:[43.4832,-1.5586],to:[-23.5505,-46.6333]}, // Bayonne → São Paulo
+    {from:[48.8566,2.3522],to:[1.3521,103.8198]},    // Paris → Singapour
+    {from:[51.5074,-0.1278],to:[25.2048,55.2708]},   // Londres → Dubaï
+    {from:[40.7128,-74.006],to:[34.0522,-118.2437]}, // New York → Los Angeles
+    {from:[48.8566,2.3522],to:[40.7128,-74.006]},    // Paris → New York
+    {from:[35.6762,139.6503],to:[34.0522,-118.2437]},// Tokyo → Los Angeles
+    {from:[25.2048,55.2708],to:[1.3521,103.8198]},   // Dubaï → Singapour
+  ];
   const config={
     devicePixelRatio:dpr,phi:0,theta:0.25,dark:1,diffuse:1.3,
     mapSamples:16000,mapBrightness:6,mapBaseBrightness:0.05,
@@ -2535,15 +2546,17 @@ if(canvas){
       {location:[25.2048,55.2708],size:0.05},  // Dubaï
       {location:[34.0522,-118.2437],size:0.05},// Los Angeles
     ],
-    arcs:[
-      {from:[43.4832,-1.5586],to:[40.7128,-74.006]},   // Bayonne → New York
-      {from:[43.4832,-1.5586],to:[35.6762,139.6503]},  // Bayonne → Tokyo
-      {from:[43.4832,-1.5586],to:[-23.5505,-46.6333]}, // Bayonne → São Paulo
-      {from:[48.8566,2.3522],to:[1.3521,103.8198]},    // Paris → Singapour
-      {from:[51.5074,-0.1278],to:[25.2048,55.2708]},   // Londres → Dubaï
-      {from:[40.7128,-74.006],to:[34.0522,-118.2437]}, // New York → Los Angeles
-      {from:[48.8566,2.3522],to:[40.7128,-74.006]},    // Paris → New York
-    ],
+    arcs:connections,
+  };
+  // Animate the arcs: a sliding window of connections "fires" around the globe,
+  // like data pulses (cobe arcs are static, so we cycle them via globe.update).
+  let arcTimer=null,arcIdx=0;const ARC_WIN=4;
+  const cycleArcs=()=>{
+    if(!globe)return;
+    const active=[];
+    for(let k=0;k<ARC_WIN;k++)active.push(connections[(arcIdx+k)%connections.length]);
+    globe.update({arcs:active});
+    arcIdx=(arcIdx+1)%connections.length;
   };
   const build=()=>{
     if(globe||!width)return;
@@ -2553,8 +2566,9 @@ if(canvas){
       state.width=width*dpr;state.height=width*dpr;
     }});
     requestAnimationFrame(()=>{canvas.style.opacity='1';});
+    if(!reduce && !arcTimer)arcTimer=setInterval(cycleArcs,600);
   };
-  const teardown=()=>{if(globe){globe.destroy();globe=null;canvas.style.opacity='0';}};
+  const teardown=()=>{if(globe){globe.destroy();globe=null;canvas.style.opacity='0';}if(arcTimer){clearInterval(arcTimer);arcTimer=null;}};
   const setInteract=v=>{interacting=v;canvas.style.cursor=v?'grabbing':'grab';};
   const move=x=>{if(interacting!==null){const d=x-interacting;movement=d;rState=d/200;}};
   canvas.addEventListener('pointerdown',e=>setInteract(e.clientX-movement));
