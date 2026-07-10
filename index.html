@@ -1009,11 +1009,9 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 .journey-progress{height:3px;background:rgba(0,0,0,.06);border-radius:99px;margin-top:40px;overflow:hidden;max-width:640px;margin-left:auto;margin-right:auto}
 .journey-progress-bar{height:100%;width:0%;background:var(--gp);border-radius:99px}
 @media(min-width:901px){
-  /* The track is tall so the pane stays pinned (via JS fixed/absolute toggle — html/body's
-     overflow-x:hidden breaks native position:sticky) while steps light up in sequence */
-  .journey-track{height:160vh;position:relative}
-  .journey-sticky.is-fixed{position:fixed;top:84px;left:0;width:100%;z-index:2}
-  .journey-sticky.is-bottom{position:absolute;bottom:0;left:0;width:100%}
+  /* No pinning: section is normal height, steps reveal in a quick stagger when
+     the flow enters the viewport (see IntersectionObserver in JS). */
+  .journey-track{position:relative}
   .j-step{opacity:.32;transform:scale(.94);filter:grayscale(.65);transition:opacity .45s cubic-bezier(.4,0,.2,1),transform .45s cubic-bezier(.4,0,.2,1),filter .45s cubic-bezier(.4,0,.2,1)}
   .j-step.active{opacity:1;transform:scale(1);filter:grayscale(0)}
 }
@@ -2279,47 +2277,32 @@ window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('sc',window.scrollY>((document.querySelector('.hero-sec')||{}).offsetHeight||620)-76);
 });
 
-/* ── Journey scrollytelling (desktop: pinned steps light up as you scroll) ──
-   Native position:sticky is unreliable here because html/body carry
-   overflow-x:hidden (needed elsewhere to stop decorative elements causing
-   horizontal scroll), which turns them into a scroll container and breaks
-   sticky's containing-block math. Pin manually with fixed/absolute instead. */
-const journeyTrackEl=document.getElementById('journeyTrack');
-const journeyStickyEl=document.querySelector('.journey-sticky');
+/* ── Journey reveal (no scroll-jacking) ──
+   Previously the section pinned a pane and consumed ~2 screens of scroll to
+   light up the 4 steps one by one — poor UX (too many scroll notches to get
+   past it). Now the section is normal height and the 4 steps light up in a
+   quick stagger the moment the flow scrolls into view. Zero scroll captured. */
+const journeyFlowEl=document.getElementById('journeyFlow');
 const journeySteps=document.querySelectorAll('#journeyFlow .j-step');
 const journeyBarEl=document.getElementById('journeyProgressBar');
-if(journeyTrackEl && journeyStickyEl && journeySteps.length){
-  const NAV_OFFSET=84;
-  let jRAF=null;
-  const updateJourney=()=>{
-    jRAF=null;
-    if(!window.matchMedia('(min-width:901px)').matches){
-      journeyStickyEl.classList.remove('is-fixed','is-bottom');
-      journeySteps.forEach(el=>el.classList.add('active'));
-      if(journeyBarEl)journeyBarEl.style.width='100%';
-      return;
-    }
-    const trackRect=journeyTrackEl.getBoundingClientRect();
-    const stickyH=journeyStickyEl.offsetHeight;
-    if(trackRect.top>NAV_OFFSET){
-      journeyStickyEl.classList.remove('is-fixed','is-bottom');
-    }else if(trackRect.bottom-stickyH<NAV_OFFSET){
-      journeyStickyEl.classList.remove('is-fixed');
-      journeyStickyEl.classList.add('is-bottom');
-    }else{
-      journeyStickyEl.classList.remove('is-bottom');
-      journeyStickyEl.classList.add('is-fixed');
-    }
-    const total=trackRect.height-window.innerHeight;
-    const scrolled=Math.min(Math.max(-trackRect.top,0),Math.max(total,0));
-    const progress=total>0?scrolled/total:0;
-    const idx=Math.min(journeySteps.length-1,Math.floor(progress*journeySteps.length));
-    journeySteps.forEach((el,i)=>el.classList.toggle('active',i<=idx));
-    if(journeyBarEl)journeyBarEl.style.width=(progress*100)+'%';
-  };
-  window.addEventListener('scroll',()=>{if(!jRAF)jRAF=requestAnimationFrame(updateJourney);},{passive:true});
-  window.addEventListener('resize',()=>{if(!jRAF)jRAF=requestAnimationFrame(updateJourney);});
-  updateJourney();
+if(journeyFlowEl && journeySteps.length){
+  if(noMotion || !window.matchMedia('(min-width:901px)').matches){
+    journeySteps.forEach(el=>el.classList.add('active'));
+    if(journeyBarEl)journeyBarEl.style.width='100%';
+  }else{
+    const jio=new IntersectionObserver((entries,obs)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting)return;
+        journeySteps.forEach((el,i)=>setTimeout(()=>el.classList.add('active'),i*240));
+        if(journeyBarEl){
+          journeyBarEl.style.transition='width 1.1s cubic-bezier(.4,0,.2,1)';
+          requestAnimationFrame(()=>{journeyBarEl.style.width='100%';});
+        }
+        obs.disconnect();
+      });
+    },{threshold:.35});
+    jio.observe(journeyFlowEl);
+  }
 }
 
 /* ── VyraShop bento card: cycle real screenshots on hover (stands in for video) ── */
