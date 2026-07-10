@@ -2507,7 +2507,7 @@ document.addEventListener('keydown',e=>{
     closeContactModal();
 });
 </script>
-<!-- Hero night-Earth globe (Three.js, vendored locally) -->
+<!-- Hero globe (Three.js, vendored locally) — illustrated grid globe, brand colours -->
 <script type="module">
 import * as THREE from './three.bundle.js';
 const canvas=document.getElementById('heroGlobe');
@@ -2517,23 +2517,33 @@ if(canvas){
   const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setPixelRatio(dpr);
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(34,1,0.1,100);camera.position.z=4.0;
-  const group=new THREE.Group();scene.add(group);group.rotation.x=0.5; // tilt so the northern hemisphere faces us
-  const tex=new THREE.TextureLoader().load('./earth-night.jpg');
-  tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=4;
-  const earth=new THREE.Mesh(new THREE.SphereGeometry(1,72,72),new THREE.MeshBasicMaterial({map:tex}));
-  let ry=4.2; // start oriented on Europe
-  earth.rotation.y=ry;group.add(earth);
-  // Thin purple atmospheric rim (fresnel on a slightly larger back-side sphere).
-  const atmMat=new THREE.ShaderMaterial({uniforms:{c:{value:new THREE.Color(0x7c5af0)}},
-    vertexShader:'varying vec3 vN;varying vec3 vP;void main(){vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);vP=mv.xyz;gl_Position=projectionMatrix*mv;}',
-    fragmentShader:'varying vec3 vN;varying vec3 vP;uniform vec3 c;void main(){vec3 v=normalize(-vP);float f=pow(1.0-max(dot(vN,v),0.0),4.0);gl_FragColor=vec4(c,f*0.55);}',
-    side:THREE.BackSide,blending:THREE.AdditiveBlending,transparent:true,depthWrite:false});
-  group.add(new THREE.Mesh(new THREE.SphereGeometry(1.08,48,48),atmMat));
+  const camera=new THREE.PerspectiveCamera(32,1,0.1,100);camera.position.z=4.2;
+  const tiltG=new THREE.Group();scene.add(tiltG);tiltG.rotation.x=0.42; // northern hemisphere toward us
+  const spin=new THREE.Group();tiltG.add(spin);
+  // Land/ocean mask (land = black, ocean = white). Continents drawn as flat
+  // lavender shapes over a deep-purple ocean with a glassy edge gradient.
+  const mask=new THREE.TextureLoader().load('./earth-mask.png');mask.colorSpace=THREE.NoColorSpace;
+  const mat=new THREE.ShaderMaterial({uniforms:{mask:{value:mask},
+      uLand:{value:new THREE.Vector3(0.66,0.58,0.96)},
+      uOceanC:{value:new THREE.Vector3(0.16,0.12,0.42)},
+      uOceanE:{value:new THREE.Vector3(0.05,0.04,0.16)}},
+    vertexShader:'varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vUv=uv;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);vP=mv.xyz;gl_Position=projectionMatrix*mv;}',
+    fragmentShader:'uniform sampler2D mask;uniform vec3 uLand,uOceanC,uOceanE;varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){float water=texture2D(mask,vUv).r;vec3 v=normalize(-vP);float ndv=max(dot(normalize(vN),v),0.0);vec3 ocean=mix(uOceanE,uOceanC,pow(ndv,0.8));vec3 land=uLand*mix(0.55,1.0,pow(ndv,0.7));float isLand=1.0-smoothstep(0.4,0.6,water);vec3 col=mix(ocean,land,isLand);gl_FragColor=vec4(col,1.0);}'});
+  spin.add(new THREE.Mesh(new THREE.SphereGeometry(1,96,96),mat));
+  // Latitude/longitude grid
+  const pts=[],seg=120;
+  for(let lat=-60;lat<=60;lat+=30){const th=lat*Math.PI/180,r=Math.cos(th),y=Math.sin(th);
+    for(let i=0;i<seg;i++){const a=i/seg*2*Math.PI,a2=(i+1)/seg*2*Math.PI;pts.push(r*Math.cos(a),y,r*Math.sin(a),r*Math.cos(a2),y,r*Math.sin(a2));}}
+  for(let lon=0;lon<360;lon+=30){const ph=lon*Math.PI/180;
+    for(let i=0;i<seg;i++){const l=(-90+i/seg*180)*Math.PI/180,l2=(-90+(i+1)/seg*180)*Math.PI/180;
+      pts.push(Math.cos(l)*Math.cos(ph),Math.sin(l),Math.cos(l)*Math.sin(ph),Math.cos(l2)*Math.cos(ph),Math.sin(l2),Math.cos(l2)*Math.sin(ph));}}
+  const gg=new THREE.BufferGeometry();gg.setAttribute('position',new THREE.Float32BufferAttribute(pts,3));
+  const grid=new THREE.LineSegments(gg,new THREE.LineBasicMaterial({color:0x9f88ee,transparent:true,opacity:0.26}));
+  grid.scale.setScalar(1.004);spin.add(grid);
   const resize=()=>{const w=canvas.offsetWidth||1;renderer.setSize(w,w,false);};
   window.addEventListener('resize',resize,{passive:true});resize();
   // Drag to spin
-  let dragging=false,lastX=0;
+  let ry=4.2,dragging=false,lastX=0;
   canvas.style.cursor='grab';
   canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;canvas.style.cursor='grabbing';});
   window.addEventListener('pointerup',()=>{dragging=false;canvas.style.cursor='grab';});
@@ -2541,8 +2551,8 @@ if(canvas){
   let raf=null,shown=false;
   const loop=()=>{
     raf=requestAnimationFrame(loop);
-    if(!dragging && !reduce)ry+=0.0022; // slow, keeps it alive without spinning away fast
-    earth.rotation.y=ry;
+    if(!dragging && !reduce)ry+=0.0022; // slow, alive but not dizzying
+    spin.rotation.y=ry;
     renderer.render(scene,camera);
     if(!shown){shown=true;canvas.style.opacity='1';}
   };
