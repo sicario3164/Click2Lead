@@ -30,7 +30,7 @@ html{scroll-behavior:smooth;overflow-x:hidden;scrollbar-color:#8b6ff2 #f7f6ff;sc
 .intro-loader{position:fixed;inset:0;z-index:99999;background:#0d0a1f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:1;visibility:visible;transition:opacity .5s ease,visibility 0s linear 0s}
 .intro-logo{opacity:0;transform:scale(.7);border-radius:10px;animation:introLogoIn .6s .1s cubic-bezier(.16,1,.3,1) forwards}
 .intro-word{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.3px;color:#fff;opacity:0;animation:introWordIn .5s .35s ease forwards}
-.intro-word span{background:linear-gradient(135deg,#7c5af0,#d6ff3f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.intro-word span{background:linear-gradient(135deg,#7c5af0,#d8b06a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @keyframes introLogoIn{to{opacity:1;transform:scale(1)}}
 @keyframes introWordIn{to{opacity:1}}
 .intro-loader.hide{opacity:0;pointer-events:none}
@@ -64,15 +64,15 @@ a:hover{text-decoration:underline}
 .consent-btns{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
 .consent-btns button{font-family:inherit;font-weight:700;font-size:.78rem;border-radius:9999px;padding:9px 18px;cursor:pointer}
 .cb-no{background:none;border:1px solid rgba(0,0,0,.15);color:#525970}
-.cb-yes{background:#d6ff3f;border:2px solid #7c5af0;color:#101322}
+.cb-yes{background:#d8b06a;border:2px solid #7c5af0;color:#101322}
 
 /* CTA — the hero's animated violet→lime sweep, applied to action buttons */
-.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
+.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d8b06a,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
 @keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 @media(prefers-reduced-motion:reduce){.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{animation:none}}
 
 /* Skip link — keyboard users jump straight to the content */
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d6ff3f;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d8b06a;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
 .skip-link:focus{left:0}
 </style>
 </head>
@@ -86,7 +86,7 @@ a:hover{text-decoration:underline}
 </div>
 
 <div class="wrap" style="text-align:center;padding-top:96px" id="main">
-  <div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,rgba(124,90,240,.12),rgba(214,255,63,.1));border:1.5px solid rgba(124,90,240,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;font-size:2rem" aria-hidden="true">✓</div>
+  <div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,rgba(124,90,240,.12),rgba(216,176,106,.1));border:1.5px solid rgba(124,90,240,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;font-size:2rem" aria-hidden="true">✓</div>
   <h1 style="font-size:2.2rem;margin-bottom:14px">Message bien reçu !</h1>
   <p style="max-width:440px;margin:0 auto 10px">Merci de nous avoir écrit. Nous lisons chaque message personnellement et nous vous répondons <strong>sous 24h ouvrées</strong>, directement par email.</p>
   <p style="max-width:440px;margin:0 auto 36px;color:#6b6478;font-size:.9rem">Pensez à vérifier vos spams si vous ne voyez rien arriver — et ajoutez contact@click2lead.fr à vos contacts.</p>
