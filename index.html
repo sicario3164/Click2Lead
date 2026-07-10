@@ -274,8 +274,8 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
 .bm-ring::before{background:#131029}
 .bm-bar{background:rgba(167,139,250,.22)}
 .h-vis-glow{background:radial-gradient(ellipse,rgba(124,90,240,.45) 0%,rgba(214,255,63,.28) 45%,transparent 72%);filter:blur(38px);width:540px;height:430px}
-/* Interactive WebGL globe (cobe) — replaces the browser mockup. Brand colours,
-   "Click2Lead" set large behind it. Rendered only while the hero is on-screen
+/* Interactive night-Earth globe (Three.js) — real NASA city-lights texture on a
+   sphere, oriented on Europe. Rendered only while the hero is on-screen
    (IntersectionObserver in the module script) so it costs nothing on scroll. */
 .h-globe-vis{max-width:560px}
 .globe-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:visible}
@@ -2507,79 +2507,51 @@ document.addEventListener('keydown',e=>{
     closeContactModal();
 });
 </script>
-<!-- Hero interactive globe (cobe, vendored locally) -->
+<!-- Hero night-Earth globe (Three.js, vendored locally) -->
 <script type="module">
-import createGlobe from './cobe.esm.js';
+import * as THREE from './three.bundle.js';
 const canvas=document.getElementById('heroGlobe');
 if(canvas){
   const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   const dpr=Math.min(window.devicePixelRatio||1,2);
-  let phi=0,width=0,globe=null,rState=0,interacting=null,movement=0;
-  const onResize=()=>{width=canvas.offsetWidth;};
-  window.addEventListener('resize',onResize,{passive:true});onResize();
-  const connections=[
-    {from:[43.4832,-1.5586],to:[40.7128,-74.006]},   // Bayonne → New York
-    {from:[43.4832,-1.5586],to:[35.6762,139.6503]},  // Bayonne → Tokyo
-    {from:[43.4832,-1.5586],to:[-23.5505,-46.6333]}, // Bayonne → São Paulo
-    {from:[48.8566,2.3522],to:[1.3521,103.8198]},    // Paris → Singapour
-    {from:[51.5074,-0.1278],to:[25.2048,55.2708]},   // Londres → Dubaï
-    {from:[40.7128,-74.006],to:[34.0522,-118.2437]}, // New York → Los Angeles
-    {from:[48.8566,2.3522],to:[40.7128,-74.006]},    // Paris → New York
-    {from:[35.6762,139.6503],to:[34.0522,-118.2437]},// Tokyo → Los Angeles
-    {from:[25.2048,55.2708],to:[1.3521,103.8198]},   // Dubaï → Singapour
-  ];
-  const config={
-    devicePixelRatio:dpr,phi:0,theta:0.25,dark:1,diffuse:1.3,
-    mapSamples:16000,mapBrightness:6,mapBaseBrightness:0.05,
-    baseColor:[0.13,0.11,0.28],
-    markerColor:[214/255,255/255,63/255],
-    glowColor:[0.32,0.26,0.55],
-    arcColor:[214/255,255/255,63/255],arcWidth:0.5,arcHeight:0.42,
-    markers:[
-      {location:[43.4832,-1.5586],size:0.08}, // Bayonne / Pays Basque
-      {location:[48.8566,2.3522],size:0.05},   // Paris
-      {location:[40.7128,-74.006],size:0.06},  // New York
-      {location:[51.5074,-0.1278],size:0.05},  // Londres
-      {location:[35.6762,139.6503],size:0.06}, // Tokyo
-      {location:[-23.5505,-46.6333],size:0.05},// São Paulo
-      {location:[1.3521,103.8198],size:0.05},  // Singapour
-      {location:[25.2048,55.2708],size:0.05},  // Dubaï
-      {location:[34.0522,-118.2437],size:0.05},// Los Angeles
-    ],
-    arcs:connections,
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(dpr);
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(34,1,0.1,100);camera.position.z=4.0;
+  const group=new THREE.Group();scene.add(group);group.rotation.x=0.5; // tilt so the northern hemisphere faces us
+  const tex=new THREE.TextureLoader().load('./earth-night.jpg');
+  tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=4;
+  const earth=new THREE.Mesh(new THREE.SphereGeometry(1,72,72),new THREE.MeshBasicMaterial({map:tex}));
+  let ry=4.2; // start oriented on Europe
+  earth.rotation.y=ry;group.add(earth);
+  // Thin purple atmospheric rim (fresnel on a slightly larger back-side sphere).
+  const atmMat=new THREE.ShaderMaterial({uniforms:{c:{value:new THREE.Color(0x7c5af0)}},
+    vertexShader:'varying vec3 vN;varying vec3 vP;void main(){vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);vP=mv.xyz;gl_Position=projectionMatrix*mv;}',
+    fragmentShader:'varying vec3 vN;varying vec3 vP;uniform vec3 c;void main(){vec3 v=normalize(-vP);float f=pow(1.0-max(dot(vN,v),0.0),4.0);gl_FragColor=vec4(c,f*0.55);}',
+    side:THREE.BackSide,blending:THREE.AdditiveBlending,transparent:true,depthWrite:false});
+  group.add(new THREE.Mesh(new THREE.SphereGeometry(1.08,48,48),atmMat));
+  const resize=()=>{const w=canvas.offsetWidth||1;renderer.setSize(w,w,false);};
+  window.addEventListener('resize',resize,{passive:true});resize();
+  // Drag to spin
+  let dragging=false,lastX=0;
+  canvas.style.cursor='grab';
+  canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;canvas.style.cursor='grabbing';});
+  window.addEventListener('pointerup',()=>{dragging=false;canvas.style.cursor='grab';});
+  window.addEventListener('pointermove',e=>{if(dragging){ry+=(e.clientX-lastX)*0.006;lastX=e.clientX;}});
+  let raf=null,shown=false;
+  const loop=()=>{
+    raf=requestAnimationFrame(loop);
+    if(!dragging && !reduce)ry+=0.0022; // slow, keeps it alive without spinning away fast
+    earth.rotation.y=ry;
+    renderer.render(scene,camera);
+    if(!shown){shown=true;canvas.style.opacity='1';}
   };
-  // Animate the arcs: a sliding window of connections "fires" around the globe,
-  // like data pulses (cobe arcs are static, so we cycle them via globe.update).
-  let arcTimer=null,arcIdx=0;const ARC_WIN=4;
-  const cycleArcs=()=>{
-    if(!globe)return;
-    const active=[];
-    for(let k=0;k<ARC_WIN;k++)active.push(connections[(arcIdx+k)%connections.length]);
-    globe.update({arcs:active});
-    arcIdx=(arcIdx+1)%connections.length;
-  };
-  const build=()=>{
-    if(globe||!width)return;
-    globe=createGlobe(canvas,{...config,width:width*dpr,height:width*dpr,onRender:(state)=>{
-      if(interacting===null && !reduce)phi+=0.006;
-      state.phi=phi+rState;
-      state.width=width*dpr;state.height=width*dpr;
-    }});
-    requestAnimationFrame(()=>{canvas.style.opacity='1';});
-    if(!reduce && !arcTimer)arcTimer=setInterval(cycleArcs,600);
-  };
-  const teardown=()=>{if(globe){globe.destroy();globe=null;canvas.style.opacity='0';}if(arcTimer){clearInterval(arcTimer);arcTimer=null;}};
-  const setInteract=v=>{interacting=v;canvas.style.cursor=v?'grabbing':'grab';};
-  const move=x=>{if(interacting!==null){const d=x-interacting;movement=d;rState=d/200;}};
-  canvas.addEventListener('pointerdown',e=>setInteract(e.clientX-movement));
-  canvas.addEventListener('pointerup',()=>setInteract(null));
-  canvas.addEventListener('pointerout',()=>setInteract(null));
-  canvas.addEventListener('mousemove',e=>move(e.clientX));
-  canvas.addEventListener('touchmove',e=>{if(e.touches[0])move(e.touches[0].clientX);},{passive:true});
-  // Render only while the hero is visible — pauses the globe on scroll (perf).
+  const start=()=>{if(!raf)loop();};
+  const stop=()=>{if(raf){cancelAnimationFrame(raf);raf=null;}};
+  // Render only while the hero is on screen — pauses on scroll (perf).
   if('IntersectionObserver' in window){
-    new IntersectionObserver(es=>{es.forEach(en=>en.isIntersecting?build():teardown());},{threshold:0.01}).observe(canvas);
-  }else{build();}
+    new IntersectionObserver(es=>{es.forEach(en=>en.isIntersecting?start():stop());},{threshold:0.01}).observe(canvas);
+  }else{start();}
 }
 </script>
 </body>
