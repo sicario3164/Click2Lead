@@ -36,8 +36,8 @@
 :root{
   --bg:#ffffff;--bg-soft:#f7f6ff;--bg-mid:#f0effe;--bg-dark:#0d0a1f;
   --text:#0f0e1a;--text-mid:#525970;--text-light:#9ba5b8;
-  --p:#7c5af0;--s:#d8b06a;--rose:#8b5cf6;--green:#a78bfa;
-  --gp:linear-gradient(135deg,#7c5af0,#d8b06a);
+  --p:#7c5af0;--s:#d6ff3f;--rose:#8b5cf6;--green:#a78bfa;
+  --gp:linear-gradient(135deg,#7c5af0,#d6ff3f);
   --bord:rgba(139,92,246,.09);--bord-m:rgba(139,92,246,.18);
   --sh-md:0 8px 36px rgba(0,0,0,.1),0 2px 10px rgba(0,0,0,.05);
   --sh-lg:0 24px 70px rgba(0,0,0,.12),0 8px 28px rgba(0,0,0,.06);
@@ -66,7 +66,7 @@ body{
     radial-gradient(circle,rgba(124,90,240,.075),transparent 60%),
     radial-gradient(circle,rgba(167,139,250,.05),transparent 55%),
     radial-gradient(circle,rgba(139,92,246,.04),transparent 60%),
-    radial-gradient(circle,rgba(216,176,106,.05),transparent 60%);
+    radial-gradient(circle,rgba(214,255,63,.05),transparent 60%);
   background-repeat:no-repeat;
   background-size:900px 700px,650px 550px,550px 500px,500px 450px;
   background-position:15% 0%,90% 8%,80% 92%,10% 85%;
@@ -112,7 +112,7 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .nav-r{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
 .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:var(--rpill);font-family:inherit;font-weight:700;cursor:pointer;transition:all .22s;white-space:nowrap;line-height:1}
 .bp{background:var(--s);color:#101322;border:2px solid #7c5af0;padding:13px 26px;font-size:.9rem;box-shadow:var(--sh-p)}
-.bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(216,176,106,.42)}
+.bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(214,255,63,.42)}
 @media(max-width:960px){.nav-lks{display:none}}
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;transition:background .2s;margin-left:6px}
 .nav-burger:hover{background:var(--bg-soft)}
@@ -130,7 +130,7 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .proj-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(108,92,231,.06) 1.5px,transparent 1.5px);background-size:30px 30px}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
 .ho1{width:650px;height:500px;top:-180px;left:-80px;background:radial-gradient(circle,rgba(108,92,231,.14),transparent 65%)}
-.ho2{width:500px;height:400px;top:-80px;right:-60px;background:radial-gradient(circle,rgba(216,176,106,.1),transparent 65%)}
+.ho2{width:500px;height:400px;top:-80px;right:-60px;background:radial-gradient(circle,rgba(214,255,63,.1),transparent 65%)}
 .proj-hero-in{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto;padding:0 24px}
 .back-link{display:inline-flex;align-items:center;gap:7px;color:var(--text-mid);font-size:.82rem;font-weight:500;margin-bottom:28px;transition:color .18s}
 .back-link:hover{color:var(--text)}
@@ -199,7 +199,7 @@ nav.sc{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 rgba(255,255,25
 .cg1{width:600px;height:380px;top:-100px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(108,92,231,.24),transparent 65%)}
 .proj-cta-in{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:0 24px}
 .proj-cta-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px;line-height:1.12}
-.proj-cta-h span{background:linear-gradient(135deg,#A78BFA,#d8b06a,#d8b06a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.proj-cta-h span{background:linear-gradient(135deg,#A78BFA,#d6ff3f,#d6ff3f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .proj-cta-sub{font-size:.95rem;color:rgba(255,255,255,.45);margin-bottom:30px;line-height:1.7}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padding:40px 0 24px}
@@ -241,15 +241,15 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
 .consent-btns{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
 .consent-btns button{font-family:inherit;font-weight:700;font-size:.78rem;border-radius:9999px;padding:9px 18px;cursor:pointer}
 .cb-no{background:none;border:1px solid rgba(0,0,0,.15);color:#525970}
-.cb-yes{background:#d8b06a;border:2px solid #7c5af0;color:#101322}
+.cb-yes{background:#d6ff3f;border:2px solid #7c5af0;color:#101322}
 
 /* CTA — the hero's animated violet→lime sweep, applied to action buttons */
-.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d8b06a,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
+.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{background:linear-gradient(90deg,#a78bfa,#d6ff3f,#a78bfa);background-size:300% 100%;animation:ctaShift 7s ease-in-out infinite}
 @keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 @media(prefers-reduced-motion:reduce){.bp,.pr-btn-p,.cf-submit,.modal-phone-btn,.cta-card-btn,.cb-yes{animation:none}}
 
 /* Skip link — keyboard users jump straight to the content */
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d8b06a;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d6ff3f;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
 .skip-link:focus{left:0}
 </style>
 <script type="application/ld+json">
@@ -364,7 +364,7 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
         <div class="id-card-t">Palette de couleurs</div>
         <div class="palette-row">
           <div><div class="pal-swatch" style="background:#7c5af0"></div><div class="pal-label">#7c5af0</div></div>
-          <div><div class="pal-swatch" style="background:#d8b06a"></div><div class="pal-label">#d8b06a</div></div>
+          <div><div class="pal-swatch" style="background:#d6ff3f"></div><div class="pal-label">#d6ff3f</div></div>
           <div><div class="pal-swatch" style="background:#8b5cf6"></div><div class="pal-label">#8b5cf6</div></div>
           <div><div class="pal-swatch" style="background:#a78bfa"></div><div class="pal-label">#a78bfa</div></div>
           <div><div class="pal-swatch" style="background:#0d0a1f"></div><div class="pal-label">#0d0a1f</div></div>
@@ -380,7 +380,7 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
         <p style="font-size:.81rem;color:var(--text-mid);line-height:1.68;margin-bottom:12px">Un fond clair et aéré, structuré par un dégradé violet → corail signature et des respirations lavande entre les sections. Le contraste profond (#0d0a1f) n'intervient qu'aux moments clés — pied de page, appel à l'action final — pour ponctuer le parcours sans jamais l'alourdir.</p>
         <div style="display:flex;flex-wrap:wrap;gap:7px">
           <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(124,90,240,.1);border:1px solid rgba(124,90,240,.2);color:#A78BFA">Clarté premium</span>
-          <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(216,176,106,.18);border:1px solid rgba(163,201,47,.4);color:#5f7a00">Gradient accents</span>
+          <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(214,255,63,.18);border:1px solid rgba(163,201,47,.4);color:#5f7a00">Gradient accents</span>
           <span style="font-size:.66rem;font-weight:700;padding:4px 11px;border-radius:9999px;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);color:#a78bfa">Glass morphism</span>
         </div>
       </div>
