@@ -268,41 +268,14 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
 .bm-ring::before{background:#131029}
 .bm-bar{background:rgba(167,139,250,.22)}
 .h-vis-glow{background:radial-gradient(ellipse,rgba(124,90,240,.45) 0%,rgba(214,255,63,.28) 45%,transparent 72%);filter:blur(38px);width:540px;height:430px}
-/* "Click → Lead" concept demo inside the browser frame: a cursor clicks the CTA
-   and a "lead captured" toast appears — dramatising the brand promise. Pure CSS,
-   transform/opacity only (cheap), freezes on the end-state under reduced-motion. */
-.bm-body.bm-demo{position:relative;padding:0;aspect-ratio:16/10.4;overflow:hidden;background:linear-gradient(160deg,#171334,#0f0c24)}
-.dm-page{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:11px;padding:0 clamp(22px,6%,38px)}
-.dm-line{border-radius:6px;display:block}
-.dm-title{height:15px;width:70%;background:#fff;opacity:.92}
-.dm-title2{height:15px;width:48%;background:#fff;opacity:.92}
-.dm-sub{height:8px;width:78%;background:rgba(255,255,255,.26)}
-.dm-sub.short{width:56%}
-.dm-cta-wrap{position:relative;align-self:flex-start;margin-top:12px}
-.dm-cta{position:relative;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.82rem;color:#101322;background:var(--s);border:none;padding:10px 22px;border-radius:999px;box-shadow:0 8px 22px rgba(214,255,63,.32);cursor:default;animation:dmCta 4.8s ease-in-out infinite}
-.dm-cta::after{content:'';position:absolute;inset:0;border-radius:999px;border:2px solid var(--s);opacity:0;pointer-events:none;animation:dmRipple 4.8s ease-out infinite}
-@keyframes dmCta{0%,38%{transform:scale(1)}45%{transform:scale(.93)}54%{transform:scale(1.05)}64%,100%{transform:scale(1)}}
-@keyframes dmRipple{0%,40%{transform:scale(1);opacity:0}47%{opacity:.7}72%{transform:scale(1.85);opacity:0}100%{opacity:0}}
-.dm-cursor{position:absolute;right:-4px;bottom:-12px;width:22px;height:22px;z-index:6;filter:drop-shadow(0 2px 4px rgba(0,0,0,.55));animation:dmCursor 4.8s ease-in-out infinite}
-.dm-cursor svg{width:100%;height:100%;display:block;fill:#fff;stroke:#131029;stroke-width:1}
-@keyframes dmCursor{
-  0%{transform:translate(120px,86px);opacity:0}
-  12%{opacity:1}
-  38%{transform:translate(0,0)}
-  45%{transform:translate(0,3px)}
-  54%{transform:translate(0,0)}
-  82%{transform:translate(0,0);opacity:1}
-  94%{transform:translate(22px,26px);opacity:0}
-  100%{opacity:0}
-}
-.dm-toast{position:absolute;left:50%;bottom:15px;display:flex;align-items:center;gap:8px;background:rgba(6,4,18,.92);border:1px solid rgba(214,255,63,.4);color:#fff;font-size:.72rem;font-weight:600;padding:7px 13px;border-radius:999px;white-space:nowrap;opacity:0;transform:translateX(-50%) translateY(14px);animation:dmToast 4.8s ease-in-out infinite}
-.dm-check{display:inline-flex;width:16px;height:16px;align-items:center;justify-content:center;border-radius:50%;background:var(--s);color:#101322;font-size:.66rem;font-weight:800}
-@keyframes dmToast{0%,50%{opacity:0;transform:translateX(-50%) translateY(14px)}58%{opacity:1;transform:translateX(-50%) translateY(0)}88%{opacity:1;transform:translateX(-50%) translateY(0)}96%,100%{opacity:0;transform:translateX(-50%) translateY(14px)}}
-@media(prefers-reduced-motion:reduce){
-  .dm-cta,.dm-cta::after,.dm-cursor,.dm-toast{animation:none}
-  .dm-cursor{transform:translate(0,0);opacity:1}
-  .dm-toast{opacity:1;transform:translateX(-50%) translateY(0)}
-}
+/* Interactive WebGL globe (cobe) — replaces the browser mockup. Brand colours,
+   "Click2Lead" set large behind it. Rendered only while the hero is on-screen
+   (IntersectionObserver in the module script) so it costs nothing on scroll. */
+.h-globe-vis{max-width:560px}
+.globe-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:visible}
+.globe-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;opacity:0;transition:opacity .6s ease;cursor:grab;contain:layout paint size;touch-action:pan-y;outline:none}
+.globe-canvas:active{cursor:grabbing}
+.globe-fade{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(circle at 50% 116%,rgba(13,10,31,.5),rgba(13,10,31,0) 40%)}
 
 
 
@@ -1193,23 +1166,6 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
   <div class="h-orb ho1"></div>
   <div class="h-orb ho2"></div>
   <div class="h-orb ho3"></div>
-  <svg class="h-signature" viewBox="0 0 920 920" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="sigRing" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#7c5af0" stop-opacity=".16"/>
-        <stop offset="100%" stop-color="#d6ff3f" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="sigTrail" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#7c5af0" stop-opacity=".5"/>
-        <stop offset="100%" stop-color="#d6ff3f" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <circle cx="460" cy="460" r="360" stroke="url(#sigRing)" stroke-width="1.5" stroke-dasharray="2 14" stroke-linecap="round"/>
-    <path d="M460 100 A360 360 0 0 1 783 559" stroke="url(#sigTrail)" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="783" cy="559" r="5" fill="#7c5af0" opacity=".55"/>
-    <circle cx="744" cy="640" r="3.5" fill="#d6ff3f" opacity=".4"/>
-    <circle cx="690" cy="704" r="2.5" fill="#d6ff3f" opacity=".28"/>
-  </svg>
   <canvas id="heroParticles" aria-hidden="true"></canvas>
   <div class="hero-in">
     <!-- Left -->
@@ -1233,26 +1189,11 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
     </div>
     <!-- Right: browser mockup -->
     <div class="h-right rvr">
-      <div class="h-vis">
+      <div class="h-vis h-globe-vis">
         <div class="h-vis-glow"></div>
-        <div class="bm">
-          <div class="bm-top">
-            <div class="bm-ds"><span class="bm-d dr"></span><span class="bm-d dy"></span><span class="bm-d dg"></span></div>
-            <div class="bm-url">votre-landing.fr</div>
-          </div>
-          <div class="bm-body bm-demo" aria-hidden="true">
-            <div class="dm-page">
-              <span class="dm-line dm-title"></span>
-              <span class="dm-line dm-title2"></span>
-              <span class="dm-line dm-sub"></span>
-              <span class="dm-line dm-sub short"></span>
-              <div class="dm-cta-wrap">
-                <button class="dm-cta" tabindex="-1">Réserver</button>
-                <span class="dm-cursor"><svg viewBox="0 0 24 24"><path d="M5 2l14 11-6.6.7 3.8 6.5-2.9 1.7-3.8-6.6L5 21z"/></svg></span>
-              </div>
-            </div>
-            <div class="dm-toast"><span class="dm-check">✓</span>Nouveau lead capturé</div>
-          </div>
+        <div class="globe-wrap">
+          <canvas id="heroGlobe" class="globe-canvas" aria-label="Globe interactif Click2Lead"></canvas>
+          <div class="globe-fade" aria-hidden="true"></div>
         </div>
       </div>
     </div>
@@ -2263,7 +2204,7 @@ if(heroCanvas && !noMotion){
 /* ── Hero spotlight + mockup tilt (mouse-driven, desktop only) ── */
 const heroSecEl=document.querySelector('.hero-sec');
 const heroVisEl=document.querySelector('.h-vis');
-if(heroSecEl && heroVisEl && !noMotion && window.matchMedia('(pointer:fine)').matches){
+if(heroSecEl && heroVisEl && !document.getElementById('heroGlobe') && !noMotion && window.matchMedia('(pointer:fine)').matches){
   let heroRAF=null;
   heroSecEl.addEventListener('mousemove',e=>{
     if(heroRAF)return;
@@ -2543,6 +2484,55 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&document.getElementById('contactModal').classList.contains('open'))
     closeContactModal();
 });
+</script>
+<!-- Hero interactive globe (cobe, vendored locally) -->
+<script type="module">
+import createGlobe from './cobe.esm.js';
+const canvas=document.getElementById('heroGlobe');
+if(canvas){
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  let phi=0,width=0,globe=null,rState=0,interacting=null,movement=0;
+  const onResize=()=>{width=canvas.offsetWidth;};
+  window.addEventListener('resize',onResize,{passive:true});onResize();
+  const config={
+    devicePixelRatio:dpr,phi:0,theta:0.2,dark:0.12,diffuse:0.7,
+    mapSamples:16000,mapBrightness:4,mapBaseBrightness:0.4,
+    baseColor:[0.32,0.28,0.58],
+    markerColor:[214/255,255/255,63/255],
+    glowColor:[0.5,0.42,0.85],
+    markers:[
+      {location:[43.4832,-1.5586],size:0.09}, // Bayonne / Pays Basque
+      {location:[48.8566,2.3522],size:0.06},   // Paris
+      {location:[40.7128,-74.006],size:0.06},  // New York
+      {location:[51.5074,-0.1278],size:0.05},  // Londres
+      {location:[35.6762,139.6503],size:0.05}, // Tokyo
+      {location:[-23.5505,-46.6333],size:0.05},// São Paulo
+      {location:[1.3521,103.8198],size:0.05},  // Singapour
+    ],
+  };
+  const build=()=>{
+    if(globe||!width)return;
+    globe=createGlobe(canvas,{...config,width:width*dpr,height:width*dpr,onRender:(state)=>{
+      if(interacting===null && !reduce)phi+=0.004;
+      state.phi=phi+rState;
+      state.width=width*dpr;state.height=width*dpr;
+    }});
+    requestAnimationFrame(()=>{canvas.style.opacity='1';});
+  };
+  const teardown=()=>{if(globe){globe.destroy();globe=null;canvas.style.opacity='0';}};
+  const setInteract=v=>{interacting=v;canvas.style.cursor=v?'grabbing':'grab';};
+  const move=x=>{if(interacting!==null){const d=x-interacting;movement=d;rState=d/200;}};
+  canvas.addEventListener('pointerdown',e=>setInteract(e.clientX-movement));
+  canvas.addEventListener('pointerup',()=>setInteract(null));
+  canvas.addEventListener('pointerout',()=>setInteract(null));
+  canvas.addEventListener('mousemove',e=>move(e.clientX));
+  canvas.addEventListener('touchmove',e=>{if(e.touches[0])move(e.touches[0].clientX);},{passive:true});
+  // Render only while the hero is visible — pauses the globe on scroll (perf).
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(es=>{es.forEach(en=>en.isIntersecting?build():teardown());},{threshold:0.01}).observe(canvas);
+  }else{build();}
+}
 </script>
 </body>
 </html>
