@@ -135,20 +135,27 @@ section{padding-block:96px}
 .tarifs{background:var(--sand);position:relative}
 .price-grid{display:grid;gap:24px;grid-template-columns:1fr;max-width:860px;margin:0 auto}
 @media(min-width:640px){.price-grid{grid-template-columns:1fr 1fr}}
-.price{position:relative;border-radius:24px;padding:42px 38px 40px;overflow:hidden;color:#fff;box-shadow:var(--sh);isolation:isolate;transition:transform .3s}
-.price:hover{transform:translateY(-6px)}
-.price::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,#e2662b,#c2461a)}
-.price.paddle::before{background:linear-gradient(160deg,#2b6146,#173b29)}
-.price::after{content:"";position:absolute;right:-30px;bottom:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);z-index:-1}
-.price-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.price .cat{font-family:var(--disp);font-weight:700;font-size:1.2rem;letter-spacing:.14em;text-transform:uppercase}
-.price .pico{width:40px;height:40px;opacity:.85}
-.price .amt{display:flex;align-items:flex-start;gap:4px;font-family:var(--disp);font-weight:800;line-height:.82;letter-spacing:-.04em}
-.price .amt .num{font-size:clamp(4.4rem,15vw,6.4rem)}
-.price .amt .cur{font-size:2.2rem;font-weight:700;margin-top:.28em}
-.price .per{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;opacity:.85;margin-top:10px}
-.price .p-note{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.24);font-size:.9rem;opacity:.92;display:flex;align-items:center;gap:10px}
-.price .p-note .ic{width:18px;height:18px;flex:none}
+.price{position:relative;border-radius:26px;padding:34px 32px 32px;overflow:hidden;color:#fff;isolation:isolate;
+  box-shadow:var(--sh),inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 1px rgba(255,255,255,.10);
+  transition:transform .38s cubic-bezier(.2,.7,.2,1),box-shadow .38s}
+.price:hover{transform:translateY(-8px);box-shadow:0 46px 84px -40px rgba(15,38,25,.72),inset 0 1px 0 rgba(255,255,255,.32),inset 0 0 0 1px rgba(255,255,255,.14)}
+.price::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(150deg,#f0742f 0%,#e2662b 46%,#b23f17 100%)}
+.price.paddle::before{background:linear-gradient(150deg,#357a55 0%,#245039 48%,#12271b 100%)}
+.price::after{content:"";position:absolute;right:-60px;top:-50px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 68%);z-index:-1}
+.price-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.price .cat{font-family:var(--disp);font-weight:700;font-size:1.24rem;letter-spacing:.16em;text-transform:uppercase}
+.price .pico-wrap{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.price .pico{width:28px;height:28px;opacity:1}
+.price .amt{display:flex;align-items:flex-end;gap:7px;font-family:var(--disp);font-weight:800;line-height:.8;letter-spacing:-.04em}
+.price .amt .num{font-size:clamp(4.2rem,13vw,6rem)}
+.price .amt .cur{font-size:2.1rem;font-weight:700;align-self:flex-start;margin-top:.15em}
+.price .amt .per-inline{font-size:.98rem;font-weight:600;letter-spacing:.02em;opacity:.85;margin-bottom:.7em}
+.price .p-list{list-style:none;margin:24px 0 26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.24);display:grid;gap:13px}
+.price .p-list li{display:flex;align-items:center;gap:12px;font-size:.96rem;opacity:.96}
+.price .p-list .ic{width:22px;height:22px;flex:none;padding:4px;border-radius:50%;background:rgba(255,255,255,.2);stroke-width:2.6}
+.price .p-cta{width:100%;justify-content:center;padding:14px 24px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);color:#fff;font-weight:700;backdrop-filter:blur(4px)}
+.price .p-cta .ic{width:17px;height:17px}
+.price .p-cta:hover{background:#fff;color:#173b29;transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(0,0,0,.4)}
 .facts{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 16px;margin-top:36px}
 .chip{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:11px 20px;font-size:.9rem;font-weight:600;color:var(--green)}
 .chip .ic{width:18px;height:18px;color:var(--orange)}
@@ -239,6 +246,7 @@ footer a{color:var(--gold)}
 <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
 <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14.5 8.5V6.8c0-.9.3-1.3 1.4-1.3H17V2.4c-.5-.1-1.4-.2-2.4-.2-2.4 0-3.9 1.4-3.9 4v2.3H8v3.2h2.7V22h3.8v-8.3h2.6l.4-3.2h-3Z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
 </defs></svg>
 
 <header id="hdr">
@@ -302,16 +310,24 @@ footer a{color:var(--gold)}
     </div>
     <div class="price-grid">
       <div class="price reveal">
-        <div class="price-top"><span class="cat">Kayak</span><svg class="ic pico"><use href="#i-paddle"/></svg></div>
-        <div class="amt"><span class="num">25</span><span class="cur">€</span></div>
-        <div class="per">de l'heure</div>
-        <div class="p-note"><svg class="ic"><use href="#i-shield"/></svg> Gilet &amp; pagaie inclus</div>
+        <div class="price-top"><span class="cat">Kayak</span><span class="pico-wrap"><svg class="ic pico"><use href="#i-paddle"/></svg></span></div>
+        <div class="amt"><span class="num">25</span><span class="cur">€</span><span class="per-inline">/ heure</span></div>
+        <ul class="p-list">
+          <li><svg class="ic"><use href="#i-check"/></svg> Gilet de sauvetage inclus</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> Pagaie fournie</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> Briefing sécurité offert</li>
+        </ul>
+        <a href="tel:+33780108806" class="btn p-cta"><svg class="ic"><use href="#i-phone"/></svg> Réserver</a>
       </div>
       <div class="price paddle reveal">
-        <div class="price-top"><span class="cat">Paddle</span><svg class="ic pico"><use href="#i-paddle"/></svg></div>
-        <div class="amt"><span class="num">15</span><span class="cur">€</span></div>
-        <div class="per">de l'heure</div>
-        <div class="p-note"><svg class="ic"><use href="#i-shield"/></svg> Gilet &amp; pagaie inclus</div>
+        <div class="price-top"><span class="cat">Paddle</span><span class="pico-wrap"><svg class="ic pico"><use href="#i-paddle"/></svg></span></div>
+        <div class="amt"><span class="num">15</span><span class="cur">€</span><span class="per-inline">/ heure</span></div>
+        <ul class="p-list">
+          <li><svg class="ic"><use href="#i-check"/></svg> Gilet de sauvetage inclus</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> Pagaie fournie</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> Briefing sécurité offert</li>
+        </ul>
+        <a href="tel:+33780108806" class="btn p-cta"><svg class="ic"><use href="#i-phone"/></svg> Réserver</a>
       </div>
     </div>
     <div class="facts reveal">
