@@ -1862,7 +1862,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
     <div class="founders-card rv3d">
       <div class="founders-tag">Offre de lancement — 3 places</div>
       <h2 class="founders-title">Nous lançons l'agence.<br/>Vous en profitez.</h2>
-      <p class="founders-sub">Les <strong>3 premiers clients</strong> bénéficient de <strong>−30&nbsp;%</strong> sur l'offre Business ou Ultra. En échange&nbsp;: un témoignage public et l'autorisation de publier les résultats de votre page. Quand les 3 places sont prises, cette offre disparaît définitivement.</p>
+      <p class="founders-sub">Les <strong>3 premiers clients</strong> bénéficient de <strong>−20&nbsp;%</strong> sur l'offre Business ou Ultra. En échange&nbsp;: un témoignage public et l'autorisation de publier les résultats de votre page. Quand les 3 places sont prises, cette offre disparaît définitivement.</p>
       <div class="founders-slots" aria-label="3 places disponibles">
         <span class="fs-slot" aria-hidden="true">1</span>
         <span class="fs-slot" aria-hidden="true">2</span>
@@ -1955,7 +1955,7 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
           <div class="cf-field">
             <label for="cfType">Votre demande</label>
             <select id="cfType" name="demande" required>
-              <option value="Offre fondateurs (-30%)" selected>Offre fondateurs (−30% contre témoignage)</option>
+              <option value="Offre fondateurs (-20%)" selected>Offre fondateurs (−20% contre témoignage)</option>
               <option value="Créer ma landing page">Créer ma landing page</option>
               <option value="Audit gratuit de ma page actuelle">Audit gratuit de ma page actuelle (48h)</option>
               <option value="Maintenance / évolution">Maintenance ou évolution d'une page existante</option>
@@ -2498,7 +2498,7 @@ function presetAudit(){
 function presetFounders(){
   gtag('event','founders_cta_click');
   const sel=document.getElementById('cfType');
-  if(sel)sel.value='Offre fondateurs (-30%)';
+  if(sel)sel.value='Offre fondateurs (-20%)';
 }
 
 /* ── FAQ accordion ── */
