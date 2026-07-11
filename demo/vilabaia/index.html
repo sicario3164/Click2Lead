@@ -58,8 +58,10 @@ header.scrolled .nav-logo img{filter:none}
 
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('hero.jpg') center center/cover no-repeat;transform:scale(1.08);animation:kb 26s ease-in-out infinite alternate}
-@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1.2) translateY(-1.5%)}}
+.hero-bg{position:absolute;inset:0;background:url('hero.jpg') center center/cover no-repeat;transform:scale(1.02);animation:kb 34s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.07)}}
+/* film grain — reads as cinematic texture, hides source softness */
+.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* legibility scrims */
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:
   linear-gradient(180deg,rgba(8,18,12,.5) 0%,rgba(8,18,12,.12) 26%,rgba(7,16,11,.55) 62%,rgba(5,13,9,.96) 100%);}
@@ -235,6 +237,7 @@ footer a{color:var(--gold)}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
   <div class="wrap hero-in hero-anim">
     <span class="kicker">Villefranque · Pays Basque</span>
     <h1>Le Pays Basque,<span class="em">au fil de l'eau.</span></h1>
