@@ -40,6 +40,19 @@ a{color:inherit;text-decoration:none}
 .btn-glass:hover{background:rgba(255,255,255,.2);transform:translateY(-3px)}
 .btn-dark{background:var(--green);color:#fff}
 .btn-dark:hover{background:var(--green-2);transform:translateY(-3px)}
+/* CTA hero — vert sauge animé */
+.btn-sage{position:relative;overflow:hidden;color:#0e2015;font-weight:700;
+  background:linear-gradient(120deg,#a6c79a,#71976a,#8fb583,#5f8455);
+  background-size:220% 220%;animation:sageflow 6.5s ease infinite;
+  box-shadow:0 14px 34px -12px rgba(95,132,85,.85),0 0 0 0 rgba(120,160,110,.55)}
+.btn-sage>*{position:relative;z-index:2}
+.btn-sage:hover{transform:translateY(-3px);box-shadow:0 22px 48px -14px rgba(95,132,85,.95)}
+.btn-sage::after{content:"";position:absolute;top:0;left:-65%;width:42%;height:100%;z-index:1;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-18deg);animation:sageshine 5s ease-in-out infinite;pointer-events:none}
+@keyframes sageflow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes sageshine{0%{left:-65%}24%{left:130%}100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.btn-sage{animation:none}.btn-sage::after{animation:none;opacity:0}}
 
 /* reveal on scroll */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
@@ -244,7 +257,7 @@ footer a{color:var(--gold)}
     <h1>Le Pays Basque,<span class="em">au fil de l'eau.</span></h1>
     <p class="hero-sub">Kayak et paddle sur la rivière, en famille ou entre amis. On vous équipe, on vous explique — vous n'avez plus qu'à pagayer.</p>
     <div class="hero-ctas">
-      <a href="tel:+33780108806" class="btn btn-o"><svg class="ic"><use href="#i-phone"/></svg> Réserver au 07 80 10 88 06</a>
+      <a href="tel:+33780108806" class="btn btn-sage"><svg class="ic"><use href="#i-phone"/></svg> <span>Réserver au 07 80 10 88 06</span></a>
       <a href="#tarifs" class="btn btn-glass">Voir les tarifs</a>
     </div>
     <div class="hero-meta">
