@@ -58,7 +58,7 @@ header.scrolled .nav-logo img{filter:none}
 
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('riviere.jpg') center 42%/cover no-repeat;transform:scale(1.08);animation:kb 26s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;background:url('hero.jpg') center center/cover no-repeat;transform:scale(1.08);animation:kb 26s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1.08)}to{transform:scale(1.2) translateY(-1.5%)}}
 /* legibility scrims */
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:
@@ -146,8 +146,20 @@ section{padding-block:96px}
 .exp h2 .em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold)}
 .exp p{color:rgba(245,240,230,.8);margin-bottom:16px}
 .exp-img{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--sh);aspect-ratio:4/5}
-.exp-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
-.exp-img:hover img{transform:scale(1.05)}
+.exp-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.14);will-change:transform}
+
+/* GALLERY */
+.gallery{background:var(--sand-2)}
+.gal-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.gal-grid{grid-template-columns:repeat(4,1fr)}}
+.gal-item{position:relative;overflow:hidden;border-radius:16px;box-shadow:var(--sh);aspect-ratio:4/5;transition-delay:calc(var(--i,0)*.09s)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gal-item:hover img{transform:scale(1.1)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 52%,rgba(9,22,15,.5));opacity:.35;transition:opacity .4s}
+.gal-item:hover::after{opacity:.65}
+/* staggered reveals */
+.usp-c:nth-child(2){transition-delay:.1s}.usp-c:nth-child(3){transition-delay:.2s}
+.price.paddle{transition-delay:.1s}
 
 /* INFOS */
 .infos{background:var(--sand)}
@@ -164,7 +176,7 @@ section{padding-block:96px}
 
 /* CTA */
 .cta{position:relative;text-align:center;color:#fff;overflow:hidden;padding-block:110px}
-.cta-bg{position:absolute;inset:0;background:url('riviere.jpg') center 60%/cover no-repeat;transform:scale(1.05)}
+.cta-bg{position:absolute;inset:0;background:url('hero.jpg') center 40%/cover no-repeat;transform:scale(1.05)}
 .cta-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(10,24,16,.78),rgba(8,20,13,.92))}
 .cta .wrap{position:relative;z-index:2}
 .cta h2{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,7vw,4rem);letter-spacing:-.025em;margin-bottom:14px;text-shadow:0 3px 30px rgba(0,0,0,.5)}
@@ -180,6 +192,8 @@ section{padding-block:96px}
 /* FOOTER */
 footer{background:#0d1f14;color:rgba(245,240,230,.66);padding-block:44px 46px;font-size:.9rem}
 footer .fwrap{display:grid;gap:16px;text-align:center;justify-items:center}
+footer .fwrap>div{max-width:100%;word-break:break-word;line-height:1.9}
+footer .fcontact a{white-space:nowrap}
 footer .fl{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;font-size:1.15rem;color:#fff}
 footer .fl img{height:40px}
 footer a{color:var(--gold)}
@@ -189,7 +203,7 @@ footer a{color:var(--gold)}
 .mbar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:flex;gap:10px;padding:11px 14px;background:rgba(245,240,230,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
 .mbar a{flex:1;justify-content:center;padding:14px}
 @media(min-width:560px){.mbar{display:none}}
-@media(max-width:559px){footer{padding-bottom:96px}}
+@media(max-width:559px){footer{padding-bottom:118px}}
 </style>
 </head>
 <body>
@@ -301,7 +315,23 @@ footer a{color:var(--gold)}
       <p>Première fois ou habitué, en solo, en couple ou avec les enfants — la rivière est à vous, à votre rythme.</p>
       <a href="tel:+33780108806" class="btn btn-o" style="margin-top:10px"><svg class="ic"><use href="#i-phone"/></svg> Réserver ma sortie</a>
     </div>
-    <div class="exp-img reveal"><img src="riviere.jpg" alt="Paddle sur la rivière à Villefranque, Pays Basque"/></div>
+    <div class="exp-img reveal"><img src="spot.jpg" alt="La berge et les paddles au bord de l'eau, Villefranque" data-par/></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="sec-h reveal">
+      <span class="kicker">En images</span>
+      <h2>La rivière vous <span class="em">attend</span></h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item reveal" style="--i:0"><img src="hero.jpg" alt="Paddle en groupe sur la rivière au coucher du soleil"/></div>
+      <div class="gal-item reveal" style="--i:1"><img src="spot.jpg" alt="Kayaks et paddles prêts au bord de l'eau"/></div>
+      <div class="gal-item reveal" style="--i:2"><img src="base.jpg" alt="La base VILABAIA à Villefranque"/></div>
+      <div class="gal-item reveal" style="--i:3"><img src="riviere.jpg" alt="Sortie paddle sur la Nive"/></div>
+    </div>
   </div>
 </section>
 
@@ -355,7 +385,7 @@ footer a{color:var(--gold)}
 <footer>
   <div class="wrap fwrap">
     <div class="fl"><img src="logo.png" alt=""/> VILABAIA</div>
-    <div>Chemin de la gare, 64990 Villefranque · <a href="tel:+33780108806">07 80 10 88 06</a> · <a href="mailto:vilabaia64@gmail.com">vilabaia64@gmail.com</a></div>
+    <div class="fcontact">Chemin de la gare, 64990 Villefranque<br/><a href="tel:+33780108806">07 80 10 88 06</a> · <a href="mailto:vilabaia64@gmail.com">vilabaia64@gmail.com</a></div>
     <div class="credit">Maquette de démonstration réalisée par <a href="https://click2lead.fr" target="_blank" rel="noopener">Click2Lead</a> — non contractuelle.</div>
   </div>
 </footer>
@@ -376,6 +406,19 @@ if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-moti
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
   rev.forEach(el=>io.observe(el));
 }else{rev.forEach(el=>el.classList.add('in'));}
+// premium parallax on framed images
+const pars=document.querySelectorAll('[data-par]');
+if(pars.length && !window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+  let tick=false;
+  const upd=()=>{tick=false;const vh=window.innerHeight;pars.forEach(el=>{
+    const r=el.parentElement.getBoundingClientRect();
+    if(r.bottom<0||r.top>vh)return;
+    const prog=(r.top+r.height/2-vh/2)/vh;
+    el.style.transform='translateY('+(prog*-16).toFixed(1)+'px) scale(1.14)';
+  });};
+  window.addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
+  upd();
+}
 </script>
 </body>
 </html>
