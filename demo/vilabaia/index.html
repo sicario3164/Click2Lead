@@ -50,7 +50,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,
 header.scrolled{background:rgba(245,240,230,.9);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
 .nav-logo{display:flex;align-items:center;gap:11px}
-.nav-logo img{height:46px;width:auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
+.nav-logo img{height:58px;width:auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
 header.scrolled .nav-logo img{filter:none}
 .nav-cta{display:none}
 @media(min-width:560px){.nav-cta{display:inline-flex}}
@@ -68,6 +68,7 @@ header.scrolled .nav-logo img{filter:none}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:
   linear-gradient(85deg,rgba(6,14,9,.82) 0%,rgba(6,14,9,.4) 42%,rgba(6,14,9,0) 78%);}
 .hero-in{position:relative;z-index:3;width:100%;padding-block:60px 58px}
+.hero-logo{display:block;width:clamp(118px,19vw,170px);height:auto;margin:0 0 20px;filter:drop-shadow(0 8px 26px rgba(0,0,0,.5))}
 .hero .kicker{color:var(--gold)}
 .hero .kicker::before{background:var(--gold)}
 .hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,9.5vw,6.6rem);line-height:.96;letter-spacing:-.03em;margin:.28em 0 .34em;max-width:16ch;text-shadow:0 3px 40px rgba(0,0,0,.55),0 1px 5px rgba(0,0,0,.5)}
@@ -84,6 +85,7 @@ header.scrolled .nav-logo img{filter:none}
 .hero-anim>*:nth-child(3){animation-delay:.45s}
 .hero-anim>*:nth-child(4){animation-delay:.60s}
 .hero-anim>*:nth-child(5){animation-delay:.75s}
+.hero-anim>*:nth-child(6){animation-delay:.90s}
 @keyframes rise{to{opacity:1;transform:none}}
 .scroll-cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.7);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
 .scroll-cue .bar{width:1.5px;height:34px;background:linear-gradient(rgba(255,255,255,.7),transparent);animation:pulse 2s ease-in-out infinite}
@@ -197,7 +199,7 @@ footer .fwrap{display:grid;gap:16px;text-align:center;justify-items:center}
 footer .fwrap>div{max-width:100%;word-break:break-word;line-height:1.9}
 footer .fcontact a{white-space:nowrap}
 footer .fl{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;font-size:1.15rem;color:#fff}
-footer .fl img{height:40px}
+footer .fl img{height:56px}
 footer a{color:var(--gold)}
 .credit{width:100%;margin-top:10px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(245,240,230,.46)}
 
@@ -239,6 +241,7 @@ footer a{color:var(--gold)}
   <div class="hero-bg"></div>
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="wrap hero-in hero-anim">
+    <img class="hero-logo" src="logo.png" alt="VILABAIA — Kayak &amp; Paddle"/>
     <span class="kicker">Villefranque · Pays Basque</span>
     <h1>Le Pays Basque,<span class="em">au fil de l'eau.</span></h1>
     <p class="hero-sub">Kayak et paddle sur la rivière, en famille ou entre amis. On vous équipe, on vous explique — vous n'avez plus qu'à pagayer.</p>
@@ -330,7 +333,7 @@ footer a{color:var(--gold)}
       <h2>La rivière vous <span class="em">attend</span></h2>
     </div>
     <div class="gal-grid">
-      <div class="gal-item reveal" style="--i:0"><img src="hero.jpg" alt="Paddle en groupe sur la rivière au coucher du soleil"/></div>
+      <div class="gal-item reveal" style="--i:0"><img src="paddlers.jpg" alt="Paddle en groupe sur la rivière au coucher du soleil"/></div>
       <div class="gal-item reveal" style="--i:1"><img src="spot.jpg" alt="Kayaks et paddles prêts au bord de l'eau"/></div>
       <div class="gal-item reveal" style="--i:2"><img src="base.jpg" alt="La base VILABAIA à Villefranque"/></div>
       <div class="gal-item reveal" style="--i:3"><img src="riviere.jpg" alt="Sortie paddle sur la Nive"/></div>
