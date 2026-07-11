@@ -68,7 +68,6 @@ header.scrolled .nav-logo img{filter:none}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:
   linear-gradient(85deg,rgba(6,14,9,.82) 0%,rgba(6,14,9,.4) 42%,rgba(6,14,9,0) 78%);}
 .hero-in{position:relative;z-index:3;width:100%;padding-block:60px 58px}
-.hero-logo{display:block;width:clamp(118px,19vw,170px);height:auto;margin:0 0 20px;filter:drop-shadow(0 8px 26px rgba(0,0,0,.5))}
 .hero .kicker{color:var(--gold)}
 .hero .kicker::before{background:var(--gold)}
 .hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,9.5vw,6.6rem);line-height:.96;letter-spacing:-.03em;margin:.28em 0 .34em;max-width:16ch;text-shadow:0 3px 40px rgba(0,0,0,.55),0 1px 5px rgba(0,0,0,.5)}
@@ -85,7 +84,6 @@ header.scrolled .nav-logo img{filter:none}
 .hero-anim>*:nth-child(3){animation-delay:.45s}
 .hero-anim>*:nth-child(4){animation-delay:.60s}
 .hero-anim>*:nth-child(5){animation-delay:.75s}
-.hero-anim>*:nth-child(6){animation-delay:.90s}
 @keyframes rise{to{opacity:1;transform:none}}
 .scroll-cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.7);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
 .scroll-cue .bar{width:1.5px;height:34px;background:linear-gradient(rgba(255,255,255,.7),transparent);animation:pulse 2s ease-in-out infinite}
@@ -98,6 +96,7 @@ header.scrolled .nav-logo img{filter:none}
 .mq-track span{padding:0 26px;display:inline-flex;align-items:center;gap:26px}
 .mq-track span::after{content:"◆";color:rgba(232,189,130,.5);font-size:.6em}
 @keyframes mq{to{transform:translateX(-50%)}}
+@media(max-width:640px){.hero-bg{background-position:80% center}}
 @media(prefers-reduced-motion:reduce){.mq-track{animation:none}.hero-bg{animation:none}.hero-anim>*{opacity:1;transform:none;animation:none}}
 
 /* SECTION */
@@ -241,7 +240,6 @@ footer a{color:var(--gold)}
   <div class="hero-bg"></div>
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="wrap hero-in hero-anim">
-    <img class="hero-logo" src="logo.png" alt="VILABAIA — Kayak &amp; Paddle"/>
     <span class="kicker">Villefranque · Pays Basque</span>
     <h1>Le Pays Basque,<span class="em">au fil de l'eau.</span></h1>
     <p class="hero-sub">Kayak et paddle sur la rivière, en famille ou entre amis. On vous équipe, on vous explique — vous n'avez plus qu'à pagayer.</p>
