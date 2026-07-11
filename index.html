@@ -1525,45 +1525,62 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
      MANIFESTE / MISSION
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <style>
-.mf-sec{background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+.mf-sec{background:var(--bg-dark);color:#fff;position:relative;overflow:hidden;padding-block:110px}
+.mf-sec .mf-glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.mf-sec .mf-g1{width:620px;height:520px;top:-200px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(124,90,240,.28),transparent 68%)}
+.mf-sec .mf-g2{width:440px;height:360px;bottom:-160px;right:-80px;background:radial-gradient(circle,rgba(214,255,63,.1),transparent 66%)}
+.mf-sec>.wrap{position:relative;z-index:1}
 .mf-sec .eyebrow{color:var(--s)}
 .mf-sec .sec-title{color:#fff}
-.mf-lead{color:rgba(255,255,255,.72);font-size:1.12rem;line-height:1.78;max-width:64ch;margin:18px auto 0;text-align:center}
+.mf-lead{color:rgba(255,255,255,.74);font-size:1.14rem;line-height:1.8;max-width:60ch;margin:20px auto 0;text-align:center}
 .mf-lead strong{color:#fff;font-weight:600}
-.mf-grid{display:grid;gap:20px;grid-template-columns:1fr;max-width:1040px;margin:48px auto 0}
+.mf-grid{display:grid;gap:22px;grid-template-columns:1fr;max-width:1060px;margin:56px auto 0}
 @media(min-width:820px){.mf-grid{grid-template-columns:repeat(3,1fr)}}
-.mf-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--rl);padding:28px 26px}
-.mf-ic{width:46px;height:46px;border-radius:13px;background:rgba(124,90,240,.2);color:#a78bfa;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.mf-ic svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.mf-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
-.mf-card p{color:rgba(255,255,255,.66);font-size:.95rem;line-height:1.62}
-.mf-close{text-align:center;max-width:58ch;margin:48px auto 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(1.15rem,2.8vw,1.5rem);font-weight:700;line-height:1.42;color:#fff}
+.mf-card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:34px 30px;overflow:hidden;transition:transform .35s cubic-bezier(.4,0,.2,1),border-color .35s,box-shadow .35s}
+.mf-card::before{content:"";position:absolute;top:0;left:26px;right:26px;height:2px;border-radius:2px;background:var(--gp);opacity:.55;transition:opacity .35s}
+.mf-card:hover{transform:translateY(-6px);border-color:rgba(124,90,240,.45);box-shadow:0 30px 60px -34px rgba(124,90,240,.7)}
+.mf-card:hover::before{opacity:1}
+.mf-ic{width:54px;height:54px;border-radius:16px;background:linear-gradient(140deg,#8f6dff,#6b46e0);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 12px 28px -10px rgba(124,90,240,.85)}
+.mf-ic svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mf-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.22rem;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+.mf-card p{color:rgba(255,255,255,.68);font-size:.96rem;line-height:1.66}
+.mf-quote{max-width:760px;margin:60px auto 0;text-align:center;position:relative}
+.mf-divider{width:54px;height:2px;background:var(--gp);border-radius:2px;margin:0 auto 26px}
+.mf-quote p{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.3rem,3.4vw,1.9rem);font-weight:700;line-height:1.36;color:#fff;letter-spacing:-.01em}
+.mf-sign{margin-top:20px;font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600}
+.mf-sign b{color:var(--s);font-weight:700}
 </style>
 <section class="sec mf-sec" aria-label="Notre mission">
+  <div class="mf-glow mf-g1" aria-hidden="true"></div>
+  <div class="mf-glow mf-g2" aria-hidden="true"></div>
   <div class="wrap">
     <div class="tc rv" style="text-align:center;max-width:760px;margin:0 auto">
       <span class="eyebrow">Notre mission</span>
       <h2 class="sec-title">Le premium ne devrait pas être <span class="gt">un privilège.</span></h2>
-      <p class="mf-lead">Click2Lead est né d'une conviction simple : en <strong>2026</strong>, chaque professionnel mérite une page web à la hauteur de son travail — <strong>pas seulement ceux qui ont un gros budget</strong>. Nous avons décidé que la qualité ne serait plus réservée à une élite.</p>
+      <p class="mf-lead">Click2Lead est né d'une conviction simple : en <strong>2026</strong>, chaque professionnel mérite une page web à la hauteur de son travail — <strong>pas seulement ceux qui ont un gros budget</strong>. Nous rendons la qualité accessible, sans jamais la diluer.</p>
     </div>
     <div class="mf-grid">
       <div class="mf-card rv">
         <div class="mf-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.6c2.3.6 3.8 2.5 3.8 5.4"/></svg></div>
         <h3>La qualité, pour tous</h3>
-        <p>Le rendu d'une agence premium, même avec un petit budget. Aucun compromis sur le design, le code ou les performances.</p>
+        <p>Le rendu d'une agence premium, accessible même avec un petit budget. Zéro compromis sur le design, le code ou les performances.</p>
       </div>
       <div class="mf-card rv">
         <div class="mf-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m8 11 2.5 2.5L16 8"/></svg></div>
         <h3>Indispensable en 2026</h3>
-        <p>Un pro sans site inspire moins confiance et convertit beaucoup moins. Votre page, c'est votre première impression — elle doit être irréprochable.</p>
+        <p>Un pro sans site inspire moins confiance et convertit beaucoup moins. Votre page, c'est votre première impression : elle doit être irréprochable.</p>
       </div>
       <div class="mf-card rv">
         <div class="mf-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 4.7L18.5 9l-4.6 1.3L12 15l-1.9-4.7L5.5 9l4.6-1.3z"/><path d="m18.5 15 .8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
-        <h3>L'IA au service du juste prix</h3>
-        <p>Nous exploitons l'intelligence artificielle pour créer du premium plus vite. Le temps gagné, on vous le rend sur la facture — pas dans notre marge.</p>
+        <h3>L'expertise, augmentée</h3>
+        <p>On associe notre savoir-faire aux meilleurs outils d'aujourd'hui pour créer plus vite et sans gaspillage. Cette efficacité, on vous la rend en juste prix — jamais en qualité en moins.</p>
       </div>
     </div>
-    <p class="mf-close rv">Nous sommes à l'ère de l'IA — et cette avancée doit d'abord <span class="gt">profiter au client</span>. C'est exactement pour ça que nos prix sont aussi compétitifs.</p>
+    <div class="mf-quote rv">
+      <div class="mf-divider" aria-hidden="true"></div>
+      <p>La technologie doit d'abord <span class="gt">profiter au client</span>. C'est notre façon de rendre le premium accessible à tous.</p>
+      <div class="mf-sign">— L'équipe <b>Click2Lead</b></div>
+    </div>
   </div>
 </section>
 
