@@ -1522,6 +1522,52 @@ footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.06);padd
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━
+     MANIFESTE / MISSION
+━━━━━━━━━━━━━━━━━━━━━━ -->
+<style>
+.mf-sec{background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+.mf-sec .eyebrow{color:var(--s)}
+.mf-sec .sec-title{color:#fff}
+.mf-lead{color:rgba(255,255,255,.72);font-size:1.12rem;line-height:1.78;max-width:64ch;margin:18px auto 0;text-align:center}
+.mf-lead strong{color:#fff;font-weight:600}
+.mf-grid{display:grid;gap:20px;grid-template-columns:1fr;max-width:1040px;margin:48px auto 0}
+@media(min-width:820px){.mf-grid{grid-template-columns:repeat(3,1fr)}}
+.mf-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--rl);padding:28px 26px}
+.mf-ic{width:46px;height:46px;border-radius:13px;background:rgba(124,90,240,.2);color:#a78bfa;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.mf-ic svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mf-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.mf-card p{color:rgba(255,255,255,.66);font-size:.95rem;line-height:1.62}
+.mf-close{text-align:center;max-width:58ch;margin:48px auto 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(1.15rem,2.8vw,1.5rem);font-weight:700;line-height:1.42;color:#fff}
+</style>
+<section class="sec mf-sec" aria-label="Notre mission">
+  <div class="wrap">
+    <div class="tc rv" style="text-align:center;max-width:760px;margin:0 auto">
+      <span class="eyebrow">Notre mission</span>
+      <h2 class="sec-title">Le premium ne devrait pas être <span class="gt">un privilège.</span></h2>
+      <p class="mf-lead">Click2Lead est né d'une conviction simple : en <strong>2026</strong>, chaque professionnel mérite une page web à la hauteur de son travail — <strong>pas seulement ceux qui ont un gros budget</strong>. Nous avons décidé que la qualité ne serait plus réservée à une élite.</p>
+    </div>
+    <div class="mf-grid">
+      <div class="mf-card rv">
+        <div class="mf-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.6c2.3.6 3.8 2.5 3.8 5.4"/></svg></div>
+        <h3>La qualité, pour tous</h3>
+        <p>Le rendu d'une agence premium, même avec un petit budget. Aucun compromis sur le design, le code ou les performances.</p>
+      </div>
+      <div class="mf-card rv">
+        <div class="mf-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m8 11 2.5 2.5L16 8"/></svg></div>
+        <h3>Indispensable en 2026</h3>
+        <p>Un pro sans site inspire moins confiance et convertit beaucoup moins. Votre page, c'est votre première impression — elle doit être irréprochable.</p>
+      </div>
+      <div class="mf-card rv">
+        <div class="mf-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 4.7L18.5 9l-4.6 1.3L12 15l-1.9-4.7L5.5 9l4.6-1.3z"/><path d="m18.5 15 .8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
+        <h3>L'IA au service du juste prix</h3>
+        <p>Nous exploitons l'intelligence artificielle pour créer du premium plus vite. Le temps gagné, on vous le rend sur la facture — pas dans notre marge.</p>
+      </div>
+    </div>
+    <p class="mf-close rv">Nous sommes à l'ère de l'IA — et cette avancée doit d'abord <span class="gt">profiter au client</span>. C'est exactement pour ça que nos prix sont aussi compétitifs.</p>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━
      NOS OFFRES
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="offres" class="sec">
