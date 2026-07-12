@@ -185,6 +185,33 @@ section{padding-block:96px}
 .price.paddle{transition-delay:.1s}
 
 /* INFOS */
+/* AVIS GOOGLE */
+.rev{background:var(--card)}
+.rev-summary{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin:0 auto 42px;max-width:760px;
+  background:var(--sand);border:1px solid var(--line);border-radius:20px;padding:22px 28px}
+.rev-score{display:flex;align-items:center;gap:14px}
+.rev-score .g{width:34px;height:34px;flex:none}
+.rev-score .big{font-family:var(--disp);font-weight:800;font-size:2.4rem;line-height:1;color:var(--green)}
+.rev-score .meta{display:flex;flex-direction:column;gap:3px}
+.rev-stars{display:inline-flex;gap:2px;color:#fbbc05}
+.rev-stars .ic{width:17px;height:17px}
+.rev-score .meta small{color:var(--muted);font-size:.86rem;font-weight:500}
+.rev-summary .btn{padding:12px 24px;font-size:.9rem}
+.rev-grid{columns:3 300px;column-gap:22px}
+@media(max-width:900px){.rev-grid{columns:2 280px}}
+@media(max-width:600px){.rev-grid{columns:1}}
+.rev-c{break-inside:avoid;margin-bottom:22px;background:var(--sand);border:1px solid var(--line);border-radius:18px;padding:24px 24px 22px;
+  box-shadow:0 12px 30px -22px rgba(15,38,25,.5);transition:transform .3s,box-shadow .3s}
+.rev-c:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+.rev-top{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+.rev-av{width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--disp);font-weight:700;font-size:1.1rem}
+.rev-id{flex:1;min-width:0}
+.rev-id .nm{display:block;font-weight:700;color:var(--ink);font-size:1rem;line-height:1.2}
+.rev-id .rev-stars{margin-top:3px}
+.rev-c .g{width:22px;height:22px;flex:none;opacity:.9}
+.rev-txt{color:var(--muted);font-size:.96rem;line-height:1.6}
+.rev-txt.clamp{display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden}
+.rev-date{margin-top:12px;font-size:.8rem;color:var(--muted);opacity:.75;font-weight:500}
 .infos{background:var(--sand)}
 .info-grid{display:grid;gap:20px;grid-template-columns:1fr;max-width:1000px;margin:0 auto}
 @media(min-width:760px){.info-grid{grid-template-columns:repeat(3,1fr)}}
@@ -247,6 +274,8 @@ footer a{color:var(--gold)}
 <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14.5 8.5V6.8c0-.9.3-1.3 1.4-1.3H17V2.4c-.5-.1-1.4-.2-2.4-.2-2.4 0-3.9 1.4-3.9 4v2.3H8v3.2h2.7V22h3.8v-8.3h2.6l.4-3.2h-3Z" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.4l2.95 6.2 6.75.92-4.9 4.72 1.2 6.76L12 18.7l-6 3.3 1.2-6.76-4.9-4.72 6.75-.92L12 2.4Z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-google" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></symbol>
 </defs></svg>
 
 <header id="hdr">
@@ -364,6 +393,90 @@ footer a{color:var(--gold)}
       <div class="gal-item reveal" style="--i:1"><img src="spot.jpg" alt="Kayaks et paddles prêts au bord de l'eau"/></div>
       <div class="gal-item reveal" style="--i:2"><img src="base.jpg" alt="La base VILABAIA à Villefranque"/></div>
       <div class="gal-item reveal" style="--i:3"><img src="riviere.jpg" alt="Sortie paddle sur la Nive"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="rev">
+  <div class="wrap">
+    <div class="sec-h reveal">
+      <span class="kicker">Ils ont adoré</span>
+      <h2>Ce que disent nos <span class="em">clients</span></h2>
+    </div>
+    <div class="rev-summary reveal">
+      <div class="rev-score">
+        <svg class="g" viewBox="0 0 48 48"><use href="#i-google"/></svg>
+        <span class="big">5,0</span>
+        <span class="meta">
+          <span class="rev-stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+          <small>Note sur les avis Google</small>
+        </span>
+      </div>
+      <a class="btn btn-o" href="https://www.google.com/maps/search/?api=1&query=Vilabaia+kayak+paddle+Villefranque" target="_blank" rel="noopener">Voir tous les avis sur Google</a>
+    </div>
+    <div class="rev-grid">
+
+      <div class="rev-c reveal">
+        <div class="rev-top">
+          <span class="rev-av" style="background:#2e7d46">C</span>
+          <span class="rev-id"><span class="nm">Carole Gueraud</span><span class="rev-stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></span>
+          <svg class="g" viewBox="0 0 48 48"><use href="#i-google"/></svg>
+        </div>
+        <p class="rev-txt clamp">Un accueil chaleureux d'Eve et Maë aux petits soins avec nous. Une balade tranquille sur la Nive au fil de l'eau. Pleins de « petites plages » de galets sur le parcours pour se baigner. Une douche à disposition et la possibilité de se changer à l'abri. En bref, allez-y les yeux fermés. Nous reviendrons, tout le groupe a énormément apprécié.</p>
+        <div class="rev-date">il y a 6 heures</div>
+      </div>
+
+      <div class="rev-c reveal">
+        <div class="rev-top">
+          <span class="rev-av" style="background:#7c4dff">P</span>
+          <span class="rev-id"><span class="nm">philippe solliez</span><span class="rev-stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></span>
+          <svg class="g" viewBox="0 0 48 48"><use href="#i-google"/></svg>
+        </div>
+        <p class="rev-txt">Top, accueil extra et chaleureux, balade paisible, calme, sous le chant des oiseaux, endroit en pleine nature. Top !</p>
+        <div class="rev-date">il y a un jour</div>
+      </div>
+
+      <div class="rev-c reveal">
+        <div class="rev-top">
+          <span class="rev-av" style="background:#0f6b5c">A</span>
+          <span class="rev-id"><span class="nm">Alexandre Gau</span><span class="rev-stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></span>
+          <svg class="g" viewBox="0 0 48 48"><use href="#i-google"/></svg>
+        </div>
+        <p class="rev-txt">Expérience au top chez Vilabaia, le cadre est agréable et l'équipe est très sympathique et professionnelle !</p>
+        <div class="rev-date">il y a 6 jours</div>
+      </div>
+
+      <div class="rev-c reveal">
+        <div class="rev-top">
+          <span class="rev-av" style="background:#c026a8">S</span>
+          <span class="rev-id"><span class="nm">Servann Guillou</span><span class="rev-stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></span>
+          <svg class="g" viewBox="0 0 48 48"><use href="#i-google"/></svg>
+        </div>
+        <p class="rev-txt">Nous avons passé un agréable après-midi dans l'eau. Eve est professionnelle et arrangeante, nous reviendrons avec grand plaisir !</p>
+        <div class="rev-date">il y a 6 jours</div>
+      </div>
+
+      <div class="rev-c reveal">
+        <div class="rev-top">
+          <span class="rev-av" style="background:#2b6146">L</span>
+          <span class="rev-id"><span class="nm">Louna Perrot</span><span class="rev-stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></span>
+          <svg class="g" viewBox="0 0 48 48"><use href="#i-google"/></svg>
+        </div>
+        <p class="rev-txt">Super adresse pour passer une bonne après-midi. Très joli cadre et équipe très sympathique 😊</p>
+        <div class="rev-date">il y a 6 jours</div>
+      </div>
+
+      <div class="rev-c reveal">
+        <div class="rev-top">
+          <span class="rev-av" style="background:#5b6ee0">G</span>
+          <span class="rev-id"><span class="nm">Guy Gueraud</span><span class="rev-stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></span>
+          <svg class="g" viewBox="0 0 48 48"><use href="#i-google"/></svg>
+        </div>
+        <p class="rev-txt">Nous avons passé un bon moment sur la Nive. Cadre agréable.</p>
+        <div class="rev-date">Local Guide · il y a une semaine</div>
+      </div>
+
     </div>
   </div>
 </section>
