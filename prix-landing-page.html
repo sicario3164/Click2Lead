@@ -70,10 +70,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.6);backdrop-f
 .logo-tx{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-.4px}
 .logo-tx .lc{color:var(--text)}.logo-tx .l2{color:var(--s)}.logo-tx .ll{background:var(--gp);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-lks{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center}
-.nav-lks a{color:var(--text-mid);font-size:.84rem;font-weight:500;padding:7px 13px;border-radius:var(--r);transition:all .18s;white-space:nowrap}
+.nav-lks a{color:var(--text-mid);font-size:.84rem;font-weight:500;padding:7px 13px;border-radius:var(--r);transition:.18s;transition-property:transform,box-shadow,border-color,background-color,color,opacity,filter;white-space:nowrap}
 .nav-lks a:hover,.nav-lks a.active{color:var(--text);background:rgba(0,0,0,.05)}
 .nav-r{margin-left:auto;flex-shrink:0}
-.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:var(--rpill);font-family:inherit;font-weight:700;cursor:pointer;transition:all .22s;white-space:nowrap;line-height:1}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:var(--rpill);font-family:inherit;font-weight:700;cursor:pointer;transition:.22s;transition-property:transform,box-shadow,border-color,background-color,color,opacity,filter;white-space:nowrap;line-height:1}
 .bp{background:var(--s);color:#101322;border:2px solid #7c5af0;padding:13px 26px;font-size:.9rem;box-shadow:var(--sh-p)}
 .bp:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(214,255,63,.42)}
 @media(max-width:760px){.nav-lks{display:none}}
@@ -116,7 +116,7 @@ tr:hover td{background:rgba(124,90,240,.025)}
 .art-related{max-width:760px;margin:0 auto;padding:40px 24px 80px}
 .art-related-t{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:18px;color:var(--text-mid)}
 .rel-links{display:flex;flex-direction:column;gap:10px}
-.rel-links a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;background:var(--bg-soft);border:1px solid var(--bord-m);border-radius:var(--rl);color:var(--text);font-weight:600;font-size:.92rem;transition:all .2s}
+.rel-links a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;background:var(--bg-soft);border:1px solid var(--bord-m);border-radius:var(--rl);color:var(--text);font-weight:600;font-size:.92rem;transition:.2s;transition-property:transform,box-shadow,border-color,background-color,color,opacity,filter}
 .rel-links a:hover{border-color:rgba(124,90,240,.4);transform:translateX(4px)}
 .rel-links a::after{content:'→';color:var(--p)}
 /* FOOTER */
@@ -130,7 +130,7 @@ footer{background:var(--bg-dark);padding:36px 0;margin-top:0}
 /* HUB (ressources.html) */
 .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:52px 0 72px}
 @media(max-width:900px){.hub-grid{grid-template-columns:1fr}}
-.hub-card{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:var(--rxl);overflow:hidden;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 14px rgba(0,0,0,.05);position:relative}
+.hub-card{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:var(--rxl);overflow:hidden;transition:.3s cubic-bezier(.16,1,.3,1);transition-property:transform,box-shadow,border-color,background-color,color,opacity,filter;box-shadow:0 2px 14px rgba(0,0,0,.05);position:relative}
 .hub-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.12);border-color:rgba(124,90,240,.3)}
 .hub-card-head{height:150px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;position:relative;overflow:hidden}
 .hc-1 .hub-card-head{background:linear-gradient(135deg,rgba(124,90,240,.14),rgba(214,255,63,.1))}
@@ -180,6 +180,10 @@ nav.sc .logo-tx .l2{color:#7f9c0a}
 /* Skip link — keyboard users jump straight to the content */
 .skip-link{position:absolute;left:-9999px;top:0;z-index:100000;background:#d6ff3f;color:#101322;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:0 0 12px 0;text-decoration:none}
 .skip-link:focus{left:0}
+
+/* ===== Craft pass (skills) ===== */
+.btn:active,.bp:active,.bg-btn:active,.bd:active,.pr-btn:active,.cf-submit:active,.modal-phone-btn:active,.cta-card-btn:active,.pr-btn-p:active{transform:scale(.965)}
+@media(hover:none){.bp:hover,.rel-links a:hover,.hub-card:hover{transform:none}}
 </style>
 </head>
 <body>
