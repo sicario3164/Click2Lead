@@ -85,7 +85,9 @@ header.scrolled .nav-logo{background:#fff;box-shadow:0 6px 16px -10px rgba(0,0,0
 .hero-bg{position:absolute;inset:0;background:url('hero.jpg') center center/cover no-repeat;transform:scale(1.02);animation:kb 34s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.07)}}
 /* film grain — reads as cinematic texture, hides source softness */
-.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#hero3d{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 1.4s ease}
+#hero3d.on{opacity:1}
+.hero-grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* legibility scrims */
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:
   linear-gradient(180deg,rgba(8,18,12,.5) 0%,rgba(8,18,12,.12) 26%,rgba(7,16,11,.55) 62%,rgba(5,13,9,.96) 100%);}
@@ -301,6 +303,7 @@ footer a{color:var(--gold)}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
+  <canvas id="hero3d" aria-hidden="true"></canvas>
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="wrap hero-in hero-anim">
     <span class="kicker">Villefranque · Pays Basque</span>
@@ -576,6 +579,97 @@ if(pars.length && !window.matchMedia('(prefers-reduced-motion:reduce)').matches)
   });};
   window.addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
   upd();
+}
+</script>
+
+<!-- Hero WebGL : particules lumineuses (Three.js). Degrade gracieux -> la photo reste si WebGL indispo. -->
+<script type="module">
+const cv=document.getElementById('hero3d');
+const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+function webglOK(){try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl')||c.getContext('experimental-webgl')));}catch(e){return false;}}
+if(cv && !reduce && webglOK()){
+  (async()=>{
+    try{
+      const THREE=await import('./three.min.js');
+      const hero=cv.parentElement;
+      const dpr=Math.min(window.devicePixelRatio||1,1.6);
+      const renderer=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true,powerPreference:'high-performance'});
+      renderer.setPixelRatio(dpr);
+      const scene=new THREE.Scene();
+      const cam=new THREE.PerspectiveCamera(60,1,0.1,100);
+      cam.position.set(0,0,7);
+      const N=(window.innerWidth<640?150:340);
+      const pos=new Float32Array(N*3), spd=new Float32Array(N), siz=new Float32Array(N), pha=new Float32Array(N), tnt=new Float32Array(N);
+      const RX=11, RY=7, RZ=6;
+      for(let i=0;i<N;i++){
+        pos[i*3]=(Math.random()*2-1)*RX;
+        pos[i*3+1]=(Math.random()*2-1)*RY;
+        pos[i*3+2]=(Math.random()*2-1)*RZ - 1.5;
+        spd[i]=0.06+Math.random()*0.16;
+        siz[i]=6+Math.random()*22;
+        pha[i]=Math.random()*6.28;
+        tnt[i]=Math.random();
+      }
+      const g=new THREE.BufferGeometry();
+      g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+      g.setAttribute('aSize',new THREE.BufferAttribute(siz,1));
+      g.setAttribute('aPhase',new THREE.BufferAttribute(pha,1));
+      g.setAttribute('aTint',new THREE.BufferAttribute(tnt,1));
+      const mat=new THREE.ShaderMaterial({
+        transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+        uniforms:{uTime:{value:0},uDpr:{value:dpr}},
+        vertexShader:`
+          attribute float aSize; attribute float aPhase; attribute float aTint;
+          uniform float uTime; uniform float uDpr; varying float vTw; varying float vTint;
+          void main(){
+            vTint=aTint;
+            vTw=0.55+0.45*sin(uTime*1.4+aPhase);
+            vec4 mv=modelViewMatrix*vec4(position,1.0);
+            gl_PointSize=aSize*uDpr*(9.0/-mv.z)*vTw;
+            gl_Position=projectionMatrix*mv;
+          }`,
+        fragmentShader:`
+          precision mediump float; varying float vTw; varying float vTint;
+          void main(){
+            float d=length(gl_PointCoord-0.5);
+            float a=smoothstep(0.5,0.0,d);
+            a*=a;
+            vec3 gold=vec3(1.0,0.83,0.55); vec3 white=vec3(0.85,0.95,0.9);
+            vec3 col=mix(gold,white,vTint);
+            gl_FragColor=vec4(col, a*vTw*0.9);
+          }`
+      });
+      const pts=new THREE.Points(g,mat);
+      scene.add(pts);
+      const resize=()=>{const w=hero.clientWidth,h=hero.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();};
+      resize(); window.addEventListener('resize',resize,{passive:true});
+      // parallaxe douce a la souris
+      let tx=0,ty=0,cx=0,cy=0;
+      window.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth-0.5);ty=(e.clientY/window.innerHeight-0.5);},{passive:true});
+      const clock=new THREE.Clock(); let running=true, shown=false;
+      // pause hors-ecran
+      const io=new IntersectionObserver(es=>es.forEach(e=>running=e.isIntersecting),{threshold:0.02});
+      io.observe(hero);
+      const parr=g.attributes.position.array;
+      const tick=()=>{
+        requestAnimationFrame(tick);
+        if(!running)return;
+        const dt=Math.min(clock.getDelta(),0.05), t=clock.elapsedTime;
+        mat.uniforms.uTime.value=t;
+        for(let i=0;i<N;i++){
+          parr[i*3+1]+=spd[i]*dt;                      // derive vers le haut
+          parr[i*3]+=Math.sin(t*0.5+pha[i])*0.0016;    // leger balancement
+          if(parr[i*3+1]>RY){parr[i*3+1]=-RY;parr[i*3]=(Math.random()*2-1)*RX;}
+        }
+        g.attributes.position.needsUpdate=true;
+        cx+=(tx-cx)*0.04; cy+=(ty-cy)*0.04;
+        cam.position.x=cx*1.6; cam.position.y=-cy*1.0; cam.lookAt(0,0,0);
+        renderer.render(scene,cam);
+        if(!shown){shown=true;cv.classList.add('on');}
+      };
+      tick();
+    }catch(err){ /* WebGL indispo -> la photo reste, on ne fait rien */ }
+  })();
 }
 </script>
 </body>
