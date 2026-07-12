@@ -598,7 +598,7 @@ if(cv && !reduce && webglOK()){
       const scene=new THREE.Scene();
       const cam=new THREE.PerspectiveCamera(60,1,0.1,100);
       cam.position.set(0,0,7);
-      const N=(window.innerWidth<640?260:620);
+      const N=(window.innerWidth<640?260:340);
       const pos=new Float32Array(N*3), spd=new Float32Array(N), siz=new Float32Array(N), pha=new Float32Array(N), tnt=new Float32Array(N);
       const RX=11, RY=7, RZ=6;
       for(let i=0;i<N;i++){
