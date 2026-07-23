@@ -3,3 +3,4 @@ Allow: /
 Disallow: /merci.html
 
 Sitemap: https://click2lead.fr/sitemap.xml
+Disallow: /outils/

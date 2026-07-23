@@ -1,0 +1,345 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Suivi prospects — Click2Lead</title></head><body><title>Suivi prospects — Click2Lead</title>
+<style>
+:root{
+  --bg:#0b0918; --surface:#141026; --surface-2:#1b1636; --line:rgba(255,255,255,.09);
+  --txt:#ece9f7; --mut:#9a94b8; --p:#7c5af0; --s:#d6ff3f;
+  --gp:linear-gradient(120deg,#7c5af0,#d6ff3f);
+  --st-a_contacter:#8b93b0; --st-contacte:#8f78f5; --st-relance:#f5b544;
+  --st-rdv:#c9ec3f; --st-gagne:#43d493; --st-recontacter:#5cb0ff; --st-perdu:#f0607a;
+  --danger:#f0607a; --radius:16px;
+  --shadow:0 20px 50px -30px rgba(0,0,0,.85);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: light){:root{
+  --bg:#f4f2fb; --surface:#ffffff; --surface-2:#faf9ff; --line:rgba(20,14,45,.12);
+  --txt:#171235; --mut:#6a6486;
+  --st-a_contacter:#5c6480; --st-contacte:#6a45e0; --st-relance:#b5760a;
+  --st-rdv:#5f8a00; --st-gagne:#159c67; --st-recontacter:#1f74c9; --st-perdu:#d23a5a;
+  --shadow:0 18px 40px -28px rgba(30,20,70,.4);
+}}
+:root[data-theme="dark"]{
+  --bg:#0b0918; --surface:#141026; --surface-2:#1b1636; --line:rgba(255,255,255,.09);
+  --txt:#ece9f7; --mut:#9a94b8;
+  --st-a_contacter:#8b93b0; --st-contacte:#8f78f5; --st-relance:#f5b544;
+  --st-rdv:#c9ec3f; --st-gagne:#43d493; --st-recontacter:#5cb0ff; --st-perdu:#f0607a;
+  --shadow:0 20px 50px -30px rgba(0,0,0,.85);
+}
+:root[data-theme="light"]{
+  --bg:#f4f2fb; --surface:#ffffff; --surface-2:#faf9ff; --line:rgba(20,14,45,.12);
+  --txt:#171235; --mut:#6a6486;
+  --st-a_contacter:#5c6480; --st-contacte:#6a45e0; --st-relance:#b5760a;
+  --st-rdv:#5f8a00; --st-gagne:#159c67; --st-recontacter:#1f74c9; --st-perdu:#d23a5a;
+  --shadow:0 18px 40px -28px rgba(30,20,70,.4);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);line-height:1.5;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(70% 45% at 90% -5%,rgba(124,90,240,.16),transparent 70%),radial-gradient(55% 40% at -5% 105%,rgba(214,255,63,.08),transparent 70%);
+  background-attachment:fixed;min-height:100vh}
+.wrap{max-width:820px;margin:0 auto;padding:22px 16px 80px}
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.brand{display:flex;flex-direction:column;gap:3px}
+.wordmark{font-weight:800;font-size:.9rem;letter-spacing:-.01em}
+.wordmark b{background:var(--gp);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+.theme-btn{background:var(--surface);border:1px solid var(--line);color:var(--txt);border-radius:999px;
+  width:40px;height:40px;font-size:1.05rem;cursor:pointer;flex:none}
+/* summary */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 14px}
+.stat .n{font-size:1.9rem;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.stat .l{font-size:.72rem;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-top:6px}
+.stat.alert{border-color:var(--st-relance)}
+.stat.alert .n{color:var(--st-relance)}
+.stat.win .n{color:var(--st-gagne)}
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.search{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--line);color:var(--txt);
+  border-radius:999px;padding:11px 16px;font-size:.95rem;font-family:inherit}
+.btn{border:none;border-radius:999px;padding:11px 18px;font-weight:700;font-size:.9rem;cursor:pointer;
+  font-family:inherit;display:inline-flex;align-items:center;gap:7px}
+.btn-add{background:var(--gp);color:#0b0918}
+.btn-ghost{background:var(--surface);border:1px solid var(--line);color:var(--txt)}
+.btn:active{transform:scale(.97)}
+/* filters */
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;-webkit-overflow-scrolling:touch}
+.chip{white-space:nowrap;background:var(--surface);border:1px solid var(--line);color:var(--mut);
+  border-radius:999px;padding:7px 14px;font-size:.82rem;font-weight:600;cursor:pointer;flex:none}
+.chip[aria-pressed="true"]{background:var(--txt);color:var(--bg);border-color:var(--txt)}
+/* cards */
+.list{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--st-a_contacter);
+  border-radius:var(--radius);padding:14px 14px 12px;box-shadow:var(--shadow);position:relative}
+.card[data-status="a_contacter"]{border-left-color:var(--st-a_contacter)}
+.card[data-status="contacte"]{border-left-color:var(--st-contacte)}
+.card[data-status="relance"]{border-left-color:var(--st-relance)}
+.card[data-status="rdv"]{border-left-color:var(--st-rdv)}
+.card[data-status="gagne"]{border-left-color:var(--st-gagne)}
+.card[data-status="recontacter"]{border-left-color:var(--st-recontacter)}
+.card[data-status="perdu"]{border-left-color:var(--st-perdu)}
+.card.due{box-shadow:var(--shadow),0 0 0 1.5px var(--st-relance)}
+.c-head{display:flex;align-items:center;gap:8px}
+.nom{flex:1;background:transparent;border:none;color:var(--txt);font-size:1.08rem;font-weight:700;
+  font-family:inherit;padding:2px 0;letter-spacing:-.01em;min-width:0}
+.nom:focus{outline:none}
+.nom::placeholder{color:var(--mut);font-weight:600}
+.del{background:transparent;border:none;color:var(--mut);font-size:1.3rem;cursor:pointer;line-height:1;
+  width:30px;height:30px;border-radius:8px;flex:none}
+.del:hover{color:var(--danger)}
+.del.confirming{width:auto;padding:4px 11px;font-size:.7rem;font-weight:800;color:#fff;background:var(--danger);
+  border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.due-badge{display:none;align-items:center;gap:5px;font-size:.7rem;font-weight:800;color:#0b0918;
+  background:var(--st-relance);border-radius:999px;padding:3px 9px;text-transform:uppercase;letter-spacing:.04em}
+.card.due .due-badge{display:inline-flex}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-size:.66rem;color:var(--mut);text-transform:uppercase;letter-spacing:.09em;font-weight:700}
+.field select,.field input{background:var(--surface-2);border:1px solid var(--line);color:var(--txt);
+  border-radius:10px;padding:9px 10px;font-size:.9rem;font-family:inherit;width:100%}
+.field input[type="date"]{min-height:38px}
+.st-sel{font-weight:700}
+.card[data-status="a_contacter"] .st-sel{color:var(--st-a_contacter)}
+.card[data-status="contacte"] .st-sel{color:var(--st-contacte)}
+.card[data-status="relance"] .st-sel{color:var(--st-relance)}
+.card[data-status="rdv"] .st-sel{color:var(--st-rdv)}
+.card[data-status="gagne"] .st-sel{color:var(--st-gagne)}
+.card[data-status="recontacter"] .st-sel{color:var(--st-recontacter)}
+.card[data-status="perdu"] .st-sel{color:var(--st-perdu)}
+.notes{margin-top:10px}
+.notes textarea{width:100%;background:var(--surface-2);border:1px solid var(--line);color:var(--txt);
+  border-radius:10px;padding:9px 10px;font-size:.86rem;font-family:inherit;resize:vertical;min-height:38px;line-height:1.45}
+.field select:focus,.field input:focus,.notes textarea:focus,.search:focus{outline:2px solid var(--p);outline-offset:1px}
+/* import bar */
+.import-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;
+  background:linear-gradient(120deg,rgba(124,90,240,.18),rgba(214,255,63,.10));
+  border:1px solid var(--p);border-radius:14px;padding:12px 14px}
+.import-bar .txt{flex:1;min-width:150px;font-size:.9rem;font-weight:600}
+.import-bar .btn{padding:9px 15px}
+/* empty */
+.empty{text-align:center;color:var(--mut);padding:50px 20px;border:1px dashed var(--line);border-radius:var(--radius)}
+.empty b{color:var(--txt);display:block;font-size:1.05rem;margin-bottom:6px}
+.foot{margin-top:22px;text-align:center;color:var(--mut);font-size:.76rem;line-height:1.6}
+@media(max-width:430px){.stats{gap:8px}.stat{padding:12px 10px}.stat .n{font-size:1.55rem}}
+@media(prefers-reduced-motion:reduce){.btn:active{transform:none}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <span class="wordmark">Click2<b>Lead</b></span>
+      <h1>Suivi prospects</h1>
+    </div>
+    <button class="theme-btn" id="themeBtn" title="Changer le thème" aria-label="Changer le thème">◐</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n" id="stTotal">0</div><div class="l">Prospects</div></div>
+    <div class="stat alert"><div class="n" id="stDue">0</div><div class="l">À relancer</div></div>
+    <div class="stat win"><div class="n" id="stWin">0</div><div class="l">Gagnés</div></div>
+  </div>
+
+  <div class="toolbar">
+    <input class="search" id="search" type="search" placeholder="Rechercher un nom…" autocomplete="off">
+    <button class="btn btn-add" id="addBtn">+ Ajouter</button>
+    <button class="btn btn-ghost" id="csvBtn">Exporter</button>
+  </div>
+
+  <div id="importBar"></div>
+
+  <div class="chips" id="chips"></div>
+
+  <div class="list" id="list"></div>
+
+  <p class="foot">Sauvegarde automatique sur cet appareil. Pensez à « Exporter » de temps en temps pour garder une copie.<br>80 % des ventes se jouent dans la relance 🎯</p>
+</div>
+
+<script>
+(function(){
+  const KEY='c2l_prospects_v1';
+  const STATUTS=[
+    {v:'a_contacter',l:'À contacter'},
+    {v:'contacte',l:'Contacté'},
+    {v:'relance',l:'Relancé'},
+    {v:'rdv',l:'RDV / Appel'},
+    {v:'gagne',l:'Gagné'},
+    {v:'recontacter',l:'À recontacter'},
+    {v:'perdu',l:'Perdu'}
+  ];
+  const CANAUX=['Instagram','Email','Appel','SMS','Bark','Google Maps','Recommandation','Autre'];
+  const today=()=>new Date().toISOString().slice(0,10);
+  const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+
+  /* ===== Lot d'import préparé par Claude (rempli sur demande) ===== */
+  const IMPORT_BATCH_ID='';
+  const IMPORT_BATCH=[];
+  const IKEY='c2l_imported_batches_v1';
+  function importedBatches(){try{return JSON.parse(localStorage.getItem(IKEY))||[];}catch(e){return[];}}
+  function markImported(id){const s=importedBatches();if(!s.includes(id)){s.push(id);try{localStorage.setItem(IKEY,JSON.stringify(s));}catch(e){}}}
+
+  let data=load();
+  let filter='tous';
+
+  function load(){
+    try{const r=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(r))return r;}catch(e){}
+    return [
+      {id:uid(), nom:"LUXURY BARBER 64 (barbier, Bayonne)", canal:"Instagram", statut:"rdv", contact:"2026-07-23", relance:"",
+       notes:"A RÉPONDU 🔥 veut une maquette + le prix. Aucun site (bio = lien Google Maps). 5,0/123 avis, marque premium, events. Sans RDV. Prochaine étape : lui envoyer la maquette gratuite. Tel 06 12 75 53 06."},
+      {id:uid(), nom:"DADZ Energies (électricien, Bayonne)", canal:"Google Maps", statut:"contacte", contact:"2026-07-23", relance:"2026-07-27",
+       notes:"Contacté via message Google. AUCUN site + fait de la pub Google Ads (budget). 5,0/19 avis, familiale, réactif, devis gratuit, belles réalisations. TOP. Angle : pubs convertissent mieux + portfolio devis + SEO. Faire une maquette gratuite."},
+      {id:uid(), nom:"Trek elec (électricien + clim, Bayonne)", canal:"SMS", statut:"contacte", contact:"2026-07-23", relance:"2026-07-27",
+       notes:"SMS envoyé. AUCUN site. 5,0/48 avis, Av Sainte-Croix Bayonne, belles réalisations. Angle : portfolio + demande de devis + domaine + SEO. Faire une maquette gratuite."},
+      {id:uid(), nom:"Secrets 2 Beauté (institut, Anglet)", canal:"Instagram", statut:"a_contacter", contact:"2026-07-23", relance:"",
+       notes:"Site secrets2beaute.fr daté 2017, design stock, RDV peu clair, pas de galerie, AUCUNE mention légale/RGPD. Angle : refonte premium + conformité. Tel 05 59 44 87 36."},
+      {id:uid(), nom:"Aqua-Terra (institut, Anglet)", canal:"Email", statut:"a_contacter", contact:"2026-07-23", relance:"",
+       notes:"Site angletbeaute.fr moderne mais pas de réservation en ligne, formulaire enfoui + captcha, pas de légal/RGPD. Pas d'Insta. Angle : réservation + CTA + conformité. Mail aqua_terra@hotmail.fr, tel 05 59 03 45 07."},
+      {id:uid(), nom:"VILABAIA (kayak / paddle)", canal:"Instagram", statut:"recontacter", contact:"2026-07-12", relance:"2027-03-01",
+       notes:"Reprise d'activité, pas de budget cette année. Maquette + devis envoyés, très bon retour. Relancer au printemps 2027. Garder la relation paddle 🛶"}
+    ];
+  }
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){}}
+
+  function isDue(p){
+    if(!p.relance) return false;
+    if(p.statut==='gagne'||p.statut==='perdu') return false;
+    return p.relance<=today();
+  }
+
+  function renderImportBar(){
+    const bar=document.getElementById('importBar');bar.innerHTML='';
+    if(!IMPORT_BATCH_ID||!IMPORT_BATCH.length||importedBatches().includes(IMPORT_BATCH_ID))return;
+    const d=document.createElement('div');d.className='import-bar';
+    const t=document.createElement('span');t.className='txt';
+    t.textContent='🎁 '+IMPORT_BATCH.length+' prospect'+(IMPORT_BATCH.length>1?'s':'')+' préparé'+(IMPORT_BATCH.length>1?'s':'')+' pour toi.';
+    const imp=document.createElement('button');imp.className='btn btn-add';imp.textContent='Importer';
+    imp.onclick=()=>{
+      IMPORT_BATCH.forEach(x=>data.unshift(Object.assign({id:uid(),canal:'Autre',statut:'a_contacter',contact:today(),relance:'',notes:''},x)));
+      markImported(IMPORT_BATCH_ID);save();filter='tous';render();
+    };
+    const ig=document.createElement('button');ig.className='btn btn-ghost';ig.textContent='Ignorer';
+    ig.onclick=()=>{markImported(IMPORT_BATCH_ID);renderImportBar();};
+    d.appendChild(t);d.appendChild(imp);d.appendChild(ig);bar.appendChild(d);
+  }
+
+  function render(){
+    renderImportBar();
+    // stats
+    document.getElementById('stTotal').textContent=data.length;
+    document.getElementById('stDue').textContent=data.filter(isDue).length;
+    document.getElementById('stWin').textContent=data.filter(p=>p.statut==='gagne').length;
+
+    // chips
+    const chips=[['tous','Tous'],['due','À relancer'],['a_contacter','À contacter'],
+      ['contacte','En cours'],['gagne','Gagnés'],['perdu','Perdus']];
+    const cw=document.getElementById('chips');
+    cw.innerHTML='';
+    chips.forEach(([v,l])=>{
+      const b=document.createElement('button');
+      b.className='chip';b.textContent=l;b.setAttribute('aria-pressed',filter===v);
+      b.onclick=()=>{filter=v;render();};
+      cw.appendChild(b);
+    });
+
+    // filter + search
+    const q=document.getElementById('search').value.trim().toLowerCase();
+    let rows=data.filter(p=>{
+      if(q && !(p.nom||'').toLowerCase().includes(q)) return false;
+      if(filter==='tous') return true;
+      if(filter==='due') return isDue(p);
+      if(filter==='contacte') return ['contacte','relance','rdv','recontacter'].includes(p.statut);
+      return p.statut===filter;
+    });
+
+    const list=document.getElementById('list');
+    list.innerHTML='';
+    if(!rows.length){
+      const e=document.createElement('div');e.className='empty';
+      e.innerHTML='<b>Aucun prospect ici</b>'+(data.length?'Change de filtre ou ajoute-en un.':'Clique sur « + Ajouter » pour commencer ton pipeline.');
+      list.appendChild(e);return;
+    }
+    rows.forEach(p=>list.appendChild(cardEl(p)));
+  }
+
+  function cardEl(p){
+    const c=document.createElement('div');
+    c.className='card'+(isDue(p)?' due':'');
+    c.dataset.status=p.statut;
+
+    const stOpts=STATUTS.map(s=>`<option value="${s.v}"${s.v===p.statut?' selected':''}>${s.l}</option>`).join('');
+    const caOpts=CANAUX.map(x=>`<option${x===p.canal?' selected':''}>${x}</option>`).join('');
+
+    c.innerHTML=`
+      <div class="c-head">
+        <input class="nom" data-k="nom" placeholder="Nom du prospect" value="${esc(p.nom)}">
+        <span class="due-badge">à relancer</span>
+        <button class="del" title="Supprimer" aria-label="Supprimer">×</button>
+      </div>
+      <div class="grid">
+        <div class="field"><label>Canal</label><select data-k="canal">${caOpts}</select></div>
+        <div class="field"><label>Statut</label><select class="st-sel" data-k="statut">${stOpts}</select></div>
+        <div class="field"><label>Contacté le</label><input type="date" data-k="contact" value="${p.contact||''}"></div>
+        <div class="field"><label>Relancer le</label><input type="date" data-k="relance" value="${p.relance||''}"></div>
+      </div>
+      <div class="notes"><textarea data-k="notes" placeholder="Notes : problèmes repérés, offre, retour…">${esc(p.notes)}</textarea></div>
+    `;
+
+    c.querySelectorAll('[data-k]').forEach(el=>{
+      const ev=el.tagName==='SELECT'||el.type==='date'?'change':'input';
+      el.addEventListener(ev,()=>{
+        p[el.dataset.k]=el.value;
+        if(el.dataset.k==='statut'||el.dataset.k==='relance'){
+          c.dataset.status=p.statut;
+          c.classList.toggle('due',isDue(p));
+          updateStats();
+        }
+        save();
+      });
+    });
+    const del=c.querySelector('.del');
+    del.addEventListener('click',()=>{
+      if(del.dataset.confirm==='1'){
+        data=data.filter(x=>x.id!==p.id);save();render();return;
+      }
+      del.dataset.confirm='1';del.textContent='Supprimer ?';del.classList.add('confirming');
+      clearTimeout(del._t);
+      del._t=setTimeout(()=>{del.dataset.confirm='';del.textContent='×';del.classList.remove('confirming');},3000);
+    });
+    return c;
+  }
+
+  function updateStats(){
+    document.getElementById('stDue').textContent=data.filter(isDue).length;
+    document.getElementById('stWin').textContent=data.filter(p=>p.statut==='gagne').length;
+  }
+
+  function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+  // add
+  document.getElementById('addBtn').addEventListener('click',()=>{
+    data.unshift({id:uid(),nom:'',canal:'Instagram',statut:'a_contacter',contact:today(),relance:'',notes:''});
+    save();filter='tous';document.getElementById('search').value='';render();
+    const first=document.querySelector('.card .nom');if(first)first.focus();
+  });
+  // search
+  document.getElementById('search').addEventListener('input',render);
+  // export CSV
+  document.getElementById('csvBtn').addEventListener('click',()=>{
+    const head=['Nom','Canal','Statut','Contacté le','Relancer le','Notes'];
+    const lbl=v=>(STATUTS.find(s=>s.v===v)||{l:v}).l;
+    const rows=data.map(p=>[p.nom,p.canal,lbl(p.statut),p.contact,p.relance,(p.notes||'').replace(/\n/g,' ')]);
+    const csv=[head,...rows].map(r=>r.map(c=>'"'+String(c==null?'':c).replace(/"/g,'""')+'"').join(',')).join('\n');
+    const a=document.createElement('a');
+    a.href='data:text/csv;charset=utf-8,'+encodeURIComponent('﻿'+csv);
+    a.download='prospects-click2lead.csv';a.click();
+  });
+  // theme
+  const tb=document.getElementById('themeBtn');
+  tb.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme');
+    const dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme',dark?'light':'dark');
+  });
+
+  render();
+})();
+</script>
+</body></html>
