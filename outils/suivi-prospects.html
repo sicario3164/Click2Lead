@@ -170,8 +170,19 @@ h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
   const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 
   /* ===== Lot d'import préparé par Claude (rempli sur demande) ===== */
-  const IMPORT_BATCH_ID='';
-  const IMPORT_BATCH=[];
+  const IMPORT_BATCH_ID='2026-07-24-tatoueurs';
+  const IMPORT_BATCH=[
+    {nom:"Bakunawa Tattoo (tatoueur, Bayonne)", canal:"Instagram", statut:"contacte",
+     notes:"DM Insta envoyé. AUCUN site. 4,9/839 avis, 138 rue Maubec Bayonne, style réaliste/polynésien. Angle : galerie grand format + book en ligne au lieu de la fiche Maps. Maquette gratuite proposée."},
+    {nom:"Minimal Tattoo Biarritz (tatoueur)", canal:"Instagram", statut:"contacte",
+     notes:"DM Insta envoyé. AUCUN site. 5,0/231 avis, style fine-line/floral épuré. Angle : galerie zoomable pour un travail délicat. Maquette gratuite proposée."},
+    {nom:"Black Mirror (tatoueur, Bayonne)", canal:"Instagram", statut:"contacte",
+     notes:"DM Insta envoyé. AUCUN site. 5,0/74 avis, 7 rue Pannecau Bayonne, spécialiste réaliste + camouflage de cicatrices. Angle : book grand format. Maquette gratuite proposée."},
+    {nom:"Clément Tarsia (tatoueur)", canal:"Instagram", statut:"contacte",
+     notes:"DM Insta envoyé. AUCUN site. 5,0/151 avis, style japonais/néo-traditionnel + retouches. Tel 06 73 75 85 10. Angle : book couleur grand format. Maquette gratuite proposée."},
+    {nom:"Matilda Tattoo (tatoueuse, Bayonne)", canal:"Instagram", statut:"contacte",
+     notes:"DM Insta envoyé. AUCUN site. 5,0/83 avis, @matilda_tattoo, 3588 followers, 49 rue Maubec Bayonne, style fine-line floral/animaux. Angle : vitrine web pour capter au-delà d'Insta. Maquette gratuite proposée."}
+  ];
   const IKEY='c2l_imported_batches_v1';
   function importedBatches(){try{return JSON.parse(localStorage.getItem(IKEY))||[];}catch(e){return[];}}
   function markImported(id){const s=importedBatches();if(!s.includes(id)){s.push(id);try{localStorage.setItem(IKEY,JSON.stringify(s));}catch(e){}}}
