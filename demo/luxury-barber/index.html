@@ -65,8 +65,8 @@ body.cur-lg #curd{opacity:0}
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:600;font-size:.9rem;letter-spacing:.02em;
   padding:15px 30px;border-radius:999px;cursor:pointer;border:1.5px solid transparent;transition:transform .3s var(--e-out),box-shadow .3s var(--e-out),background .3s,color .3s,border-color .3s}
 .btn .ic{width:18px;height:18px}
-.btn-gold{background:var(--gg);color:#160f04;font-weight:700;box-shadow:0 16px 34px -16px rgba(200,160,78,.8)}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 24px 46px -14px rgba(240,214,138,.9)}
+.btn-gold{background:var(--gg);color:#160f04;font-weight:700;box-shadow:0 14px 32px -20px rgba(0,0,0,.7),0 10px 28px -18px rgba(200,160,78,.35)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 20px 44px -22px rgba(0,0,0,.6),0 16px 36px -20px rgba(240,214,138,.45)}
 .btn-out{background:transparent;border-color:rgba(239,231,214,.4);color:var(--cream)}
 .btn-out:hover{border-color:var(--gold);color:var(--gold-hi);transform:translateY(-3px)}
 .btn:active{transform:scale(.97)}
@@ -106,9 +106,10 @@ header.sc{background:rgba(12,10,9,.82);backdrop-filter:blur(14px);border-bottom-
 .type-lock .l1,.type-lock .l2{display:block;font-size:clamp(3.5rem,15.5vw,15rem)}
 .type-lock .l1{background:var(--gg);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 6px 30px rgba(0,0,0,.6))}
 .type-lock .l2{color:transparent;-webkit-text-stroke:1.5px var(--gold);text-stroke:1.5px var(--gold);margin-top:-.06em;margin-left:.02em}
-.hero-tag{display:flex;align-items:center;gap:16px;margin:26px 0 4px;max-width:30ch}
-.hero-tag .bar{width:2px;align-self:stretch;background:var(--gg)}
-.hero-tag p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.28rem;color:#e6ddc9;line-height:1.35}
+.hero-slogan{display:flex;gap:16px;margin:28px 0 0;max-width:26ch;font-family:var(--disp);font-size:clamp(1.35rem,3.1vw,2.1rem);letter-spacing:.02em;text-transform:uppercase;line-height:1.06}
+.hero-slogan .bar{width:2px;align-self:stretch;background:var(--gg);flex:none}
+.hero-slogan em{font-family:var(--serif);font-style:italic;font-weight:600;text-transform:none;letter-spacing:0;white-space:nowrap;background:var(--gg);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-lede{margin:16px 0 0;max-width:48ch;color:#cdc4b2;font-size:1.02rem;line-height:1.62}
 .hero-meta{display:flex;flex-wrap:wrap;gap:9px 22px;margin-top:22px;font-size:.86rem;color:#cdc4b2}
 .hero-meta span{display:inline-flex;align-items:center;gap:7px}
 .hero-meta .ic{width:15px;height:15px;color:var(--gold)}
@@ -124,9 +125,10 @@ body.ready .hero-anim .type-lock .l1,body.ready .hero-anim .type-lock .l2{animat
 body.ready .hero-anim>*:nth-child(1){animation-delay:.05s}
 body.ready .type-lock .l1{animation-delay:.18s}
 body.ready .type-lock .l2{animation-delay:.32s}
-body.ready .hero-anim>*:nth-child(3){animation-delay:.52s}
-body.ready .hero-anim>*:nth-child(4){animation-delay:.62s}
-body.ready .hero-anim>*:nth-child(5){animation-delay:.72s}
+body.ready .hero-anim>*:nth-child(3){animation-delay:.5s}
+body.ready .hero-anim>*:nth-child(4){animation-delay:.58s}
+body.ready .hero-anim>*:nth-child(5){animation-delay:.66s}
+body.ready .hero-anim>*:nth-child(6){animation-delay:.74s}
 @keyframes rise{to{opacity:1;transform:none}}
 @keyframes clipup{to{opacity:1;transform:none}}
 .scroll-cue{position:absolute;left:26px;bottom:26px;z-index:3;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--smoke);display:flex;align-items:center;gap:10px}
@@ -307,10 +309,11 @@ footer p{color:var(--smoke);font-size:.85rem;margin-top:14px}
       <span class="l1">Luxury</span>
       <span class="l2">Barber</span>
     </div>
-    <div class="hero-tag">
+    <h1 class="hero-slogan">
       <span class="bar"></span>
-      <p>L'art de la coupe et de la barbe, dans un écrin black &amp; gold.</p>
-    </div>
+      <span>Plus qu'une coupe. <em>Une signature.</em></span>
+    </h1>
+    <p class="hero-lede">Chaque rendez-vous est pensé pour révéler votre style avec précision, élégance et exigence. Découvrez une expérience barber où le luxe rencontre le savoir-faire.</p>
     <div class="hero-meta">
       <span><svg class="ic"><use href="#i-walk"/></svg> Sans rendez-vous</span>
       <span><svg class="ic"><use href="#i-clock"/></svg> Lun–Sam · 9h–20h</span>
