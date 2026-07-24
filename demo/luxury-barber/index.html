@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Luxury Barber 64 — Barbier premium · Bayonne</title>
+<meta name="description" content="Luxury Barber Shop à Bayonne. Coupe, barbe, dégradé — barbier premium, sans rendez-vous, du lundi au samedi de 9h à 20h. 30 rue Maubec, Bayonne.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0b; --bg2:#111012; --card:#161518; --line:rgba(201,162,75,.22);
+  --gold:#c9a24b; --gold-hi:#f0d68a; --gold-2:#9c7a2e;
+  --txt:#f1ede3; --mut:#a49f93;
+  --gg:linear-gradient(180deg,#f3d789,#d3ac57 55%,#a67f30);
+  --disp:'Cinzel',Georgia,serif; --body:'Inter',system-ui,sans-serif;
+  --sh:0 34px 70px -34px rgba(0,0,0,.85);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding-inline:24px}
+.gold{background:var(--gg);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.kick{font-family:var(--body);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;font-weight:600;color:var(--gold);display:inline-flex;align-items:center;gap:12px}
+.kick::before{content:"";width:26px;height:1px;background:var(--gold)}
+.ic{width:1em;height:1em;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;padding:15px 28px;border-radius:2px;border:1px solid transparent;transition:transform .25s,box-shadow .25s,background .25s,color .25s;cursor:pointer;font-family:var(--body);letter-spacing:.02em}
+.btn .ic{width:18px;height:18px}
+.btn-gold{background:var(--gg);color:#1a1305;font-weight:700;box-shadow:0 14px 30px -14px rgba(201,162,75,.7)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 44px -16px rgba(201,162,75,.85)}
+.btn-ghost{background:rgba(255,255,255,.04);border-color:rgba(240,214,138,.5);color:var(--gold-hi)}
+.btn-ghost:hover{background:rgba(240,214,138,.12);transform:translateY(-3px)}
+.btn:active{transform:scale(.97)}
+/* nav */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,backdrop-filter .3s,border-color .3s;border-bottom:1px solid transparent}
+header.sc{background:rgba(10,10,11,.82);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-l{display:flex;align-items:center;gap:12px}
+.nav-l img{height:44px;width:auto;filter:drop-shadow(0 3px 10px rgba(0,0,0,.6))}
+.nav-l b{font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:.14em}
+.nav .btn{padding:11px 20px;font-size:.82rem;display:none}
+@media(min-width:620px){.nav .btn{display:inline-flex}}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('hero.jpg') center 42%/cover no-repeat;transform:scale(1.03);animation:kb 32s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,6,7,.7),rgba(6,6,7,.28) 34%,rgba(6,6,7,.72) 74%,rgba(6,6,7,.97))}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(120% 80% at 50% 120%,rgba(201,162,75,.14),transparent 60%)}
+.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-in{position:relative;z-index:3;width:100%;padding-block:44px 60px;text-align:center}
+.hero-logo{width:clamp(88px,15vw,120px);margin:0 auto 20px;filter:drop-shadow(0 8px 26px rgba(0,0,0,.7))}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.5rem,8vw,5.4rem);line-height:1.02;letter-spacing:.04em;margin:.1em 0 .18em}
+.hero h1 span{display:block}
+.hero-sub{max-width:34ch;margin:0 auto;color:#e9e3d4;font-size:1.05rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin-top:16px;color:#d8d2c2;font-size:.9rem}
+.hero-meta span{display:inline-flex;align-items:center;gap:7px}
+.hero-meta .ic{width:16px;height:16px;color:var(--gold)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
+.stars{color:var(--gold-hi);letter-spacing:2px}
+.hero-anim>*{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.16,1,.3,1) forwards}
+.hero-anim>*:nth-child(1){animation-delay:.1s}.hero-anim>*:nth-child(2){animation-delay:.22s}
+.hero-anim>*:nth-child(3){animation-delay:.34s}.hero-anim>*:nth-child(4){animation-delay:.46s}
+.hero-anim>*:nth-child(5){animation-delay:.58s}.hero-anim>*:nth-child(6){animation-delay:.7s}
+@keyframes rise{to{opacity:1;transform:none}}
+/* marquee */
+.mq{background:linear-gradient(90deg,#000,#161206,#000);border-block:1px solid var(--line);overflow:hidden;padding:15px 0}
+.mq-t{display:flex;gap:0;white-space:nowrap;width:max-content;animation:mq 26s linear infinite;font-family:var(--disp);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:1rem}
+.mq-t span{padding:0 26px;color:var(--gold)}
+.mq-t span::after{content:"✦";margin-left:52px;color:var(--gold-2)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* sections */
+section{padding-block:88px}
+.sec-h{max-width:640px;margin:0 auto 52px;text-align:center}
+.sec-h h2{font-family:var(--disp);font-weight:700;font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.08;letter-spacing:.02em;margin:.35em 0}
+.sec-h p{color:var(--mut)}
+/* usp */
+.usp{background:var(--bg2)}
+.usp-g{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:720px){.usp-g{grid-template-columns:repeat(3,1fr)}}
+.usp-c{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:32px 28px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
+.usp-c:hover{transform:translateY(-5px);box-shadow:var(--sh);border-color:rgba(240,214,138,.5)}
+.usp-c .ic{width:34px;height:34px;color:var(--gold);margin:0 auto 14px}
+.usp-c h3{font-family:var(--disp);font-weight:600;font-size:1.2rem;letter-spacing:.03em;margin-bottom:6px}
+.usp-c p{color:var(--mut);font-size:.95rem}
+/* tarifs */
+.tar-grid{max-width:760px;margin:0 auto;display:grid;gap:14px}
+.tar{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px 24px;transition:transform .25s,border-color .25s}
+.tar:hover{transform:translateX(4px);border-color:rgba(240,214,138,.5)}
+.tar .n{font-family:var(--disp);font-weight:600;font-size:1.18rem;letter-spacing:.02em}
+.tar .d{flex:1;color:var(--mut);font-size:.88rem}
+.tar .p{font-family:var(--disp);font-weight:700;font-size:1.5rem}
+.tar.big{background:linear-gradient(140deg,#1c1809,#141212);border-color:rgba(240,214,138,.4)}
+.sub-h{max-width:760px;margin:34px auto 14px;text-align:center;font-family:var(--body);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.tar-mini{max-width:760px;margin:0 auto;display:grid;gap:10px;grid-template-columns:1fr 1fr}
+@media(min-width:560px){.tar-mini{grid-template-columns:repeat(3,1fr)}}
+.tar-mini div{display:flex;justify-content:space-between;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:13px 16px;font-size:.92rem}
+.tar-mini b{color:var(--gold-hi);font-family:var(--disp);font-weight:600}
+/* gallery */
+.gallery{background:var(--bg2)}
+.gal{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr)}}
+.gi{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:3/4;border:1px solid var(--line)}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gi::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(6,5,3,.6));opacity:.4;transition:opacity .4s}
+.gi:hover img{transform:scale(1.09)}
+.gi:hover::after{opacity:.7}
+/* avis */
+.avis{text-align:center}
+.avis-box{max-width:520px;margin:0 auto;background:var(--card);border:1px solid rgba(240,214,138,.4);border-radius:6px;padding:38px 30px;box-shadow:var(--sh)}
+.avis .big{font-family:var(--disp);font-weight:800;font-size:4rem;line-height:1;background:var(--gg);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.avis .st{font-size:1.4rem;letter-spacing:4px;color:var(--gold-hi);margin:8px 0}
+.avis .c{color:var(--mut)}
+.avis .btn{margin-top:22px}
+.gmark{display:inline-flex;align-items:center;gap:8px;color:var(--mut);font-size:.85rem;margin-bottom:14px;justify-content:center}
+.gmark svg{width:18px;height:18px}
+/* infos */
+.infos{background:var(--bg2)}
+.info-g{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:720px){.info-g{grid-template-columns:repeat(3,1fr)}}
+.info-c{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:28px;text-align:center}
+.info-c .ic{width:30px;height:30px;color:var(--gold);margin:0 auto 12px}
+.info-c h3{font-family:var(--disp);font-weight:600;font-size:1.1rem;letter-spacing:.02em;margin-bottom:6px}
+.info-c p{color:var(--mut);font-size:.95rem}
+.info-c a.lk{color:var(--gold-hi);font-weight:600;display:inline-flex;gap:6px;align-items:center;margin-top:8px;font-size:.9rem}
+/* cta */
+.cta{position:relative;overflow:hidden;text-align:center}
+.cta-bg{position:absolute;inset:0;background:url('interior.jpg') center/cover no-repeat;transform:scale(1.04)}
+.cta-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(8,7,5,.86),rgba(8,7,5,.94))}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,6vw,3.4rem);letter-spacing:.03em;margin-bottom:10px}
+.cta p{color:var(--mut);max-width:40ch;margin:0 auto 26px}
+.cta-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.socials{display:flex;gap:12px;justify-content:center;margin-top:28px}
+.socials a{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold-hi);transition:background .25s,transform .25s}
+.socials a:hover{background:var(--gold);color:#000;transform:translateY(-3px)}
+.socials a:active{transform:scale(.94)}
+/* footer */
+footer{background:#060607;border-top:1px solid var(--line);padding:40px 0 120px;text-align:center}
+.fl{display:flex;align-items:center;gap:12px;justify-content:center;font-family:var(--disp);font-weight:700;letter-spacing:.12em}
+.fl img{height:48px}
+footer p{color:var(--mut);font-size:.85rem;margin-top:12px}
+.disc{margin-top:16px;font-size:.72rem;color:#6d6a60}
+/* sticky mobile bar */
+.mbar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:flex;gap:8px;padding:10px 14px;background:rgba(8,8,9,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.mbar .btn{flex:1;justify-content:center;padding:13px}
+@media(min-width:720px){.mbar{display:none}footer{padding-bottom:40px}}
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+@media(hover:none){.usp-c:hover,.tar:hover,.gi:hover img,.socials a:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.hero-bg,.mq-t{animation:none}.hero-anim>*{opacity:1;transform:none;animation:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="nav-l" href="#"><img src="logo.png" alt="Luxury Barber 64"><b>LUXURY BARBER</b></a>
+    <a href="tel:+33612755306" class="btn btn-gold"><svg class="ic"><use href="#i-phone"/></svg> 06 12 75 53 06</a>
+  </div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5 9 4l1.2 3.4-1.7 1.5a12 12 0 0 0 5.1 5.1l1.5-1.7L19.6 15l.5 2.5c0 1-1 2-2 2C9.5 19.5 4.5 14.5 4.5 5.5c0-1 1-2 2-2Z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol>
+<symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4" r="2"/><path d="M11 21l1.5-6-3-2.5L8 8l4 1 3 3 3 1M9.5 12 7 21"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.4l2.95 6.2 6.75.92-4.9 4.72 1.2 6.76L12 18.7l-6 3.3 1.2-6.76-4.9-4.72 6.75-.92L12 2.4Z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-google" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></symbol>
+</defs></svg>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="wrap hero-in hero-anim">
+    <img class="hero-logo" src="logo.png" alt="Luxury Barber 64">
+    <span class="kick">Bayonne · Pays Basque</span>
+    <h1><span class="gold">Luxury Barber</span></h1>
+    <p class="hero-sub">Barbier premium. Coupe, barbe et dégradé dans un cadre d'exception — sans rendez-vous.</p>
+    <div class="hero-meta">
+      <span><svg class="ic"><use href="#i-walk"/></svg> Sans rendez-vous</span>
+      <span><svg class="ic"><use href="#i-clock"/></svg> Lun–Sam · 9h–20h</span>
+      <span class="stars">★★★★★ <span style="color:#d8d2c2">5,0 · 123 avis</span></span>
+    </div>
+    <div class="hero-ctas">
+      <a href="tel:+33612755306" class="btn btn-gold"><svg class="ic"><use href="#i-phone"/></svg> Appeler le salon</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Luxury+Barber+64+30+rue+Maubec+Bayonne" target="_blank" rel="noopener" class="btn btn-ghost"><svg class="ic"><use href="#i-pin"/></svg> Itinéraire</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true"><div class="mq-t">
+  <span>Coupe</span><span>Barbe</span><span>Dégradé</span><span>Style</span><span>Enfant</span><span>Couleur</span>
+  <span>Coupe</span><span>Barbe</span><span>Dégradé</span><span>Style</span><span>Enfant</span><span>Couleur</span>
+</div></div>
+
+<!-- USP -->
+<section class="usp">
+  <div class="wrap">
+    <div class="sec-h rv"><span class="kick">L'expérience</span><h2>Le soin du <span class="gold">détail</span></h2></div>
+    <div class="usp-g">
+      <div class="usp-c rv"><svg class="ic"><use href="#i-walk"/></svg><h3>Sans rendez-vous</h3><p>Passez quand vous voulez, du lundi au samedi. On s'occupe de vous.</p></div>
+      <div class="usp-c rv"><svg class="ic"><use href="#i-scissors"/></svg><h3>Barbiers experts</h3><p>Coupe, dégradé, barbe et soins réalisés avec précision et passion.</p></div>
+      <div class="usp-c rv"><svg class="ic"><use href="#i-star"/></svg><h3>5,0 sur 123 avis</h3><p>Une réputation impeccable, bâtie sur la satisfaction de nos clients.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section>
+  <div class="wrap">
+    <div class="sec-h rv"><span class="kick">Nos tarifs</span><h2>Prestations &amp; <span class="gold">prix</span></h2><p>Des tarifs justes, une qualité premium.</p></div>
+    <div class="tar-grid">
+      <div class="tar big rv"><span class="n">Coupe + Barbe</span><span class="d">Le combo signature</span><span class="p gold">20&nbsp;€</span></div>
+      <div class="tar rv"><span class="n">Coupe Homme</span><span class="d">Coupe &amp; finitions</span><span class="p gold">15&nbsp;€</span></div>
+      <div class="tar rv"><span class="n">Barbe</span><span class="d">Taille &amp; contours</span><span class="p gold">10&nbsp;€</span></div>
+      <div class="tar rv"><span class="n">Coupe Enfant</span><span class="d">Jusqu'à 12 ans</span><span class="p gold">15&nbsp;€</span></div>
+    </div>
+    <p class="sub-h rv">Soins &amp; technique</p>
+    <div class="tar-mini rv">
+      <div>Cire <b>5&nbsp;€</b></div>
+      <div>Masque <b>5&nbsp;€</b></div>
+      <div>Mèches <b>60&nbsp;€</b></div>
+      <div>Couleur <b>70&nbsp;€</b></div>
+      <div>Permanente <b>70&nbsp;€</b></div>
+      <div>Défrisage <b>50&nbsp;€</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="sec-h rv"><span class="kick">Le shop</span><h2>Notre <span class="gold">univers</span></h2></div>
+    <div class="gal">
+      <div class="gi rv"><img src="cut1.jpg" alt="Dégradé et design réalisé au Luxury Barber"></div>
+      <div class="gi rv"><img src="stations.jpg" alt="Les postes de coiffure black &amp; gold"></div>
+      <div class="gi rv"><img src="cut2.jpg" alt="Coupe texturée effet volume"></div>
+      <div class="gi rv"><img src="interior.jpg" alt="L'intérieur premium du salon"></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="avis">
+  <div class="wrap">
+    <div class="sec-h rv"><span class="kick">Ils nous font confiance</span><h2>La <span class="gold">référence</span> à Bayonne</h2></div>
+    <div class="avis-box rv">
+      <div class="gmark"><svg viewBox="0 0 48 48"><use href="#i-google"/></svg> Avis Google</div>
+      <div class="big">5,0</div>
+      <div class="st">★★★★★</div>
+      <p class="c">Sur <b>123 avis</b> clients</p>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Luxury+Barber+64+Bayonne" target="_blank" rel="noopener">Voir les avis Google <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- INFOS -->
+<section class="infos">
+  <div class="wrap">
+    <div class="sec-h rv"><span class="kick">Infos pratiques</span><h2>Passez nous <span class="gold">voir</span></h2></div>
+    <div class="info-g">
+      <div class="info-c rv"><svg class="ic"><use href="#i-pin"/></svg><h3>Adresse</h3><p>30 rue Maubec<br>64100 Bayonne</p><a class="lk" href="https://www.google.com/maps/search/?api=1&query=Luxury+Barber+64+30+rue+Maubec+Bayonne" target="_blank" rel="noopener">Itinéraire <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+      <div class="info-c rv"><svg class="ic"><use href="#i-clock"/></svg><h3>Horaires</h3><p>Du lundi au samedi<br>9h – 20h · sans RDV</p></div>
+      <div class="info-c rv"><svg class="ic"><use href="#i-phone"/></svg><h3>Contact</h3><p>06 12 75 53 06</p><a class="lk" href="tel:+33612755306">Appeler <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="wrap">
+    <span class="kick rv" style="justify-content:center">Prêt pour votre coupe ?</span>
+    <h2 class="rv"><span class="gold">Passez quand vous voulez</span></h2>
+    <p class="rv">Pas besoin de réserver. Ouvert du lundi au samedi, de 9h à 20h.</p>
+    <div class="cta-ctas rv">
+      <a href="tel:+33612755306" class="btn btn-gold"><svg class="ic"><use href="#i-phone"/></svg> 06 12 75 53 06</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Luxury+Barber+64+30+rue+Maubec+Bayonne" target="_blank" rel="noopener" class="btn btn-ghost"><svg class="ic"><use href="#i-pin"/></svg> Itinéraire</a>
+    </div>
+    <div class="socials rv">
+      <a href="https://www.instagram.com/luxury_barber64/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-insta"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fl"><img src="logo.png" alt=""> LUXURY BARBER 64</div>
+    <p>30 rue Maubec, 64100 Bayonne · 06 12 75 53 06 · Lun–Sam 9h–20h</p>
+    <p class="disc">Maquette de démonstration réalisée par Click2Lead — non contractuelle.</p>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a href="tel:+33612755306" class="btn btn-gold"><svg class="ic"><use href="#i-phone"/></svg> Appeler</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Luxury+Barber+64+30+rue+Maubec+Bayonne" target="_blank" rel="noopener" class="btn btn-ghost"><svg class="ic"><use href="#i-pin"/></svg> Itinéraire</a>
+</div>
+
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('sc',scrollY>40),{passive:true});
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
