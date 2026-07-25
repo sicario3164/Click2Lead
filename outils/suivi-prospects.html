@@ -294,8 +294,7 @@ h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
     `;
 
     c.querySelectorAll('[data-k]').forEach(el=>{
-      const ev=el.tagName==='SELECT'||el.type==='date'?'change':'input';
-      el.addEventListener(ev,()=>{
+      const handler=()=>{
         p[el.dataset.k]=el.value;
         if(el.dataset.k==='statut'||el.dataset.k==='relance'){
           c.dataset.status=p.statut;
@@ -303,7 +302,16 @@ h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
           updateStats();
         }
         save();
-      });
+      };
+      if(el.tagName==='SELECT'){
+        el.addEventListener('change',handler);
+      }else if(el.type==='date'){
+        // iOS/Brave : le bouton "Réinitialiser" du picker déclenche 'input' mais pas toujours 'change'
+        el.addEventListener('change',handler);
+        el.addEventListener('input',handler);
+      }else{
+        el.addEventListener('input',handler);
+      }
     });
     const del=c.querySelector('.del');
     del.addEventListener('click',()=>{
