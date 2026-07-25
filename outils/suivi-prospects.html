@@ -97,6 +97,11 @@ h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
 .field select,.field input{background:var(--surface-2);border:1px solid var(--line);color:var(--txt);
   border-radius:10px;padding:9px 10px;font-size:.9rem;font-family:inherit;width:100%}
 .field input[type="date"]{min-height:38px}
+.date-row{display:flex;gap:6px;align-items:center}
+.date-row input{flex:1;min-width:0}
+.clr-date{flex:none;width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surface-2);
+  color:var(--mut);font-size:1rem;line-height:1;cursor:pointer}
+.clr-date:hover{color:var(--txt);border-color:var(--p)}
 .st-sel{font-weight:700}
 .card[data-status="a_contacter"] .st-sel{color:var(--st-a_contacter)}
 .card[data-status="contacte"] .st-sel{color:var(--st-contacte)}
@@ -288,7 +293,7 @@ h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
         <div class="field"><label>Canal</label><select data-k="canal">${caOpts}</select></div>
         <div class="field"><label>Statut</label><select class="st-sel" data-k="statut">${stOpts}</select></div>
         <div class="field"><label>Contacté le</label><input type="date" data-k="contact" value="${p.contact||''}"></div>
-        <div class="field"><label>Relancer le</label><input type="date" data-k="relance" value="${p.relance||''}"></div>
+        <div class="field"><label>Relancer le</label><div class="date-row"><input type="date" data-k="relance" value="${p.relance||''}"><button type="button" class="clr-date" title="Effacer la date" aria-label="Effacer la date">×</button></div></div>
       </div>
       <div class="notes"><textarea data-k="notes" placeholder="Notes : problèmes repérés, offre, retour…">${esc(p.notes)}</textarea></div>
     `;
@@ -313,6 +318,17 @@ h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
         el.addEventListener('input',handler);
       }
     });
+    const clrDate=c.querySelector('.clr-date');
+    if(clrDate){
+      clrDate.addEventListener('click',()=>{
+        const inp=clrDate.previousElementSibling;
+        inp.value='';
+        p.relance='';
+        c.classList.remove('due');
+        updateStats();
+        save();
+      });
+    }
     const del=c.querySelector('.del');
     del.addEventListener('click',()=>{
       if(del.dataset.confirm==='1'){
