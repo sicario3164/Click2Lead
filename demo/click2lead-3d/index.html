@@ -39,7 +39,9 @@ a{color:inherit;text-decoration:none}
 /* ============ PISTE DE SCROLL ============ */
 #track{position:relative;z-index:3}
 .scene{height:100vh;height:100svh;display:grid;place-items:center;padding:0 26px;pointer-events:none}
-.scene .in{max-width:900px;width:100%;opacity:0;transform:translateY(38px);will-change:opacity,transform}
+.scene .in{max-width:900px;width:100%;opacity:0;transform:translateY(38px);will-change:opacity,transform;position:relative}
+.scene .in::before{content:'';position:absolute;inset:-14% -12%;z-index:-1;border-radius:50%;
+  background:radial-gradient(60% 55% at 50% 50%,rgba(6,4,20,.94) 0%,rgba(6,4,20,.78) 45%,transparent 78%);filter:blur(12px)}
 .scene .in>*{pointer-events:auto}
 .act{font-family:var(--body);font-size:.68rem;font-weight:500;letter-spacing:.44em;text-transform:uppercase;color:var(--s);margin-bottom:18px;display:block}
 .scene h2,.scene h1{font-family:var(--disp);font-weight:800;line-height:.94;letter-spacing:-.02em;
@@ -128,39 +130,39 @@ body.fallback #fb{display:block}
   <section class="scene s0" data-scene="0">
     <div class="in">
       <h1><span class="grad">Click2Lead</span><span class="cursor"></span></h1>
-      <p class="sub">Nous ne faisons pas des sites. Nous fabriquons des machines à clients.</p>
+      <p class="sub">Voici, en trente secondes, ce que nous construisons pour vous.</p>
     </div>
   </section>
 
   <section class="scene" data-scene="1">
     <div class="in">
-      <span class="act">Acte 1</span>
-      <h2>Un simple <span class="grad">clic</span>.</h2>
-      <p>Quelqu'un cherche votre métier. Il tombe sur votre page. Tout commence par ces trois secondes.</p>
+      <span class="act">Votre situation</span>
+      <h2>Votre métier mérite <span class="grad">mieux qu'une fiche</span>.</h2>
+      <p>Aujourd'hui, les gens qui vous cherchent tombent sur une adresse et un numéro. Rien qui donne envie de vous choisir.</p>
     </div>
   </section>
 
   <section class="scene" data-scene="2">
     <div class="in">
-      <span class="act">Acte 2</span>
-      <h2>Devient un <span class="outline">contact</span>.</h2>
-      <p>Une page pensée pour convertir ne se contente pas d'être belle : elle donne envie d'appeler, de réserver, de demander un devis.</p>
+      <span class="act">Ce qu'on vous livre</span>
+      <h2>Une page <span class="outline">rien qu'à vous</span>.</h2>
+      <p>Vos photos, vos prestations, vos tarifs, votre ambiance. Dessinée à la main pour votre métier, pas choisie dans un catalogue.</p>
     </div>
   </section>
 
   <section class="scene" data-scene="3">
     <div class="in">
-      <span class="act">Acte 3</span>
-      <h2>Puis un <span class="grad">client</span>.</h2>
-      <p>Votre téléphone sonne. C'est la seule mesure qui compte, et c'est celle sur laquelle nous travaillons.</p>
+      <span class="act">Ce qu'elle fait</span>
+      <h2>Elle vous fait <span class="grad">appeler</span>.</h2>
+      <p>Bouton d'appel, itinéraire, demande de devis. Chaque détail est placé pour transformer un visiteur en client.</p>
     </div>
   </section>
 
   <section class="scene" data-scene="4">
     <div class="in">
-      <span class="act">Acte 4</span>
-      <h2>Et la <span class="grad">croissance</span>.</h2>
-      <p>Un site qui travaille pour vous, chaque jour, sans que vous ayez à y penser.</p>
+      <span class="act">Et ensuite</span>
+      <h2>En ligne en <span class="grad">une semaine</span>.</h2>
+      <p>Hébergement et nom de domaine compris la première année. Vous n'avez rien à gérer, elle travaille pour vous.</p>
     </div>
   </section>
 
@@ -168,7 +170,7 @@ body.fallback #fb{display:block}
     <div class="in">
       <span class="act">À vous de jouer</span>
       <h2>On construit <span class="grad">la vôtre</span> ?</h2>
-      <p style="margin-inline:auto">Maquette gratuite, sans engagement. Vous voyez le résultat avant de vous décider.</p>
+      <p style="margin-inline:auto">Maquette gratuite, sans engagement. Vous voyez votre site avant de décider quoi que ce soit.</p>
       <div class="cta-btns">
         <a href="../../index.html#contact" class="btn btn-p">Demander ma maquette</a>
         <a href="../../realisations.html" class="btn btn-o">Voir les réalisations</a>
@@ -184,38 +186,38 @@ body.fallback #fb{display:block}
     <div class="glow g1"></div><div class="glow g2"></div>
     <div class="fin">
       <h1 style="font-family:var(--disp);font-weight:800;font-size:clamp(2rem,11.5vw,4rem);line-height:.96;text-transform:uppercase;overflow-wrap:anywhere"><span class="grad">Click2Lead</span></h1>
-      <p style="color:var(--mut);margin-top:18px">Nous ne faisons pas des sites. Nous fabriquons des machines à clients.</p>
+      <p style="color:var(--mut);margin-top:18px">Voici, en trente secondes, ce que nous construisons pour vous.</p>
     </div>
   </section>
   <section class="fscene">
     <div class="fin">
-      <span class="act">Acte 1</span>
-      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Un simple <span class="grad">clic</span>.</h2>
-      <p style="color:var(--mut);margin-top:16px">Quelqu'un cherche votre métier. Il tombe sur votre page. Tout commence par ces trois secondes.</p>
+      <span class="act">Votre situation</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Mieux qu'une <span class="grad">fiche</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Les gens qui vous cherchent tombent sur une adresse et un numéro. Rien qui donne envie de vous choisir.</p>
       <div class="shot"><img src="s/c2l-1.jpg" alt="Page d'accueil Click2Lead" loading="lazy"></div>
     </div>
   </section>
   <section class="fscene">
     <div class="fin">
-      <span class="act">Acte 2</span>
-      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Devient un <span class="outline">contact</span>.</h2>
-      <p style="color:var(--mut);margin-top:16px">Une page pensée pour convertir donne envie d'appeler, de réserver, de demander un devis.</p>
+      <span class="act">Ce qu'on vous livre</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Une page <span class="outline">rien qu'à vous</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Vos photos, vos prestations, vos tarifs. Dessinée pour votre métier, pas choisie dans un catalogue.</p>
       <div class="shot"><img src="s/c2l-3.jpg" alt="Section offres Click2Lead" loading="lazy"></div>
     </div>
   </section>
   <section class="fscene">
     <div class="fin">
-      <span class="act">Acte 3</span>
-      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Puis un <span class="grad">client</span>.</h2>
-      <p style="color:var(--mut);margin-top:16px">Votre téléphone sonne. C'est la seule mesure qui compte.</p>
+      <span class="act">Ce qu'elle fait</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Elle vous fait <span class="grad">appeler</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Bouton d'appel, itinéraire, demande de devis. Chaque détail placé pour transformer un visiteur en client.</p>
       <div class="shot"><img src="s/vyra-1.jpg" alt="Projet VyraShop" loading="lazy"></div>
     </div>
   </section>
   <section class="fscene">
     <div class="fin">
-      <span class="act">Acte 4</span>
-      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Et la <span class="grad">croissance</span>.</h2>
-      <p style="color:var(--mut);margin-top:16px">Un site qui travaille pour vous chaque jour, sans que vous ayez à y penser.</p>
+      <span class="act">Et ensuite</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">En ligne en <span class="grad">une semaine</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Hébergement et nom de domaine compris la première année. Vous n'avez rien à gérer.</p>
       <div class="shot"><img src="s/vyra-3.jpg" alt="Projet VyraShop, page produit" loading="lazy"></div>
     </div>
   </section>
@@ -314,23 +316,29 @@ try{
   const grid2 = grid.clone(); grid2.position.y = 7.5; grid2.material.opacity = .10; scene.add(grid2);
 
   /* ---- écrans flottants (les vraies captures) ---- */
-  const files = ['s/c2l-1.jpg','s/c2l-2.jpg','s/c2l-3.jpg','s/c2l-4.jpg','s/vyra-1.jpg','s/vyra-2.jpg','s/vyra-3.jpg','s/vyra-4.jpg'];
   const loader = new THREE.TextureLoader();
   const screens = [];
   // couloir : z de +2 à -78, dispersion gauche/droite alternée
   // Couloir : les écrans restent sur les côtés pour laisser l'axe central au texte.
+  // Le travail client est la vedette : 4 écrans « plein cadre » sur l'axe de la caméra,
+  // que le travelling vient chercher de face, plus des écrans latéraux pour la profondeur.
   const layout = [
-    {x:-10.5,y: 1.6,z: -17, s:1.00, r: .34},
-    {x: 10.8,y:-1.6,z: -25, s:1.15, r:-.36},
-    {x: -9.4,y:-2.4,z: -33, s:0.95, r: .28},
-    {x:  9.6,y: 2.6,z: -41, s:1.05, r:-.26},
-    {x:-10.2,y: 0.6,z: -49, s:1.20, r: .30},
-    {x:  9.8,y:-2.2,z: -57, s:1.10, r:-.30},
-    {x: -8.8,y: 2.4,z: -65, s:1.00, r: .24},
-    {x:  9.4,y: 0.2,z: -73, s:1.18, r:-.28}
+    // latéraux (décor)
+    {x:-11.0,y: 1.6,z: -12, s:1.00, r: .34},
+    {x: 11.2,y:-1.8,z: -26, s:1.05, r:-.36},
+    {x:-10.6,y:-2.2,z: -43, s:1.00, r: .30},
+    {x: 11.0,y: 2.2,z: -60, s:1.05, r:-.30},
+    // plein cadre (les réalisations)
+    {x:  0.0,y: 0.0,z: -18, s:2.35, r: 0, hero:1},
+    {x:  0.0,y: 0.0,z: -35, s:2.35, r: 0, hero:1},
+    {x:  0.0,y: 0.0,z: -52, s:2.35, r: 0, hero:1},
+    {x:  0.0,y: 0.0,z: -69, s:2.35, r: 0, hero:1}
   ];
+  // on met les plus belles captures sur les plans pleins cadre
+  const order = ['s/c2l-2.jpg','s/vyra-2.jpg','s/c2l-4.jpg','s/vyra-4.jpg',
+                 's/c2l-1.jpg','s/vyra-1.jpg','s/c2l-3.jpg','s/vyra-3.jpg'];
   layout.forEach((L,i)=>{
-    const tex = loader.load(files[i % files.length]);
+    const tex = loader.load(order[i % order.length]);
     if('colorSpace' in tex && THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
     const w = 5.4*L.s, h = w*0.62;
     const g = new THREE.PlaneGeometry(w,h);
