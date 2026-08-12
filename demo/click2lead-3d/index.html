@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Click2Lead — Bande-annonce 3D (démo de direction)</title>
+<meta name="description" content="Démo de direction artistique : la page d'accueil Click2Lead repensée en bande-annonce 3D pilotée au scroll.">
+<link rel="icon" href="../../favicon-96x96.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08061a; --bg2:#0d0a1f;
+  --p:#7c5af0; --p-lo:#5b3fc4; --s:#d6ff3f;
+  --txt:#f2f0ff; --mut:#a49fc8;
+  --disp:'Bricolage Grotesque','Arial Black',sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+  --e:cubic-bezier(.23,1,.32,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--txt);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--s);outline-offset:4px}
+
+/* ============ CANVAS 3D (fixe, plein écran) ============ */
+#gl{position:fixed;inset:0;z-index:0;display:block;opacity:0;transition:opacity 1.4s ease}
+#gl.on{opacity:1}
+/* voile pour la lisibilité du texte */
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(58% 44% at 50% 50%,rgba(8,6,26,.82) 0%,rgba(8,6,26,.5) 55%,transparent 100%),
+    radial-gradient(120% 90% at 50% 50%,transparent 34%,rgba(8,6,26,.5) 78%,rgba(8,6,26,.92) 100%)}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ============ PISTE DE SCROLL ============ */
+#track{position:relative;z-index:3}
+.scene{height:100vh;height:100svh;display:grid;place-items:center;padding:0 26px;pointer-events:none}
+.scene .in{max-width:900px;width:100%;opacity:0;transform:translateY(38px);will-change:opacity,transform;position:relative}
+.scene .in::before{content:'';position:absolute;inset:-14% -12%;z-index:-1;border-radius:50%;
+  background:radial-gradient(60% 55% at 50% 50%,rgba(6,4,20,.94) 0%,rgba(6,4,20,.78) 45%,transparent 78%);filter:blur(12px)}
+.scene .in>*{pointer-events:auto}
+.act{font-family:var(--body);font-size:.68rem;font-weight:500;letter-spacing:.44em;text-transform:uppercase;color:var(--s);margin-bottom:18px;display:block}
+.scene h2,.scene h1{font-family:var(--disp);font-weight:800;line-height:.94;letter-spacing:-.02em;
+  font-size:clamp(2.6rem,9vw,7rem);text-transform:uppercase}
+.scene p{font-size:clamp(1rem,2.1vw,1.24rem);color:var(--mut);max-width:44ch;margin-top:20px}
+.grad{background:linear-gradient(103deg,#fff 10%,var(--s) 55%,var(--p) 95%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.outline{color:transparent;-webkit-text-stroke:1.4px rgba(214,255,63,.75)}
+
+/* Plan 0 — titre */
+.s0{text-align:center}
+.s0 .cursor{display:inline-block;width:3px;height:1em;background:var(--s);vertical-align:-.12em;
+  animation:blink 1.05s steps(2,start) infinite}
+@keyframes blink{50%{opacity:0}}
+.s0 .in{max-width:1240px}
+.s0 h1{font-size:clamp(2.6rem,10.5vw,8.4rem);white-space:nowrap}
+.s0 .sub{margin:22px auto 0;color:var(--mut);font-size:clamp(.95rem,2vw,1.15rem)}
+.hint{position:fixed;left:50%;bottom:28px;z-index:5;transform:translateX(-50%);
+  font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--mut);
+  display:flex;flex-direction:column;align-items:center;gap:9px;transition:opacity .5s}
+.hint .bar{width:1px;height:34px;background:linear-gradient(var(--s),transparent);animation:drop 2.1s ease-in-out infinite}
+@keyframes drop{0%,100%{transform:scaleY(.25);transform-origin:top;opacity:.35}50%{transform:scaleY(1);opacity:1}}
+
+/* Plan 5 — CTA */
+.s5{text-align:center}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:500;font-size:.98rem;
+  padding:16px 34px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;
+  transition:transform .3s var(--e),box-shadow .3s var(--e),background .3s,color .3s,border-color .3s}
+.btn-p{background:var(--s);color:#141206;font-weight:700;background-clip:padding-box}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(214,255,63,.5)}
+.btn-o{border-color:rgba(242,240,255,.34);color:var(--txt)}
+.btn-o:hover{border-color:var(--s);color:var(--s);transform:translateY(-3px)}
+.btn:active{transform:scale(.97)}
+
+/* progression */
+#prog{position:fixed;left:0;top:0;height:2px;width:0;z-index:6;background:linear-gradient(90deg,var(--p),var(--s));box-shadow:0 0 14px rgba(214,255,63,.5)}
+/* chapitres */
+.chapters{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:6;display:none;flex-direction:column;gap:14px}
+@media(min-width:1024px){.chapters{display:flex}}
+.chapters b{width:7px;height:7px;border-radius:50%;background:rgba(242,240,255,.22);transition:background .35s,transform .35s}
+.chapters b.on{background:var(--s);transform:scale(1.5)}
+
+/* badge démo */
+.demo-tag{position:fixed;left:22px;top:20px;z-index:7;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mut);border:1px solid rgba(242,240,255,.16);border-radius:999px;padding:7px 14px;background:rgba(8,6,26,.6);backdrop-filter:blur(8px)}
+
+/* ============ REPLI MOBILE / SANS WEBGL ============ */
+#fb{display:none;position:relative;z-index:3}
+#fb .fscene{min-height:100svh;display:grid;place-items:center;padding:80px 24px;position:relative;overflow:hidden}
+#fb .fin{width:100%;max-width:620px;opacity:0;transform:translateY(34px);
+  transition:opacity .9s var(--e),transform .9s var(--e)}
+#fb .fin.on{opacity:1;transform:none}
+#fb .shot{margin-top:30px;border-radius:16px;overflow:hidden;border:1px solid rgba(242,240,255,.14);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.9);transform:perspective(1200px) rotateX(9deg);transition:transform 1s var(--e)}
+#fb .fin.on .shot{transform:perspective(1200px) rotateX(0)}
+#fb .shot img{width:100%;display:block}
+#fb .glow{position:absolute;width:420px;height:420px;border-radius:50%;pointer-events:none;filter:blur(70px);opacity:.4}
+#fb .g1{background:var(--p);top:-120px;right:-120px}
+#fb .g2{background:var(--s);bottom:-140px;left:-130px;opacity:.22}
+body.fallback #gl,body.fallback .veil,body.fallback #track,body.fallback .hint,body.fallback .chapters{display:none!important}
+body.fallback #fb{display:block}
+
+@media(prefers-reduced-motion:reduce){
+  .s0 .cursor,.hint .bar{animation:none}
+  #gl{display:none}
+  .scene .in{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-tag">Démo de direction · Click2Lead</div>
+<div id="prog"></div>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="chapters" aria-hidden="true">
+  <b class="on"></b><b></b><b></b><b></b><b></b><b></b>
+</div>
+
+<!-- ============ PISTE (desktop / WebGL) ============ -->
+<main id="track">
+
+  <section class="scene s0" data-scene="0">
+    <div class="in">
+      <h1><span class="grad">Click2Lead</span><span class="cursor"></span></h1>
+      <p class="sub">Voici, en trente secondes, ce que nous construisons pour vous.</p>
+    </div>
+  </section>
+
+  <section class="scene" data-scene="1">
+    <div class="in">
+      <span class="act">Votre situation</span>
+      <h2>Votre métier mérite <span class="grad">mieux qu'une fiche</span>.</h2>
+      <p>Aujourd'hui, les gens qui vous cherchent tombent sur une adresse et un numéro. Rien qui donne envie de vous choisir.</p>
+    </div>
+  </section>
+
+  <section class="scene" data-scene="2">
+    <div class="in">
+      <span class="act">Ce qu'on vous livre</span>
+      <h2>Une page <span class="outline">rien qu'à vous</span>.</h2>
+      <p>Vos photos, vos prestations, vos tarifs, votre ambiance. Dessinée à la main pour votre métier, pas choisie dans un catalogue.</p>
+    </div>
+  </section>
+
+  <section class="scene" data-scene="3">
+    <div class="in">
+      <span class="act">Ce qu'elle fait</span>
+      <h2>Elle vous fait <span class="grad">appeler</span>.</h2>
+      <p>Bouton d'appel, itinéraire, demande de devis. Chaque détail est placé pour transformer un visiteur en client.</p>
+    </div>
+  </section>
+
+  <section class="scene" data-scene="4">
+    <div class="in">
+      <span class="act">Et ensuite</span>
+      <h2>En ligne en <span class="grad">une semaine</span>.</h2>
+      <p>Hébergement et nom de domaine compris la première année. Vous n'avez rien à gérer, elle travaille pour vous.</p>
+    </div>
+  </section>
+
+  <section class="scene s5" data-scene="5">
+    <div class="in">
+      <span class="act">À vous de jouer</span>
+      <h2>On construit <span class="grad">la vôtre</span> ?</h2>
+      <p style="margin-inline:auto">Maquette gratuite, sans engagement. Vous voyez votre site avant de décider quoi que ce soit.</p>
+      <div class="cta-btns">
+        <a href="../../index.html#contact" class="btn btn-p">Demander ma maquette</a>
+        <a href="../../realisations.html" class="btn btn-o">Voir les réalisations</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ REPLI (mobile / sans WebGL) ============ -->
+<div id="fb">
+  <section class="fscene">
+    <div class="glow g1"></div><div class="glow g2"></div>
+    <div class="fin">
+      <h1 style="font-family:var(--disp);font-weight:800;font-size:clamp(2rem,11.5vw,4rem);line-height:.96;text-transform:uppercase;overflow-wrap:anywhere"><span class="grad">Click2Lead</span></h1>
+      <p style="color:var(--mut);margin-top:18px">Voici, en trente secondes, ce que nous construisons pour vous.</p>
+    </div>
+  </section>
+  <section class="fscene">
+    <div class="fin">
+      <span class="act">Votre situation</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Mieux qu'une <span class="grad">fiche</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Les gens qui vous cherchent tombent sur une adresse et un numéro. Rien qui donne envie de vous choisir.</p>
+      <div class="shot"><img src="s/c2l-1.jpg" alt="Page d'accueil Click2Lead" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="fscene">
+    <div class="fin">
+      <span class="act">Ce qu'on vous livre</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Une page <span class="outline">rien qu'à vous</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Vos photos, vos prestations, vos tarifs. Dessinée pour votre métier, pas choisie dans un catalogue.</p>
+      <div class="shot"><img src="s/c2l-3.jpg" alt="Section offres Click2Lead" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="fscene">
+    <div class="fin">
+      <span class="act">Ce qu'elle fait</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">Elle vous fait <span class="grad">appeler</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Bouton d'appel, itinéraire, demande de devis. Chaque détail placé pour transformer un visiteur en client.</p>
+      <div class="shot"><img src="s/vyra-1.jpg" alt="Projet VyraShop" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="fscene">
+    <div class="fin">
+      <span class="act">Et ensuite</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">En ligne en <span class="grad">une semaine</span>.</h2>
+      <p style="color:var(--mut);margin-top:16px">Hébergement et nom de domaine compris la première année. Vous n'avez rien à gérer.</p>
+      <div class="shot"><img src="s/vyra-3.jpg" alt="Projet VyraShop, page produit" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="fscene" style="text-align:center">
+    <div class="glow g2"></div>
+    <div class="fin">
+      <span class="act">À vous de jouer</span>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,3.2rem);line-height:1;text-transform:uppercase">On construit <span class="grad">la vôtre</span> ?</h2>
+      <p style="color:var(--mut);margin:16px auto 0">Maquette gratuite, sans engagement.</p>
+      <div class="cta-btns">
+        <a href="../../index.html#contact" class="btn btn-p">Demander ma maquette</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="hint" id="hint" aria-hidden="true"><span class="bar"></span>Défilez</div>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+function webglOK(){
+  try{const c=document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (c.getContext('webgl')||c.getContext('experimental-webgl')));
+  }catch(e){return false}
+}
+// Le mobile et les machines sans WebGL prennent le repli CSS : même récit, sans coût GPU.
+// On ne filtre pas sur pointer:fine — les portables tactiles doivent avoir la 3D.
+const useGL = webglOK() && !reduce && innerWidth >= 820;
+if(!useGL) document.body.classList.add('fallback');
+
+/* ---------- Repli : révélations au scroll ---------- */
+if(!useGL){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}
+  }),{threshold:.25});
+  document.querySelectorAll('#fb .fin').forEach(el=>io.observe(el));
+  const h=document.getElementById('hint'); if(h) h.style.display='none';
+}
+
+/* ---------- Progression + chapitres + textes (piste WebGL) ---------- */
+const prog=document.getElementById('prog');
+const dots=[...document.querySelectorAll('.chapters b')];
+const scenes=[...document.querySelectorAll('#track .scene')];
+const hint=document.getElementById('hint');
+let sp=0; // scroll progress 0..1
+
+function trackScroll(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  sp = max>0 ? Math.min(1,Math.max(0,scrollY/max)) : 0;
+  prog.style.width=(sp*100)+'%';
+  if(hint) hint.style.opacity = scrollY>120?'0':'1';
+
+  // texte de chaque plan : fenêtre d'apparition centrée sur sa position
+  scenes.forEach((s,i)=>{
+    const r=s.getBoundingClientRect();
+    const center=r.top+r.height/2;
+    const d=Math.abs(center-innerHeight/2)/(innerHeight*0.75); // 0 = pile au centre
+    const k=Math.max(0,1-d);
+    const inEl=s.querySelector('.in');
+    inEl.style.opacity=k.toFixed(3);
+    inEl.style.transform='translateY('+((1-k)*38).toFixed(1)+'px)';
+    if(dots[i]) dots[i].classList.toggle('on',k>.55);
+  });
+}
+addEventListener('scroll',trackScroll,{passive:true});
+addEventListener('resize',trackScroll,{passive:true});
+trackScroll();
+</script>
+
+<!-- ============ SCÈNE 3D ============ -->
+<script type="module">
+if(document.body.classList.contains('fallback')===false){(async()=>{
+try{
+  const THREE = await import('./three.module.js');
+  const cv = document.getElementById('gl');
+  const dpr = Math.min(devicePixelRatio||1, 1.7);
+
+  const rd = new THREE.WebGLRenderer({canvas:cv, antialias:true, alpha:false});
+  rd.setPixelRatio(dpr);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x08061a);
+  scene.fog = new THREE.Fog(0x08061a, 14, 62);
+
+  const cam = new THREE.PerspectiveCamera(52, 1, .1, 200);
+  cam.position.set(0,0,10);
+
+  /* ---- lumières ---- */
+  scene.add(new THREE.AmbientLight(0x6f5ad0, 1.1));
+  const l1 = new THREE.PointLight(0xd6ff3f, 2.4, 60); l1.position.set(6,4,6); scene.add(l1);
+  const l2 = new THREE.PointLight(0x7c5af0, 3.0, 70); l2.position.set(-8,-3,-10); scene.add(l2);
+
+  /* ---- sol en grille (repère de mouvement) ---- */
+  const grid = new THREE.GridHelper(220, 110, 0x7c5af0, 0x2a1f52);
+  grid.material.transparent = true; grid.material.opacity = .22;
+  grid.position.y = -6.5; scene.add(grid);
+  const grid2 = grid.clone(); grid2.position.y = 7.5; grid2.material.opacity = .10; scene.add(grid2);
+
+  /* ---- écrans flottants (les vraies captures) ---- */
+  const loader = new THREE.TextureLoader();
+  const screens = [];
+  // couloir : z de +2 à -78, dispersion gauche/droite alternée
+  // Couloir : les écrans restent sur les côtés pour laisser l'axe central au texte.
+  // Le travail client est la vedette : 4 écrans « plein cadre » sur l'axe de la caméra,
+  // que le travelling vient chercher de face, plus des écrans latéraux pour la profondeur.
+  const layout = [
+    // latéraux (décor)
+    {x:-11.0,y: 1.6,z: -12, s:1.00, r: .34},
+    {x: 11.2,y:-1.8,z: -26, s:1.05, r:-.36},
+    {x:-10.6,y:-2.2,z: -43, s:1.00, r: .30},
+    {x: 11.0,y: 2.2,z: -60, s:1.05, r:-.30},
+    // plein cadre (les réalisations)
+    {x:  0.0,y: 0.0,z: -18, s:2.35, r: 0, hero:1},
+    {x:  0.0,y: 0.0,z: -35, s:2.35, r: 0, hero:1},
+    {x:  0.0,y: 0.0,z: -52, s:2.35, r: 0, hero:1},
+    {x:  0.0,y: 0.0,z: -69, s:2.35, r: 0, hero:1}
+  ];
+  // on met les plus belles captures sur les plans pleins cadre
+  const order = ['s/c2l-2.jpg','s/vyra-2.jpg','s/c2l-4.jpg','s/vyra-4.jpg',
+                 's/c2l-1.jpg','s/vyra-1.jpg','s/c2l-3.jpg','s/vyra-3.jpg'];
+  layout.forEach((L,i)=>{
+    const tex = loader.load(order[i % order.length]);
+    if('colorSpace' in tex && THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
+    const w = 5.4*L.s, h = w*0.62;
+    const g = new THREE.PlaneGeometry(w,h);
+    const m = new THREE.MeshBasicMaterial({map:tex});
+    const mesh = new THREE.Mesh(g,m);
+    mesh.position.set(L.x,L.y,L.z);
+    mesh.rotation.y = L.r;
+    scene.add(mesh);
+    // cadre lumineux
+    const eg = new THREE.EdgesGeometry(g);
+    const em = new THREE.LineBasicMaterial({color: i%2?0xd6ff3f:0x7c5af0, transparent:true, opacity:.55});
+    const edges = new THREE.LineSegments(eg,em);
+    mesh.add(edges);
+    screens.push({mesh, base:{...L}, edges:em, phase: Math.random()*6.28});
+  });
+
+  /* ---- poussière ---- */
+  const N = 900;
+  const pg = new THREE.BufferGeometry();
+  const pos = new Float32Array(N*3);
+  for(let i=0;i<N;i++){
+    pos[i*3]   = (Math.random()*2-1)*26;
+    pos[i*3+1] = (Math.random()*2-1)*12;
+    pos[i*3+2] = -Math.random()*84 + 4;
+  }
+  pg.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const pm = new THREE.PointsMaterial({color:0xd6ff3f, size:.045, transparent:true, opacity:.55, depthWrite:false});
+  scene.add(new THREE.Points(pg,pm));
+
+  /* ---- redimensionnement ---- */
+  function resize(){
+    const w=innerWidth,h=innerHeight;
+    rd.setSize(w,h,false);
+    cam.aspect=w/h; cam.updateProjectionMatrix();
+  }
+  resize(); addEventListener('resize',resize,{passive:true});
+
+  /* ---- parallaxe souris ---- */
+  let mx=0,my=0,cx=0,cy=0;
+  addEventListener('mousemove',e=>{
+    mx=(e.clientX/innerWidth-.5); my=(e.clientY/innerHeight-.5);
+  },{passive:true});
+
+  /* ---- la caméra suit le scroll ---- */
+  const Z_START = 14, Z_END = -72;
+  let camZ = Z_START, shown=false;
+  const clock = new THREE.Clock();
+
+  function progress(){
+    const max=document.documentElement.scrollHeight-innerHeight;
+    return max>0 ? Math.min(1,Math.max(0,scrollY/max)) : 0;
+  }
+
+  (function tick(){
+    requestAnimationFrame(tick);
+    const t = clock.getElapsedTime();
+    const p = progress();
+
+    // interpolation douce vers la position cible : le scroll reste natif, la caméra glisse
+    const targetZ = Z_START + (Z_END - Z_START) * p;
+    camZ += (targetZ - camZ) * .075;
+    cx += (mx - cx) * .045;
+    cy += (my - cy) * .045;
+
+    cam.position.z = camZ;
+    cam.position.x = cx * 2.6;
+    cam.position.y = -cy * 1.6 + Math.sin(t*.28)*.22;
+    cam.lookAt(cx*1.2, -cy*.8, camZ - 12);
+
+    // respiration des écrans
+    screens.forEach((s,i)=>{
+      s.mesh.position.y = s.base.y + Math.sin(t*.42 + s.phase)*.26;
+      s.mesh.rotation.z = Math.sin(t*.3 + s.phase)*.014;
+      // le cadre s'allume quand l'écran passe près de la caméra
+      const d = Math.abs(s.mesh.position.z - camZ);
+      s.edges.opacity = Math.max(.14, Math.min(.95, 1.4 - d/16));
+    });
+
+    grid.position.z = grid2.position.z = camZ - 30;
+
+    rd.render(scene,cam);
+    if(!shown){shown=true; cv.classList.add('on');}
+  })();
+
+}catch(e){
+  // si la 3D échoue, on bascule proprement sur le repli
+  document.body.classList.add('fallback');
+  document.querySelectorAll('#fb .fin').forEach(el=>el.classList.add('on'));
+}
+})();}
+</script>
+</body>
+</html>
